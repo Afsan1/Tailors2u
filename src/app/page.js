@@ -12,6 +12,18 @@ export default function Home() {
       {/* Hero Section */}
       <section className="hero-section">
         <div className="hero-overlay-pattern"></div>
+        {/* Video as full-bleed background */}
+        <video
+          autoPlay
+          loop
+          muted
+          playsInline
+          className="hero-video-bg"
+        >
+          <source src="/hero.mp4" type="video/mp4" />
+        </video>
+        {/* Gradient overlay: solid left → transparent right */}
+        <div className="hero-video-overlay"></div>
         <div className="hero-container">
           <div className="hero-content">
             <span className="animate-slide-left" style={{ color: 'var(--beige-gold)', display: 'block', fontSize: '1.8rem', fontFamily: 'var(--font-sans)', textTransform: 'uppercase', letterSpacing: '4px', fontWeight: 500, marginBottom: '0.5rem', animationDelay: '0.1s' }}>
@@ -20,35 +32,33 @@ export default function Home() {
             <h1 className="animate-slide-left" style={{ animationDelay: '0.25s' }}>
               Skip the trip to the Tailors.
             </h1>
-            <p className="animate-slide-left" style={{ animationDelay: '0.4s' }}>
-              75+ Tailors and fabric vendors Onboarded. 1000+ fabrics available. Live across mumbai.
-            </p>
+            <div className="hero-list-item animate-slide-left" style={{ animationDelay: '0.4s' }}>
+              {"75+ Tailors and fabric vendors Onboarded.".split(" ").map((word, i) => (
+                <span key={i} className="hover-word">{word}&nbsp;</span>
+              ))}
+            </div>
+            <div className="hero-list-item animate-slide-left" style={{ animationDelay: '0.5s' }}>
+              {"1000+ fabrics available.".split(" ").map((word, i) => (
+                <span key={i} className="hover-word">{word}&nbsp;</span>
+              ))}
+            </div>
+            <div className="hero-list-item animate-slide-left" style={{ animationDelay: '0.6s', marginBottom: '1.5rem' }}>
+              {"Live across Mumbai.".split(" ").map((word, i) => (
+                <span key={i} className="hover-word">{word}&nbsp;</span>
+              ))}
+            </div>
             <div className="hero-actions">
               <button
                 className="btn-primary animate-slide-left"
-                style={{ animationDelay: '0.55s' }}
+                style={{ animationDelay: '0.7s' }}
                 onClick={() => openBooking('Custom Tailoring Appointment')}
               >
                 Book Doorstep Fitting
               </button>
-              <Link href="/fabric" className="btn-secondary animate-slide-left" style={{ animationDelay: '0.7s' }}>
+              <Link href="/fabric" className="btn-secondary animate-slide-left" style={{ animationDelay: '0.8s' }}>
                 Explore Fabrics
               </Link>
             </div>
-          </div>
-          <div className="hero-showcase animate-fade-in" style={{ animationDelay: '0.2s' }}>
-            <video
-              autoPlay
-              loop
-              muted
-              playsInline
-              className="hero-video-bg"
-            >
-              <source
-                src="/fabric.mp4"
-                type="video/mp4"
-              />
-            </video>
           </div>
         </div>
       </section>

@@ -4,7 +4,6 @@ import React, { useState } from 'react';
 import Navbar from './Navbar';
 import Footer from './Footer';
 import BookingModal from './BookingModal';
-import ScissorCursor from './ScissorCursor';
 
 export default function ClientLayoutWrapper({ children }) {
   const [isBookingOpen, setIsBookingOpen] = useState(false);
@@ -29,7 +28,6 @@ export default function ClientLayoutWrapper({ children }) {
   
   return (
     <BookingContext.Provider value={{ openBooking }}>
-      <ScissorCursor />
       <Navbar onOpenBooking={() => openBooking()} />
       <main>{children}</main>
       <Footer onOpenBooking={() => openBooking()} />

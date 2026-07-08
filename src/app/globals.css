@@ -357,31 +357,65 @@ a {
   position: relative;
   background: linear-gradient(135deg, var(--emerald-deep) 0%, #032a20 100%);
   color: var(--white);
-  padding: 8rem 2rem 6rem 2rem;
   overflow: hidden;
-  border-bottom: 2px solid var(--beige-gold);
+  min-height: 90vh;
 }
 
 .hero-overlay-pattern {
   position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
+  inset: 0;
   opacity: 0.05;
   background-image: radial-gradient(var(--beige-gold) 1px, transparent 1px);
   background-size: 24px 24px;
+  pointer-events: none;
+  z-index: 0;
 }
 
+/* Video covers the entire hero section as a background */
+.hero-video-bg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center center;
+  opacity: 0.6;
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* Gradient: solid emerald left → transparent right, kills the seam completely */
+.hero-video-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to right,
+    #032a20 0%,
+    #032a20 35%,
+    rgba(3, 42, 32, 0.75) 55%,
+    rgba(3, 42, 32, 0.25) 75%,
+    transparent 100%
+  );
+  pointer-events: none;
+  z-index: 2;
+}
+
+/* Container — text only, left-aligned */
 .hero-container {
+  position: relative;
+  z-index: 3;
   max-width: var(--max-width);
   margin: 0 auto;
-  display: grid;
-  grid-template-columns: 1.2fr 0.8fr;
-  align-items: center;
-  gap: 4rem;
-  position: relative;
-  z-index: 1;
+  padding: 0 2rem;
+}
+
+/* Left content */
+.hero-content {
+  max-width: 580px;
+  padding: 8rem 0 6rem 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
 .hero-content h1 {
@@ -402,17 +436,33 @@ a {
   margin-bottom: 0.5rem;
 }
 
-.hero-content p {
-  font-size: 1.2rem;
+.hero-list-item {
+  font-weight: 700;
+  text-transform: uppercase;
+  font-size: 1.25rem;
+  letter-spacing: 1.5px;
   color: var(--beige-light);
-  margin-bottom: 2.5rem;
-  max-width: 580px;
+  margin-bottom: 0.6rem;
+  display: block;
+  line-height: 1.4;
+}
+
+.hover-word {
+  display: inline-block;
+  transition: transform 0.22s cubic-bezier(0.175, 0.885, 0.32, 1.275), color 0.15s ease;
+}
+
+.hover-word:hover {
+  transform: scale(1.18) translateY(-3px);
+  color: var(--beige-gold);
 }
 
 .hero-actions {
   display: flex;
   gap: 1.5rem;
 }
+
+
 
 .btn-primary {
   padding: 1rem 2.2rem;
@@ -476,10 +526,7 @@ a {
   position: relative;
   align-self: stretch;
   min-height: 450px;
-  border-radius: var(--radius-lg);
   overflow: hidden;
-  border: 2px solid var(--beige-gold);
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
 }
 
 .hero-video-bg {
@@ -489,8 +536,8 @@ a {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  opacity: 0.6;
-  /* Increased opacity to highlight fabric details now that the overlay is removed */
+  object-position: center center;
+  opacity: 1;
   pointer-events: none;
   z-index: 1;
 }
@@ -2445,76 +2492,4 @@ a {
   background-size: 5px 5px;
   width: 100%;
   height: 100%;
-}
-
-/* ==========================================
-   Custom Scissor Cursor Design & Animations
-   ========================================== */
-
-/* Hide default cursor on desktop screens (pointer: fine devices) */
-@media (pointer: fine) {
-
-  body,
-  a,
-  button,
-  input,
-  select,
-  textarea,
-  [role="button"],
-  .btn-primary,
-  .btn-secondary,
-  .nav-link,
-  .footer-link,
-  .tryon-btn-book {
-    cursor: none !important;
-  }
-}
-
-/* Scissor blade animations */
-.scissor-half-1,
-.scissor-half-2 {
-  transform-origin: 20px 20px;
-  transition: transform 0.22s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-}
-
-/* Initial/default state: open scissor */
-.scissor-half-1 {
-  transform: rotate(10deg);
-  /* Clockwise rotation opens upper blade & lower handle */
-}
-
-.scissor-half-2 {
-  transform: rotate(-10deg);
-  /* Counter-clockwise rotation opens lower blade & upper handle */
-}
-
-/* Hovering state: scissor opens wider */
-.custom-cursor.hovering .scissor-half-1 {
-  transform: rotate(18deg);
-}
-
-.custom-cursor.hovering .scissor-half-2 {
-  transform: rotate(-18deg);
-}
-
-/* Clicking state: blades cut/close sharply */
-.custom-cursor.clicking .scissor-half-1 {
-  transform: rotate(-1deg);
-  transition: transform 0.05s ease-out;
-}
-
-.custom-cursor.clicking .scissor-half-2 {
-  transform: rotate(1deg);
-  transition: transform 0.05s ease-out;
-}
-
-/* Click Particles visual styling & prevent click block */
-.custom-cursor,
-.scissor-particle {
-  pointer-events: none !important;
-}
-
-.scissor-particle {
-  transition: opacity 0.4s ease-out, transform 0.4s ease-out;
-  box-shadow: 0 0 6px rgba(255, 217, 190, 0.8);
 }
