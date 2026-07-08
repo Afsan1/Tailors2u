@@ -14,6 +14,99 @@ export default function BookingModal({ isOpen, onClose, initialService = '' }) {
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
+  const [errors, setErrors] = useState({});
+
+  const validateField = (fieldName, value, currentFormData = formData) => {
+    switch (fieldName) {
+      case 'name': {
+        const trimmedValue = value.trim();
+        if (!trimmedValue) return 'Full name is required.';
+        if (!/^[A-Za-z ]+$/.test(trimmedValue)) return 'Name can only contain letters and spaces.';
+        if (trimmedValue.length < 3) return 'Name must contain at least 3 letters.';
+        return '';
+      }
+      case 'email': {
+        const trimmedValue = value.trim();
+        if (!trimmedValue || !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(trimmedValue)) {
+          return 'Enter a valid email address.';
+        }
+        return '';
+      }
+      case 'phone': {
+        const digitsOnly = (value || '').replace(/\D/g, '').slice(0, 10);
+        if (!digitsOnly || digitsOnly.length < 10) return 'Phone number must contain exactly 10 digits.';
+        return '';
+      }
+      case 'service':
+        return value ? '' : 'Please select a service.';
+      case 'date': {
+        if (!value) return 'Please select a date.';
+        const today = new Date();
+        today.setHours(0, 0, 0, 0);
+        const selectedDate = new Date(value);
+        if (selectedDate < today) return 'Past dates are not allowed.';
+        return '';
+      }
+      case 'time': {
+        if (!value) return 'Please select a time.';
+        if (currentFormData.date) {
+          const today = new Date();
+          const selectedDate = new Date(currentFormData.date);
+          if (selectedDate.toDateString() === today.toDateString()) {
+            const [hours, minutes] = value.split(':');
+            const selectedTime = new Date();
+            selectedTime.setHours(Number(hours));
+            selectedTime.setMinutes(Number(minutes));
+            selectedTime.setSeconds(0);
+            if (selectedTime <= new Date()) return 'Please choose a future time.';
+          }
+        }
+        return '';
+      }
+      default:
+        return '';
+    }
+  };
+
+  const handleFieldChange = (field, value) => {
+    const nextValue = field === 'phone' ? (value || '').replace(/\D/g, '').slice(0, 10) : value;
+
+    setFormData(prev => {
+      const nextFormData = { ...prev, [field]: nextValue };
+      const validationError = validateField(field, nextValue, nextFormData);
+
+      setErrors(prevErrors => {
+        const nextErrors = { ...prevErrors };
+        if (validationError) {
+          nextErrors[field] = validationError;
+        } else {
+          delete nextErrors[field];
+        }
+
+        if (field === 'date' && nextFormData.time) {
+          const timeError = validateField('time', nextFormData.time, nextFormData);
+          if (timeError) {
+            nextErrors.time = timeError;
+          } else {
+            delete nextErrors.time;
+          }
+        }
+
+        if (field === 'time' && nextFormData.date) {
+          const dateError = validateField('date', nextFormData.date, nextFormData);
+          if (dateError) {
+            nextErrors.date = dateError;
+          } else {
+            delete nextErrors.date;
+          }
+        }
+
+        return nextErrors;
+      });
+
+      return nextFormData;
+    });
+  };
 
   useEffect(() => {
     if (isOpen) {
@@ -30,19 +123,72 @@ export default function BookingModal({ isOpen, onClose, initialService = '' }) {
 
   if (!isOpen) return null;
 
-  const handleSubmit = (e) => {
+const validateForm = () => {
+  const newErrors = {};
+
+  Object.entries(formData).forEach(([fieldName, value]) => {
+    const error = validateField(fieldName, value, formData);
+    if (error) {
+      newErrors[fieldName] = error;
+    }
+  });
+
+  setErrors(newErrors);
+
+  return Object.keys(newErrors).length === 0;
+};
+
+  const handleSubmit = async (e) => {
+
     e.preventDefault();
+
+    if (!validateForm()) {
+  return;
+}
+
     setIsSubmitting(true);
 
-    // Simulate API call
-    setTimeout(() => {
-      setIsSubmitting(false);
-      setIsSuccess(true);
-    }, 1200);
-  };
+    try {
+
+        const res = await fetch("/api/booking", {
+
+            method: "POST",
+
+            headers: {
+                "Content-Type": "application/json"
+            },
+
+            body: JSON.stringify(formData)
+
+        });
+
+        const data = await res.json();
+
+        if (data.success) {
+
+            setIsSuccess(true);
+
+        } else {
+
+            alert(data.message || "Booking failed");
+
+        }
+
+    } catch (err) {
+
+        console.error(err);
+
+        alert("Something went wrong.");
+
+    }
+
+    setIsSubmitting(false);
+
+};
 
   const handleClose = () => {
     setIsSuccess(false);
+    setErrors({});
     setFormData({
       name: '',
       email: '',
@@ -56,7 +202,16 @@ export default function BookingModal({ isOpen, onClose, initialService = '' }) {
   };
 
   return (
-    <div className="modal-overlay" onClick={handleClose}>
+    <>
+      <style jsx>{`
+        .form-error {
+          color: #dc2626;
+          font-size: 13px;
+          margin-top: 6px;
+          font-weight: 500;
+        }
+      `}</style>
+      <div className="modal-overlay" onClick={handleClose}>
       <div className="modal-content" onClick={(e) => e.stopPropagation()}>
         <div className="modal-header">
           <h3>Book Tailors2U</h3>
@@ -70,9 +225,23 @@ export default function BookingModal({ isOpen, onClose, initialService = '' }) {
           <div className="modal-success-screen animate-fade-in">
             <span className="success-icon">✓</span>
             <h4 className="success-title">Booking Received!</h4>
-            <p>
-              Thank you, <strong>{formData.name}</strong>. A master stylist will reach out to you within the next 2 hours to confirm your appointment details.
-            </p>
+           <p>
+  Thank you, <strong>{formData.name}</strong>.
+</p>
+
+<p style={{ marginTop: "10px" }}>
+  Your booking confirmation has been recorded.
+</p>
+
+<p style={{ marginTop: "10px" }}>
+  📧 Confirmation Email:
+  <br />
+  <strong>{formData.email}</strong>
+</p>
+
+<p style={{ marginTop: "10px" }}>
+  A master stylist will reach out to you within the next 2 hours to confirm your appointment details.
+</p>
             <button className="btn-primary" onClick={handleClose}>
               Done
             </button>
@@ -87,9 +256,10 @@ export default function BookingModal({ isOpen, onClose, initialService = '' }) {
                 className="form-input"
                 required
                 value={formData.name}
-                onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+                onChange={(e) => handleFieldChange('name', e.target.value)}
                 placeholder="e.g. John Doe"
               />
+              {errors.name && <div className="form-error">{errors.name}</div>}
             </div>
 
             <div className="form-group">
@@ -100,9 +270,10 @@ export default function BookingModal({ isOpen, onClose, initialService = '' }) {
                 className="form-input"
                 required
                 value={formData.email}
-                onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                onChange={(e) => handleFieldChange('email', e.target.value)}
                 placeholder="e.g. john@example.com"
               />
+              {errors.email && <div className="form-error">{errors.email}</div>}
             </div>
 
             <div className="form-group">
@@ -113,9 +284,11 @@ export default function BookingModal({ isOpen, onClose, initialService = '' }) {
                 className="form-input"
                 required
                 value={formData.phone}
-                onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-                placeholder="e.g. +1 (555) 123-4567"
+                onChange={(e) =>
+                  handleFieldChange('phone', e.target.value)
+                }
               />
+              {errors.phone && <div className="form-error">{errors.phone}</div>}
             </div>
 
             <div className="form-group">
@@ -125,7 +298,7 @@ export default function BookingModal({ isOpen, onClose, initialService = '' }) {
                 className="form-select"
                 required
                 value={formData.service}
-                onChange={(e) => setFormData({ ...formData, service: e.target.value })}
+                onChange={(e) => handleFieldChange('service', e.target.value)}
               >
                 <option value="" disabled>Choose a service...</option>
                 <option value="Alteration: Shirt">Alteration - Shirt</option>
@@ -134,19 +307,24 @@ export default function BookingModal({ isOpen, onClose, initialService = '' }) {
                 <option value="Bespoke Fabric Consultation">Bespoke Fabric Consultation</option>
                 <option value="Custom Tailoring Appointment">Custom Tailoring Appointment</option>
               </select>
+              {errors.service && <div className="form-error">{errors.service}</div>}
             </div>
 
             <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1rem' }}>
               <div className="form-group">
                 <label htmlFor="modal-date">Preferred Date</label>
                 <input
-                  id="modal-date"
-                  type="date"
-                  className="form-input"
-                  required
-                  value={formData.date}
-                  onChange={(e) => setFormData({ ...formData, date: e.target.value })}
-                />
+  id="modal-date"
+  type="date"
+  className="form-input"
+  required
+  min={new Date().toISOString().split("T")[0]}
+  value={formData.date}
+  onChange={(e) =>
+    handleFieldChange('date', e.target.value)
+  }
+/>
+                {errors.date && <div className="form-error">{errors.date}</div>}
               </div>
               <div className="form-group">
                 <label htmlFor="modal-time">Preferred Time</label>
@@ -156,8 +334,9 @@ export default function BookingModal({ isOpen, onClose, initialService = '' }) {
                   className="form-input"
                   required
                   value={formData.time}
-                  onChange={(e) => setFormData({ ...formData, time: e.target.value })}
+                  onChange={(e) => handleFieldChange('time', e.target.value)}
                 />
+                {errors.time && <div className="form-error">{errors.time}</div>}
               </div>
             </div>
 
@@ -178,6 +357,7 @@ export default function BookingModal({ isOpen, onClose, initialService = '' }) {
           </form>
         )}
       </div>
-    </div>
+      </div>
+    </>
   );
 }
