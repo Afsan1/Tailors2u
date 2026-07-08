@@ -81,6 +81,17 @@ const FABRICS = [
     badge: 'Signature Luxury',
     desc: 'Ultimate insulation combined with silk strength',
     previewClass: 'fabric-pattern-preview-f7'
+  },
+  {
+    id: 'f8',
+    name: 'Armani Suiting Wool',
+    color: '#1A2F3B', // Premium Armani midnight blue
+    patternType: 'wool',
+    origin: 'Italy',
+    weight: '275 gsm',
+    badge: 'Armani Suiting',
+    desc: 'Exclusive high-end suiting fabric from the house of Armani',
+    previewClass: 'fabric-pattern-preview-f8'
   }
 ];
 
@@ -515,12 +526,12 @@ function MannequinSilhouette({ gender }) {
   return (
     <svg width="400" height="500" viewBox="0 0 400 500" xmlns="http://www.w3.org/2000/svg" className="tryon-model-silhouette">
       {/* Mannequin stand */}
-      <line x1="200" y1="360" x2="200" y2="490" stroke="#8c7853" strokeWidth="6" strokeLinecap="round" />
-      <path d="M 160 490 L 240 490 L 220 475 L 180 475 Z" fill="#8c7853" />
+      <line x1="200" y1="360" x2="200" y2="490" stroke="#FFD9BE" strokeWidth="6" strokeLinecap="round" />
+      <path d="M 160 490 L 240 490 L 220 475 L 180 475 Z" fill="#FFD9BE" />
       <ellipse cx="200" cy="475" rx="30" ry="8" fill="#536360" opacity="0.3" />
 
       {/* Neck Cap */}
-      <path d="M 190 85 Q 200 70, 210 85 Z" fill="#8c7853" />
+      <path d="M 190 85 Q 200 70, 210 85 Z" fill="#FFD9BE" />
 
       {/* Main Form Torso */}
       {gender === 'female' ? (
@@ -536,7 +547,7 @@ function MannequinSilhouette({ gender }) {
              Q 145 130, 165 110 
              Q 180 95, 185 85 Z" 
           fill="vertical-gradient" 
-          stroke="#8c7853" 
+          stroke="#FFD9BE" 
           strokeWidth="2.5"
           style={{ fill: 'url(#mannequinGrad)' }}
         />
@@ -553,7 +564,7 @@ function MannequinSilhouette({ gender }) {
              Q 135 140, 145 112 
              Q 170 95, 180 85 Z" 
           fill="vertical-gradient" 
-          stroke="#8c7853" 
+          stroke="#FFD9BE" 
           strokeWidth="2.5"
           style={{ fill: 'url(#mannequinGrad)' }}
         />
@@ -571,7 +582,7 @@ function MannequinSilhouette({ gender }) {
              Q 142 135, 155 110 
              Q 175 95, 182 85 Z" 
           fill="vertical-gradient" 
-          stroke="#8c7853" 
+          stroke="#FFD9BE" 
           strokeWidth="2.5"
           style={{ fill: 'url(#mannequinGrad)' }}
         />
@@ -580,9 +591,9 @@ function MannequinSilhouette({ gender }) {
       {/* Soft gradient fill for high-end look */}
       <defs>
         <linearGradient id="mannequinGrad" x1="0%" y1="0%" x2="0%" y2="100%">
-          <stop offset="0%" stopColor="#faf6f0" />
-          <stop offset="60%" stopColor="#e3cfb4" />
-          <stop offset="100%" stopColor="#c5a880" />
+          <stop offset="0%" stopColor="#FFD9BE" />
+          <stop offset="60%" stopColor="#FFD9BE" />
+          <stop offset="100%" stopColor="#FFD9BE" />
         </linearGradient>
       </defs>
     </svg>

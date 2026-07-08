@@ -134,7 +134,7 @@ export default function Tailoring() {
           </div>
           <div>
             <span className="section-subtitle">Our Quality Standard</span>
-            <h2 style={{ fontSize: '2.4rem', color: 'var(--emerald-deep)', marginBottom: '1.2rem' }}>
+            <h2 style={{ fontSize: '2.4rem', color: 'var(--white)', marginBottom: '1.2rem' }}>
               Hand-Cut & Hand-Finished Detailings
             </h2>
             <p style={{ marginBottom: '1.5rem', fontSize: '1.05rem' }}>

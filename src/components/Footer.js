@@ -1,12 +1,13 @@
 import React from 'react';
 import Link from 'next/link';
+import Logo from './Logo';
 
 export default function Footer({ onOpenBooking }) {
   return (
     <footer className="footer">
       <div className="footer-container">
         <div className="footer-brand">
-          <h3>Tailors<span>2U</span></h3>
+          <h3><Logo className="logo-icon" />Tailors<span>2U</span></h3>
           <p>
             Premium, bespoke tailoring and alterations delivered directly to your doorstep. We bring the luxury tailoring salon experience to your home or office.
           </p>
@@ -21,7 +22,6 @@ export default function Footer({ onOpenBooking }) {
             <li><Link href="/alteration" className="footer-link">Bespoke Alterations</Link></li>
             <li><Link href="/fabric" className="footer-link">Premium Fabrics</Link></li>
             <li><Link href="/tailoring" className="footer-link">Custom Tailoring</Link></li>
-            <li><Link href="/combo" className="footer-link">Combo Packages</Link></li>
           </ul>
         </div>
 
@@ -31,7 +31,6 @@ export default function Footer({ onOpenBooking }) {
             <li><Link href="/alteration" className="footer-link">Shirts & Pants</Link></li>
             <li><Link href="/alteration" className="footer-link">Kurtas & Ethnic</Link></li>
             <li><Link href="/tailoring" className="footer-link">Meet Our Tailors</Link></li>
-            <li><Link href="/combo" className="footer-link">Standard, Premium & Luxury</Link></li>
           </ul>
         </div>
 

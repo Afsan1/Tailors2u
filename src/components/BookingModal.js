@@ -133,9 +133,6 @@ export default function BookingModal({ isOpen, onClose, initialService = '' }) {
                 <option value="Alteration: Kurtas">Alteration - Kurtas</option>
                 <option value="Bespoke Fabric Consultation">Bespoke Fabric Consultation</option>
                 <option value="Custom Tailoring Appointment">Custom Tailoring Appointment</option>
-                <option value="Combo Package: Standard">Standard Combo Package</option>
-                <option value="Combo Package: Premium">Premium Combo Package</option>
-                <option value="Combo Package: Luxury">Luxury Combo Package</option>
               </select>
             </div>
 

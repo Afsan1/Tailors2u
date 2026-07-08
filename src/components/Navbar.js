@@ -3,6 +3,7 @@
 import React, { useState } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
+import Logo from './Logo';
 
 export default function Navbar({ onOpenBooking }) {
   const [isOpen, setIsOpen] = useState(false);
@@ -10,8 +11,7 @@ export default function Navbar({ onOpenBooking }) {
 
   const navLinks = [
     { name: 'Alteration', path: '/alteration' },
-    { name: 'Fabric', path: '/fabric' },
-    { name: 'Tailoring', path: '/tailoring' },
+    { name: 'Stitching', path: '/tailoring' },
     { name: 'AI Try-On', path: '/ai-tryon' }
   ];
 
@@ -19,12 +19,16 @@ export default function Navbar({ onOpenBooking }) {
     <nav className="navbar-wrapper">
       <div className="navbar-container">
         <Link href="/" className="logo">
-          Tailors<span>2U</span>
+          <Logo className="logo-icon" />
+          <div className="logo-text-group">
+            <span className="logo-brand">Tailors2U</span>
+            <span className="logo-tagline">MEASURE &nbsp;|&nbsp; CRAFT &nbsp;|&nbsp; DELIVER</span>
+          </div>
         </Link>
 
         {/* Mobile menu toggle */}
-        <button 
-          className="menu-toggle" 
+        <button
+          className="menu-toggle"
           onClick={() => setIsOpen(!isOpen)}
           aria-label="Toggle Navigation Menu"
         >
@@ -39,8 +43,8 @@ export default function Navbar({ onOpenBooking }) {
             const isActive = pathname === link.path;
             return (
               <li key={link.name}>
-                <Link 
-                  href={link.path} 
+                <Link
+                  href={link.path}
                   className={`nav-link ${isActive ? 'active' : ''}`}
                   onClick={() => setIsOpen(false)}
                 >
@@ -49,17 +53,6 @@ export default function Navbar({ onOpenBooking }) {
               </li>
             );
           })}
-          <li>
-            <button 
-              className="cta-nav-button" 
-              onClick={() => {
-                setIsOpen(false);
-                onOpenBooking();
-              }}
-            >
-              Book a Tailor
-            </button>
-          </li>
         </ul>
       </div>
     </nav>

@@ -87,6 +87,18 @@ const FABRICS_DATA = [
     threadCount: 'Exclusive Blend',
     breathability: 'Medium',
     badge: 'Signature Luxury'
+  },
+  {
+    id: 'f8',
+    name: 'Armani Suiting Wool',
+    category: 'armani',
+    patternClass: 'fabric-pattern-wool',
+    desc: 'Exclusive high-end suiting fabric from the house of Armani. Exceptionally fluid drape, structure, and prestige.',
+    origin: 'Italy',
+    weight: '275 gsm',
+    threadCount: 'Super 150s Wool-Silk',
+    breathability: 'High',
+    badge: 'Armani Suiting'
   }
 ];
 
@@ -131,7 +143,7 @@ export default function Fabric() {
             onChange={(e) => setSearchTerm(e.target.value)}
           />
           <div className="filter-tabs">
-            {['all', 'cotton', 'linen', 'other'].map((cat) => (
+            {['all', 'cotton', 'linen', 'other', 'armani'].map((cat) => (
               <button
                 key={cat}
                 className={`filter-tab ${selectedCategory === cat ? 'active' : ''}`}
