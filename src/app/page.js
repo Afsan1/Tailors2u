@@ -63,17 +63,17 @@ export default function Home() {
           <div className="feature-card">
             <div className="feature-icon-wrapper">📅</div>
             <h3>1. Book Online</h3>
-            <p>Choose your preferred service: alterations or custom tailoring, and select a time that fits your busy schedule.</p>
+            <p>A quick alteration, a custom outfit, or both pick a service and a slot that fits your schedule.</p>
           </div>
           <div className="feature-card">
             <div className="feature-icon-wrapper">📏</div>
-            <h3>2. Doorstep Fitting</h3>
-            <p>Our experienced Master Tailor visits you at home or the office to take precise measurements and showcase physical fabric samples.</p>
+            <h3>2. Doorstep Consultation</h3>
+            <p>Our mediator visits at a time that suits you, takes accurate measurements, and brings a range of fabric samples right to your door.</p>
           </div>
           <div className="feature-card">
             <div className="feature-icon-wrapper">✨</div>
             <h3>3. Perfect Delivery</h3>
-            <p>Within 7-10 days, your tailored garments are delivered to your door. Any final fitting micro-adjustments are completely free.</p>
+            <p>Basic customizations delivered in 48 hours.*Terms and conditions apply.</p>
           </div>
         </div>
       </section>
@@ -88,7 +88,7 @@ export default function Home() {
           <div className="feature-grid">
             <div className="feature-card">
               <div className="feature-icon-wrapper">✂️</div>
-              <h3>Bespoke Alteration</h3>
+              <h3>Custom Alteration</h3>
               <p>Give your existing wardrobe a second life. We provide precise alterations for shirts, pants, kurtas, and more with exact details.</p>
               <Link href="/alteration" className="feature-link">
                 Alteration Pricing & Estimator &rarr;
@@ -106,8 +106,8 @@ export default function Home() {
 
             <div className="feature-card">
               <div className="feature-icon-wrapper">👔</div>
-              <h3>Master Tailoring</h3>
-              <p>Experience custom-made shirts, trousers, suits, and traditional ethnic wear crafted from scratch by our veteran tailors.</p>
+              <h3>The Master's Touch</h3>
+              <p>Shirts, trousers, suits, and ethnic wear — made to measure and crafted from scratch by our finest tailors.</p>
               <Link href="/tailoring" className="feature-link">
                 Meet Master Tailors &rarr;
               </Link>
