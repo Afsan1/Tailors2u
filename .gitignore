@@ -42,3 +42,5 @@ next-env.d.ts
 
 # embedded nested repo
 Tailors2u/
+
+/src/generated/prisma
