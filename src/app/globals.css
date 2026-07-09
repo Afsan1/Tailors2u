@@ -307,6 +307,8 @@ a {
   transition-delay: 0.2s;
 }
 
+
+
 .cta-nav-button {
   padding: 0.6rem 1.4rem;
   border-radius: var(--radius-sm);
@@ -437,7 +439,7 @@ a {
 }
 
 .hero-list-item {
-  font-weight: 700;
+  font-weight: 400;
   text-transform: uppercase;
   font-size: 1.25rem;
   letter-spacing: 1.5px;
@@ -445,16 +447,6 @@ a {
   margin-bottom: 0.6rem;
   display: block;
   line-height: 1.4;
-}
-
-.hover-word {
-  display: inline-block;
-  transition: transform 0.22s cubic-bezier(0.175, 0.885, 0.32, 1.275), color 0.15s ease;
-}
-
-.hover-word:hover {
-  transform: scale(1.18) translateY(-3px);
-  color: var(--beige-gold);
 }
 
 .hero-actions {
@@ -1659,6 +1651,8 @@ a {
   color: var(--white);
   font-family: var(--font-sans);
   font-size: 1.8rem;
+  font-weight: 400;
+  letter-spacing: 3.5px;
   margin-bottom: 1rem;
   display: flex;
   align-items: center;
@@ -1666,7 +1660,7 @@ a {
 }
 
 .footer-brand h3 span {
-  color: var(--beige-gold);
+  color: var(--white);
 }
 
 .footer-brand p {

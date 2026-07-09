@@ -7,7 +7,7 @@ export default function Footer({ onOpenBooking }) {
     <footer className="footer">
       <div className="footer-container">
         <div className="footer-brand">
-          <h3><Logo className="logo-icon" />Tailors<span>2U</span></h3>
+          <h3><Logo className="logo-icon" />Tailors2U</h3>
           <p>
             Premium, bespoke tailoring and alterations delivered directly to your doorstep. We bring the luxury tailoring salon experience to your home or office.
           </p>
