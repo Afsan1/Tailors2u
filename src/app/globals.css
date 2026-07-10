@@ -1220,6 +1220,14 @@ a {
   height: 100%;
 }
 
+.fabric-pattern-armani {
+  background-image: url('/armani.png');
+  background-size: cover;
+  background-position: center;
+  width: 100%;
+  height: 100%;
+}
+
 .fabric-badge {
   position: absolute;
   top: 1rem;
@@ -2481,9 +2489,172 @@ a {
 }
 
 .fabric-pattern-preview-f8 {
-  background-color: #1A2F3B;
-  background-image: linear-gradient(rgba(255, 255, 255, 0.08) 1px, transparent 1px), linear-gradient(90deg, rgba(255, 255, 255, 0.08) 1px, transparent 1px);
-  background-size: 5px 5px;
+  background-image: url('/armani.png');
+  background-size: cover;
+  background-position: center;
   width: 100%;
   height: 100%;
+}
+
+@keyframes modalFadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes modalScaleUp {
+  from { transform: scale(0.9) translateY(20px); opacity: 0; }
+  to { transform: scale(1) translateY(0); opacity: 1; }
+}
+
+/* Fabric Page Light Theme Overrides (Off-White and Beige) */
+.fabric-page-wrapper {
+  background-color: #ebdccf !important;
+  color: #2F3E39 !important;
+  min-height: 100vh;
+}
+
+.fabric-page-wrapper .section {
+  padding: 4rem 2rem;
+  max-width: var(--max-width);
+  margin: 0 auto;
+}
+
+.fabric-page-wrapper h1,
+.fabric-page-wrapper h2,
+.fabric-page-wrapper h3,
+.fabric-page-wrapper h4 {
+  color: #1E2D27 !important;
+}
+
+.fabric-page-wrapper p {
+  color: #4A5B55 !important;
+}
+
+/* Filter bar and search overrides */
+.fabric-page-wrapper .search-input {
+  background-color: #FFFFFF !important;
+  border: 1px solid #D5CEBF !important;
+  color: #2F3E39 !important;
+}
+
+.fabric-page-wrapper .search-input:focus {
+  border-color: #C5A880 !important;
+  box-shadow: 0 0 0 2px rgba(197, 168, 128, 0.2) !important;
+}
+
+.fabric-page-wrapper .filter-tab {
+  background-color: #FFFFFF !important;
+  border: 1px solid #D5CEBF !important;
+  color: #4A5B55 !important;
+}
+
+.fabric-page-wrapper .filter-tab:hover {
+  border-color: #C5A880 !important;
+  color: #1E2D27 !important;
+}
+
+.fabric-page-wrapper .filter-tab.active {
+  background-color: #1E2D27 !important;
+  color: #FFFFFF !important;
+  border-color: #1E2D27 !important;
+}
+
+/* Fabric card overrides for light theme */
+.fabric-page-wrapper .fabric-card {
+  background-color: #FFFFFF !important;
+  border: 1px solid #EAE5DB !important;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04) !important;
+}
+
+.fabric-page-wrapper .fabric-card:hover {
+  border-color: #C5A880 !important;
+  box-shadow: 0 10px 30px rgba(197, 168, 128, 0.15) !important;
+}
+
+.fabric-page-wrapper .fabric-title-row h3 {
+  color: #1E2D27 !important;
+}
+
+.fabric-page-wrapper .fabric-origin {
+  color: #C5A880 !important;
+  font-weight: 600 !important;
+  text-transform: uppercase !important;
+  font-size: 0.8rem !important;
+  letter-spacing: 1px !important;
+}
+
+.fabric-page-wrapper .fabric-description {
+  color: #5A6D66 !important;
+}
+
+.fabric-page-wrapper .fabric-meta-grid {
+  border-top: 1px solid #EAE5DB !important;
+  background-color: #FAF8F5 !important;
+}
+
+.fabric-page-wrapper .fabric-meta-item {
+  border-right: 1px solid #EAE5DB !important;
+  border-bottom: 1px solid #EAE5DB !important;
+}
+
+.fabric-page-wrapper .fabric-meta-item:nth-child(even) {
+  border-right: none !important;
+}
+
+.fabric-page-wrapper .fabric-meta-item span:first-child {
+  color: #7A8E86 !important;
+}
+
+.fabric-page-wrapper .fabric-meta-item span:last-child {
+  color: #1E2D27 !important;
+}
+
+.fabric-page-wrapper .fabric-badge {
+  background-color: #C5A880 !important;
+  color: #FFFFFF !important;
+}
+
+/* Lightbox Modal Light Theme Overrides */
+.fabric-page-wrapper .lightbox-modal-content {
+  background-color: #FAF8F5 !important;
+  border: 1px solid #D5CEBF !important;
+  color: #2F3E39 !important;
+  max-height: 80vh !important;
+  overflow-y: auto !important;
+}
+
+.fabric-page-wrapper .lightbox-modal-content h3 {
+  color: #1E2D27 !important;
+}
+
+.fabric-page-wrapper .lightbox-modal-content p {
+  color: #4A5B55 !important;
+}
+
+.fabric-page-wrapper .lightbox-meta-grid {
+  background-color: #FFFFFF !important;
+  border: 1px solid #EAE5DB !important;
+}
+
+.fabric-page-wrapper .lightbox-meta-item span:last-child {
+  color: #1E2D27 !important;
+}
+
+/* Custom scrollbar for Lightbox scroll container */
+.fabric-page-wrapper .lightbox-scroll-container::-webkit-scrollbar {
+  width: 6px;
+}
+
+.fabric-page-wrapper .lightbox-scroll-container::-webkit-scrollbar-track {
+  background: rgba(0, 0, 0, 0.03);
+  border-radius: 8px;
+}
+
+.fabric-page-wrapper .lightbox-scroll-container::-webkit-scrollbar-thumb {
+  background: rgba(197, 168, 128, 0.35);
+  border-radius: 8px;
+}
+
+.fabric-page-wrapper .lightbox-scroll-container::-webkit-scrollbar-thumb:hover {
+  background: rgba(197, 168, 128, 0.55);
 }

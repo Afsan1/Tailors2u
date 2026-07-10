@@ -85,13 +85,21 @@ const FABRICS = [
   {
     id: 'f8',
     name: 'Armani Suiting Wool',
-    color: '#1A2F3B', // Premium Armani midnight blue
+    color: '#e8e4d3', // Premium Armani cream/beige
     patternType: 'wool',
     origin: 'Italy',
     weight: '275 gsm',
     badge: 'Armani Suiting',
     desc: 'Exclusive high-end suiting fabric from the house of Armani',
-    previewClass: 'fabric-pattern-preview-f8'
+    previewClass: 'fabric-pattern-preview-f8',
+    variants: [
+      { id: 'v1', name: 'Cream / Beige', colorHex: '#e8e4d3', image: '/armani.png' },
+      { id: 'v2', name: 'Slate Grey', colorHex: '#737a7a', image: '/armani_grey.png' },
+      { id: 'v3', name: 'Chocolate Brown', colorHex: '#4d2d22', image: '/armani_brown.png' },
+      { id: 'v4', name: 'Dark Espresso', colorHex: '#2b1f1d', image: '/armani_darkbrown.png' },
+      { id: 'v5', name: 'Royal Purple', colorHex: '#442b45', image: '/armani_purple.png' },
+      { id: 'v6', name: 'Burgundy Wine', colorHex: '#421f24', image: '/armani_burgundy.png' }
+    ]
   }
 ];
 
@@ -991,18 +999,72 @@ export default function AITryOn() {
                   <div
                     key={fabric.id}
                     className={`tryon-fabric-card ${selectedFabric.id === fabric.id ? 'active' : ''}`}
-                    onClick={() => setSelectedFabric(fabric)}
+                    onClick={() => setSelectedFabric(fabric.variants ? { ...fabric, color: fabric.variants[0].colorHex, activeVariant: fabric.variants[0] } : fabric)}
                   >
                     <div>
                       <div className="tryon-fabric-header">
                         <div className="tryon-fabric-circle">
-                          <div className={fabric.previewClass}></div>
+                          <div 
+                            className={fabric.previewClass}
+                            style={fabric.variants && selectedFabric.id === fabric.id && selectedFabric.activeVariant ? {
+                              backgroundImage: `url(${selectedFabric.activeVariant.image})`,
+                              backgroundSize: 'cover',
+                              backgroundPosition: 'center'
+                            } : {}}
+                          ></div>
                         </div>
                         <span className="tryon-fabric-name">{fabric.name}</span>
                       </div>
                       <p style={{ fontSize: '0.75rem', color: 'var(--text-muted)', lineHeight: '1.3' }}>
                         {fabric.desc}
                       </p>
+
+                      {fabric.variants && selectedFabric.id === fabric.id && (
+                        <div 
+                          style={{ 
+                            marginTop: '0.8rem', 
+                            paddingTop: '0.8rem', 
+                            borderTop: '1px solid rgba(255,255,255,0.08)'
+                          }}
+                          onClick={(e) => e.stopPropagation()} // Prevent parent card click event
+                        >
+                          <span style={{ fontSize: '0.75rem', color: 'var(--beige-light)', display: 'block', marginBottom: '0.4rem' }}>
+                            Color: {selectedFabric.activeVariant?.name || fabric.variants[0].name}
+                          </span>
+                          <div style={{ display: 'flex', gap: '0.4rem', flexWrap: 'wrap' }}>
+                            {fabric.variants.map((v) => {
+                              const isSelected = (selectedFabric.activeVariant?.id || fabric.variants[0].id) === v.id;
+                              return (
+                                <button
+                                  key={v.id}
+                                  type="button"
+                                  style={{
+                                    width: '20px',
+                                    height: '20px',
+                                    borderRadius: '50%',
+                                    backgroundColor: v.colorHex,
+                                    border: isSelected ? '1.5px solid var(--beige-gold)' : '1px solid rgba(255,255,255,0.2)',
+                                    cursor: 'pointer',
+                                    padding: 0,
+                                    boxShadow: isSelected ? '0 0 5px var(--beige-gold)' : 'none',
+                                    transform: isSelected ? 'scale(1.1)' : 'scale(1)',
+                                    transition: 'all 0.15s ease',
+                                    outline: 'none'
+                                  }}
+                                  onClick={() => {
+                                    setSelectedFabric({
+                                      ...fabric,
+                                      color: v.colorHex,
+                                      activeVariant: v
+                                    });
+                                  }}
+                                  title={v.name}
+                                />
+                              );
+                            })}
+                          </div>
+                        </div>
+                      )}
                     </div>
                     
                     <div className="tryon-fabric-meta">
