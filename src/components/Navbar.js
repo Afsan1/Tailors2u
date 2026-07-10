@@ -4,6 +4,7 @@ import React, { useState } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import Logo from './Logo';
+import { SignInButton, Show, UserButton } from '@clerk/nextjs';
 
 export default function Navbar({ onOpenBooking }) {
   const [isOpen, setIsOpen] = useState(false);
@@ -53,6 +54,20 @@ export default function Navbar({ onOpenBooking }) {
               </li>
             );
           })}
+          <Show when="signed-out">
+            <li>
+              <SignInButton mode="modal">
+                <button className="nav-link" style={{ background: 'none', border: 'none', cursor: 'pointer', font: 'inherit', padding: 0 }} onClick={() => setIsOpen(false)}>
+                  Sign In
+                </button>
+              </SignInButton>
+            </li>
+          </Show>
+          <Show when="signed-in">
+            <li style={{ display: 'flex', alignItems: 'center' }}>
+              <UserButton />
+            </li>
+          </Show>
         </ul>
       </div>
     </nav>

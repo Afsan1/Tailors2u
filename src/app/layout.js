@@ -1,3 +1,4 @@
+import {ClerkProvider} from "@clerk/nextjs";
 import { Playfair_Display, Poppins } from "next/font/google";
 import "./globals.css";
 import ClientLayoutWrapper from "../components/ClientLayoutWrapper";
@@ -24,7 +25,9 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en" className={`${playfair.variable} ${poppins.variable}`}>
       <body>
-        <ClientLayoutWrapper>{children}</ClientLayoutWrapper>
+        <ClerkProvider>
+          <ClientLayoutWrapper>{children}</ClientLayoutWrapper>
+        </ClerkProvider>
       </body>
     </html>
   );
