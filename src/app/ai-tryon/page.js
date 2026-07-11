@@ -723,9 +723,9 @@ export default function AITryOn() {
   ];
 
   return (
-    <div>
+    <div className="porcelain-theme">
       {/* HERO SECTION */}
-      <section className="hero-section" style={{ padding: '5rem 2rem 4rem 2rem' }}>
+      <section className="hero-section subpage-hero" style={{ padding: '5rem 2rem 4rem 2rem' }}>
         <div className="hero-overlay-pattern"></div>
         <div style={{ maxWidth: 'var(--max-width)', margin: '0 auto', textAlign: 'center', position: 'relative', zIndex: 1 }}>
           <h1 style={{ fontSize: '3.2rem', marginBottom: '1rem' }}>Sartorial AI Try-On</h1>
