@@ -177,33 +177,16 @@ export default function Alteration() {
 
   return (
     <div className="porcelain-theme">
-      {/* Hero */}
-      <section className="hero-section subpage-hero" style={{ padding: '5rem 2rem 4rem 2rem' }}>
-        <div className="hero-overlay-pattern"></div>
-        <div
-          style={{
-            maxWidth: 'var(--max-width)',
-            margin: '0 auto',
-            textAlign: 'center',
-            position: 'relative',
-            zIndex: 1,
-          }}
-        >
-          <h1 style={{ fontSize: '3rem', marginBottom: '1rem' }}>Bespoke Garment Alterations</h1>
-          <p
-            style={{
-              maxWidth: '650px',
-              margin: '0 auto',
-              fontSize: '1.1rem',
-              color: 'var(--beige-light)',
-            }}
-          >
-            Restore your favourite clothes to absolute perfection. Choose your category below and
-            select the alterations you need for an instant cost estimate.
+      {/* Main Content */}
+      <section className="section" style={{ paddingTop: '3rem' }}>
+        <div style={{ maxWidth: 'var(--max-width)', margin: '0 auto 3rem auto' }}>
+          <h1 style={{ fontSize: '2.8rem', marginBottom: '0.8rem', color: '#1E2D27' }}>Bespoke Garment Alterations</h1>
+          <p style={{ color: '#4A5B55', fontSize: '1.1rem', maxWidth: '750px', lineHeight: '1.6' }}>
+            Restore your favourite clothes to absolute perfection. Choose your category below and select the alterations you need for an instant cost estimate.
           </p>
 
           {/* ── Dynamic Island Gender Toggle ── */}
-          <div className="gender-island-wrap">
+          <div className="gender-island-wrap" style={{ justifyContent: 'flex-start', marginTop: '2rem' }}>
             <div className="gender-island">
               {/* sliding pill */}
               <div
@@ -229,10 +212,6 @@ export default function Alteration() {
             </div>
           </div>
         </div>
-      </section>
-
-      {/* Main Content */}
-      <section className="section">
         <div className="alteration-container">
           {/* Accordion Options */}
           <div

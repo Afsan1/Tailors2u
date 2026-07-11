@@ -724,19 +724,14 @@ export default function AITryOn() {
 
   return (
     <div className="porcelain-theme">
-      {/* HERO SECTION */}
-      <section className="hero-section subpage-hero" style={{ padding: '5rem 2rem 4rem 2rem' }}>
-        <div className="hero-overlay-pattern"></div>
-        <div style={{ maxWidth: 'var(--max-width)', margin: '0 auto', textAlign: 'center', position: 'relative', zIndex: 1 }}>
-          <h1 style={{ fontSize: '3.2rem', marginBottom: '1rem' }}>Sartorial AI Try-On</h1>
-          <p style={{ maxWidth: '700px', margin: '0 auto', fontSize: '1.15rem', color: 'var(--beige-light)' }}>
+      {/* INTERACTIVE WORKBENCH */}
+      <section className="section" style={{ paddingTop: '3rem' }}>
+        <div style={{ maxWidth: 'var(--max-width)', margin: '0 auto 3rem auto' }}>
+          <h1 style={{ fontSize: '2.8rem', marginBottom: '0.8rem', color: '#1E2D27' }}>Sartorial AI Try-On</h1>
+          <p style={{ color: '#4A5B55', fontSize: '1.1rem', maxWidth: '750px', lineHeight: '1.6' }}>
             Upload your personal photo or select a studio mannequin to instantly preview luxury fabrics, premium suit cuts, shirting outlines, and traditional kurtas on yourself.
           </p>
         </div>
-      </section>
-
-      {/* INTERACTIVE WORKBENCH */}
-      <section className="section">
         <div className="tryon-container">
           
           {/* LEFT COLUMN: VIEWPORT PREVIEW */}

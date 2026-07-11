@@ -49,20 +49,15 @@ export default function Tailoring() {
 
   return (
     <div className="porcelain-theme">
-      <section className="hero-section subpage-hero" style={{ padding: '5rem 2rem 4rem 2rem' }}>
-        <div className="hero-overlay-pattern"></div>
-        <div style={{ maxWidth: 'var(--max-width)', margin: '0 auto', textAlign: 'center', position: 'relative', zIndex: 1 }}>
-          <h1 style={{ fontSize: '3rem', marginBottom: '1rem' }}>Meet Our Master Tailors</h1>
-          <p style={{ maxWidth: '650px', margin: '0 auto', fontSize: '1.1rem', color: 'var(--beige-light)' }}>
+      <section className="section" style={{ paddingTop: '3rem' }}>
+        <div style={{ maxWidth: 'var(--max-width)', margin: '0 auto 3rem auto' }}>
+          <span className="section-subtitle" style={{ color: '#C5A880', fontWeight: '600', letterSpacing: '2px', textTransform: 'uppercase', fontSize: '0.85rem', display: 'block', marginBottom: '0.5rem' }}>
+            Artisanal Craftsmanship
+          </span>
+          <h1 style={{ fontSize: '2.8rem', marginBottom: '0.8rem', color: '#1E2D27' }}>Meet Our Master Tailors</h1>
+          <p style={{ color: '#4A5B55', fontSize: '1.1rem', maxWidth: '750px', lineHeight: '1.6' }}>
             Our tailors possess decades of collective experience in luxury fashion. Request your preferred artisan to conduct your doorstep fitting session.
           </p>
-        </div>
-      </section>
-
-      <section className="section">
-        <div className="section-header">
-          <span className="section-subtitle">Artisanal Craftsmanship</span>
-          <h2 className="section-title">The Master Craftsmen</h2>
         </div>
 
         <div className="tailors-grid">
