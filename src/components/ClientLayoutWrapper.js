@@ -1,15 +1,23 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Navbar from './Navbar';
 import Footer from './Footer';
 import BookingModal from './BookingModal';
+import { useAuth, useClerk } from '@clerk/nextjs';
 
 export default function ClientLayoutWrapper({ children }) {
   const [isBookingOpen, setIsBookingOpen] = useState(false);
   const [selectedService, setSelectedService] = useState('');
+  const { isSignedIn } = useAuth();
+  const clerk = useClerk();
 
   const openBooking = (service = '') => {
+    if (!isSignedIn) {
+      localStorage.setItem('pending_booking_service', service || 'Custom Tailoring Appointment');
+      clerk.openSignIn();
+      return;
+    }
     setSelectedService(service);
     setIsBookingOpen(true);
   };
@@ -18,6 +26,17 @@ export default function ClientLayoutWrapper({ children }) {
     setIsBookingOpen(false);
     setSelectedService('');
   };
+
+  useEffect(() => {
+    if (isSignedIn) {
+      const pendingService = localStorage.getItem('pending_booking_service');
+      if (pendingService) {
+        localStorage.removeItem('pending_booking_service');
+        setSelectedService(pendingService);
+        setIsBookingOpen(true);
+      }
+    }
+  }, [isSignedIn]);
 
   // Clone children to inject openBooking callback if needed, or pass it via context.
   // A simpler way is to use context or just pass the openBooking function as a custom prop,

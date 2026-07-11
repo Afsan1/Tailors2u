@@ -64,6 +64,11 @@ export default function Navbar({ onOpenBooking }) {
             </li>
           </Show>
           <Show when="signed-in">
+            <li>
+              <Link href="/my-bookings" className={`nav-link ${pathname === '/my-bookings' ? 'active' : ''}`} onClick={() => setIsOpen(false)}>
+                My Bookings
+              </Link>
+            </li>
             <li style={{ display: 'flex', alignItems: 'center' }}>
               <UserButton />
             </li>

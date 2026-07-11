@@ -1,12 +1,14 @@
 import { NextResponse } from "next/server";
 import { prisma } from "@/lib/prisma";
 import { transporter } from "@/lib/mailer";
+import { auth } from "@clerk/nextjs/server";
 
 // console.log("EMAIL_USER:", process.env.EMAIL_USER);
 // console.log("EMAIL_PASS:", process.env.EMAIL_PASS?.length);
 
 export async function POST(request) {
   try {
+    const { userId } = await auth();
     const body = await request.json();
 
     const booking = await prisma.booking.create({
@@ -18,6 +20,7 @@ export async function POST(request) {
         date: new Date(body.date),
         time: body.time,
         notes: body.notes,
+        clerkUserId: userId || null,
       },
     });
 
