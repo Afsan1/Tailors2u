@@ -176,9 +176,9 @@ export default function Alteration() {
   const currentData = ALTERATIONS_DATA[gender];
 
   return (
-    <div>
+    <div className="porcelain-theme">
       {/* Hero */}
-      <section className="hero-section" style={{ padding: '5rem 2rem 4rem 2rem' }}>
+      <section className="hero-section subpage-hero" style={{ padding: '5rem 2rem 4rem 2rem' }}>
         <div className="hero-overlay-pattern"></div>
         <div
           style={{

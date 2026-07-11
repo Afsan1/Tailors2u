@@ -30,22 +30,16 @@ export default function Home() {
               Delivered in <br /> 48 Hours
             </span>
             <h1 className="animate-slide-left" style={{ animationDelay: '0.25s' }}>
-              Skip the trip to the Tailors.
+              Skip the trip to the Tailors
             </h1>
             <div className="hero-list-item animate-slide-left" style={{ animationDelay: '0.4s' }}>
-              {"75+ Tailors and fabric vendors Onboarded.".split(" ").map((word, i) => (
-                <span key={i} className="hover-word">{word}&nbsp;</span>
-              ))}
+              75+ Tailors and fabric vendors Onboarded
             </div>
             <div className="hero-list-item animate-slide-left" style={{ animationDelay: '0.5s' }}>
-              {"1000+ fabrics available.".split(" ").map((word, i) => (
-                <span key={i} className="hover-word">{word}&nbsp;</span>
-              ))}
+              1000+ fabrics available
             </div>
             <div className="hero-list-item animate-slide-left" style={{ animationDelay: '0.6s', marginBottom: '1.5rem' }}>
-              {"Live across Mumbai.".split(" ").map((word, i) => (
-                <span key={i} className="hover-word">{word}&nbsp;</span>
-              ))}
+              Live across Mumbai
             </div>
             <div className="hero-actions">
               <button

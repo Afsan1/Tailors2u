@@ -48,8 +48,8 @@ export default function Tailoring() {
   };
 
   return (
-    <div>
-      <section className="hero-section" style={{ padding: '5rem 2rem 4rem 2rem' }}>
+    <div className="porcelain-theme">
+      <section className="hero-section subpage-hero" style={{ padding: '5rem 2rem 4rem 2rem' }}>
         <div className="hero-overlay-pattern"></div>
         <div style={{ maxWidth: 'var(--max-width)', margin: '0 auto', textAlign: 'center', position: 'relative', zIndex: 1 }}>
           <h1 style={{ fontSize: '3rem', marginBottom: '1rem' }}>Meet Our Master Tailors</h1>

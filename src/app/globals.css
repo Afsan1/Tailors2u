@@ -307,6 +307,8 @@ a {
   transition-delay: 0.2s;
 }
 
+
+
 .cta-nav-button {
   padding: 0.6rem 1.4rem;
   border-radius: var(--radius-sm);
@@ -361,6 +363,10 @@ a {
   min-height: 90vh;
 }
 
+.hero-section.subpage-hero {
+  min-height: auto;
+}
+
 .hero-overlay-pattern {
   position: absolute;
   inset: 0;
@@ -388,14 +394,12 @@ a {
 .hero-video-overlay {
   position: absolute;
   inset: 0;
-  background: linear-gradient(
-    to right,
-    #032a20 0%,
-    #032a20 35%,
-    rgba(3, 42, 32, 0.75) 55%,
-    rgba(3, 42, 32, 0.25) 75%,
-    transparent 100%
-  );
+  background: linear-gradient(to right,
+      #032a20 0%,
+      #032a20 35%,
+      rgba(3, 42, 32, 0.75) 55%,
+      rgba(3, 42, 32, 0.25) 75%,
+      transparent 100%);
   pointer-events: none;
   z-index: 2;
 }
@@ -437,7 +441,7 @@ a {
 }
 
 .hero-list-item {
-  font-weight: 700;
+  font-weight: 400;
   text-transform: uppercase;
   font-size: 1.25rem;
   letter-spacing: 1.5px;
@@ -445,16 +449,6 @@ a {
   margin-bottom: 0.6rem;
   display: block;
   line-height: 1.4;
-}
-
-.hover-word {
-  display: inline-block;
-  transition: transform 0.22s cubic-bezier(0.175, 0.885, 0.32, 1.275), color 0.15s ease;
-}
-
-.hover-word:hover {
-  transform: scale(1.18) translateY(-3px);
-  color: var(--beige-gold);
 }
 
 .hero-actions {
@@ -1228,6 +1222,14 @@ a {
   height: 100%;
 }
 
+.fabric-pattern-armani {
+  background-image: url('/armani.png');
+  background-size: cover;
+  background-position: center;
+  width: 100%;
+  height: 100%;
+}
+
 .fabric-badge {
   position: absolute;
   top: 1rem;
@@ -1433,23 +1435,29 @@ a {
   align-items: center;
   justify-content: center;
   padding: 1.5rem;
-  overflow-y: auto; /* Permit overlay scroll if screen is extremely small */
+  overflow-y: auto;
+  /* Permit overlay scroll if screen is extremely small */
 }
 
 .modal-content {
-  background: rgba(6, 78, 59, 0.96); /* Rich Frosted Emerald Green */
-  border: 1px solid rgba(255, 217, 190, 0.25); /* Glowing Gold Edge */
+  background: rgba(6, 78, 59, 0.96);
+  /* Rich Frosted Emerald Green */
+  border: 1px solid rgba(255, 217, 190, 0.25);
+  /* Glowing Gold Edge */
   backdrop-filter: blur(28px) saturate(180%);
   -webkit-backdrop-filter: blur(28px) saturate(180%);
   border-radius: var(--radius-lg);
   max-width: 550px;
   width: 100%;
-  max-height: 90vh; /* Constraint modal height */
-  margin: auto; /* Clean centering that prevents scroll top-clipping */
+  max-height: 90vh;
+  /* Constraint modal height */
+  margin: auto;
+  /* Clean centering that prevents scroll top-clipping */
   box-shadow: 0 32px 80px rgba(0, 0, 0, 0.45), inset 0 1px 0 rgba(255, 255, 255, 0.15);
   position: relative;
   display: flex;
-  flex-direction: column; /* Split header and form */
+  flex-direction: column;
+  /* Split header and form */
   overflow: hidden;
   animation: scaleUp 0.4s cubic-bezier(0.25, 0.8, 0.25, 1) forwards;
 }
@@ -1461,7 +1469,8 @@ a {
 }
 
 .modal-header h3 {
-  color: #ffffff; /* White title as requested */
+  color: #ffffff;
+  /* White title as requested */
   font-size: 2rem;
   font-family: var(--font-serif);
   font-weight: 700;
@@ -1469,7 +1478,8 @@ a {
 }
 
 .modal-header p {
-  color: rgba(255, 255, 255, 0.7); /* White muted text */
+  color: rgba(255, 255, 255, 0.7);
+  /* White muted text */
   font-size: 0.95rem;
   margin-top: 0.4rem;
 }
@@ -1503,8 +1513,10 @@ a {
   display: flex;
   flex-direction: column;
   gap: 1.4rem;
-  max-height: calc(90vh - 120px); /* Explicit form height cap to force internal scroll */
-  overflow-y: auto; /* Scroll inside form if layout is constrained */
+  max-height: calc(90vh - 120px);
+  /* Explicit form height cap to force internal scroll */
+  overflow-y: auto;
+  /* Scroll inside form if layout is constrained */
   flex-grow: 1;
   scrollbar-width: thin;
   scrollbar-color: rgba(255, 255, 255, 0.2) transparent;
@@ -1537,7 +1549,8 @@ a {
 .form-group label {
   font-size: 0.8rem;
   font-weight: 600;
-  color: #ffffff; /* White label text as requested */
+  color: #ffffff;
+  /* White label text as requested */
   text-transform: uppercase;
   letter-spacing: 1px;
 }
@@ -1548,7 +1561,8 @@ a {
   padding: 0.9rem 1.1rem;
   border: 1px solid rgba(255, 255, 255, 0.15);
   border-radius: var(--radius-sm);
-  background-color: rgba(0, 0, 0, 0.35); /* Dark transparent input backdrop */
+  background-color: rgba(0, 0, 0, 0.35);
+  /* Dark transparent input backdrop */
   font-family: inherit;
   font-size: 1rem;
   color: #ffffff;
@@ -1581,8 +1595,10 @@ a {
 }
 
 .form-submit-btn {
-  background-color: var(--beige-gold); /* Gold button */
-  color: var(--emerald-deep); /* Dark emerald text */
+  background-color: var(--beige-gold);
+  /* Gold button */
+  color: var(--emerald-deep);
+  /* Dark emerald text */
   border: none;
   padding: 1.1rem;
   border-radius: var(--radius-sm);
@@ -1659,6 +1675,8 @@ a {
   color: var(--white);
   font-family: var(--font-sans);
   font-size: 1.8rem;
+  font-weight: 400;
+  letter-spacing: 3.5px;
   margin-bottom: 1rem;
   display: flex;
   align-items: center;
@@ -1666,7 +1684,7 @@ a {
 }
 
 .footer-brand h3 span {
-  color: var(--beige-gold);
+  color: var(--white);
 }
 
 .footer-brand p {
@@ -2487,155 +2505,9 @@ a {
 }
 
 .fabric-pattern-preview-f8 {
-  background-color: #1A2F3B;
-  background-image: linear-gradient(rgba(255, 255, 255, 0.08) 1px, transparent 1px), linear-gradient(90deg, rgba(255, 255, 255, 0.08) 1px, transparent 1px);
-  background-size: 5px 5px;
+  background-image: url('/armani.png');
+  background-size: cover;
+  background-position: center;
   width: 100%;
   height: 100%;
-}
-
-/* My Bookings Page Styles */
-.my-bookings-page {
-  background-color: var(--emerald-deep);
-  min-height: 80vh;
-  padding: 6rem 2rem;
-  color: var(--white);
-}
-.my-bookings-container {
-  max-width: 800px;
-  margin: 0 auto;
-}
-.my-bookings-header {
-  text-align: center;
-  margin-bottom: 3.5rem;
-}
-.my-bookings-title {
-  font-family: var(--font-serif);
-  font-size: 2.8rem;
-  color: var(--beige-gold);
-  margin-bottom: 0.5rem;
-}
-.my-bookings-subtitle {
-  color: var(--beige-light);
-  font-size: 1.1rem;
-  opacity: 0.8;
-}
-.booking-cards-list {
-  display: flex;
-  flex-direction: column;
-  gap: 1.8rem;
-}
-.booking-card {
-  background: linear-gradient(135deg, rgba(255, 255, 255, 0.08) 0%, rgba(255, 255, 255, 0.03) 100%);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  border-radius: 16px;
-  padding: 2rem;
-  transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
-  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.2);
-}
-.booking-card:hover {
-  transform: translateY(-4px);
-  border-color: var(--beige-gold);
-  box-shadow: 0 12px 40px 0 rgba(0, 0, 0, 0.3);
-}
-.booking-card-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-  padding-bottom: 1rem;
-  margin-bottom: 1rem;
-}
-.booking-service {
-  font-family: var(--font-serif);
-  font-size: 1.5rem;
-  color: var(--beige-gold);
-  font-weight: 600;
-}
-.booking-badge {
-  background-color: rgba(255, 217, 190, 0.15);
-  color: var(--beige-gold);
-  padding: 0.3rem 0.8rem;
-  border-radius: 20px;
-  font-size: 0.8rem;
-  font-weight: 500;
-  border: 1px solid rgba(255, 217, 190, 0.2);
-}
-.booking-card-body {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 1.5rem;
-  margin-bottom: 1.5rem;
-}
-@media (max-width: 600px) {
-  .booking-card-body {
-    grid-template-columns: 1fr;
-    gap: 1rem;
-  }
-}
-.booking-detail-item {
-  display: flex;
-  flex-direction: column;
-  gap: 0.3rem;
-}
-.booking-detail-label {
-  font-size: 0.8rem;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-  color: #a3beb6;
-}
-.booking-detail-value {
-  font-size: 1.05rem;
-  font-weight: 500;
-  color: var(--white);
-}
-.booking-notes-section {
-  background-color: rgba(0, 0, 0, 0.15);
-  border-radius: 8px;
-  padding: 1rem;
-  border-left: 3px solid var(--beige-gold);
-}
-.booking-notes-text {
-  font-size: 0.95rem;
-  line-height: 1.5;
-  color: #e2ece9;
-  white-space: pre-wrap;
-}
-.booking-card-footer {
-  display: flex;
-  justify-content: flex-end;
-  font-size: 0.8rem;
-  color: #a3beb6;
-}
-.empty-state {
-  text-align: center;
-  padding: 4rem 2rem;
-  background: linear-gradient(135deg, rgba(255, 255, 255, 0.05) 0%, rgba(255, 255, 255, 0.01) 100%);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  border-radius: 20px;
-  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.15);
-}
-.empty-icon {
-  font-size: 4rem;
-  display: block;
-  margin-bottom: 1.5rem;
-}
-.empty-title {
-  font-family: var(--font-serif);
-  font-size: 2rem;
-  color: var(--beige-gold);
-  margin-bottom: 0.8rem;
-}
-.empty-description {
-  color: #e2ece9;
-  font-size: 1.05rem;
-  margin-bottom: 2rem;
-  max-width: 450px;
-  margin-left: auto;
-  margin-right: auto;
-  line-height: 1.6;
 }
