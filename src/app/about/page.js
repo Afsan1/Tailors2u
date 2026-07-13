@@ -1,0 +1,419 @@
+'use client';
+
+import React, { useState, useEffect, useRef } from 'react';
+import Image from 'next/image';
+import Link from 'next/link';
+import './about.css';
+
+export default function About() {
+  const [scrollProgress, setScrollProgress] = useState(0);
+  const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
+  const [velocity, setVelocity] = useState(0);
+  
+  // Horizontal scroll gallery index state
+  const [horizCardIndex, setHorizCardIndex] = useState(0);
+  const [horizTranslate, setHorizTranslate] = useState(0);
+  
+  // Refs
+  const horizContainerRef = useRef(null);
+  const horizTrackRef = useRef(null);
+  const mCircle1Ref = useRef(null);
+  const mCircle2Ref = useRef(null);
+  const bannerTextRef = useRef(null);
+
+
+  // Click Navigation for Horizontal Section
+  const scrollHorizontal = (direction) => {
+    if (direction === 'next') {
+      setHorizCardIndex((prev) => Math.min(4, prev + 1));
+    } else {
+      setHorizCardIndex((prev) => Math.max(0, prev - 1));
+    }
+  };
+
+  // Sync translation when active card index changes
+  useEffect(() => {
+    if (horizTrackRef.current) {
+      const children = horizTrackRef.current.children;
+      if (children && children[horizCardIndex]) {
+        setHorizTranslate(-children[horizCardIndex].offsetLeft);
+      }
+    }
+  }, [horizCardIndex]);
+
+  useEffect(() => {
+    // 1. Viewport observer for entry animations (runs once)
+    const observerOptions = {
+      root: null,
+      rootMargin: '0px -10% -10% 0px',
+      threshold: 0.1,
+    };
+
+    const handleIntersect = (entries, observer) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('in-view');
+          // If it's a blur-to-sharp container
+          if (entry.target.classList.contains('blur-to-sharp-container')) {
+            entry.target.classList.add('sharp');
+          }
+          // Unobserve after animating once
+          observer.unobserve(entry.target);
+        }
+      });
+    };
+
+    const observer = new IntersectionObserver(handleIntersect, observerOptions);
+
+    const animatedElements = document.querySelectorAll('.story-block, .value-card, .blur-to-sharp-container');
+    animatedElements.forEach((el) => observer.observe(el));
+
+    // 2. Scroll event tracker
+    let lastScrollY = window.scrollY;
+    let lastTimestamp = Date.now();
+    let velocityTimeout = null;
+
+    const handleScroll = () => {
+      const currentScrollY = window.scrollY;
+      const currentTimestamp = Date.now();
+      
+      // Calculate Scroll Progress
+      const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+      if (docHeight > 0) {
+        const progress = (currentScrollY / docHeight) * 100;
+        setScrollProgress(progress);
+      }
+
+      // Calculate Scroll Velocity
+      const timeDiff = currentTimestamp - lastTimestamp;
+      const scrollDiff = currentScrollY - lastScrollY;
+      let calculatedVelocity = 0;
+      if (timeDiff > 0) {
+        calculatedVelocity = scrollDiff / timeDiff; // speed in pixels per millisecond
+      }
+
+      // Cap and set velocity
+      const clampedVelocity = Math.max(-15, Math.min(15, calculatedVelocity * 8));
+      setVelocity(clampedVelocity);
+
+      // Decelerate velocity after scrolling stops
+      if (velocityTimeout) clearTimeout(velocityTimeout);
+      velocityTimeout = setTimeout(() => {
+        setVelocity(0);
+      }, 100);
+
+
+
+      // Update refs
+      lastScrollY = currentScrollY;
+      lastTimestamp = currentTimestamp;
+    };
+
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    // Trigger initial check on load to position elements correctly
+    handleScroll();
+
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+      observer.disconnect();
+      if (velocityTimeout) clearTimeout(velocityTimeout);
+    };
+  }, []);
+
+  // 3. Mouse Movement Parallax (Desktop Only)
+  useEffect(() => {
+    const handleMouseMove = (e) => {
+      const width = window.innerWidth;
+      const height = window.innerHeight;
+      const xVal = (e.clientX / width - 0.5) * 2; // -1 to 1
+      const yVal = (e.clientY / height - 0.5) * 2; // -1 to 1
+      
+      setMousePos({ x: xVal, y: yVal });
+      
+      if (mCircle1Ref.current) {
+        mCircle1Ref.current.style.transform = `translate(${xVal * 30}px, ${yVal * 30}px)`;
+      }
+      if (mCircle2Ref.current) {
+        mCircle2Ref.current.style.transform = `translate(${xVal * -45}px, ${yVal * -45}px)`;
+      }
+    };
+
+    window.addEventListener('mousemove', handleMouseMove);
+    return () => {
+      window.removeEventListener('mousemove', handleMouseMove);
+    };
+  }, []);
+
+  // Velocity banners styling helper
+  const textSkew = `skewX(${velocity * 1.5}deg) scale(${1 + Math.abs(velocity) * 0.005})`;
+
+  return (
+    <div className="about-wrapper">
+      {/* Scroll Progress Indicator */}
+      <div className="scroll-progress-bar">
+        <div className="scroll-progress-fill" style={{ width: `${scrollProgress}%` }}></div>
+      </div>
+
+      {/* Hero Section */}
+      <section className="hero-sec">
+        <div className="hero-bg-shapes">
+          <div className="hero-shape-1"></div>
+          <div className="hero-shape-2"></div>
+        </div>
+        
+        {/* Mouse Interactive Circles */}
+        <div className="mouse-parallax-element m-circle-1" ref={mCircle1Ref}></div>
+        <div className="mouse-parallax-element m-circle-2" ref={mCircle2Ref}></div>
+
+        <div className="about-container hero-content-wrap">
+          <span className="hero-subtitle">Our Legacy & Artistry</span>
+          
+          <div className="text-reveal-container">
+            <h1 className="text-reveal-h1">Beauty In Every Stitch</h1>
+          </div>
+          
+          <p className="hero-description">
+            Tailors2U redefines luxury by delivering masterfully crafted, bespoke tailoring salon experiences directly to your doorstep. Explore our rich heritage of timeless elegance.
+          </p>
+        </div>
+      </section>
+
+      {/* Storytelling Timeline */}
+      <section className="story-sec">
+        <div className="about-container">
+          
+          {/* Centered Header */}
+          <div className="story-header-center">
+            <span>The Narrative</span>
+            <h2>A Decade of Crafting Suits</h2>
+          </div>
+          
+          {/* Centered Story List */}
+          <div className="story-list">
+            
+            {/* Year Block 1 */}
+            <div className="story-block">
+              <div className="story-text-col">
+                <span className="story-year">2016</span>
+                <h3>The First Measurement</h3>
+                <p>
+                  Tailors2U began with a single vision: luxury shouldn't demand compromise. We opened our first private workshop in South Mumbai, tailoring bespoke garments for individuals who appreciated unmatched precision but lacked the time for endless boutique fittings.
+                </p>
+              </div>
+              <div className="parallax-image-wrap blur-to-sharp-container">
+                <Image 
+                  src="/about_heritage.png" 
+                  alt="Master tailor crafting pattern" 
+                  fill 
+                  className="parallax-img"
+                  sizes="(max-width: 1024px) 100vw, 800px"
+                />
+              </div>
+            </div>
+
+            {/* Year Block 2 */}
+            <div className="story-block">
+              <div className="story-text-col">
+                <span className="story-year">2020</span>
+                <h3>Perfecting the Doorstep Fitting</h3>
+                <p>
+                  We adapted our processes to meet our clients exactly where they felt most comfortable. Launching our signature Doorstep Consultation, we equipped our expert fitters with luxury swatch books, precision calipers, and digital styling tablets, delivering the entire tailoring salon experience right to living rooms and corporate offices.
+                </p>
+              </div>
+              <div className="parallax-image-wrap blur-to-sharp-container">
+                <Image 
+                  src="/about_craftsmanship.png" 
+                  alt="Premium silk threads and measuring tape" 
+                  fill 
+                  className="parallax-img"
+                  sizes="(max-width: 1024px) 100vw, 800px"
+                />
+              </div>
+            </div>
+
+            {/* Year Block 3 */}
+            <div className="story-block">
+              <div className="story-text-col">
+                <span className="story-year">2026</span>
+                <h3>AI Innovation meets Master Handwork</h3>
+                <p>
+                  Today, we bridge centuries-old tailoring craftsmanship with modern technological magic. By integrating AI spatial estimation with manual measurement checks, we achieve an incredible 99.8% precision fit on the very first try. We continue to design suits, shirts, and ethnic wear that command attention, without demanding your time.
+                </p>
+              </div>
+              <div className="parallax-image-wrap blur-to-sharp-container">
+                <Image 
+                  src="/about_quality.png" 
+                  alt="Bespoke control mannequin check" 
+                  fill 
+                  className="parallax-img"
+                  sizes="(max-width: 1024px) 100vw, 800px"
+                />
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </section>
+
+      {/* Horizontal Gallery Section */}
+      <section className="horizontal-scroll-container" ref={horizContainerRef}>
+        <div className="horizontal-sticky-box">
+          {/* Navigation Buttons */}
+          <button 
+            className="horizontal-nav-btn horizontal-nav-left" 
+            onClick={() => scrollHorizontal('prev')}
+            disabled={horizCardIndex === 0}
+            aria-label="Previous Slide"
+          >
+            ←
+          </button>
+          
+          <button 
+            className="horizontal-nav-btn horizontal-nav-right" 
+            onClick={() => scrollHorizontal('next')}
+            disabled={horizCardIndex === 4}
+            aria-label="Next Slide"
+          >
+            →
+          </button>
+
+          <div className="horizontal-scroll-track" ref={horizTrackRef} style={{ transform: `translate3d(${horizTranslate}px, 0, 0)` }}>
+            
+            {/* Intro Card */}
+            <div className="horizontal-intro">
+              <h2>Our Atelier Journey</h2>
+              <p>Scroll down to see the step-by-step process of how we turn raw fabrics into customized masterpieces.</p>
+            </div>
+
+            {/* Card 1 */}
+            <div className="horizontal-card">
+              <div className="horizontal-card-bg-gradient"></div>
+              <span className="horizontal-card-num">01</span>
+              <div>
+                <h3>Fabric Curation</h3>
+                <p>We source the finest Egyptian cottons, breathable linens, and luxury merino wools from historic mills globally.</p>
+              </div>
+              <div className="horizontal-card-img-wrap">
+                <img 
+                  src="/armani_burgundy.png" 
+                  alt="Fine fabric rolls" 
+                  className="horizontal-card-img"
+                />
+              </div>
+            </div>
+
+            {/* Card 2 */}
+            <div className="horizontal-card">
+              <div className="horizontal-card-bg-gradient"></div>
+              <span className="horizontal-card-num">02</span>
+              <div>
+                <h3>Precision Drafting</h3>
+                <p>A custom paper template is drafted from scratch based on 32 distinct bodily measurements to capture your exact stance.</p>
+              </div>
+              <div className="horizontal-card-img-wrap">
+                <img 
+                  src="/about_quality.png" 
+                  alt="Precision mannequin" 
+                  className="horizontal-card-img"
+                />
+              </div>
+            </div>
+
+            {/* Card 3 */}
+            <div className="horizontal-card">
+              <div className="horizontal-card-bg-gradient"></div>
+              <span className="horizontal-card-num">03</span>
+              <div>
+                <h3>Bespoke Assembly</h3>
+                <p>Our master tailors sew each panel, structure the chest canvas by hand, and finish buttons and lapels with meticulous care.</p>
+              </div>
+              <div className="horizontal-card-img-wrap">
+                <img 
+                  src="/about_heritage.png" 
+                  alt="Crafting blazer details" 
+                  className="horizontal-card-img"
+                />
+              </div>
+            </div>
+
+            {/* Card 4 */}
+            <div className="horizontal-card">
+              <div className="horizontal-card-bg-gradient"></div>
+              <span className="horizontal-card-num">04</span>
+              <div>
+                <h3>Perfect Fit Fitting</h3>
+                <p>Delivered directly to your door in 48 hours for alterations, or standard fitting schedules, ensuring your garment is immaculate.</p>
+              </div>
+              <div className="horizontal-card-img-wrap">
+                <img 
+                  src="/about_craftsmanship.png" 
+                  alt="Tailor measuring tape close up" 
+                  className="horizontal-card-img"
+                />
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </section>
+
+      {/* Scroll Velocity Moving Banner */}
+      <section className="velocity-banner-wrap">
+        <div className="velocity-track">
+          <div className="velocity-text" ref={bannerTextRef} style={{ transform: textSkew }}>
+            CRAFTED BY HAND <span className="velocity-star">★</span> <span className="velocity-text-accent">99.8% PERFECT FIT</span> <span className="velocity-star">★</span> ELEGANT DESIGN <span className="velocity-star">★</span> <span className="velocity-text-accent">DOORSTEP LUXURY</span> <span className="velocity-star">★</span> INDIVIDUALLY MEASURED <span className="velocity-star">★</span>
+          </div>
+          <div className="velocity-text" style={{ transform: textSkew }}>
+            CRAFTED BY HAND <span className="velocity-star">★</span> <span className="velocity-text-accent">99.8% PERFECT FIT</span> <span className="velocity-star">★</span> ELEGANT DESIGN <span className="velocity-star">★</span> <span className="velocity-text-accent">DOORSTEP LUXURY</span> <span className="velocity-star">★</span> INDIVIDUALLY MEASURED <span className="velocity-star">★</span>
+          </div>
+        </div>
+      </section>
+
+      {/* Core Values (Glassmorphic Cards) */}
+      <section className="values-sec">
+        <div className="about-container">
+          <div className="section-header-wrap">
+            <span>Our Principles</span>
+            <h2>What Guides the Scissors</h2>
+          </div>
+          
+          <div className="values-grid">
+            {/* Value 1 */}
+            <div className="value-card">
+              <div className="value-icon-box">📐</div>
+              <h3>Obsessive Precision</h3>
+              <p>We believe a single millimeter defines the difference between a good fit and a masterpiece. Our templates adapt to your unique silhouette.</p>
+            </div>
+
+            {/* Value 2 */}
+            <div className="value-card">
+              <div className="value-icon-box">🧵</div>
+              <h3>Ethical Sourcing</h3>
+              <p>We work exclusively with certified historic mills that prioritize environmental sustainability and premium, fair-labor fibers.</p>
+            </div>
+
+            {/* Value 3 */}
+            <div className="value-card">
+              <div className="value-icon-box">🤝</div>
+              <h3>Complete Convenience</h3>
+              <p>Luxury is time. By keeping consultations mobile and delivery fast, we ensure the custom tailoring process matches your busy life.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+      
+      {/* Call to Action Banner */}
+      <section style={{ padding: '8rem 0', textAlign: 'center', borderTop: '1px solid rgba(255, 217, 190, 0.1)', background: 'radial-gradient(circle, rgba(12, 97, 75, 0.3) 0%, rgba(6, 78, 59, 0) 80%)' }}>
+        <div className="about-container" style={{ maxWidth: '600px' }}>
+          <h2 style={{ fontFamily: 'var(--font-serif)', fontSize: '3rem', color: 'var(--beige-gold)', marginBottom: '1.5rem' }}>Experience Custom Luxury</h2>
+          <p style={{ color: '#c9e0d9', fontSize: '1.1rem', marginBottom: '2.5rem', lineHeight: '1.8' }}>
+            Book your doorstep measurement consultation today. Our Mediator will visit you with fine fabric catalogs and styling templates.
+          </p>
+          <Link href="/" className="btn-primary" style={{ display: 'inline-block', textDecoration: 'none' }}>
+            Book Fitting Appointment
+          </Link>
+        </div>
+      </section>
+    </div>
+  );
+}

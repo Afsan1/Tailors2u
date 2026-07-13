@@ -13,7 +13,8 @@ export default function Navbar({ onOpenBooking }) {
   const navLinks = [
     { name: 'Alteration', path: '/alteration' },
     { name: 'Stitching', path: '/tailoring' },
-    { name: 'AI Try-On', path: '/ai-tryon' }
+    { name: 'AI Try-On', path: '/ai-tryon' },
+    { name: 'About', path: '/about' }
   ];
 
   return (

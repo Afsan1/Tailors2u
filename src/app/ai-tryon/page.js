@@ -635,6 +635,12 @@ export default function AITryOn() {
   const [simulationApplied, setSimulationApplied] = useState(false);
   const [beforeMode, setBeforeMode] = useState(false);
 
+  // Gemini API states
+  const [fitAnalysis, setFitAnalysis] = useState('');
+  const [styleAdvice, setStyleAdvice] = useState('');
+  const [geminiSvgContent, setGeminiSvgContent] = useState('');
+  const [apiKeyWarning, setApiKeyWarning] = useState('');
+
   const fileInputRef = useRef(null);
 
   // Automatically adjust default scales depending on the garment
@@ -684,21 +690,63 @@ export default function AITryOn() {
     setSimulationApplied(false);
   };
 
-  // Run the premium AI simulation scan
-  const handleRunSimulation = () => {
+  // Run the premium AI simulation scan using Gemini API
+  const handleRunSimulation = async () => {
     setIsProcessing(true);
     setProgressStep(0);
     setSimulationApplied(false);
+    setApiKeyWarning('');
 
-    // Timeline steps for the AI simulation progress
-    setTimeout(() => setProgressStep(1), 800);
-    setTimeout(() => setProgressStep(2), 1700);
-    setTimeout(() => setProgressStep(3), 2600);
-    setTimeout(() => {
+    const pInterval = setInterval(() => {
+      setProgressStep(prev => Math.min(3, prev + 1));
+    }, 900);
+
+    try {
+      const response = await fetch('/api/tryon/generate', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          image: uploadedImage || null,
+          fabric: {
+            id: selectedFabric.id,
+            name: selectedFabric.name,
+            color: selectedFabric.color,
+            patternType: selectedFabric.patternType,
+            origin: selectedFabric.origin,
+            weight: selectedFabric.weight
+          },
+          garment: selectedGarment,
+          collar: selectedCollar,
+          sleeve: selectedSleeve
+        })
+      });
+
+      const data = await response.json();
+      clearInterval(pInterval);
+
+      if (data.success) {
+        setFitAnalysis(data.fitAnalysis);
+        setStyleAdvice(data.styleAdvice);
+        if (uploadedImage) {
+          setGeminiSvgContent(data.svgContent);
+        } else {
+          setGeminiSvgContent('');
+        }
+        if (data.message) {
+          setApiKeyWarning(data.message);
+        }
+        setSimulationApplied(true);
+        setBeforeMode(false);
+      } else {
+        alert("AI Try-On failed: " + data.message);
+      }
+    } catch (err) {
+      clearInterval(pInterval);
+      console.error(err);
+      alert("Unable to connect to AI styling engine.");
+    } finally {
       setIsProcessing(false);
-      setSimulationApplied(true);
-      setBeforeMode(false);
-    }, 3500);
+    }
   };
 
   // Pre-fill booking details and trigger the booking modal
@@ -771,16 +819,61 @@ export default function AITryOn() {
                 {/* 2. Garment texture mapping overlay */}
                 {(!beforeMode && (simulationApplied || !uploadedImage)) && (
                   <div className="tryon-garment-overlay">
-                    <GarmentSVG
-                      type={selectedGarment}
-                      fabric={selectedFabric}
-                      collar={selectedCollar}
-                      sleeve={selectedSleeve}
-                      scale={scale}
-                      rotation={rotation}
-                      translation={{ x: translationX, y: translationY }}
-                      opacity={opacity}
-                    />
+                    {geminiSvgContent ? (
+                      <svg 
+                        width="400" 
+                        height="500" 
+                        viewBox="0 0 400 500" 
+                        style={{
+                          transform: `translate(${translationX}px, ${translationY}px) rotate(${rotation}deg) scale(${scale})`,
+                          opacity: opacity,
+                          transformOrigin: 'center center',
+                          transition: 'transform 0.1s ease-out'
+                        }}
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <defs>
+                          {/* Dynamic Texture Patterns depending on selected fabric */}
+                          <pattern id="tryon-pattern-active" width="16" height="16" patternUnits="userSpaceOnUse">
+                            <rect width="16" height="16" fill={selectedFabric.color} />
+                            {selectedFabric.patternType === 'cotton' && (
+                              <>
+                                <circle cx="4" cy="4" r="1.5" fill="rgba(255, 255, 255, 0.45)" />
+                                <circle cx="12" cy="12" r="1.5" fill="rgba(255, 255, 255, 0.45)" />
+                              </>
+                            )}
+                            {selectedFabric.patternType === 'linen' && (
+                              <>
+                                <line x1="0" y1="2" x2="8" y2="2" stroke="rgba(255, 255, 255, 0.4)" strokeWidth="0.8" />
+                                <line x1="2" y1="0" x2="2" y2="8" stroke="rgba(255, 255, 255, 0.4)" strokeWidth="0.8" />
+                              </>
+                            )}
+                            {selectedFabric.patternType === 'silk' && (
+                              <>
+                                <path d="M0,16 L16,0 M-4,4 L4,-4 M12,20 L20,12" stroke="rgba(255, 255, 255, 0.22)" strokeWidth="3" />
+                              </>
+                            )}
+                            {selectedFabric.patternType === 'wool' && (
+                              <>
+                                <path d="M0,0 L8,8 L16,0 M0,16 L8,8 L16,16" stroke="rgba(255, 255, 255, 0.35)" strokeWidth="0.8" fill="none" />
+                              </>
+                            )}
+                          </pattern>
+                        </defs>
+                        <g dangerouslySetInnerHTML={{ __html: geminiSvgContent }} />
+                      </svg>
+                    ) : (
+                      <GarmentSVG
+                        type={selectedGarment}
+                        fabric={selectedFabric}
+                        collar={selectedCollar}
+                        sleeve={selectedSleeve}
+                        scale={scale}
+                        rotation={rotation}
+                        translation={{ x: translationX, y: translationY }}
+                        opacity={opacity}
+                      />
+                    )}
                   </div>
                 )}
               </div>
@@ -806,6 +899,50 @@ export default function AITryOn() {
                 ? "💡 Use the 'Adjust Fit' sliders in Step 2 to scale, shift, or rotate the garment perfectly over your photo."
                 : "💡 Preset mannequins align automatically. Select garments and fabrics in the panels to customize your look."}
             </p>
+
+            {/* Gemini AI Sartorial Analysis Panel */}
+            {simulationApplied && (fitAnalysis || styleAdvice) && (
+              <div 
+                style={{ 
+                  marginTop: '1.5rem', 
+                  padding: '1.2rem', 
+                  backgroundColor: 'rgba(6, 78, 59, 0.05)', 
+                  border: '1px solid rgba(255, 217, 190, 0.2)', 
+                  borderRadius: 'var(--radius-md)' 
+                }}
+              >
+                <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', marginBottom: '0.8rem' }}>
+                  <span style={{ fontSize: '1.2rem' }}>✨</span>
+                  <h4 style={{ margin: 0, fontSize: '1.05rem', color: 'var(--emerald-deep)', fontWeight: '600' }}>
+                    Gemini AI Sartorial Analysis
+                  </h4>
+                </div>
+                
+                {apiKeyWarning && (
+                  <p style={{ fontSize: '0.8rem', color: '#b45309', margin: '0 0 0.8rem 0', fontWeight: '500' }}>
+                    ⚠️ {apiKeyWarning}
+                  </p>
+                )}
+
+                <div style={{ marginBottom: '1rem' }}>
+                  <strong style={{ fontSize: '0.85rem', color: 'var(--emerald-deep)', display: 'block', marginBottom: '0.2rem', textTransform: 'uppercase', letterSpacing: '0.5px' }}>
+                    Fit & Posture Estimation
+                  </strong>
+                  <p style={{ margin: 0, fontSize: '0.9rem', color: '#4A5B55', lineHeight: '1.5' }}>
+                    {fitAnalysis}
+                  </p>
+                </div>
+
+                <div>
+                  <strong style={{ fontSize: '0.85rem', color: 'var(--emerald-deep)', display: 'block', marginBottom: '0.2rem', textTransform: 'uppercase', letterSpacing: '0.5px' }}>
+                    Bespoke Styling Advice
+                  </strong>
+                  <p style={{ margin: 0, fontSize: '0.9rem', color: '#4A5B55', lineHeight: '1.5' }}>
+                    {styleAdvice}
+                  </p>
+                </div>
+              </div>
+            )}
           </div>
 
           {/* RIGHT COLUMN: CONTROLS */}
@@ -1114,6 +1251,7 @@ export default function AITryOn() {
                   className="tryon-btn-scan" 
                   disabled={isProcessing}
                   onClick={handleRunSimulation}
+                  suppressHydrationWarning
                 >
                   <span>✨</span> {simulationApplied ? 'Re-Run AI Generation' : 'Synthesize AI Fit'}
                 </button>
@@ -1122,6 +1260,7 @@ export default function AITryOn() {
                 <button 
                   className="tryon-btn-book" 
                   onClick={handleBookWithLook}
+                  suppressHydrationWarning
                 >
                   Book Doorstep Fitting for this Look
                 </button>

@@ -13,6 +13,7 @@ model Booking {
   name      String
   email     String
   phone     String
+  address   String?
 
   service   String
 

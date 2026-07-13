@@ -7,6 +7,7 @@ export default function BookingModal({ isOpen, onClose, initialService = '' }) {
     name: '',
     email: '',
     phone: '',
+    address: '',
     service: '',
     date: '',
     time: '',
@@ -35,6 +36,12 @@ export default function BookingModal({ isOpen, onClose, initialService = '' }) {
       case 'phone': {
         const digitsOnly = (value || '').replace(/\D/g, '').slice(0, 10);
         if (!digitsOnly || digitsOnly.length < 10) return 'Phone number must contain exactly 10 digits.';
+        return '';
+      }
+      case 'address': {
+        const trimmedValue = value.trim();
+        if (!trimmedValue) return 'Doorstep address is required.';
+        if (trimmedValue.length < 6) return 'Address must be at least 6 characters.';
         return '';
       }
       case 'service':
@@ -193,6 +200,7 @@ const validateForm = () => {
       name: '',
       email: '',
       phone: '',
+      address: '',
       service: '',
       date: '',
       time: '',
@@ -289,6 +297,20 @@ const validateForm = () => {
                 }
               />
               {errors.phone && <div className="form-error">{errors.phone}</div>}
+            </div>
+
+            <div className="form-group">
+              <label htmlFor="modal-address">Doorstep Address</label>
+              <input
+                id="modal-address"
+                type="text"
+                className="form-input"
+                required
+                value={formData.address}
+                onChange={(e) => handleFieldChange('address', e.target.value)}
+                placeholder="e.g. 123 Luxury Road, Apt 4B, South Mumbai"
+              />
+              {errors.address && <div className="form-error">{errors.address}</div>}
             </div>
 
             <div className="form-group">

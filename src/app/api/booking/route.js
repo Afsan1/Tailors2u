@@ -16,6 +16,7 @@ export async function POST(request) {
         name: body.name,
         email: body.email,
         phone: body.phone,
+        address: body.address || null,
         service: body.service,
         date: new Date(body.date),
         time: body.time,
@@ -37,6 +38,7 @@ export async function POST(request) {
         <p><strong>Name:</strong> ${booking.name}</p>
         <p><strong>Email:</strong> ${booking.email}</p>
         <p><strong>Phone:</strong> ${booking.phone}</p>
+        <p><strong>Address:</strong> ${booking.address || "Not provided"}</p>
         <p><strong>Service:</strong> ${booking.service}</p>
         <p><strong>Date:</strong> ${booking.date.toDateString()}</p>
         <p><strong>Time:</strong> ${booking.time}</p>
@@ -61,6 +63,7 @@ export async function POST(request) {
         <p><strong>Service:</strong> ${booking.service}</p>
         <p><strong>Date:</strong> ${booking.date.toDateString()}</p>
         <p><strong>Time:</strong> ${booking.time}</p>
+        <p><strong>Doorstep Address:</strong> ${booking.address || "Not provided"}</p>
         <p><strong>Notes:</strong> ${booking.notes || "None"}</p>
 
         <br>

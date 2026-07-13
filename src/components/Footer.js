@@ -11,7 +11,7 @@ export default function Footer({ onOpenBooking }) {
           <p>
             Premium, bespoke tailoring and alterations delivered directly to your doorstep. We bring the luxury tailoring salon experience to your home or office.
           </p>
-          <button className="cta-nav-button" onClick={onOpenBooking}>
+          <button className="cta-nav-button" onClick={onOpenBooking} suppressHydrationWarning>
             Book Free Consultation
           </button>
         </div>
@@ -31,6 +31,7 @@ export default function Footer({ onOpenBooking }) {
             <li><Link href="/alteration" className="footer-link">Shirts & Pants</Link></li>
             <li><Link href="/alteration" className="footer-link">Kurtas & Ethnic</Link></li>
             <li><Link href="/tailoring" className="footer-link">Meet Our Tailors</Link></li>
+            <li><Link href="/about" className="footer-link">About Us</Link></li>
           </ul>
         </div>
 
