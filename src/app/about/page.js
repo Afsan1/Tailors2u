@@ -169,102 +169,145 @@ export default function About() {
     };
   }, []);
 
-  // 4. Snap + lock scroll for 2016 section until all slides are viewed
+  // 4. Lock scroll when 2016 section is in view — page stays fixed until all 3 slides seen
   useEffect(() => {
     const TOTAL_SLIDES = STORY_2016_SUB_ITEMS.length;
     let currentIndex = 0;
     let isHijacking = false;
     let debounce = false;
     let savedScrollY = 0;
+    let hasFinished = false;
 
     const block = stickyBlock2016Ref.current;
+    if (!block) return;
 
-    // --- Lock / Unlock helpers ---
+    // --- Lock: smoothly scroll to match top of viewport, and block scroll events ---
     const lockScroll = () => {
-      savedScrollY = window.scrollY;
-      document.body.style.overflow = 'hidden';
-      document.body.style.position = 'fixed';
-      document.body.style.top = `-${savedScrollY}px`;
-      document.body.style.width = '100%';
+      if (isHijacking) return;
       isHijacking = true;
+
+      const rect = block.getBoundingClientRect();
+      savedScrollY = window.scrollY + rect.top;
+      
+      // Snap scroll position so block top = viewport top (no visual jump)
+      window.scrollTo({ top: savedScrollY, behavior: 'instant' });
+
+      currentIndex = 0;
+      setActive2016Index(0);
     };
 
+    // --- Unlock: stop hijacking scroll events ---
     const unlockScroll = () => {
-      document.body.style.overflow = '';
-      document.body.style.position = '';
-      document.body.style.top = '';
-      document.body.style.width = '';
-      window.scrollTo(0, savedScrollY);
+      if (!isHijacking) return;
       isHijacking = false;
+      hasFinished = true;
     };
 
-    // --- IntersectionObserver: snap + lock when 80% of section is in view ---
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting && !isHijacking) {
-            // Smoothly snap to the section, then lock
-            if (block) {
-              block.scrollIntoView({ behavior: 'smooth', block: 'start' });
-              setTimeout(() => {
-                // Only lock if not already navigated away
-                if (!isHijacking) lockScroll();
-              }, 400);
-            }
-          } else if (!entry.isIntersecting && isHijacking) {
-            // Section left viewport (e.g., fast scroll past) — restore
-            unlockScroll();
-          }
-        });
-      },
-      { threshold: 0.8 }
-    );
+    let lastScrollY = window.scrollY;
 
-    if (block) observer.observe(block);
+    // --- Scroll listener: detect when section is centered and lock scroll ---
+    const handleScroll = () => {
+      if (isHijacking) return;
 
-    // --- Wheel handler: cycle slides ---
+      const currentScrollY = window.scrollY;
+      const scrollingDown = currentScrollY > lastScrollY;
+      lastScrollY = currentScrollY;
+
+      const rect = block.getBoundingClientRect();
+      const vh = window.innerHeight;
+
+      // Reset finished state once section has fully exited viewport
+      const outOfView = rect.bottom < 50 || rect.top > vh - 50;
+      if (outOfView) {
+        hasFinished = false;
+      }
+
+      if (hasFinished) return;
+
+      // Only trigger lock when scrolling down
+      if (!scrollingDown) return;
+
+      // When the top of 2016 section is near top of viewport (e.g. within 20px)
+      if (rect.top <= 20 && rect.top >= -20) {
+        lockScroll();
+      }
+    };
+
+    let isCurrentlyScrolling = false;
+    let wheelEndTimeout = null;
+
+    // --- Wheel event listener: cycles index, blocks screen scroll ---
     const handleWheel = (e) => {
       if (!isHijacking) return;
+      
+      // Stop the browser from scrolling the window
       e.preventDefault();
+      e.stopPropagation();
+
+      // Reset the wheel end detection
+      clearTimeout(wheelEndTimeout);
+      wheelEndTimeout = setTimeout(() => {
+        isCurrentlyScrolling = false;
+      }, 150);
+
+      // If we are in the middle of a continuous scroll gesture, ignore it
+      if (isCurrentlyScrolling) return;
 
       const goingDown = e.deltaY > 0;
       const goingUp = e.deltaY < 0;
 
-      // Release lock when user finishes all slides
+      // Mark that we have started handling this gesture
+      isCurrentlyScrolling = true;
+
+      // Release lock on last slide going down
       if (goingDown && currentIndex >= TOTAL_SLIDES - 1) {
         unlockScroll();
         return;
       }
+      
+      // Release lock on first slide going up
       if (goingUp && currentIndex <= 0) {
         unlockScroll();
         return;
       }
 
-      if (debounce) return;
-      debounce = true;
-
-      if (goingDown) currentIndex = Math.min(TOTAL_SLIDES - 1, currentIndex + 1);
-      else currentIndex = Math.max(0, currentIndex - 1);
-
+      if (goingDown) {
+        currentIndex = Math.min(TOTAL_SLIDES - 1, currentIndex + 1);
+      } else if (goingUp) {
+        currentIndex = Math.max(0, currentIndex - 1);
+      }
       setActive2016Index(currentIndex);
-      setTimeout(() => { debounce = false; }, 700);
     };
 
-    // --- Key handler: arrow keys ---
+    // --- Block touchmove event to prevent swipe scrolling ---
+    const handleTouch = (e) => {
+      if (isHijacking) {
+        e.preventDefault();
+      }
+    };
+
+    // --- Key listener: block arrows, spacebar ---
     const handleKey = (e) => {
       if (!isHijacking) return;
-      if (e.key === 'ArrowDown') handleWheel({ deltaY: 1, preventDefault: () => {} });
-      if (e.key === 'ArrowUp') handleWheel({ deltaY: -1, preventDefault: () => {} });
+      if (e.key === 'ArrowDown' || e.key === ' ' || e.key === 'ArrowUp' || e.key === 'PageDown' || e.key === 'PageUp') {
+        e.preventDefault();
+        
+        const delta = (e.key === 'ArrowDown' || e.key === ' ' || e.key === 'PageDown') ? 1 : -1;
+        handleWheel({ deltaY: delta, preventDefault: () => {}, stopPropagation: () => {} });
+      }
     };
 
+    window.addEventListener('scroll', handleScroll, { passive: true });
     window.addEventListener('wheel', handleWheel, { passive: false });
+    window.addEventListener('touchmove', handleTouch, { passive: false });
     window.addEventListener('keydown', handleKey);
 
     return () => {
+      window.removeEventListener('scroll', handleScroll);
       window.removeEventListener('wheel', handleWheel);
+      window.removeEventListener('touchmove', handleTouch);
       window.removeEventListener('keydown', handleKey);
-      if (isHijacking) unlockScroll();
-      if (block) observer.disconnect();
+      clearTimeout(wheelEndTimeout);
     };
   }, []);
 
