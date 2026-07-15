@@ -44,3 +44,6 @@ next-env.d.ts
 Tailors2u/
 
 /src/generated/prisma
+
+# test scripts (may contain API keys — never commit)
+test-*.js
