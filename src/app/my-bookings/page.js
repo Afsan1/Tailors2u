@@ -64,7 +64,7 @@ export default async function MyBookingsPage() {
                   <span className="booking-service">{booking.service}</span>
                   <span className="booking-badge">Scheduled</span>
                 </div>
-                
+
                 <div className="booking-card-body">
                   <div className="booking-detail-item">
                     <span className="booking-detail-label">Date</span>
