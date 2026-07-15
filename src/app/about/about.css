@@ -24,7 +24,9 @@
   background-color: var(--emerald-deep);
   color: var(--white);
   font-family: var(--font-sans);
-  overflow: hidden;
+  /* overflow-x clips horizontal overflow; overflow-y MUST be visible for position:sticky */
+  overflow-x: clip;
+  overflow-y: visible;
   position: relative;
 }
 
@@ -88,7 +90,7 @@
   font-size: 1.1rem;
   text-transform: uppercase;
   letter-spacing: 6px;
-  color: var(--beige-gold);
+  color: var(--emerald-medium);
   margin-bottom: 2rem;
   display: inline-block;
   opacity: 0;
@@ -106,7 +108,7 @@
   font-size: clamp(3rem, 7vw, 6.5rem);
   line-height: 1.1;
   font-weight: 800;
-  color: var(--white);
+  color: #1E2D27;
   transform: translateY(110%);
   animation: textReveal 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards 0.2s;
   letter-spacing: -1px;
@@ -117,7 +119,7 @@
   margin: 0 auto;
   font-size: 1.15rem;
   line-height: 1.8;
-  color: #c9e0d9;
+  color: #4a5e56;
   opacity: 0;
   animation: fadeUp 1.2s cubic-bezier(0.25, 1, 0.5, 1) forwards 0.6s;
 }
@@ -149,14 +151,14 @@
 /* --- Story Section --- */
 .story-sec {
   position: relative;
-  padding: 10rem 0;
-  border-top: 1px solid rgba(255, 217, 190, 0.1);
-  border-bottom: 1px solid rgba(255, 217, 190, 0.1);
+  padding: 4rem 0 6rem;
+  border-top: 1px solid rgba(30, 45, 39, 0.1);
+  border-bottom: 1px solid rgba(30, 45, 39, 0.1);
 }
 
 .story-header-center {
   text-align: center;
-  margin-bottom: 8rem;
+  margin-bottom: 5rem;
 }
 
 .story-header-center span {
@@ -165,7 +167,7 @@
   font-size: 0.9rem;
   text-transform: uppercase;
   letter-spacing: 4px;
-  color: var(--emerald-bright);
+  color: #2F7A5F;
   margin-bottom: 1rem;
 }
 
@@ -173,16 +175,15 @@
   font-family: var(--font-serif);
   font-size: clamp(2.5rem, 5vw, 5rem);
   line-height: 1.2;
-  color: var(--beige-gold);
+  color: #1E2D27;
   font-weight: 700;
   max-width: 800px;
   margin: 0 auto;
 }
 
+/* story-list MUST be display:block — flex breaks position:sticky on children */
 .story-list {
-  display: flex;
-  flex-direction: column;
-  gap: 12rem;
+  display: block;
   max-width: 1200px;
   margin: 0 auto;
 }
@@ -193,7 +194,150 @@
   gap: 6rem;
   align-items: center;
   opacity: 1;
+  margin-bottom: 8rem;
 }
+
+/* --- Sticky Story Block (Local component) --- */
+.story-block-sticky {
+  position: relative;
+  /* height is set by JS: 100vh for the viewport + scroll-jacking handles transitions */
+  height: 100vh;
+  margin-bottom: 8rem;
+}
+
+.story-block-viewport {
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  width: 100%;
+  /* Prevent the viewport from capturing wheel events when scroll-jacking is active */
+}
+
+.story-block-inner {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 6rem;
+  align-items: center;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem;
+  position: relative;
+}
+
+/* Left side text slides */
+.story-text-slides {
+  position: relative;
+  min-height: 240px;
+}
+
+.story-text-slide {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  opacity: 0;
+  transform: translateY(16px);
+  transition: opacity 0.5s ease, transform 0.5s ease;
+  pointer-events: none;
+}
+
+.story-text-slide.active {
+  position: relative;
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+
+/* Right side vertical scroll track (inside parallax-image-wrap) */
+.vertical-image-track {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  transition: transform 0.7s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.vertical-image-slide {
+  height: 100%;
+  width: 100%;
+  flex-shrink: 0;
+  position: relative;
+}
+
+/* Slide progress dots */
+.slide-progress-dots {
+  position: absolute;
+  right: -2rem;
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  z-index: 10;
+}
+
+.slide-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: rgba(30, 45, 39, 0.25);
+  transition: all 0.4s ease;
+  cursor: default;
+}
+
+.slide-dot.active {
+  background: #2F7A5F;
+  width: 8px;
+  height: 24px;
+  border-radius: 4px;
+}
+
+@media (max-width: 900px) {
+  .story-block-sticky {
+    height: auto !important;
+    margin-bottom: 4rem !important;
+  }
+  .story-block-viewport {
+    position: relative !important;
+    top: auto !important;
+    height: auto !important;
+  }
+  .story-block-inner {
+    grid-template-columns: 1fr !important;
+    gap: 2rem !important;
+  }
+  .story-text-slides {
+    min-height: auto !important;
+  }
+  .story-text-slide {
+    position: relative !important;
+    display: none !important;
+    opacity: 1 !important;
+    transform: none !important;
+  }
+  .story-text-slide.active {
+    display: block !important;
+  }
+  .vertical-image-track {
+    position: relative !important;
+    height: 320px !important;
+    transform: none !important;
+    display: block !important;
+  }
+  .vertical-image-slide {
+    position: absolute !important;
+    inset: 0 !important;
+    height: 100% !important;
+    display: none !important;
+  }
+}
+
 
 .story-block.in-view {
   opacity: 1;
@@ -657,3 +801,45 @@
     padding: 4rem 0;
   }
 }
+
+/* Porcelain Theme Overrides for About Page readability */
+.porcelain-theme .hero-subtitle {
+  color: var(--emerald-medium) !important;
+}
+
+.porcelain-theme .story-year {
+  color: var(--emerald-medium) !important;
+  border-bottom-color: var(--emerald-medium) !important;
+}
+
+.porcelain-theme .story-header-center span {
+  color: var(--emerald-medium) !important;
+}
+
+.porcelain-theme .values-header span {
+  color: var(--emerald-medium) !important;
+}
+
+/* Sticky 2016 block — porcelain readable text */
+.porcelain-theme .story-text-slide h3 {
+  color: #1E2D27 !important;
+  font-size: 2rem;
+  margin-bottom: 1.5rem;
+}
+
+.porcelain-theme .story-text-slide p {
+  color: #4a5e56 !important;
+  font-size: 1.1rem;
+  line-height: 1.8;
+  margin-bottom: 2rem;
+}
+
+.porcelain-theme .story-block h3 {
+  color: #1E2D27 !important;
+}
+
+.porcelain-theme .story-block p {
+  color: #4a5e56 !important;
+}
+
+

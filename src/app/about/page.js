@@ -13,6 +13,31 @@ export default function About() {
   // Horizontal scroll gallery index state
   const [horizCardIndex, setHorizCardIndex] = useState(0);
   const [horizTranslate, setHorizTranslate] = useState(0);
+
+  // 2016 Sticky vertical scrolling slide state
+  const [active2016Index, setActive2016Index] = useState(0);
+  const stickyBlock2016Ref = useRef(null);
+
+  const STORY_2016_SUB_ITEMS = [
+    {
+      title: 'The First Measurement',
+      body: 'Tailors2U began with a single vision: luxury shouldn\'t demand compromise. We opened our first private workshop in South Mumbai, tailoring bespoke garments for individuals who appreciated unmatched precision but lacked the time for endless boutique fittings.',
+      image: '/about_heritage.png',
+      alt: 'Master tailor crafting pattern',
+    },
+    {
+      title: 'Curating the Finest Fabrics',
+      body: 'From the very beginning, we refused to settle for anything less than extraordinary. We traveled across Europe and Asia, building exclusive relationships with historic mills to source breathable linens, rich silks, and pure Egyptian cottons that elevate every garment.',
+      image: '/armani_burgundy.png',
+      alt: 'Premium fabrics selection',
+    },
+    {
+      title: 'The Master Artisans',
+      body: 'We brought together a team of master tailors, each with decades of experience passed down through generations. Their hands structure the chest canvas, sew the intricate lapels, and ensure every stitch embodies the pinnacle of sartorial elegance.',
+      image: '/about_quality.png',
+      alt: 'Tailor working on suit',
+    },
+  ];
   
   // Refs
   const horizContainerRef = useRef(null);
@@ -144,11 +169,110 @@ export default function About() {
     };
   }, []);
 
+  // 4. Snap + lock scroll for 2016 section until all slides are viewed
+  useEffect(() => {
+    const TOTAL_SLIDES = STORY_2016_SUB_ITEMS.length;
+    let currentIndex = 0;
+    let isHijacking = false;
+    let debounce = false;
+    let savedScrollY = 0;
+
+    const block = stickyBlock2016Ref.current;
+
+    // --- Lock / Unlock helpers ---
+    const lockScroll = () => {
+      savedScrollY = window.scrollY;
+      document.body.style.overflow = 'hidden';
+      document.body.style.position = 'fixed';
+      document.body.style.top = `-${savedScrollY}px`;
+      document.body.style.width = '100%';
+      isHijacking = true;
+    };
+
+    const unlockScroll = () => {
+      document.body.style.overflow = '';
+      document.body.style.position = '';
+      document.body.style.top = '';
+      document.body.style.width = '';
+      window.scrollTo(0, savedScrollY);
+      isHijacking = false;
+    };
+
+    // --- IntersectionObserver: snap + lock when 80% of section is in view ---
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting && !isHijacking) {
+            // Smoothly snap to the section, then lock
+            if (block) {
+              block.scrollIntoView({ behavior: 'smooth', block: 'start' });
+              setTimeout(() => {
+                // Only lock if not already navigated away
+                if (!isHijacking) lockScroll();
+              }, 400);
+            }
+          } else if (!entry.isIntersecting && isHijacking) {
+            // Section left viewport (e.g., fast scroll past) — restore
+            unlockScroll();
+          }
+        });
+      },
+      { threshold: 0.8 }
+    );
+
+    if (block) observer.observe(block);
+
+    // --- Wheel handler: cycle slides ---
+    const handleWheel = (e) => {
+      if (!isHijacking) return;
+      e.preventDefault();
+
+      const goingDown = e.deltaY > 0;
+      const goingUp = e.deltaY < 0;
+
+      // Release lock when user finishes all slides
+      if (goingDown && currentIndex >= TOTAL_SLIDES - 1) {
+        unlockScroll();
+        return;
+      }
+      if (goingUp && currentIndex <= 0) {
+        unlockScroll();
+        return;
+      }
+
+      if (debounce) return;
+      debounce = true;
+
+      if (goingDown) currentIndex = Math.min(TOTAL_SLIDES - 1, currentIndex + 1);
+      else currentIndex = Math.max(0, currentIndex - 1);
+
+      setActive2016Index(currentIndex);
+      setTimeout(() => { debounce = false; }, 700);
+    };
+
+    // --- Key handler: arrow keys ---
+    const handleKey = (e) => {
+      if (!isHijacking) return;
+      if (e.key === 'ArrowDown') handleWheel({ deltaY: 1, preventDefault: () => {} });
+      if (e.key === 'ArrowUp') handleWheel({ deltaY: -1, preventDefault: () => {} });
+    };
+
+    window.addEventListener('wheel', handleWheel, { passive: false });
+    window.addEventListener('keydown', handleKey);
+
+    return () => {
+      window.removeEventListener('wheel', handleWheel);
+      window.removeEventListener('keydown', handleKey);
+      if (isHijacking) unlockScroll();
+      if (block) observer.disconnect();
+    };
+  }, []);
+
   // Velocity banners styling helper
   const textSkew = `skewX(${velocity * 1.5}deg) scale(${1 + Math.abs(velocity) * 0.005})`;
 
   return (
-    <div className="about-wrapper">
+    <div className="about-wrapper porcelain-theme">
       {/* Scroll Progress Indicator */}
       <div className="scroll-progress-bar">
         <div className="scroll-progress-fill" style={{ width: `${scrollProgress}%` }}></div>
@@ -181,77 +305,113 @@ export default function About() {
       {/* Storytelling Timeline */}
       <section className="story-sec">
         <div className="about-container">
-          
           {/* Centered Header */}
           <div className="story-header-center">
             <span>The Narrative</span>
             <h2>A Decade of Crafting Suits</h2>
           </div>
+        </div>
+
+        {/* Story List — must be direct child of section for sticky to work */}
+        <div className="story-list">
           
-          {/* Centered Story List */}
-          <div className="story-list">
-            
-            {/* Year Block 1 */}
-            <div className="story-block">
-              <div className="story-text-col">
-                <span className="story-year">2016</span>
-                <h3>The First Measurement</h3>
-                <p>
-                  Tailors2U began with a single vision: luxury shouldn't demand compromise. We opened our first private workshop in South Mumbai, tailoring bespoke garments for individuals who appreciated unmatched precision but lacked the time for endless boutique fittings.
-                </p>
-              </div>
-              <div className="parallax-image-wrap blur-to-sharp-container">
-                <Image 
-                  src="/about_heritage.png" 
-                  alt="Master tailor crafting pattern" 
-                  fill 
-                  className="parallax-img"
-                  sizes="(max-width: 1024px) 100vw, 800px"
-                />
+          {/* Year Block 1 - Sticky Scroll Interactive Section */}
+          <div className="story-block-sticky" ref={stickyBlock2016Ref}>
+            {/* Sticky viewport */}
+            <div className="story-block-viewport">
+              <div className="story-block-inner">
+                
+                {/* Left Column: Text slides */}
+                <div className="story-text-col">
+                  <span className="story-year">2016</span>
+                  <div className="story-text-slides">
+                    {STORY_2016_SUB_ITEMS.map((item, idx) => (
+                      <div 
+                        key={idx} 
+                        className={`story-text-slide ${active2016Index === idx ? 'active' : ''}`}
+                      >
+                        <h3>{item.title}</h3>
+                        <p>{item.body}</p>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+                
+                {/* Right Column: Image container with vertical moving track */}
+                <div className="parallax-image-wrap blur-to-sharp-container">
+                  <div 
+                    className="vertical-image-track" 
+                    style={{ transform: `translateY(-${active2016Index * 100}%)` }}
+                  >
+                    {STORY_2016_SUB_ITEMS.map((item, idx) => (
+                      <div key={idx} className="vertical-image-slide">
+                        <Image 
+                          src={item.image} 
+                          alt={item.alt} 
+                          fill 
+                          className="parallax-img"
+                          sizes="(max-width: 1024px) 100vw, 800px"
+                          priority={idx === 0}
+                        />
+                      </div>
+                    ))}
+                  </div>
+                </div>
+
+                {/* Slide progress dots */}
+                <div className="slide-progress-dots">
+                  {STORY_2016_SUB_ITEMS.map((_, idx) => (
+                    <div
+                      key={idx}
+                      className={`slide-dot ${active2016Index === idx ? 'active' : ''}`}
+                    />
+                  ))}
+                </div>
+
               </div>
             </div>
-
-            {/* Year Block 2 */}
-            <div className="story-block">
-              <div className="story-text-col">
-                <span className="story-year">2020</span>
-                <h3>Perfecting the Doorstep Fitting</h3>
-                <p>
-                  We adapted our processes to meet our clients exactly where they felt most comfortable. Launching our signature Doorstep Consultation, we equipped our expert fitters with luxury swatch books, precision calipers, and digital styling tablets, delivering the entire tailoring salon experience right to living rooms and corporate offices.
-                </p>
-              </div>
-              <div className="parallax-image-wrap blur-to-sharp-container">
-                <Image 
-                  src="/about_craftsmanship.png" 
-                  alt="Premium silk threads and measuring tape" 
-                  fill 
-                  className="parallax-img"
-                  sizes="(max-width: 1024px) 100vw, 800px"
-                />
-              </div>
-            </div>
-
-            {/* Year Block 3 */}
-            <div className="story-block">
-              <div className="story-text-col">
-                <span className="story-year">2026</span>
-                <h3>AI Innovation meets Master Handwork</h3>
-                <p>
-                  Today, we bridge centuries-old tailoring craftsmanship with modern technological magic. By integrating AI spatial estimation with manual measurement checks, we achieve an incredible 99.8% precision fit on the very first try. We continue to design suits, shirts, and ethnic wear that command attention, without demanding your time.
-                </p>
-              </div>
-              <div className="parallax-image-wrap blur-to-sharp-container">
-                <Image 
-                  src="/about_quality.png" 
-                  alt="Bespoke control mannequin check" 
-                  fill 
-                  className="parallax-img"
-                  sizes="(max-width: 1024px) 100vw, 800px"
-                />
-              </div>
-            </div>
-
           </div>
+
+          {/* Year Block 2 */}
+          <div className="story-block">
+            <div className="story-text-col">
+              <span className="story-year">2020</span>
+              <h3>Perfecting the Doorstep Fitting</h3>
+              <p>
+                We adapted our processes to meet our clients exactly where they felt most comfortable. Launching our signature Doorstep Consultation, we equipped our expert fitters with luxury swatch books, precision calipers, and digital styling tablets, delivering the entire tailoring salon experience right to living rooms and corporate offices.
+              </p>
+            </div>
+            <div className="parallax-image-wrap blur-to-sharp-container">
+              <Image 
+                src="/about_craftsmanship.png" 
+                alt="Premium silk threads and measuring tape" 
+                fill 
+                className="parallax-img"
+                sizes="(max-width: 1024px) 100vw, 800px"
+              />
+            </div>
+          </div>
+
+          {/* Year Block 3 */}
+          <div className="story-block">
+            <div className="story-text-col">
+              <span className="story-year">2026</span>
+              <h3>AI Innovation meets Master Handwork</h3>
+              <p>
+                Today, we bridge centuries-old tailoring craftsmanship with modern technological magic. By integrating AI spatial estimation with manual measurement checks, we achieve an incredible 99.8% precision fit on the very first try. We continue to design suits, shirts, and ethnic wear that command attention, without demanding your time.
+              </p>
+            </div>
+            <div className="parallax-image-wrap blur-to-sharp-container">
+              <Image 
+                src="/about_quality.png" 
+                alt="Bespoke control mannequin check" 
+                fill 
+                className="parallax-img"
+                sizes="(max-width: 1024px) 100vw, 800px"
+              />
+            </div>
+          </div>
+
         </div>
       </section>
 

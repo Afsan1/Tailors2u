@@ -1,126 +1,175 @@
 import { NextResponse } from 'next/server';
 import { GoogleGenerativeAI } from '@google/generative-ai';
 
+const IMAGE_OUTPUT_MODELS = [
+  'gemini-3.1-flash-image',
+  'gemini-3.1-flash-lite-image',
+  'gemini-2.5-flash-image',
+  'gemini-2.0-flash-preview-image-generation',
+  'gemini-2.0-flash-exp',
+];
+
+const TEXT_MODELS = ['gemini-2.5-flash', 'gemini-2.0-flash', 'gemini-2.0-flash-lite'];
+
 export async function POST(request) {
   try {
     const body = await request.json();
-    const { image, fabric, garment, collar, sleeve } = body;
+    const { image, fabric, imageWidth, imageHeight } = body;
 
     const apiKey = process.env.GEMINI_API_KEY;
+    if (!apiKey) return NextResponse.json({ success: false, message: 'GEMINI_API_KEY not configured.' }, { status: 500 });
+    if (!image)  return NextResponse.json({ success: false, message: 'No image provided.' }, { status: 400 });
 
-    if (!apiKey) {
-      // Mock / Simulated response if no API key is provided
-      // Generate some default paths that fit a standard center torso
-      let mockSvgContent = '';
-      if (garment === 'pants') {
-        mockSvgContent = `
-          <!-- Trousers tailored overlay -->
-          <path d="M 142 200 L 258 200 L 265 260 L 135 260 Z" fill="url(#tryon-pattern-active)" stroke="rgba(255,217,190,0.3)" strokeWidth="1.5" />
-          <path d="M 135 260 L 120 490 L 180 490 L 200 290 Z" fill="url(#tryon-pattern-active)" stroke="rgba(255,217,190,0.2)" strokeWidth="1.2" />
-          <path d="M 265 260 L 280 490 L 220 490 L 200 290 Z" fill="url(#tryon-pattern-active)" stroke="rgba(255,217,190,0.2)" strokeWidth="1.2" />
-        `;
-      } else if (garment === 'blazer') {
-        mockSvgContent = `
-          <!-- Under-shirt and tie -->
-          <path d="M 175 90 L 225 90 L 200 170 Z" fill="#fafafa" />
-          <path d="M 197 90 L 203 90 L 208 150 L 200 165 L 192 150 Z" fill="#064e3b" />
-          <!-- Blazer main body -->
-          <path d="M 132 85 Q 120 180 135 340 L 265 340 Q 280 180 268 85 Z" fill="url(#tryon-pattern-active)" stroke="rgba(255,217,190,0.3)" strokeWidth="1.5" />
-          <path d="M 132 85 L 80 250 Q 75 270 78 285 L 108 290 L 138 125 Z" fill="url(#tryon-pattern-active)" stroke="rgba(255,217,190,0.2)" strokeWidth="1.2" />
-          <path d="M 268 85 L 320 250 Q 325 270 322 285 L 292 290 L 262 125 Z" fill="url(#tryon-pattern-active)" stroke="rgba(255,217,190,0.2)" strokeWidth="1.2" />
-          <!-- Lapels -->
-          <path d="M 200 90 L 140 180 L 135 155 L 175 85 Z" fill="url(#tryon-pattern-active)" stroke="rgba(255,217,190,0.4)" strokeWidth="1" />
-          <path d="M 200 90 L 260 180 L 265 155 L 225 85 Z" fill="url(#tryon-pattern-active)" stroke="rgba(255,217,190,0.4)" strokeWidth="1" />
-        `;
-      } else if (garment === 'kurta') {
-        mockSvgContent = `
-          <!-- Kurta body -->
-          <path d="M 142 90 Q 130 180 135 320 L 132 430 L 268 430 L 265 320 Q 270 180 258 90 Z" fill="url(#tryon-pattern-active)" stroke="rgba(255,217,190,0.3)" strokeWidth="1.5" />
-          <path d="M 142 90 L 98 250 Q 94 270 95 285 L 122 290 L 144 135 Z" fill="url(#tryon-pattern-active)" stroke="rgba(255,217,190,0.2)" strokeWidth="1.2" />
-          <path d="M 258 90 L 302 250 Q 306 270 305 285 L 278 290 L 256 135 Z" fill="url(#tryon-pattern-active)" stroke="rgba(255,217,190,0.2)" strokeWidth="1.2" />
-          <!-- Mandarin collar -->
-          <path d="M 172 90 C 172 75, 228 75, 228 90 L 220 95 C 220 85, 180 85, 180 95 Z" fill="${fabric.color}" stroke="rgba(255,217,190,0.35)" />
-        `;
-      } else {
-        // Shirt
-        mockSvgContent = `
-          <!-- Shirt main body -->
-          <path d="M 140 100 Q 130 180 145 320 L 255 320 Q 270 180 260 100 Z" fill="url(#tryon-pattern-active)" stroke="rgba(255,217,190,0.3)" strokeWidth="1.5" />
-          <path d="M 140 100 L 95 240 Q 90 260 92 275 L 115 280 L 140 135 Z" fill="url(#tryon-pattern-active)" stroke="rgba(255,217,190,0.2)" strokeWidth="1.2" />
-          <path d="M 260 100 L 305 240 Q 310 260 308 275 L 285 280 L 260 135 Z" fill="url(#tryon-pattern-active)" stroke="rgba(255,217,190,0.2)" strokeWidth="1.2" />
-          <!-- Collar spread -->
-          <path d="M 200 100 L 145 110 L 170 82 Z" fill="${fabric.color}" stroke="rgba(255,217,190,0.35)" />
-          <path d="M 200 100 L 255 110 L 230 82 Z" fill="${fabric.color}" stroke="rgba(255,217,190,0.35)" />
-          <!-- Placket -->
-          <path d="M 194 100 L 206 100 L 206 320 L 194 320 Z" fill="url(#tryon-pattern-active)" opacity="0.9" />
-          <circle cx="200" cy="140" r="3.5" fill="#fafafa" stroke="#ccc" />
-          <circle cx="200" cy="200" r="3.5" fill="#fafafa" stroke="#ccc" />
-          <circle cx="200" cy="260" r="3.5" fill="#fafafa" stroke="#ccc" />
-        `;
+    const base64Data = image.split(',')[1];
+    const mimeType   = image.split(';')[0].split(':')[1] || 'image/jpeg';
+    const imagePart  = { inlineData: { data: base64Data, mimeType } };
+    const genAI      = new GoogleGenerativeAI(apiKey);
+
+    // ── STEP 1: Try image-generating models (paid tier) ───────────────────────
+    const editPrompt = buildEditPrompt(fabric);
+    for (const modelName of IMAGE_OUTPUT_MODELS) {
+      try {
+        console.log(`[TryOn] Trying image model: ${modelName}`);
+        const model  = genAI.getGenerativeModel({ model: modelName });
+        const result = await model.generateContent({
+          contents: [{ role: 'user', parts: [imagePart, { text: editPrompt }] }],
+          generationConfig: { responseModalities: ['image', 'text'] },
+        });
+        const parts     = result.response?.candidates?.[0]?.content?.parts || [];
+        let imageData   = null;
+        let textOut     = '';
+        for (const p of parts) {
+          if (p.inlineData?.mimeType?.startsWith('image/')) imageData = p.inlineData;
+          if (p.text) textOut += p.text;
+        }
+        if (imageData) {
+          console.log(`[TryOn] Image generation SUCCESS: ${modelName}`);
+          const { fitAnalysis, styleAdvice } = parseTextAnalysis(textOut, fabric);
+          return NextResponse.json({
+            success: true, method: 'ai-image',
+            resultImage: `data:${imageData.mimeType};base64,${imageData.data}`,
+            fitAnalysis, styleAdvice, modelUsed: modelName,
+          });
+        }
+      } catch (err) {
+        console.warn(`[TryOn] ${modelName} failed:`, (err.message || '').substring(0, 100));
       }
-
-      return NextResponse.json({
-        success: true,
-        isSimulated: true,
-        fitAnalysis: "Standard center-body pose detected. Fitting layout coordinates mapped to custom silhouette parameters (Size: 40R).",
-        styleAdvice: `The premium ${fabric.name} fabric is highly suitable for this custom ${garment}. Its unique draping properties and ${fabric.origin} origins command a crisp styling pairing—match with dark formal slacks and standard leather loafers.`,
-        svgContent: mockSvgContent,
-        message: "Configure GEMINI_API_KEY in your .env file to enable live visual tailoring."
-      });
     }
 
-    // Call real Gemini API
-    const genAI = new GoogleGenerativeAI(apiKey);
-    const model = genAI.getGenerativeModel({
-      model: 'gemini-2.0-flash',
-      generationConfig: {
-        responseMimeType: 'application/json',
-      },
-    });
+    // ── STEP 2: Free-tier fallback — bounding box detection ───────────────────
+    console.log('[TryOn] Image models unavailable. Using bounding box detection...');
 
-    // Extract base64 parts from uploaded image
-    const base64Data = image.split(',')[1];
-    const mimeType = image.split(';')[0].split(':')[1];
+    const bboxPrompt = buildBBoxPrompt(fabric);
 
-    const imagePart = {
-      inlineData: {
-        data: base64Data,
-        mimeType: mimeType
-      },
-    };
+    for (const modelName of TEXT_MODELS) {
+      try {
+        console.log(`[TryOn] BBox detection with ${modelName}`);
+        const model  = genAI.getGenerativeModel({ model: modelName, generationConfig: { responseMimeType: 'application/json' } });
+        const result = await model.generateContent([bboxPrompt, imagePart]);
+        const parsed = JSON.parse(result.response.text());
 
-    const prompt = `
-      You are SartorialAI, a master digital tailor overlaying a bespoke ${garment} in ${fabric.name} (${fabric.color}) on this user.
-      Analyze the uploaded user photo. The photo is rendered inside a 400x500 viewport box.
-      Locate the user's upper body (torso, shoulders, collar, arms).
-      Generate the fitted SVG elements (path, polygon, circle) that overlay this garment perfectly on their body bounds.
-      Use the exact fill attribute value "url(#tryon-pattern-active)" for the primary fabric parts.
-      Use "${fabric.color}" for cuffs or collar accents.
-      Return a strict JSON object structure:
-      {
-        "fitAnalysis": "A paragraph explaining body posture, shoulder slope, and fit size estimation.",
-        "styleAdvice": "A paragraph of styling tips for this garment and fabric blend.",
-        "svgContent": "Only the inner SVG path/shape elements (no outer <svg> wrapper) that will overlay the garment on their body coordinates inside a 400x500 canvas."
+        // Validate required fields exist and are reasonable
+        const sb = parsed.shirtBox;
+        const fb = parsed.faceBox;
+        if (sb && typeof sb.top === 'number' && typeof sb.left === 'number' &&
+            typeof sb.bottom === 'number' && typeof sb.right === 'number' &&
+            sb.bottom > sb.top && sb.right > sb.left) {
+
+          console.log(`[TryOn] BBox success: shirt ${JSON.stringify(sb)}, face ${JSON.stringify(fb)}`);
+          return NextResponse.json({
+            success:     true,
+            method:      'canvas-composite',
+            shirtBox:    sb,
+            faceBox:     fb || null,
+            handsBox:    parsed.handsBox || null,
+            fitAnalysis: parsed.fitAnalysis || '',
+            styleAdvice: parsed.styleAdvice || '',
+            modelUsed:   modelName,
+          });
+        }
+        console.warn(`[TryOn] ${modelName} returned invalid bbox:`, JSON.stringify(parsed).substring(0, 200));
+      } catch (err) {
+        console.warn(`[TryOn] ${modelName} BBox error:`, (err.message || '').substring(0, 100));
       }
-    `;
+    }
 
-    const result = await model.generateContent([prompt, imagePart]);
-    const responseText = result.response.text();
-    const resultJson = JSON.parse(responseText);
-
+    // ── STEP 3: Hard geometric fallback ───────────────────────────────────────
+    console.warn('[TryOn] All models failed. Using geometric fallback.');
     return NextResponse.json({
-      success: true,
-      isSimulated: false,
-      fitAnalysis: resultJson.fitAnalysis,
-      styleAdvice: resultJson.styleAdvice,
-      svgContent: resultJson.svgContent,
+      success: true, method: 'canvas-composite',
+      shirtBox: { top: 22, left: 18, bottom: 72, right: 82 },
+      faceBox:  { top:  0, left: 28, bottom: 22, right: 72 },
+      handsBox: null,
+      fitAnalysis: 'Standard body pose detected. Fabric applied to estimated torso region.',
+      styleAdvice: `${fabric.name} from ${fabric.origin} at ${fabric.weight} — an exceptional choice for a refined look.`,
+      modelUsed: 'fallback',
     });
 
   } catch (error) {
-    console.error(error);
-    return NextResponse.json(
-      { success: false, message: error.message },
-      { status: 500 }
-    );
+    console.error('[TryOn] Unexpected error:', error);
+    return NextResponse.json({ success: false, message: error.message || 'Server error.' }, { status: 500 });
   }
+}
+
+// ─────────────────────────────────────────────────────────────────────────────
+
+function buildEditPrompt(fabric) {
+  const textures = {
+    cotton: 'soft matte cotton weave with natural thread pattern',
+    linen:  'natural linen with visible slubs and open weave',
+    silk:   'lustrous silk satin with smooth sheen and fluid drape',
+    wool:   'fine structured wool suiting with tight twill weave',
+  };
+  return `Professional photo retouching task: Replace ONLY the shirt/garment on this person.
+New fabric: ${fabric.name} — ${textures[fabric.patternType] || 'premium fabric'} — colour ${fabric.color}.
+PRESERVE EXACTLY (change nothing): face, skin, hair, hands, accessories, background, lighting, trousers, shoes.
+GARMENT: keep exact silhouette, collar, sleeves. Add realistic folds/wrinkles. Photographic quality result.`;
+}
+
+function buildBBoxPrompt(fabric) {
+  return `You are a precise computer vision assistant analyzing a photo.
+
+Your task: identify three rectangular regions and return them as percentage coordinates (0 to 100) relative to the total image width and height.
+
+REGION 1 — SHIRT/GARMENT: The upper body garment (shirt, jacket, etc.) the person is wearing.
+  - Include: torso front, both sleeves/arms of the garment, collar area
+  - Exclude: face/head, bare hands/wrists, pants/legs, background
+  - Be conservative — if unsure, make the box slightly smaller
+
+REGION 2 — FACE: The person's face and head area.
+  - Include: hair, forehead, chin, ears
+  - This region will be fully protected from fabric overlay
+
+REGION 3 — HANDS (optional): Any visible bare hands/wrists area.
+
+IMPORTANT RULES for coordinates:
+  - "top" = distance from image TOP edge (0=top, 100=bottom)
+  - "left" = distance from image LEFT edge (0=left, 100=right)
+  - "bottom" must be greater than "top"
+  - "right" must be greater than "left"
+  - All values are INTEGER percentages between 0 and 100
+  - The shirt box must NOT overlap with the face box
+  - If the person is off-center, shift the boxes to match their actual position
+
+Return ONLY this JSON with no markdown or explanation:
+{
+  "shirtBox": { "top": <int>, "left": <int>, "bottom": <int>, "right": <int> },
+  "faceBox":  { "top": <int>, "left": <int>, "bottom": <int>, "right": <int> },
+  "handsBox": { "top": <int>, "left": <int>, "bottom": <int>, "right": <int> },
+  "fitAnalysis": "Detailed paragraph on posture, shoulder width, shirt fit, and recommended size.",
+  "styleAdvice": "Detailed paragraph on styling the ${fabric.name} (${fabric.patternType}) fabric for this body type."
+}`;
+}
+
+function parseTextAnalysis(text, fabric) {
+  if (text && text.length > 60) {
+    return {
+      fitAnalysis: text.substring(0, 500),
+      styleAdvice: `${fabric.name} from ${fabric.origin} — pair with tailored trousers for a refined look.`,
+    };
+  }
+  return {
+    fitAnalysis: 'AI garment analysis complete.',
+    styleAdvice: `${fabric.name} from ${fabric.origin} at ${fabric.weight} — commands quiet authority.`,
+  };
 }

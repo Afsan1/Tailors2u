@@ -1,1276 +1,582 @@
 'use client';
 
-import React, { useState, useRef, useEffect } from 'react';
+import React, { useState, useRef, useCallback } from 'react';
 import { useBooking } from '../../components/ClientLayoutWrapper';
 
-// Define the precise fabric options based on website fabrics
+// ─── Fabric Definitions ────────────────────────────────────────────────────────
 const FABRICS = [
+  { id: 'f1', name: 'Giza Egyptian Cotton', color: '#FAF8F5', secondColor: '#E0DBD3', patternType: 'cotton', origin: 'Egypt',    weight: '110 gsm', badge: 'Best Seller',       desc: 'Ultra-soft, high thread count, light natural sheen' },
+  { id: 'f2', name: 'Supima Luxury Cotton', color: '#3B6BA5', secondColor: '#2F5A8C', patternType: 'cotton', origin: 'USA',      weight: '125 gsm', badge: 'Premium Fit',        desc: 'Extra-long staple fibers with crisp finish' },
+  { id: 'f3', name: 'Pure Irish Linen',     color: '#C49A6C', secondColor: '#A87E52', patternType: 'linen',  origin: 'Ireland',  weight: '145 gsm', badge: 'Summer Essential',   desc: 'Loose weave with classic natural linen slubs' },
+  { id: 'f4', name: 'Cotton-Linen Blend',   color: '#5A8A5A', secondColor: '#46724A', patternType: 'linen',  origin: 'Italy',    weight: '135 gsm', badge: 'Casual Chic',        desc: 'Durable structured drape, wrinkle-resistant' },
+  { id: 'f5', name: 'Mulberry Royal Silk',  color: '#B5782A', secondColor: '#9A6020', patternType: 'silk',   origin: 'India',    weight: '90 gsm',  badge: 'Wedding Grade',      desc: 'Rich satin finish, fluid and elegant drape' },
+  { id: 'f6', name: 'Fine Merino Wool',     color: '#5E6E78', secondColor: '#4A5A64', patternType: 'wool',   origin: 'Australia', weight: '260 gsm', badge: 'Tailoring Grade',   desc: 'Fine thermoregulating wool, deep structure' },
+  { id: 'f7', name: 'Cashmere-Silk Blend',  color: '#A05050', secondColor: '#8A3C3C', patternType: 'wool',   origin: 'Mongolia', weight: '290 gsm', badge: 'Signature Luxury',   desc: 'Ultimate insulation combined with silk strength' },
   {
-    id: 'f1',
-    name: 'Giza Egyptian Cotton',
-    color: '#FAF8F5',
-    patternType: 'cotton',
-    origin: 'Egypt',
-    weight: '110 gsm',
-    badge: 'Best Seller',
-    desc: 'Ultra-soft, high thread count, light natural sheen',
-    previewClass: 'fabric-pattern-preview-f1'
-  },
-  {
-    id: 'f2',
-    name: 'Supima Luxury Cotton',
-    color: '#DCE7F3', // Soft steel blue shirting tone
-    patternType: 'cotton',
-    origin: 'USA',
-    weight: '125 gsm',
-    badge: 'Premium Fit',
-    desc: 'Extra-long staple fibers with crisp finish',
-    previewClass: 'fabric-pattern-preview-f2'
-  },
-  {
-    id: 'f3',
-    name: 'Pure Irish Linen',
-    color: '#ECE1D0', // Natural flax oatmeal
-    patternType: 'linen',
-    origin: 'Ireland',
-    weight: '145 gsm',
-    badge: 'Summer Essential',
-    desc: 'Loose weave with classic natural linen slubs',
-    previewClass: 'fabric-pattern-preview-f3'
-  },
-  {
-    id: 'f4',
-    name: 'Cotton-Linen Blend',
-    color: '#D6DFD3', // Sage green tint
-    patternType: 'linen',
-    origin: 'Italy',
-    weight: '135 gsm',
-    badge: 'Casual Chic',
-    desc: 'Durable structured drape, wrinkle-resistant',
-    previewClass: 'fabric-pattern-preview-f4'
-  },
-  {
-    id: 'f5',
-    name: 'Mulberry Royal Silk',
-    color: '#EED9C2', // Delicate royal cream gold
-    patternType: 'silk',
-    origin: 'India',
-    weight: '90 gsm',
-    badge: 'Wedding Grade',
-    desc: 'Rich satin finish, fluid and elegant drape',
-    previewClass: 'fabric-pattern-preview-f5'
-  },
-  {
-    id: 'f6',
-    name: 'Fine Merino Wool (Super 140s)',
-    color: '#CBD2D6', // Tailored light grey suit fabric
-    patternType: 'wool',
-    origin: 'Australia',
-    weight: '260 gsm',
-    badge: 'Tailoring Grade',
-    desc: 'Fine thermoregulating wool, deep structure',
-    previewClass: 'fabric-pattern-preview-f6'
-  },
-  {
-    id: 'f7',
-    name: 'Cashmere-Silk Blend',
-    color: '#E2C7C7', // Soft cashmere pink-beige
-    patternType: 'wool',
-    origin: 'Mongolia',
-    weight: '290 gsm',
-    badge: 'Signature Luxury',
-    desc: 'Ultimate insulation combined with silk strength',
-    previewClass: 'fabric-pattern-preview-f7'
-  },
-  {
-    id: 'f8',
-    name: 'Armani Suiting Wool',
-    color: '#e8e4d3', // Premium Armani cream/beige
-    patternType: 'wool',
-    origin: 'Italy',
-    weight: '275 gsm',
-    badge: 'Armani Suiting',
-    desc: 'Exclusive high-end suiting fabric from the house of Armani',
-    previewClass: 'fabric-pattern-preview-f8',
+    id: 'f8', name: 'Armani Suiting Wool',  color: '#737a7a', secondColor: '#5e6464', patternType: 'wool',   origin: 'Italy',    weight: '275 gsm', badge: 'Armani Suiting',    desc: 'Exclusive high-end suiting from the house of Armani',
     variants: [
-      { id: 'v1', name: 'Cream / Beige', colorHex: '#e8e4d3', image: '/armani.png' },
-      { id: 'v2', name: 'Slate Grey', colorHex: '#737a7a', image: '/armani_grey.png' },
-      { id: 'v3', name: 'Chocolate Brown', colorHex: '#4d2d22', image: '/armani_brown.png' },
-      { id: 'v4', name: 'Dark Espresso', colorHex: '#2b1f1d', image: '/armani_darkbrown.png' },
-      { id: 'v5', name: 'Royal Purple', colorHex: '#442b45', image: '/armani_purple.png' },
-      { id: 'v6', name: 'Burgundy Wine', colorHex: '#421f24', image: '/armani_burgundy.png' }
-    ]
+      { id: 'v1', name: 'Cream / Beige',  color: '#C8B070', secondColor: '#B09A5A' },
+      { id: 'v2', name: 'Slate Grey',     color: '#5A6464', secondColor: '#484F4F' },
+      { id: 'v3', name: 'Chocolate',      color: '#5C2E16', secondColor: '#46200C' },
+      { id: 'v4', name: 'Dark Espresso',  color: '#2A1A10', secondColor: '#1C0E08' },
+      { id: 'v5', name: 'Royal Purple',   color: '#4A2870', secondColor: '#361A58' },
+      { id: 'v6', name: 'Burgundy Wine',  color: '#6A1428', secondColor: '#540E1E' },
+    ],
+  },
+];
+
+const PROGRESS = [
+  { icon: '🔍', text: 'Analyzing body proportions…' },
+  { icon: '✂️',  text: 'Detecting garment boundaries…' },
+  { icon: '🎨', text: 'Applying fabric texture…' },
+  { icon: '✨', text: 'Rendering final result…' },
+];
+
+// ─────────────────────────────────────────────────────────────────────────────
+// Canvas Compositing Engine
+// Technique:
+//   1. Draw original photo
+//   2. Clip to shirt bounding box → apply fabric colour with 'color' blend
+//      ('color' mode = change hue/saturation, keep original luminosity = wrinkles preserved)
+//   3. Clip to face bounding box → redraw original image pixels (100% face restore)
+//   4. Clip to hands bounding box → redraw original image pixels (hands restore)
+//   5. Add subtle fabric texture pattern on top
+// ─────────────────────────────────────────────────────────────────────────────
+
+function pct(val, total) { return Math.round((val / 100) * total); }
+
+async function applyFabricComposite({ imageDataUrl, shirtBox, faceBox, handsBox, fabric }) {
+  return new Promise((resolve, reject) => {
+    const img = new Image();
+    img.onload = () => {
+      const W = img.naturalWidth;
+      const H = img.naturalHeight;
+
+      const canvas = document.createElement('canvas');
+      canvas.width  = W;
+      canvas.height = H;
+      const ctx = canvas.getContext('2d');
+
+      // ── 1. Draw original photo ──────────────────────────────────────────
+      ctx.drawImage(img, 0, 0, W, H);
+
+      // ── 2. Convert bounding boxes from percentages to pixels ────────────
+      const shirt = {
+        x: pct(shirtBox.left,   W), y: pct(shirtBox.top,    H),
+        w: pct(shirtBox.right - shirtBox.left, W),
+        h: pct(shirtBox.bottom - shirtBox.top, H),
+      };
+
+      // ── 3. Apply fabric colour to shirt region ──────────────────────────
+      ctx.save();
+      // Rounded rect clipping for shirt — looks more natural than hard edges
+      roundedRect(ctx, shirt.x, shirt.y, shirt.w, shirt.h, 8);
+      ctx.clip();
+
+      // 'color' blend: replaces hue/saturation but preserves lightness
+      // This means original shadows, highlights and wrinkles show through
+      ctx.globalCompositeOperation = 'color';
+      ctx.globalAlpha = 0.92;
+      ctx.fillStyle = fabric.color;
+      ctx.fillRect(shirt.x, shirt.y, shirt.w, shirt.h);
+
+      // Slight additional saturation boost
+      ctx.globalCompositeOperation = 'saturation';
+      ctx.globalAlpha = 0.25;
+      ctx.fillStyle = fabric.color;
+      ctx.fillRect(shirt.x, shirt.y, shirt.w, shirt.h);
+
+      ctx.restore();
+
+      // ── 4. Add fabric texture overlay ───────────────────────────────────
+      ctx.save();
+      roundedRect(ctx, shirt.x, shirt.y, shirt.w, shirt.h, 8);
+      ctx.clip();
+      const texPat = buildFabricTexture(ctx, fabric);
+      if (texPat) {
+        ctx.globalCompositeOperation = 'multiply';
+        ctx.globalAlpha = 0.12;
+        ctx.fillStyle = texPat;
+        ctx.fillRect(shirt.x, shirt.y, shirt.w, shirt.h);
+      }
+      ctx.restore();
+
+      // ── 5. RESTORE FACE — redraw original pixels over face region ───────
+      if (faceBox) {
+        const face = {
+          x: pct(faceBox.left,  W), y: pct(faceBox.top,   H),
+          w: pct(faceBox.right - faceBox.left, W),
+          h: pct(faceBox.bottom - faceBox.top, H),
+        };
+        // Expand face box slightly for clean edges (10px padding)
+        const pad = 12;
+        const fx = Math.max(0, face.x - pad);
+        const fy = Math.max(0, face.y - pad);
+        const fw = Math.min(W - fx, face.w + pad * 2);
+        const fh = Math.min(H - fy, face.h + pad * 2);
+
+        ctx.save();
+        // Use elliptical clip for face — matches head shape better
+        ctx.beginPath();
+        ctx.ellipse(fx + fw / 2, fy + fh / 2, fw / 2, fh / 2, 0, 0, Math.PI * 2);
+        ctx.clip();
+        // Restore ORIGINAL image pixels — this overwrites any fabric overlay
+        ctx.globalCompositeOperation = 'source-over';
+        ctx.globalAlpha = 1;
+        ctx.drawImage(img, 0, 0, W, H);
+        ctx.restore();
+      }
+
+      // ── 6. RESTORE HANDS — redraw original pixels over hands region ──────
+      if (handsBox) {
+        const hands = {
+          x: pct(handsBox.left,  W), y: pct(handsBox.top,   H),
+          w: pct(handsBox.right - handsBox.left, W),
+          h: pct(handsBox.bottom - handsBox.top, H),
+        };
+        ctx.save();
+        roundedRect(ctx, hands.x, hands.y, hands.w, hands.h, 4);
+        ctx.clip();
+        ctx.globalCompositeOperation = 'source-over';
+        ctx.globalAlpha = 1;
+        ctx.drawImage(img, 0, 0, W, H);
+        ctx.restore();
+      }
+
+      resolve(canvas.toDataURL('image/jpeg', 0.95));
+    };
+    img.onerror = reject;
+    img.src = imageDataUrl;
+  });
+}
+
+function roundedRect(ctx, x, y, w, h, r) {
+  ctx.beginPath();
+  ctx.moveTo(x + r, y);
+  ctx.lineTo(x + w - r, y);
+  ctx.quadraticCurveTo(x + w, y, x + w, y + r);
+  ctx.lineTo(x + w, y + h - r);
+  ctx.quadraticCurveTo(x + w, y + h, x + w - r, y + h);
+  ctx.lineTo(x + r, y + h);
+  ctx.quadraticCurveTo(x, y + h, x, y + h - r);
+  ctx.lineTo(x, y + r);
+  ctx.quadraticCurveTo(x, y, x + r, y);
+  ctx.closePath();
+}
+
+function buildFabricTexture(ctx, fabric) {
+  const size = 10;
+  const off  = document.createElement('canvas');
+  off.width  = size; off.height = size;
+  const c    = off.getContext('2d');
+
+  if (fabric.patternType === 'cotton') {
+    c.fillStyle = 'rgba(0,0,0,0.3)';
+    for (let i = 0; i < size; i += 3) { c.fillRect(i, 0, 1, size); c.fillRect(0, i, size, 1); }
+  } else if (fabric.patternType === 'linen') {
+    c.fillStyle = 'rgba(0,0,0,0.3)';
+    [0, 3, 7].forEach(x => c.fillRect(x, 0, 1, size));
+    c.fillStyle = 'rgba(255,255,255,0.15)';
+    [0, 4, 8].forEach(y => c.fillRect(0, y, size, 1));
+  } else if (fabric.patternType === 'silk') {
+    c.strokeStyle = 'rgba(255,255,255,0.2)'; c.lineWidth = 1.5;
+    for (let i = -size; i < size * 2; i += 4) {
+      c.beginPath(); c.moveTo(i, 0); c.lineTo(i + size, size); c.stroke();
+    }
+  } else {
+    // wool
+    c.fillStyle = 'rgba(0,0,0,0.25)';
+    for (let i = 0; i < size; i += 2) { c.fillRect(i % size, i, 1, 1); c.fillRect((i+1)%size, (i+2)%size, 1, 1); }
   }
-];
 
-// Garment definitions
-const GARMENTS = [
-  { id: 'shirt', name: 'Bespoke Shirt', icon: '👔', desc: 'Classic structured dress shirt' },
-  { id: 'blazer', name: 'Italian Blazer', icon: '🧥', desc: 'Sartorial slim blazer with lapels' },
-  { id: 'kurta', name: 'Traditional Kurta', icon: '👘', desc: 'Ethnic tunic length with band collar' },
-  { id: 'pants', name: 'Slim Trousers', icon: '👖', desc: 'Custom tailored formal pants' }
-];
-
-// Custom Collar Details for Step 4
-const COLLARS = [
-  { id: 'c1', name: 'Spread Collar (Modern)' },
-  { id: 'c2', name: 'Button-Down Collar (Classic)' },
-  { id: 'c3', name: 'Band/Nehru Collar (Minimal)' }
-];
-
-// Custom Sleeves Details for Step 4
-const SLEEVES = [
-  { id: 's1', name: 'Double Cuff (French)' },
-  { id: 's2', name: 'Single Button Cuff (Casual)' },
-  { id: 's3', name: 'Short Sleeves' }
-];
-
-// Preset model silhouettes
-const PRESETS = [
-  { id: 'male', name: 'Mannequin (Male)', gender: 'male' },
-  { id: 'female', name: 'Mannequin (Female)', gender: 'female' },
-  { id: 'neutral', name: 'Classic Dress Form', gender: 'neutral' }
-];
-
-// Component for rendering custom garments in SVG with dynamic patterns
-function GarmentSVG({ type, fabric, collar, sleeve, scale = 1, rotation = 0, translation = { x: 0, y: 0 }, opacity = 1 }) {
-  const patternId = `tryon-pattern-${fabric.id}`;
-  const color = fabric.color;
-
-  // Render texture overlay paths inside patterns to simulate folds/weaving
-  return (
-    <svg 
-      width="400" 
-      height="500" 
-      viewBox="0 0 400 500" 
-      style={{
-        transform: `translate(${translation.x}px, ${translation.y}px) rotate(${rotation}deg) scale(${scale})`,
-        opacity: opacity,
-        transformOrigin: 'center center',
-        transition: 'transform 0.1s ease-out'
-      }}
-      xmlns="http://www.w3.org/2000/svg"
-    >
-      <defs>
-        {/* Dynamic Texture Patterns depending on selected fabric */}
-        {fabric.patternType === 'cotton' && (
-          <pattern id={patternId} width="16" height="16" patternUnits="userSpaceOnUse">
-            <rect width="16" height="16" fill={color} />
-            <circle cx="4" cy="4" r="1.5" fill="rgba(255, 255, 255, 0.45)" />
-            <circle cx="12" cy="12" r="1.5" fill="rgba(255, 255, 255, 0.45)" />
-            <circle cx="4" cy="4" r="0.8" fill="rgba(6, 78, 59, 0.08)" />
-            <circle cx="12" cy="12" r="0.8" fill="rgba(6, 78, 59, 0.08)" />
-          </pattern>
-        )}
-        
-        {fabric.patternType === 'linen' && (
-          <pattern id={patternId} width="8" height="8" patternUnits="userSpaceOnUse">
-            <rect width="8" height="8" fill={color} />
-            <line x1="0" y1="2" x2="8" y2="2" stroke="rgba(255, 255, 255, 0.4)" strokeWidth="0.8" />
-            <line x1="2" y1="0" x2="2" y2="8" stroke="rgba(255, 255, 255, 0.4)" strokeWidth="0.8" />
-            <line x1="0" y1="6" x2="8" y2="6" stroke="rgba(6, 78, 59, 0.08)" strokeWidth="0.8" />
-            <line x1="6" y1="0" x2="6" y2="8" stroke="rgba(6, 78, 59, 0.08)" strokeWidth="0.8" />
-          </pattern>
-        )}
-
-        {fabric.patternType === 'silk' && (
-          <pattern id={patternId} width="40" height="40" patternUnits="userSpaceOnUse">
-            <rect width="40" height="40" fill={color} />
-            <path d="M0,40 L40,0 M-10,10 L10,-10 M30,50 L50,30" stroke="rgba(255, 255, 255, 0.22)" strokeWidth="8" />
-            <path d="M0,40 L40,0 M-10,10 L10,-10 M30,50 L50,30" stroke="rgba(255, 255, 255, 0.4)" strokeWidth="2" />
-            <path d="M10,40 L40,10" stroke="rgba(6, 78, 59, 0.04)" strokeWidth="4" />
-          </pattern>
-        )}
-
-        {fabric.patternType === 'wool' && (
-          <pattern id={patternId} width="20" height="20" patternUnits="userSpaceOnUse">
-            <rect width="20" height="20" fill={color} />
-            <path d="M0,0 L10,10 L20,0 M0,20 L10,10 L20,20" stroke="rgba(255, 255, 255, 0.35)" strokeWidth="1.2" fill="none" />
-            <path d="M0,10 L10,0 L20,10 M0,10 L10,20 L20,10" stroke="rgba(6, 78, 59, 0.07)" strokeWidth="0.8" fill="none" />
-          </pattern>
-        )}
-
-        {/* Realistic drop shadow and filter systems */}
-        <filter id="fabric-depth" x="-10%" y="-10%" width="120%" height="120%">
-          <feGaussianBlur in="SourceAlpha" stdDeviation="3" />
-          <feOffset dx="0" dy="4" />
-          <feComponentTransfer><feFuncA type="linear" slope="0.15" /></feComponentTransfer>
-          <feMerge>
-            <feMergeNode />
-            <feMergeNode in="SourceGraphic" />
-          </feMerge>
-        </filter>
-      </defs>
-
-      {/* RENDER GARMENT: SHIRT */}
-      {type === 'shirt' && (
-        <g id="svg-shirt" filter="url(#fabric-depth)">
-          {/* Main Body Torso */}
-          <path 
-            d="M 140 100 Q 130 180 145 320 L 255 320 Q 270 180 260 100 Z" 
-            fill={`url(#${patternId})`}
-            stroke="rgba(6, 78, 59, 0.25)"
-            strokeWidth="1.5"
-          />
-          {/* Left Sleeve */}
-          {sleeve !== 'Short Sleeves' ? (
-            <path 
-              d="M 140 100 L 95 240 Q 90 260 92 275 L 115 280 L 140 135 Z" 
-              fill={`url(#${patternId})`}
-              stroke="rgba(6, 78, 59, 0.2)"
-              strokeWidth="1.2"
-            />
-          ) : (
-            <path 
-              d="M 140 100 L 110 170 L 132 180 L 140 135 Z" 
-              fill={`url(#${patternId})`}
-              stroke="rgba(6, 78, 59, 0.2)"
-              strokeWidth="1.2"
-            />
-          )}
-          {/* Right Sleeve */}
-          {sleeve !== 'Short Sleeves' ? (
-            <path 
-              d="M 260 100 L 305 240 Q 310 260 308 275 L 285 280 L 260 135 Z" 
-              fill={`url(#${patternId})`}
-              stroke="rgba(6, 78, 59, 0.2)"
-              strokeWidth="1.2"
-            />
-          ) : (
-            <path 
-              d="M 260 100 L 290 170 L 268 180 L 260 135 Z" 
-              fill={`url(#${patternId})`}
-              stroke="rgba(6, 78, 59, 0.2)"
-              strokeWidth="1.2"
-            />
-          )}
-
-          {/* Left Cuff (French or Casual) */}
-          {sleeve !== 'Short Sleeves' && (
-            <path 
-              d="M 92 275 L 88 290 L 116 295 L 115 280 Z" 
-              fill={color} 
-              stroke="rgba(6, 78, 59, 0.3)" 
-              strokeWidth="1"
-            />
-          )}
-          {/* Right Cuff (French or Casual) */}
-          {sleeve !== 'Short Sleeves' && (
-            <path 
-              d="M 308 275 L 312 290 L 284 295 L 285 280 Z" 
-              fill={color} 
-              stroke="rgba(6, 78, 59, 0.3)" 
-              strokeWidth="1"
-            />
-          )}
-
-          {/* Center Placket */}
-          <path 
-            d="M 194 100 L 206 100 L 206 320 L 194 320 Z" 
-            fill={`url(#${patternId})`} 
-            stroke="rgba(6, 78, 59, 0.15)"
-            strokeWidth="1"
-          />
-          {/* Placket Buttons */}
-          <circle cx="200" cy="140" r="3" fill="#fafafa" stroke="#ccc" strokeWidth="0.5" />
-          <circle cx="200" cy="180" r="3" fill="#fafafa" stroke="#ccc" strokeWidth="0.5" />
-          <circle cx="200" cy="220" r="3" fill="#fafafa" stroke="#ccc" strokeWidth="0.5" />
-          <circle cx="200" cy="260" r="3" fill="#fafafa" stroke="#ccc" strokeWidth="0.5" />
-          <circle cx="200" cy="300" r="3" fill="#fafafa" stroke="#ccc" strokeWidth="0.5" />
-
-          {/* Chest Pocket */}
-          <path 
-            d="M 152 140 L 175 140 L 175 168 L 163.5 176 L 152 168 Z" 
-            fill={`url(#${patternId})`} 
-            stroke="rgba(6, 78, 59, 0.25)" 
-            strokeWidth="1"
-          />
-
-          {/* Left Collar Point */}
-          {collar === 'Spread Collar (Modern)' ? (
-            <path d="M 200 100 L 145 110 L 170 82 Z" fill={color} stroke="rgba(6, 78, 59, 0.3)" strokeWidth="1.2" />
-          ) : collar === 'Button-Down Collar (Classic)' ? (
-            <path d="M 200 100 L 155 120 L 175 82 Z" fill={color} stroke="rgba(6, 78, 59, 0.3)" strokeWidth="1.2" />
-          ) : (
-            <path d="M 200 100 L 170 95 L 180 82 Z" fill={color} stroke="rgba(6, 78, 59, 0.3)" strokeWidth="1.2" /> // Band Collar
-          )}
-
-          {/* Right Collar Point */}
-          {collar === 'Spread Collar (Modern)' ? (
-            <path d="M 200 100 L 255 110 L 230 82 Z" fill={color} stroke="rgba(6, 78, 59, 0.3)" strokeWidth="1.2" />
-          ) : collar === 'Button-Down Collar (Classic)' ? (
-            <path d="M 200 100 L 245 120 L 225 82 Z" fill={color} stroke="rgba(6, 78, 59, 0.3)" strokeWidth="1.2" />
-          ) : (
-            <path d="M 200 100 L 230 95 L 220 82 Z" fill={color} stroke="rgba(6, 78, 59, 0.3)" strokeWidth="1.2" /> // Band Collar
-          )}
-
-          {/* Collar Buttons for Button-Down style */}
-          {collar === 'Button-Down Collar (Classic)' && (
-            <>
-              <circle cx="160" cy="116" r="1.2" fill="#333" />
-              <circle cx="240" cy="116" r="1.2" fill="#333" />
-            </>
-          )}
-
-          {/* Shading, Creases & Depth Overlays (3D Effect) */}
-          {/* Armpit left shadow */}
-          <path d="M 140 120 Q 150 160 148 200" fill="none" stroke="rgba(0,0,0,0.06)" strokeWidth="3" />
-          {/* Armpit right shadow */}
-          <path d="M 260 120 Q 250 160 252 200" fill="none" stroke="rgba(0,0,0,0.06)" strokeWidth="3" />
-          {/* Sleeve creases left */}
-          <path d="M 125 150 Q 115 190 105 220" fill="none" stroke="rgba(255,255,255,0.25)" strokeWidth="1.5" />
-          <path d="M 120 165 Q 110 205 102 235" fill="none" stroke="rgba(0,0,0,0.05)" strokeWidth="2" />
-          {/* Sleeve creases right */}
-          <path d="M 275 150 Q 285 190 295 220" fill="none" stroke="rgba(255,255,255,0.25)" strokeWidth="1.5" />
-          <path d="M 280 165 Q 290 205 298 235" fill="none" stroke="rgba(0,0,0,0.05)" strokeWidth="2" />
-          {/* Waist fold highlight */}
-          <path d="M 155 240 Q 200 250 245 240" fill="none" stroke="rgba(255,255,255,0.18)" strokeWidth="3" />
-          <path d="M 155 243 Q 200 253 245 243" fill="none" stroke="rgba(0,0,0,0.04)" strokeWidth="2" />
-        </g>
-      )}
-
-      {/* RENDER GARMENT: BLAZER */}
-      {type === 'blazer' && (
-        <g id="svg-blazer" filter="url(#fabric-depth)">
-          {/* Under-shirt Triangle */}
-          <path d="M 175 90 L 225 90 L 200 170 Z" fill="#fafafa" stroke="#eee" />
-          {/* Under-shirt Tie */}
-          <path d="M 197 90 L 203 90 L 208 150 L 200 165 L 192 150 Z" fill="var(--emerald-deep)" />
-
-          {/* Main Torso */}
-          <path 
-            d="M 132 85 Q 120 180 135 340 L 265 340 Q 280 180 268 85 Z" 
-            fill={`url(#${patternId})`}
-            stroke="rgba(6, 78, 59, 0.3)"
-            strokeWidth="1.5"
-          />
-
-          {/* Left Sleeve */}
-          <path 
-            d="M 132 85 L 80 250 Q 75 270 78 285 L 108 290 L 138 125 Z" 
-            fill={`url(#${patternId})`}
-            stroke="rgba(6, 78, 59, 0.25)"
-            strokeWidth="1.2"
-          />
-          {/* Right Sleeve */}
-          <path 
-            d="M 268 85 L 320 250 Q 325 270 322 285 L 292 290 L 262 125 Z" 
-            fill={`url(#${patternId})`}
-            stroke="rgba(6, 78, 59, 0.25)"
-            strokeWidth="1.2"
-          />
-
-          {/* Center overlap cut (blazer opening) */}
-          <path d="M 200 170 L 175 340 L 225 340 L 200 170" fill="rgba(0, 0, 0, 0.08)" />
-
-          {/* Left Lapel */}
-          <path 
-            d="M 200 90 L 140 180 L 135 155 L 175 85 Z" 
-            fill={`url(#${patternId})`}
-            stroke="rgba(6, 78, 59, 0.35)"
-            strokeWidth="1.5"
-          />
-          {/* Right Lapel */}
-          <path 
-            d="M 200 90 L 260 180 L 265 155 L 225 85 Z" 
-            fill={`url(#${patternId})`}
-            stroke="rgba(6, 78, 59, 0.35)"
-            strokeWidth="1.5"
-          />
-
-          {/* Left Pocket Flap */}
-          <path d="M 142 270 L 175 270 L 175 285 L 142 285 Z" fill={`url(#${patternId})`} stroke="rgba(6, 78, 59, 0.3)" strokeWidth="1" />
-          {/* Right Pocket Flap */}
-          <path d="M 225 270 L 258 270 L 258 285 L 225 285 Z" fill={`url(#${patternId})`} stroke="rgba(6, 78, 59, 0.3)" strokeWidth="1" />
-
-          {/* Breast Pocket */}
-          <path d="M 148 150 L 172 147 L 170 162 L 146 165 Z" fill={`url(#${patternId})`} stroke="rgba(6, 78, 59, 0.35)" strokeWidth="1" />
-          {/* White pocket square tip */}
-          <path d="M 152 149 L 160 140 L 166 148 Z" fill="#ffffff" />
-
-          {/* Golden blazer buttons */}
-          <circle cx="194" cy="225" r="4.5" fill="url(#metallicGold)" stroke="#b5945b" strokeWidth="0.8" />
-          <circle cx="194" cy="255" r="4.5" fill="url(#metallicGold)" stroke="#b5945b" strokeWidth="0.8" />
-          
-          <linearGradient id="metallicGold" x1="0%" y1="0%" x2="100%" y2="100%">
-            <stop offset="0%" stopColor="#fff2cc" />
-            <stop offset="50%" stopColor="#d4af37" />
-            <stop offset="100%" stopColor="#996515" />
-          </linearGradient>
-
-          {/* Shading/Depth overlays */}
-          {/* Lapel shadows */}
-          <path d="M 140 180 L 200 240" stroke="rgba(0,0,0,0.15)" strokeWidth="2.5" fill="none" />
-          <path d="M 260 180 L 200 240" stroke="rgba(0,0,0,0.15)" strokeWidth="2.5" fill="none" />
-          {/* Left sleeve crease */}
-          <path d="M 115 130 Q 95 200 88 245" stroke="rgba(0,0,0,0.06)" strokeWidth="3.5" fill="none" />
-          {/* Right sleeve crease */}
-          <path d="M 285 130 Q 305 200 312 245" stroke="rgba(0,0,0,0.06)" strokeWidth="3.5" fill="none" />
-          {/* Shoulder structured pads highlight */}
-          <path d="M 130 85 L 175 88" stroke="rgba(255,255,255,0.22)" strokeWidth="3.5" fill="none" />
-          <path d="M 270 85 L 225 88" stroke="rgba(255,255,255,0.22)" strokeWidth="3.5" fill="none" />
-        </g>
-      )}
-
-      {/* RENDER GARMENT: KURTA */}
-      {type === 'kurta' && (
-        <g id="svg-kurta" filter="url(#fabric-depth)">
-          {/* Main Body (Longer side slit garment) */}
-          <path 
-            d="M 142 90 Q 130 180 135 320 L 132 400 L 268 400 L 265 320 Q 270 180 258 90 Z" 
-            fill={`url(#${patternId})`}
-            stroke="rgba(6, 78, 59, 0.25)"
-            strokeWidth="1.5"
-          />
-
-          {/* Relaxed Sleeves */}
-          <path 
-            d="M 142 90 L 98 250 Q 94 270 95 285 L 122 290 L 144 135 Z" 
-            fill={`url(#${patternId})`}
-            stroke="rgba(6, 78, 59, 0.2)"
-            strokeWidth="1.2"
-          />
-          <path 
-            d="M 258 90 L 302 250 Q 306 270 305 285 L 278 290 L 256 135 Z" 
-            fill={`url(#${patternId})`}
-            stroke="rgba(6, 78, 59, 0.2)"
-            strokeWidth="1.2"
-          />
-
-          {/* Side Slit cut highlights */}
-          <line x1="135" y1="320" x2="132" y2="400" stroke="rgba(6, 78, 59, 0.4)" strokeWidth="1" />
-          <line x1="265" y1="320" x2="268" y2="400" stroke="rgba(6, 78, 59, 0.4)" strokeWidth="1" />
-
-          {/* Nehru/Mandarin Band Collar */}
-          <path 
-            d="M 172 90 C 172 75, 228 75, 228 90 L 220 95 C 220 85, 180 85, 180 95 Z" 
-            fill={color} 
-            stroke="rgba(6, 78, 59, 0.35)" 
-            strokeWidth="1.2"
-          />
-
-          {/* Short Opening Placket (Ethnic slit) */}
-          <path 
-            d="M 197 95 L 203 95 L 203 190 L 197 190 Z" 
-            fill={`url(#${patternId})`} 
-            stroke="rgba(6, 78, 59, 0.18)" 
-            strokeWidth="1.2"
-          />
-          {/* Small loops/studs on placket */}
-          <circle cx="200" cy="120" r="2.2" fill="#fafafa" stroke="#ccc" strokeWidth="0.5" />
-          <circle cx="200" cy="145" r="2.2" fill="#fafafa" stroke="#ccc" strokeWidth="0.5" />
-          <circle cx="200" cy="170" r="2.2" fill="#fafafa" stroke="#ccc" strokeWidth="0.5" />
-
-          {/* Shading/Creases */}
-          {/* Draping folds at body center */}
-          <path d="M 195 210 Q 200 300 170 380" fill="none" stroke="rgba(0,0,0,0.04)" strokeWidth="3" />
-          <path d="M 205 210 Q 200 300 230 380" fill="none" stroke="rgba(0,0,0,0.04)" strokeWidth="3" />
-          <path d="M 140 240 Q 200 250 260 230" fill="none" stroke="rgba(255,255,255,0.22)" strokeWidth="2.5" />
-          <path d="M 140 243 Q 200 253 260 233" fill="none" stroke="rgba(0,0,0,0.03)" strokeWidth="2.0" />
-          
-          {/* Sleeves loose drapery */}
-          <path d="M 125 180 C 115 220 110 250 102 280" fill="none" stroke="rgba(0,0,0,0.05)" strokeWidth="2" />
-          <path d="M 275 180 C 285 220 290 250 298 280" fill="none" stroke="rgba(0,0,0,0.05)" strokeWidth="2" />
-        </g>
-      )}
-
-      {/* RENDER GARMENT: PANTS */}
-      {type === 'pants' && (
-        <g id="svg-pants" filter="url(#fabric-depth)">
-          {/* Hips waistband area */}
-          <path 
-            d="M 142 160 L 258 160 L 265 220 L 135 220 Z" 
-            fill={`url(#${patternId})`}
-            stroke="rgba(6, 78, 59, 0.25)"
-            strokeWidth="1.5"
-          />
-          {/* Left Leg */}
-          <path 
-            d="M 135 220 L 120 460 L 180 460 L 200 250 Z" 
-            fill={`url(#${patternId})`}
-            stroke="rgba(6, 78, 59, 0.25)"
-            strokeWidth="1.2"
-          />
-          {/* Right Leg */}
-          <path 
-            d="M 265 220 L 280 460 L 220 460 L 200 250 Z" 
-            fill={`url(#${patternId})`}
-            stroke="rgba(6, 78, 59, 0.25)"
-            strokeWidth="1.2"
-          />
-
-          {/* Trouser waist closure detail */}
-          <path d="M 195 160 L 205 160 L 205 210 L 195 210 Z" fill={color} stroke="rgba(6, 78, 59, 0.2)" strokeWidth="1" />
-          <line x1="200" y1="160" x2="200" y2="210" stroke="rgba(6, 78, 59, 0.3)" strokeWidth="1" />
-          <circle cx="200" cy="172" r="2.5" fill="#fafafa" stroke="#999" strokeWidth="0.5" />
-
-          {/* Slash pockets details */}
-          <line x1="148" y1="175" x2="138" y2="210" stroke="rgba(6, 78, 59, 0.4)" strokeWidth="1.2" />
-          <line x1="252" y1="175" x2="262" y2="210" stroke="rgba(6, 78, 59, 0.4)" strokeWidth="1.2" />
-
-          {/* Leg Crease (Sartorial trouser fold line) */}
-          <line x1="150" y1="230" x2="150" y2="455" stroke="rgba(255,255,255,0.4)" strokeWidth="1.2" />
-          <line x1="151" y1="230" x2="151" y2="455" stroke="rgba(0,0,0,0.06)" strokeWidth="1.0" />
-          <line x1="250" y1="230" x2="250" y2="455" stroke="rgba(255,255,255,0.4)" strokeWidth="1.2" />
-          <line x1="251" y1="230" x2="251" y2="455" stroke="rgba(0,0,0,0.06)" strokeWidth="1.0" />
-
-          {/* Shading/Creases */}
-          {/* Inner crotch shadow */}
-          <path d="M 198 220 L 202 220 L 200 260 Z" fill="rgba(0, 0, 0, 0.15)" />
-          {/* Bottom leg hems */}
-          <path d="M 120 460 L 180 460" stroke="rgba(6, 78, 59, 0.5)" strokeWidth="2.5" />
-          <path d="M 220 460 L 280 460" stroke="rgba(6, 78, 59, 0.5)" strokeWidth="2.5" />
-          {/* Soft folds at hips */}
-          <path d="M 152 210 Q 170 220 190 215" fill="none" stroke="rgba(0,0,0,0.05)" strokeWidth="2" />
-          <path d="M 248 210 Q 230 220 210 215" fill="none" stroke="rgba(0,0,0,0.05)" strokeWidth="2" />
-        </g>
-      )}
-    </svg>
-  );
+  return ctx.createPattern(off, 'repeat');
 }
 
-// Stylized background silhouette drawing
-function MannequinSilhouette({ gender }) {
-  return (
-    <svg width="400" height="500" viewBox="0 0 400 500" xmlns="http://www.w3.org/2000/svg" className="tryon-model-silhouette">
-      {/* Mannequin stand */}
-      <line x1="200" y1="360" x2="200" y2="490" stroke="#FFD9BE" strokeWidth="6" strokeLinecap="round" />
-      <path d="M 160 490 L 240 490 L 220 475 L 180 475 Z" fill="#FFD9BE" />
-      <ellipse cx="200" cy="475" rx="30" ry="8" fill="#536360" opacity="0.3" />
+// ─── Image resize ──────────────────────────────────────────────────────────────
+const resizeImage = (dataUrl, maxW = 1280, maxH = 1600) =>
+  new Promise((resolve) => {
+    const img = new Image();
+    img.onload = () => {
+      const scale = Math.min(1, maxW / img.width, maxH / img.height);
+      const w = Math.round(img.width * scale);
+      const h = Math.round(img.height * scale);
+      const canvas = document.createElement('canvas');
+      canvas.width = w; canvas.height = h;
+      canvas.getContext('2d').drawImage(img, 0, 0, w, h);
+      resolve({ dataUrl: canvas.toDataURL('image/jpeg', 0.93), width: w, height: h });
+    };
+    img.src = dataUrl;
+  });
 
-      {/* Neck Cap */}
-      <path d="M 190 85 Q 200 70, 210 85 Z" fill="#FFD9BE" />
-
-      {/* Main Form Torso */}
-      {gender === 'female' ? (
-        <path 
-          d="M 185 85 L 215 85 
-             Q 220 95, 235 110 
-             Q 255 130, 250 160 
-             Q 245 190, 215 220 
-             Q 225 280, 230 350 
-             L 170 350 
-             Q 175 280, 185 220 
-             Q 155 190, 150 160 
-             Q 145 130, 165 110 
-             Q 180 95, 185 85 Z" 
-          fill="vertical-gradient" 
-          stroke="#FFD9BE" 
-          strokeWidth="2.5"
-          style={{ fill: 'url(#mannequinGrad)' }}
-        />
-      ) : gender === 'male' ? (
-        <path 
-          d="M 180 85 L 220 85 
-             Q 230 95, 255 112 
-             Q 265 140, 255 180 
-             Q 240 215, 222 230 
-             Q 228 290, 232 355 
-             L 168 355 
-             Q 172 290, 178 230 
-             Q 160 215, 145 180 
-             Q 135 140, 145 112 
-             Q 170 95, 180 85 Z" 
-          fill="vertical-gradient" 
-          stroke="#FFD9BE" 
-          strokeWidth="2.5"
-          style={{ fill: 'url(#mannequinGrad)' }}
-        />
-      ) : (
-        // Standard Neutral Dress Form
-        <path 
-          d="M 182 85 L 218 85 
-             Q 225 95, 245 110 
-             Q 258 135, 250 170 
-             Q 240 205, 218 225 
-             Q 225 285, 228 350 
-             L 172 350 
-             Q 175 285, 182 225 
-             Q 160 205, 150 170 
-             Q 142 135, 155 110 
-             Q 175 95, 182 85 Z" 
-          fill="vertical-gradient" 
-          stroke="#FFD9BE" 
-          strokeWidth="2.5"
-          style={{ fill: 'url(#mannequinGrad)' }}
-        />
-      )}
-
-      {/* Soft gradient fill for high-end look */}
-      <defs>
-        <linearGradient id="mannequinGrad" x1="0%" y1="0%" x2="0%" y2="100%">
-          <stop offset="0%" stopColor="#FFD9BE" />
-          <stop offset="60%" stopColor="#FFD9BE" />
-          <stop offset="100%" stopColor="#FFD9BE" />
-        </linearGradient>
-      </defs>
-    </svg>
-  );
-}
-
+// ─────────────────────────────────────────────────────────────────────────────
 export default function AITryOn() {
   const { openBooking } = useBooking();
 
-  // Workbench State
-  const [selectedModel, setSelectedModel] = useState('neutral');
-  const [uploadedImage, setUploadedImage] = useState(null);
-  const [uploadedImageName, setUploadedImageName] = useState('');
-  const [selectedGarment, setSelectedGarment] = useState('shirt');
-  const [selectedFabric, setSelectedFabric] = useState(FABRICS[0]);
-  
-  // Custom Detail Selectors
-  const [selectedCollar, setSelectedCollar] = useState(COLLARS[0].name);
-  const [selectedSleeve, setSelectedSleeve] = useState(SLEEVES[0].name);
+  const [uploaded,   setUploaded]   = useState(null);
+  const [selFabric,  setSelFabric]  = useState(FABRICS[0]);
+  const [selVariant, setSelVariant] = useState(null);
 
-  // Manual garment adjustment sliders
-  const [translationX, setTranslationX] = useState(0);
-  const [translationY, setTranslationY] = useState(0);
-  const [scale, setScale] = useState(1);
-  const [rotation, setRotation] = useState(0);
-  const [opacity, setOpacity] = useState(1);
+  const [processing, setProcessing] = useState(false);
+  const [stepIdx,    setStepIdx]    = useState(0);
+  const [method,     setMethod]     = useState('');
 
-  // Processing state simulation
-  const [isProcessing, setIsProcessing] = useState(false);
-  const [progressStep, setProgressStep] = useState(0);
-  const [simulationApplied, setSimulationApplied] = useState(false);
-  const [beforeMode, setBeforeMode] = useState(false);
-
-  // Gemini API states
+  const [resultImg,   setResultImg]   = useState(null);
   const [fitAnalysis, setFitAnalysis] = useState('');
   const [styleAdvice, setStyleAdvice] = useState('');
-  const [geminiSvgContent, setGeminiSvgContent] = useState('');
-  const [apiKeyWarning, setApiKeyWarning] = useState('');
+  const [modelUsed,   setModelUsed]   = useState('');
+  const [error,       setError]       = useState('');
+  const [showOrig,    setShowOrig]    = useState(false);
 
-  const fileInputRef = useRef(null);
+  const fileRef   = useRef(null);
+  const timerRef  = useRef(null);
 
-  // Automatically adjust default scales depending on the garment
-  useEffect(() => {
-    handleResetAdjustments();
-  }, [selectedGarment, selectedModel, uploadedImage]);
+  const fabric = selVariant
+    ? { ...selFabric, color: selVariant.color, secondColor: selVariant.secondColor, name: `${selFabric.name} — ${selVariant.name}` }
+    : selFabric;
 
-  const handleResetAdjustments = () => {
-    // Trousers are naturally placed lower on mannequins
-    if (selectedGarment === 'pants') {
-      setTranslationX(0);
-      setTranslationY(40);
-      setScale(0.95);
-    } else {
-      setTranslationX(0);
-      setTranslationY(0);
-      setScale(1.0);
-    }
-    setRotation(0);
-    setOpacity(1);
-  };
+  // ── File upload ───────────────────────────────────────────────────────────────
+  const handleFile = useCallback(async (file) => {
+    if (!file?.type?.startsWith('image/')) { setError('Please upload a JPG, PNG, or WEBP image.'); return; }
+    if (file.size > 20 * 1024 * 1024) { setError('Image too large — please use a file under 20 MB.'); return; }
+    setError(''); setResultImg(null); setFitAnalysis(''); setStyleAdvice(''); setMethod('');
+    const reader = new FileReader();
+    reader.onload = async (ev) => {
+      const { dataUrl, width, height } = await resizeImage(ev.target.result);
+      setUploaded({ dataUrl, width, height, name: file.name });
+    };
+    reader.readAsDataURL(file);
+  }, []);
 
-  // Process the Image Upload
-  const handleImageUpload = (e) => {
-    const file = e.target.files[0];
-    if (file) {
-      setUploadedImageName(file.name);
-      const reader = new FileReader();
-      reader.onload = (event) => {
-        setUploadedImage(event.target.result);
-        setSelectedModel(''); // Clear presets
-        setSimulationApplied(false);
-      };
-      reader.readAsDataURL(file);
-    }
-  };
-
-  const triggerFileSelect = () => {
-    fileInputRef.current.click();
-  };
-
-  const handleClearUpload = (e) => {
+  const onFileChange = (e) => handleFile(e.target.files?.[0]);
+  const onDrop = (e) => { e.preventDefault(); handleFile(e.dataTransfer.files?.[0]); };
+  const onClear = (e) => {
     e.stopPropagation();
-    setUploadedImage(null);
-    setUploadedImageName('');
-    setSelectedModel('neutral');
-    setSimulationApplied(false);
+    setUploaded(null); setResultImg(null); setFitAnalysis(''); setStyleAdvice(''); setError(''); setMethod('');
+    if (fileRef.current) fileRef.current.value = '';
   };
 
-  // Run the premium AI simulation scan using Gemini API
-  const handleRunSimulation = async () => {
-    setIsProcessing(true);
-    setProgressStep(0);
-    setSimulationApplied(false);
-    setApiKeyWarning('');
+  // ── Generate ──────────────────────────────────────────────────────────────────
+  const handleSynthesize = async () => {
+    if (!uploaded) { setError('Please upload your photo first.'); return; }
+    setProcessing(true); setStepIdx(0);
+    setResultImg(null); setError(''); setFitAnalysis(''); setStyleAdvice(''); setMethod('');
 
-    const pInterval = setInterval(() => {
-      setProgressStep(prev => Math.min(3, prev + 1));
-    }, 900);
+    let s = 0;
+    timerRef.current = setInterval(() => { s = Math.min(PROGRESS.length - 1, s + 1); setStepIdx(s); }, 3000);
 
     try {
-      const response = await fetch('/api/tryon/generate', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
+      const res = await fetch('/api/tryon/generate', {
+        method: 'POST', headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
-          image: uploadedImage || null,
-          fabric: {
-            id: selectedFabric.id,
-            name: selectedFabric.name,
-            color: selectedFabric.color,
-            patternType: selectedFabric.patternType,
-            origin: selectedFabric.origin,
-            weight: selectedFabric.weight
-          },
-          garment: selectedGarment,
-          collar: selectedCollar,
-          sleeve: selectedSleeve
-        })
+          image:      uploaded.dataUrl,
+          imageWidth: uploaded.width,
+          imageHeight: uploaded.height,
+          fabric: { id: fabric.id, name: fabric.name, color: fabric.color, secondColor: fabric.secondColor || fabric.color, patternType: fabric.patternType, origin: fabric.origin, weight: fabric.weight },
+        }),
       });
+      const data = await res.json();
 
-      const data = await response.json();
-      clearInterval(pInterval);
+      if (!data.success) { setError(data.message || 'AI generation failed. Please try again.'); return; }
 
-      if (data.success) {
-        setFitAnalysis(data.fitAnalysis);
-        setStyleAdvice(data.styleAdvice);
-        if (uploadedImage) {
-          setGeminiSvgContent(data.svgContent);
-        } else {
-          setGeminiSvgContent('');
-        }
-        if (data.message) {
-          setApiKeyWarning(data.message);
-        }
-        setSimulationApplied(true);
-        setBeforeMode(false);
+      setFitAnalysis(data.fitAnalysis || '');
+      setStyleAdvice(data.styleAdvice || '');
+      setModelUsed(data.modelUsed || '');
+
+      if (data.method === 'ai-image' && data.resultImage) {
+        setResultImg(data.resultImage);
+        setMethod('ai-image');
+
+      } else if (data.method === 'canvas-composite' && data.shirtBox) {
+        setStepIdx(2);
+        const composited = await applyFabricComposite({
+          imageDataUrl: uploaded.dataUrl,
+          shirtBox:  data.shirtBox,
+          faceBox:   data.faceBox,
+          handsBox:  data.handsBox,
+          fabric,
+        });
+        setResultImg(composited);
+        setMethod('canvas-composite');
       } else {
-        alert("AI Try-On failed: " + data.message);
+        setError('Unexpected server response. Please try again.');
       }
-    } catch (err) {
-      clearInterval(pInterval);
-      console.error(err);
-      alert("Unable to connect to AI styling engine.");
+    } catch {
+      setError('Network error. Please check your connection and try again.');
     } finally {
-      setIsProcessing(false);
+      clearInterval(timerRef.current);
+      setProcessing(false);
     }
   };
 
-  // Pre-fill booking details and trigger the booking modal
-  const handleBookWithLook = () => {
-    const customNotes = `AI Try-On custom request:
-- Garment: ${GARMENTS.find(g => g.id === selectedGarment)?.name}
-- Fabric: ${selectedFabric.name} (Origin: ${selectedFabric.origin}, Weight: ${selectedFabric.weight})
-- Style Details: ${selectedCollar} / ${selectedSleeve}
-- Custom Alignments Used: Scale ${scale.toFixed(2)}, Position (X:${translationX}, Y:${translationY})
-- Simulated image has been checked by user.`;
-
-    localStorage.setItem('tailors2u_booking_notes', customNotes);
-    openBooking('Custom Tailoring Appointment');
+  const handleDownload = () => {
+    if (!resultImg) return;
+    const a = document.createElement('a');
+    a.href = resultImg; a.download = `tailors2u-tryon-${Date.now()}.jpg`; a.click();
   };
 
-  // Status message mappings for the spinner overlay
-  const progressMessages = [
-    'AI Engine: Initializing silhouette analysis...',
-    'Pose Detection: Mapping joint anchor markers...',
-    'Texture Synthesizer: Fitting fabric drape to folds...',
-    'Finalizing: Balancing light shadows & seams...'
-  ];
+  const displayImg = showOrig ? uploaded?.dataUrl : (resultImg || uploaded?.dataUrl);
+
+  // ─── Styles ───────────────────────────────────────────────────────────────────
+  const css = `
+    .tro{padding:2.8rem 1.4rem 5rem;max-width:1300px;margin:0 auto}
+    .tro h1{font-size:clamp(1.9rem,4vw,3.1rem);font-weight:800;color:#1E2D27;letter-spacing:-.025em}
+    .tro-sub{color:#4A5B55;font-size:1.05rem;line-height:1.65;max-width:610px;margin-top:.5rem}
+    .tro-grid{display:grid;grid-template-columns:1fr 1.08fr;gap:2.2rem;margin-top:2.2rem;align-items:start}
+    @media(max-width:880px){.tro-grid{grid-template-columns:1fr}}
+
+    /* Preview */
+    .tro-pv{background:#fff;border-radius:22px;box-shadow:0 4px 30px rgba(6,78,59,.09);overflow:hidden;position:sticky;top:88px}
+    .tro-pvh{padding:1.1rem 1.4rem;border-bottom:1px solid #edeae4;display:flex;align-items:center;justify-content:space-between}
+    .tro-pvt{font-weight:700;color:#1E2D27;font-size:.97rem}
+    .tro-pill{font-size:.68rem;font-weight:700;letter-spacing:.07em;text-transform:uppercase;border-radius:999px;padding:3px 11px}
+    .tro-pill-live{background:#e8f5ee;color:#064e3b}
+    .tro-pill-ai{background:#064e3b;color:#a7f3d0}
+    .tro-pill-cv{background:#e0e7ff;color:#3730a3}
+    .tro-vp{position:relative;width:100%;aspect-ratio:3/4;background:#f7f3ed;display:flex;align-items:center;justify-content:center;overflow:hidden}
+    .tro-vp img{width:100%;height:100%;object-fit:cover;transition:opacity .3s}
+    .tro-empty{display:flex;flex-direction:column;align-items:center;gap:.7rem;text-align:center;padding:2rem}
+    .tro-empty-icon{font-size:3.2rem;opacity:.3}
+    .tro-empty-text{font-size:.92rem;color:#8a9a94;font-weight:500}
+
+    /* Processing overlay */
+    .tro-ov{position:absolute;inset:0;background:rgba(20,40,30,.84);backdrop-filter:blur(5px);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1.1rem;z-index:10}
+    .tro-spin{width:50px;height:50px;border-radius:50%;border:3px solid rgba(255,255,255,.15);border-top-color:#6ee7b7;animation:spin .75s linear infinite}
+    @keyframes spin{to{transform:rotate(360deg)}}
+    .tro-si{font-size:1.7rem;animation:pulse 1.1s ease-in-out infinite}
+    @keyframes pulse{0%,100%{transform:scale(1);opacity:1}50%{transform:scale(1.12);opacity:.75}}
+    .tro-st{color:rgba(255,255,255,.88);font-size:.88rem;font-weight:500;text-align:center;max-width:210px}
+    .tro-sl{color:#6ee7b7;font-size:.75rem;letter-spacing:.08em}
+    .tro-hold{position:absolute;bottom:13px;right:13px;background:rgba(255,255,255,.9);backdrop-filter:blur(6px);border-radius:999px;padding:5px 13px;font-size:.73rem;font-weight:600;color:#1E2D27;box-shadow:0 2px 8px rgba(0,0,0,.12)}
+
+    /* Compare bar */
+    .tro-cbar{display:flex;align-items:center;gap:.8rem;padding:.75rem 1.2rem;background:#f9f7f2;border-top:1px solid #edeae4}
+    .tro-cb{flex:1;padding:.5rem 0;border-radius:9px;font-size:.8rem;font-weight:700;cursor:pointer;border:none;transition:all .2s}
+    .tro-cb-dl{background:#064e3b;color:#fff}.tro-cb-dl:hover{background:#053d2f}
+    .tro-cb-bfr{background:transparent;color:#4A5B55;border:1.5px solid #c8c0b4}.tro-cb-bfr:hover{border-color:#064e3b;color:#064e3b}
+    .tro-cb:disabled{opacity:.4;cursor:not-allowed}
+    .tro-cbar-hint{font-size:.78rem;color:#8a9a94;width:100%;text-align:center}
+
+    /* Error */
+    .tro-err{margin:.7rem 1.1rem;padding:.7rem 1rem;background:#fff1f0;border:1px solid #fecaca;border-radius:10px;color:#991b1b;font-size:.83rem;font-weight:500;display:flex;gap:.5rem;align-items:flex-start}
+
+    /* Controls */
+    .tro-cols{display:flex;flex-direction:column;gap:1.6rem}
+    .tro-card{background:#fff;border-radius:18px;box-shadow:0 2px 14px rgba(6,78,59,.06);overflow:hidden}
+    .tro-ch{padding:1rem 1.3rem;border-bottom:1px solid #f0ece6;display:flex;align-items:center;gap:.8rem}
+    .tro-num{width:28px;height:28px;border-radius:50%;background:#064e3b;color:#fff;font-size:.75rem;font-weight:800;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+    .tro-num-ok{background:#10b981}
+    .tro-ct{font-weight:700;font-size:.95rem;color:#1E2D27}
+    .tro-cs{font-size:.77rem;color:#8a9a94;margin-top:1px}
+    .tro-cb2{padding:1.1rem 1.3rem}
+
+    /* Upload */
+    .tro-up{border:2px dashed #c8c0b4;border-radius:13px;cursor:pointer;transition:all .22s;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:.55rem;min-height:95px;padding:1.2rem;text-align:center}
+    .tro-up:hover{border-color:#064e3b;background:#f2faf6}
+    .tro-up-ok{display:flex;align-items:center;gap:.55rem}
+    .tro-up-check{color:#10b981;font-size:1.1rem}
+    .tro-up-name{font-size:.84rem;font-weight:600;color:#1E2D27}
+    .tro-up-rm{font-size:.73rem;color:#dc2626;cursor:pointer;text-decoration:underline;margin-left:.3rem}
+    .tro-up-icon{font-size:1.7rem}
+    .tro-up-lbl{font-size:.86rem;font-weight:600;color:#064e3b}
+    .tro-up-hint{font-size:.73rem;color:#8a9a94}
+
+    /* Fabric grid */
+    .tro-fg{display:grid;grid-template-columns:1fr 1fr;gap:.65rem}
+    .tro-fb{border:2px solid #edeae4;border-radius:12px;padding:.75rem .85rem;cursor:pointer;background:#fff;text-align:left;transition:all .2s;position:relative;overflow:hidden}
+    .tro-fb:hover{border-color:#064e3b;transform:translateY(-1px);box-shadow:0 4px 12px rgba(6,78,59,.11)}
+    .tro-fb.active{border-color:#064e3b;background:#f0faf5;box-shadow:0 0 0 3px rgba(6,78,59,.1)}
+    .tro-fs{width:100%;height:26px;border-radius:6px;margin-bottom:.5rem;border:1px solid rgba(0,0,0,.08)}
+    .tro-fn{font-size:.78rem;font-weight:700;color:#1E2D27;line-height:1.2}
+    .tro-fm{font-size:.7rem;color:#8a9a94;margin-top:2px}
+    .tro-fbadge{position:absolute;top:5px;right:5px;font-size:.58rem;font-weight:700;letter-spacing:.04em;text-transform:uppercase;padding:2px 6px;border-radius:999px;background:#064e3b;color:#fff}
+
+    /* Variants */
+    .tro-vars{display:flex;flex-wrap:wrap;gap:.35rem;margin-top:.8rem}
+    .tro-var-lbl{width:100%;font-size:.7rem;font-weight:700;color:#8a9a94;margin-bottom:.15rem;letter-spacing:.06em;text-transform:uppercase}
+    .tro-vr{display:flex;align-items:center;gap:.3rem;padding:.26rem .65rem;border-radius:999px;border:1.5px solid #c8c0b4;cursor:pointer;font-size:.7rem;font-weight:600;background:#fff;transition:all .18s}
+    .tro-vr:hover{border-color:#064e3b}
+    .tro-vr.active{border-color:#064e3b;background:#064e3b;color:#fff}
+    .tro-vr-dot{width:9px;height:9px;border-radius:50%;flex-shrink:0;border:1px solid rgba(0,0,0,.12)}
+
+    /* Buttons */
+    .tro-bprim{width:100%;padding:.92rem;border:none;border-radius:13px;cursor:pointer;background:linear-gradient(135deg,#064e3b,#0b7a5a);color:#fff;font-size:.94rem;font-weight:700;transition:all .22s;display:flex;align-items:center;justify-content:center;gap:.45rem}
+    .tro-bprim:hover:not(:disabled){background:linear-gradient(135deg,#053d2f,#09694c);transform:translateY(-1px);box-shadow:0 6px 18px rgba(6,78,59,.28)}
+    .tro-bprim:disabled{opacity:.5;cursor:not-allowed;transform:none}
+    .tro-bout{width:100%;padding:.8rem;border:2px solid #064e3b;border-radius:13px;cursor:pointer;background:transparent;color:#064e3b;font-size:.88rem;font-weight:600;transition:all .2s;display:flex;align-items:center;justify-content:center;gap:.45rem}
+    .tro-bout:hover{background:#f0faf5}
+    .tro-bghost{width:100%;padding:.75rem;border:1.5px solid #c8c0b4;border-radius:13px;cursor:pointer;background:transparent;color:#4A5B55;font-size:.86rem;font-weight:600;transition:all .18s;display:flex;align-items:center;justify-content:center;gap:.45rem}
+    .tro-bghost:hover{border-color:#064e3b;color:#064e3b}
+    .tro-acts{display:flex;flex-direction:column;gap:.65rem}
+    .tro-hint{font-size:.75rem;color:#8a9a94;text-align:center;margin-top:.5rem}
+
+    /* Analysis */
+    .tro-an{background:#fff;border-radius:18px;box-shadow:0 2px 14px rgba(6,78,59,.06);padding:1.3rem}
+    .tro-ant{font-weight:700;font-size:.93rem;color:#1E2D27;margin-bottom:.9rem;display:flex;align-items:center;gap:.4rem}
+    .tro-anl{font-size:.7rem;font-weight:700;letter-spacing:.07em;text-transform:uppercase;color:#064e3b;margin-bottom:.35rem}
+    .tro-anx{font-size:.83rem;color:#4A5B55;line-height:1.62;margin-bottom:.9rem}
+    .tro-mod{display:inline-flex;align-items:center;gap:.3rem;font-size:.68rem;color:#8a9a94;background:#f5f0ea;border-radius:6px;padding:2px 7px}
+    .tro-meth{display:inline-flex;align-items:center;gap:.3rem;font-size:.68rem;border-radius:6px;padding:2px 8px;margin-left:6px}
+    .tro-meth-ai{background:#d1fae5;color:#065f46}
+    .tro-meth-cv{background:#e0e7ff;color:#3730a3}
+  `;
 
   return (
     <div className="porcelain-theme">
-      {/* INTERACTIVE WORKBENCH */}
-      <section className="section" style={{ paddingTop: '3rem' }}>
-        <div style={{ maxWidth: 'var(--max-width)', margin: '0 auto 3rem auto' }}>
-          <h1 style={{ fontSize: '2.8rem', marginBottom: '0.8rem', color: '#1E2D27' }}>Sartorial AI Try-On</h1>
-          <p style={{ color: '#4A5B55', fontSize: '1.1rem', maxWidth: '750px', lineHeight: '1.6' }}>
-            Upload your personal photo or select a studio mannequin to instantly preview luxury fabrics, premium suit cuts, shirting outlines, and traditional kurtas on yourself.
-          </p>
-        </div>
-        <div className="tryon-container">
-          
-          {/* LEFT COLUMN: VIEWPORT PREVIEW */}
-          <div className="tryon-preview-card">
-            <h3 style={{ marginBottom: '1.2rem', fontSize: '1.4rem', borderBottom: '1px solid var(--beige-border)', paddingBottom: '0.8rem' }}>
-              Virtual Fitting Room
-            </h3>
-            
-            <div className="tryon-viewport">
-              {/* Animated scanline during AI generation */}
-              {isProcessing && <div className="tryon-scanline"></div>}
-              {isProcessing && <div className="tryon-scan-overlay"></div>}
+      <style>{css}</style>
+      <div className="tro">
+        <h1>Sartorial AI Try-On</h1>
+        <p className="tro-sub">
+          Upload your photo, select a fabric — Gemini AI maps the new fabric to your shirt while keeping your face, hands, and background completely untouched.
+        </p>
 
-              {/* Dynamic Loading Overlay */}
-              {isProcessing && (
-                <div className="tryon-ai-status-overlay">
-                  <div className="tryon-ai-spinner"></div>
-                  <h4 style={{ color: 'var(--beige-gold)', fontSize: '1.2rem', fontWeight: 'bold' }}>Mapping Custom Outfit...</h4>
-                  <div className="tryon-status-step">{progressMessages[progressStep]}</div>
+        <div className="tro-grid">
+
+          {/* ── Preview ─────────────────────────────────────────────────── */}
+          <div>
+            <div className="tro-pv">
+              <div className="tro-pvh">
+                <span className="tro-pvt">Virtual Fitting Room</span>
+                {!resultImg && <span className="tro-pill tro-pill-live">Live Preview</span>}
+                {resultImg && method === 'ai-image'         && <span className="tro-pill tro-pill-ai">✨ Full AI</span>}
+                {resultImg && method === 'canvas-composite' && <span className="tro-pill tro-pill-cv">🎨 Composited</span>}
+              </div>
+
+              <div className="tro-vp">
+                {!uploaded && (
+                  <div className="tro-empty">
+                    <div className="tro-empty-icon">👔</div>
+                    <div className="tro-empty-text">Upload your photo<br/>to begin the virtual try-on</div>
+                  </div>
+                )}
+                {uploaded && <img src={displayImg} alt="Try-on preview" style={{ opacity: processing ? 0.2 : 1 }} />}
+
+                {processing && (
+                  <div className="tro-ov">
+                    <div className="tro-spin" />
+                    <div className="tro-si">{PROGRESS[stepIdx].icon}</div>
+                    <div className="tro-st">{PROGRESS[stepIdx].text}</div>
+                    <div className="tro-sl">Gemini AI · Canvas Engine</div>
+                  </div>
+                )}
+                {resultImg && !processing && <div className="tro-hold">👁 Hold to compare</div>}
+              </div>
+
+              {uploaded && (
+                <div className="tro-cbar">
+                  {resultImg ? (
+                    <>
+                      <button className="tro-cb tro-cb-bfr" disabled={processing}
+                        onMouseDown={() => setShowOrig(true)} onMouseUp={() => setShowOrig(false)}
+                        onMouseLeave={() => setShowOrig(false)} onTouchStart={() => setShowOrig(true)} onTouchEnd={() => setShowOrig(false)}>
+                        Before
+                      </button>
+                      <button className="tro-cb tro-cb-dl" onClick={handleDownload} disabled={processing}>
+                        ⬇ Download
+                      </button>
+                    </>
+                  ) : (
+                    <span className="tro-cbar-hint">Click "Generate" to see your result →</span>
+                  )}
                 </div>
               )}
 
-              {/* Viewport Canvas Layer */}
-              <div className="tryon-canvas-container">
-                {/* 1. Background image (Uploaded User image OR preset mannequin silhouette) */}
-                {uploadedImage ? (
-                  <img 
-                    src={uploadedImage} 
-                    alt="User photo" 
-                    className="tryon-model-image"
-                    style={{ opacity: beforeMode ? 1 : 0.85 }}
-                  />
-                ) : (
-                  <MannequinSilhouette gender={selectedModel ? PRESETS.find(p => p.id === selectedModel)?.gender : 'neutral'} />
-                )}
+              {error && <div className="tro-err"><span>⚠️</span><span>{error}</span></div>}
+            </div>
+          </div>
 
-                {/* 2. Garment texture mapping overlay */}
-                {(!beforeMode && (simulationApplied || !uploadedImage)) && (
-                  <div className="tryon-garment-overlay">
-                    {geminiSvgContent ? (
-                      <svg 
-                        width="400" 
-                        height="500" 
-                        viewBox="0 0 400 500" 
-                        style={{
-                          transform: `translate(${translationX}px, ${translationY}px) rotate(${rotation}deg) scale(${scale})`,
-                          opacity: opacity,
-                          transformOrigin: 'center center',
-                          transition: 'transform 0.1s ease-out'
-                        }}
-                        xmlns="http://www.w3.org/2000/svg"
-                      >
-                        <defs>
-                          {/* Dynamic Texture Patterns depending on selected fabric */}
-                          <pattern id="tryon-pattern-active" width="16" height="16" patternUnits="userSpaceOnUse">
-                            <rect width="16" height="16" fill={selectedFabric.color} />
-                            {selectedFabric.patternType === 'cotton' && (
-                              <>
-                                <circle cx="4" cy="4" r="1.5" fill="rgba(255, 255, 255, 0.45)" />
-                                <circle cx="12" cy="12" r="1.5" fill="rgba(255, 255, 255, 0.45)" />
-                              </>
-                            )}
-                            {selectedFabric.patternType === 'linen' && (
-                              <>
-                                <line x1="0" y1="2" x2="8" y2="2" stroke="rgba(255, 255, 255, 0.4)" strokeWidth="0.8" />
-                                <line x1="2" y1="0" x2="2" y2="8" stroke="rgba(255, 255, 255, 0.4)" strokeWidth="0.8" />
-                              </>
-                            )}
-                            {selectedFabric.patternType === 'silk' && (
-                              <>
-                                <path d="M0,16 L16,0 M-4,4 L4,-4 M12,20 L20,12" stroke="rgba(255, 255, 255, 0.22)" strokeWidth="3" />
-                              </>
-                            )}
-                            {selectedFabric.patternType === 'wool' && (
-                              <>
-                                <path d="M0,0 L8,8 L16,0 M0,16 L8,8 L16,16" stroke="rgba(255, 255, 255, 0.35)" strokeWidth="0.8" fill="none" />
-                              </>
-                            )}
-                          </pattern>
-                        </defs>
-                        <g dangerouslySetInnerHTML={{ __html: geminiSvgContent }} />
-                      </svg>
-                    ) : (
-                      <GarmentSVG
-                        type={selectedGarment}
-                        fabric={selectedFabric}
-                        collar={selectedCollar}
-                        sleeve={selectedSleeve}
-                        scale={scale}
-                        rotation={rotation}
-                        translation={{ x: translationX, y: translationY }}
-                        opacity={opacity}
-                      />
-                    )}
+          {/* ── Controls ─────────────────────────────────────────────────── */}
+          <div className="tro-cols">
+
+            {/* Step 1 */}
+            <div className="tro-card">
+              <div className="tro-ch">
+                <span className={`tro-num ${uploaded ? 'tro-num-ok' : ''}`}>{uploaded ? '✓' : '1'}</span>
+                <div><div className="tro-ct">Upload Your Photo</div><div className="tro-cs">Clear, front-facing portrait or full-body photo works best.</div></div>
+              </div>
+              <div className="tro-cb2">
+                <input ref={fileRef} type="file" accept="image/*" onChange={onFileChange} style={{ display: 'none' }} />
+                <div className="tro-up" onClick={() => fileRef.current?.click()} onDrop={onDrop} onDragOver={e => e.preventDefault()}>
+                  {uploaded ? (
+                    <div className="tro-up-ok">
+                      <span className="tro-up-check">✓</span>
+                      <span className="tro-up-name">{uploaded.name}</span>
+                      <span className="tro-up-rm" onClick={onClear}>Remove</span>
+                    </div>
+                  ) : (
+                    <><div className="tro-up-icon">📸</div><div className="tro-up-lbl">Click to upload or drag & drop</div><div className="tro-up-hint">JPG, PNG, WEBP — up to 20 MB</div></>
+                  )}
+                </div>
+              </div>
+            </div>
+
+            {/* Step 2 */}
+            <div className="tro-card">
+              <div className="tro-ch">
+                <span className="tro-num" style={{ background: '#10b981' }}>2</span>
+                <div><div className="tro-ct">Select Fabric</div><div className="tro-cs">Premium mill-imported fabrics with accurate colour rendering.</div></div>
+              </div>
+              <div className="tro-cb2">
+                <div className="tro-fg">
+                  {FABRICS.map(f => (
+                    <button key={f.id} className={`tro-fb ${selFabric.id === f.id ? 'active' : ''}`}
+                      onClick={() => { setSelFabric(f); setSelVariant(null); setResultImg(null); setError(''); }}>
+                      {f.badge && <span className="tro-fbadge">{f.badge}</span>}
+                      <div className="tro-fs" style={{ backgroundColor: f.color }} />
+                      <div className="tro-fn">{f.name}</div>
+                      <div className="tro-fm">{f.origin} · {f.weight}</div>
+                    </button>
+                  ))}
+                </div>
+                {selFabric.variants && (
+                  <div className="tro-vars">
+                    <div className="tro-var-lbl">Colour Variant</div>
+                    {selFabric.variants.map(v => (
+                      <button key={v.id} className={`tro-vr ${selVariant?.id === v.id ? 'active' : ''}`}
+                        onClick={() => { setSelVariant(selVariant?.id === v.id ? null : v); setResultImg(null); }}>
+                        <span className="tro-vr-dot" style={{ background: v.color }} />{v.name}
+                      </button>
+                    ))}
                   </div>
                 )}
               </div>
-
-              {/* Before/After Toggle Hook (only when simulation has run once or upload image is used) */}
-              {simulationApplied && (
-                <button 
-                  className="tryon-toggle-btn"
-                  onMouseDown={() => setBeforeMode(true)}
-                  onMouseUp={() => setBeforeMode(false)}
-                  onTouchStart={() => setBeforeMode(true)}
-                  onTouchEnd={() => setBeforeMode(false)}
-                  title="Click and hold to see your original photo without fabrics"
-                >
-                  <span>👁</span> Hold to View Original
-                </button>
-              )}
             </div>
 
-            {/* Hint text */}
-            <p style={{ fontSize: '0.85rem', color: 'var(--text-muted)', textAlign: 'center', marginTop: '1rem', fontStyle: 'italic' }}>
-              {uploadedImage 
-                ? "💡 Use the 'Adjust Fit' sliders in Step 2 to scale, shift, or rotate the garment perfectly over your photo."
-                : "💡 Preset mannequins align automatically. Select garments and fabrics in the panels to customize your look."}
-            </p>
-
-            {/* Gemini AI Sartorial Analysis Panel */}
-            {simulationApplied && (fitAnalysis || styleAdvice) && (
-              <div 
-                style={{ 
-                  marginTop: '1.5rem', 
-                  padding: '1.2rem', 
-                  backgroundColor: 'rgba(6, 78, 59, 0.05)', 
-                  border: '1px solid rgba(255, 217, 190, 0.2)', 
-                  borderRadius: 'var(--radius-md)' 
-                }}
-              >
-                <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', marginBottom: '0.8rem' }}>
-                  <span style={{ fontSize: '1.2rem' }}>✨</span>
-                  <h4 style={{ margin: 0, fontSize: '1.05rem', color: 'var(--emerald-deep)', fontWeight: '600' }}>
-                    Gemini AI Sartorial Analysis
-                  </h4>
+            {/* Step 3 */}
+            <div className="tro-card">
+              <div className="tro-ch">
+                <span className="tro-num">3</span>
+                <div><div className="tro-ct">Generate AI Try-On</div><div className="tro-cs">Gemini maps the fabric to your garment silhouette precisely.</div></div>
+              </div>
+              <div className="tro-cb2">
+                <div className="tro-acts">
+                  <button className="tro-bprim" onClick={handleSynthesize} disabled={processing || !uploaded}>
+                    {processing ? <><span>⏳</span>Processing…</> : resultImg ? <><span>🔄</span>Regenerate</> : <><span>✨</span>Generate AI Try-On</>}
+                  </button>
+                  {resultImg && <>
+                    <button className="tro-bout" onClick={handleDownload}><span>⬇️</span>Download Result</button>
+                    <button className="tro-bghost" onClick={() => openBooking(`Custom Tailoring — ${fabric.name}`)}>📅 Book Fitting for This Look</button>
+                  </>}
                 </div>
-                
-                {apiKeyWarning && (
-                  <p style={{ fontSize: '0.8rem', color: '#b45309', margin: '0 0 0.8rem 0', fontWeight: '500' }}>
-                    ⚠️ {apiKeyWarning}
-                  </p>
-                )}
+                {!uploaded && <p className="tro-hint">Upload your photo in Step 1 to enable generation.</p>}
+              </div>
+            </div>
 
-                <div style={{ marginBottom: '1rem' }}>
-                  <strong style={{ fontSize: '0.85rem', color: 'var(--emerald-deep)', display: 'block', marginBottom: '0.2rem', textTransform: 'uppercase', letterSpacing: '0.5px' }}>
-                    Fit & Posture Estimation
-                  </strong>
-                  <p style={{ margin: 0, fontSize: '0.9rem', color: '#4A5B55', lineHeight: '1.5' }}>
-                    {fitAnalysis}
-                  </p>
-                </div>
-
+            {/* Analysis */}
+            {(fitAnalysis || styleAdvice) && (
+              <div className="tro-an">
+                <div className="tro-ant">✦ Gemini Sartorial Analysis</div>
+                {fitAnalysis && <><div className="tro-anl">Fit & Posture</div><div className="tro-anx">{fitAnalysis}</div></>}
+                {styleAdvice && <><div className="tro-anl">Styling Advice</div><div className="tro-anx">{styleAdvice}</div></>}
                 <div>
-                  <strong style={{ fontSize: '0.85rem', color: 'var(--emerald-deep)', display: 'block', marginBottom: '0.2rem', textTransform: 'uppercase', letterSpacing: '0.5px' }}>
-                    Bespoke Styling Advice
-                  </strong>
-                  <p style={{ margin: 0, fontSize: '0.9rem', color: '#4A5B55', lineHeight: '1.5' }}>
-                    {styleAdvice}
-                  </p>
+                  {modelUsed && <span className="tro-mod">🤖 {modelUsed}</span>}
+                  {method === 'ai-image'         && <span className="tro-meth tro-meth-ai">✨ Full AI Image</span>}
+                  {method === 'canvas-composite' && <span className="tro-meth tro-meth-cv">🎨 AI + Canvas</span>}
                 </div>
               </div>
             )}
           </div>
-
-          {/* RIGHT COLUMN: CONTROLS */}
-          <div className="tryon-controls-card animate-fade-in">
-            
-            {/* STEP 1: MODEL & UPLOAD */}
-            <div className="tryon-step-section">
-              <div className="tryon-step-header">
-                <span className="tryon-step-num">1</span>
-                <div>
-                  <h4 className="tryon-step-title">Choose Studio Model or Upload Photo</h4>
-                  <div className="tryon-step-desc">Select a mannequined dress-form or drag & drop your portrait photo.</div>
-                </div>
-              </div>
-
-              {/* Mannequin presets */}
-              <div className="tryon-presets-grid">
-                {PRESETS.map(preset => (
-                  <button
-                    key={preset.id}
-                    className={`tryon-preset-btn ${selectedModel === preset.id ? 'active' : ''}`}
-                    onClick={() => {
-                      setSelectedModel(preset.id);
-                      setUploadedImage(null);
-                      setUploadedImageName('');
-                      setSimulationApplied(false);
-                    }}
-                  >
-                    {preset.name}
-                  </button>
-                ))}
-              </div>
-
-              {/* Image Uploader zone */}
-              <div className="tryon-upload-zone" onClick={triggerFileSelect}>
-                <input 
-                  type="file" 
-                  ref={fileInputRef} 
-                  onChange={handleImageUpload} 
-                  accept="image/*" 
-                  style={{ display: 'none' }} 
-                />
-                
-                {uploadedImageName ? (
-                  <div>
-                    <span className="tryon-upload-icon">✓</span>
-                    <div className="tryon-upload-filename">{uploadedImageName}</div>
-                    <span className="tryon-upload-clear" onClick={handleClearUpload}>
-                      Remove image
-                    </span>
-                  </div>
-                ) : (
-                  <div>
-                    <div className="tryon-upload-icon">📸</div>
-                    <p style={{ fontSize: '0.9rem', fontWeight: '600', color: 'var(--emerald-deep)' }}>
-                      Upload Your Front-Facing Image
-                    </p>
-                    <p style={{ fontSize: '0.75rem', color: 'var(--text-muted)', marginTop: '0.3rem' }}>
-                      PNG, JPG up to 10MB (Portrait works best)
-                    </p>
-                  </div>
-                )}
-              </div>
-            </div>
-
-            {/* STEP 2: CHOOSE GARMENT TYPE */}
-            <div className="tryon-step-section">
-              <div className="tryon-step-header">
-                <span className="tryon-step-num">2</span>
-                <div>
-                  <h4 className="tryon-step-title">Select Garment Silhouette</h4>
-                  <div className="tryon-step-desc">Pick the clothing structure to drape fabric textures onto.</div>
-                </div>
-              </div>
-
-              <div className="tryon-garments-grid">
-                {GARMENTS.map(garment => (
-                  <button
-                    key={garment.id}
-                    className={`tryon-garment-btn ${selectedGarment === garment.id ? 'active' : ''}`}
-                    onClick={() => setSelectedGarment(garment.id)}
-                  >
-                    <span className="tryon-garment-icon">{garment.icon}</span>
-                    <span className="tryon-garment-name">{garment.name}</span>
-                  </button>
-                ))}
-              </div>
-
-              {/* Manual Fit Alignment Controls (displays when user uploads image) */}
-              {(uploadedImage || selectedModel) && (
-                <div className="tryon-adjustment-panel">
-                  <div className="tryon-adjustment-title">
-                    <span>Adjust Fit & Alignment</span>
-                    <button className="tryon-reset-btn" onClick={handleResetAdjustments}>
-                      Reset
-                    </button>
-                  </div>
-                  
-                  {/* Position X slider */}
-                  <div className="tryon-slider-group">
-                    <span>Horizontal</span>
-                    <input 
-                      type="range" 
-                      min="-120" 
-                      max="120" 
-                      value={translationX} 
-                      className="tryon-slider" 
-                      onChange={(e) => setTranslationX(parseInt(e.target.value))} 
-                    />
-                    <span className="tryon-slider-val">{translationX}px</span>
-                  </div>
-
-                  {/* Position Y slider */}
-                  <div className="tryon-slider-group">
-                    <span>Vertical</span>
-                    <input 
-                      type="range" 
-                      min="-120" 
-                      max="150" 
-                      value={translationY} 
-                      className="tryon-slider" 
-                      onChange={(e) => setTranslationY(parseInt(e.target.value))} 
-                    />
-                    <span className="tryon-slider-val">{translationY}px</span>
-                  </div>
-
-                  {/* Scale slider */}
-                  <div className="tryon-slider-group">
-                    <span>Garment Size</span>
-                    <input 
-                      type="range" 
-                      min="0.5" 
-                      max="2.0" 
-                      step="0.05"
-                      value={scale} 
-                      className="tryon-slider" 
-                      onChange={(e) => setScale(parseFloat(e.target.value))} 
-                    />
-                    <span className="tryon-slider-val">{(scale * 100).toFixed(0)}%</span>
-                  </div>
-
-                  {/* Rotation slider */}
-                  <div className="tryon-slider-group">
-                    <span>Tilt Angle</span>
-                    <input 
-                      type="range" 
-                      min="-30" 
-                      max="30" 
-                      value={rotation} 
-                      className="tryon-slider" 
-                      onChange={(e) => setRotation(parseInt(e.target.value))} 
-                    />
-                    <span className="tryon-slider-val">{rotation}°</span>
-                  </div>
-
-                  {/* Opacity slider */}
-                  <div className="tryon-slider-group">
-                    <span>Blend Factor</span>
-                    <input 
-                      type="range" 
-                      min="0.3" 
-                      max="1.0" 
-                      step="0.05"
-                      value={opacity} 
-                      className="tryon-slider" 
-                      onChange={(e) => setOpacity(parseFloat(e.target.value))} 
-                    />
-                    <span className="tryon-slider-val">{(opacity * 100).toFixed(0)}%</span>
-                  </div>
-                </div>
-              )}
-            </div>
-
-            {/* STEP 3: SELECT FABRICS */}
-            <div className="tryon-step-section">
-              <div className="tryon-step-header">
-                <span className="tryon-step-num">3</span>
-                <div>
-                  <h4 className="tryon-step-title">Select Mill Fabric Weave</h4>
-                  <div className="tryon-step-desc">Preview premium textures directly imported from global mills.</div>
-                </div>
-              </div>
-
-              <div className="tryon-fabrics-grid">
-                {FABRICS.map(fabric => (
-                  <div
-                    key={fabric.id}
-                    className={`tryon-fabric-card ${selectedFabric.id === fabric.id ? 'active' : ''}`}
-                    onClick={() => setSelectedFabric(fabric.variants ? { ...fabric, color: fabric.variants[0].colorHex, activeVariant: fabric.variants[0] } : fabric)}
-                  >
-                    <div>
-                      <div className="tryon-fabric-header">
-                        <div className="tryon-fabric-circle">
-                          <div 
-                            className={fabric.previewClass}
-                            style={fabric.variants && selectedFabric.id === fabric.id && selectedFabric.activeVariant ? {
-                              backgroundImage: `url(${selectedFabric.activeVariant.image})`,
-                              backgroundSize: 'cover',
-                              backgroundPosition: 'center'
-                            } : {}}
-                          ></div>
-                        </div>
-                        <span className="tryon-fabric-name">{fabric.name}</span>
-                      </div>
-                      <p style={{ fontSize: '0.75rem', color: 'var(--text-muted)', lineHeight: '1.3' }}>
-                        {fabric.desc}
-                      </p>
-
-                      {fabric.variants && selectedFabric.id === fabric.id && (
-                        <div 
-                          style={{ 
-                            marginTop: '0.8rem', 
-                            paddingTop: '0.8rem', 
-                            borderTop: '1px solid rgba(255,255,255,0.08)'
-                          }}
-                          onClick={(e) => e.stopPropagation()} // Prevent parent card click event
-                        >
-                          <span style={{ fontSize: '0.75rem', color: 'var(--beige-light)', display: 'block', marginBottom: '0.4rem' }}>
-                            Color: {selectedFabric.activeVariant?.name || fabric.variants[0].name}
-                          </span>
-                          <div style={{ display: 'flex', gap: '0.4rem', flexWrap: 'wrap' }}>
-                            {fabric.variants.map((v) => {
-                              const isSelected = (selectedFabric.activeVariant?.id || fabric.variants[0].id) === v.id;
-                              return (
-                                <button
-                                  key={v.id}
-                                  type="button"
-                                  style={{
-                                    width: '20px',
-                                    height: '20px',
-                                    borderRadius: '50%',
-                                    backgroundColor: v.colorHex,
-                                    border: isSelected ? '1.5px solid var(--beige-gold)' : '1px solid rgba(255,255,255,0.2)',
-                                    cursor: 'pointer',
-                                    padding: 0,
-                                    boxShadow: isSelected ? '0 0 5px var(--beige-gold)' : 'none',
-                                    transform: isSelected ? 'scale(1.1)' : 'scale(1)',
-                                    transition: 'all 0.15s ease',
-                                    outline: 'none'
-                                  }}
-                                  onClick={() => {
-                                    setSelectedFabric({
-                                      ...fabric,
-                                      color: v.colorHex,
-                                      activeVariant: v
-                                    });
-                                  }}
-                                  title={v.name}
-                                />
-                              );
-                            })}
-                          </div>
-                        </div>
-                      )}
-                    </div>
-                    
-                    <div className="tryon-fabric-meta">
-                      <span>{fabric.origin}</span>
-                      <span style={{ fontWeight: '600', color: 'var(--beige-dark)' }}>{fabric.weight}</span>
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </div>
-
-            {/* STEP 4: CUSTOM SEWING DETAILS & BOOKING */}
-            <div className="tryon-step-section">
-              <div className="tryon-step-header">
-                <span className="tryon-step-num">4</span>
-                <div>
-                  <h4 className="tryon-step-title">Tailor Custom Details</h4>
-                  <div className="tryon-step-desc">Incorporate standard custom cuts into the custom simulator.</div>
-                </div>
-              </div>
-
-              <div className="tryon-details-grid">
-                {/* Collar selection */}
-                <div className="tryon-detail-select-group">
-                  <span className="tryon-detail-label">Collar Style</span>
-                  <select 
-                    value={selectedCollar} 
-                    className="tryon-detail-select"
-                    onChange={(e) => setSelectedCollar(e.target.value)}
-                  >
-                    {COLLARS.map(c => <option key={c.id} value={c.name}>{c.name}</option>)}
-                  </select>
-                </div>
-
-                {/* Sleeve selection */}
-                <div className="tryon-detail-select-group">
-                  <span className="tryon-detail-label">Cuff / Sleeves</span>
-                  <select 
-                    value={selectedSleeve} 
-                    className="tryon-detail-select"
-                    onChange={(e) => setSelectedSleeve(e.target.value)}
-                  >
-                    {SLEEVES.map(s => <option key={s.id} value={s.name}>{s.name}</option>)}
-                  </select>
-                </div>
-              </div>
-
-              {/* Action buttons block */}
-              <div className="tryon-actions-block">
-                {/* Simulated AI Trigger button */}
-                <button 
-                  className="tryon-btn-scan" 
-                  disabled={isProcessing}
-                  onClick={handleRunSimulation}
-                  suppressHydrationWarning
-                >
-                  <span>✨</span> {simulationApplied ? 'Re-Run AI Generation' : 'Synthesize AI Fit'}
-                </button>
-
-                {/* Booking link pre-filler */}
-                <button 
-                  className="tryon-btn-book" 
-                  onClick={handleBookWithLook}
-                  suppressHydrationWarning
-                >
-                  Book Doorstep Fitting for this Look
-                </button>
-              </div>
-            </div>
-
-          </div>
-
         </div>
-      </section>
+      </div>
     </div>
   );
 }
