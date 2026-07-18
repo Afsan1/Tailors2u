@@ -773,22 +773,44 @@
     grid-template-columns: 1fr;
   }
   
-  .horizontal-scroll-track {
-    gap: 2rem;
+  .horizontal-scroll-container {
+    padding: 4rem 0 !important;
+    overflow: visible !important;
   }
   
-  .horizontal-card {
-    width: 320px;
-    height: 460px;
-    padding: 1.8rem;
+  .horizontal-sticky-box {
+    min-height: auto !important;
+    height: auto !important;
+    display: block !important;
+    overflow: visible !important;
+    padding: 0 1.2rem !important;
+  }
+  
+  .horizontal-scroll-track {
+    flex-direction: column !important;
+    width: 100% !important;
+    transform: none !important;
+    gap: 2rem !important;
+    padding: 0 !important;
   }
   
   .horizontal-intro {
-    width: 300px;
+    width: 100% !important;
+    text-align: center;
+    margin-bottom: 2rem;
   }
   
   .horizontal-intro h2 {
-    font-size: 2.5rem;
+    font-size: 2.2rem !important;
+    margin-bottom: 1rem;
+  }
+  
+  .horizontal-card {
+    width: 100% !important;
+    max-width: 100% !important;
+    height: auto !important;
+    padding: 2rem 1.5rem !important;
+    gap: 1.2rem;
   }
   
   .story-sec {
@@ -797,6 +819,30 @@
   
   .values-sec {
     padding: 4rem 0;
+  }
+
+  .slide-progress-dots {
+    position: relative !important;
+    right: auto !important;
+    left: auto !important;
+    top: auto !important;
+    transform: none !important;
+    flex-direction: row !important;
+    justify-content: center !important;
+    margin: 1.5rem auto 0 auto !important;
+    gap: 0.8rem !important;
+  }
+
+  .slide-dot {
+    cursor: pointer !important;
+    width: 10px !important;
+    height: 10px !important;
+  }
+
+  .slide-dot.active {
+    width: 24px !important;
+    height: 10px !important;
+    border-radius: 5px !important;
   }
 }
 

@@ -40,7 +40,7 @@ export default function Navbar({ onOpenBooking }) {
         </button>
 
         {/* Links */}
-        <ul className="nav-links" style={{ display: isOpen ? 'flex' : undefined, flexDirection: isOpen ? 'column' : undefined, position: isOpen ? 'absolute' : undefined, top: isOpen ? '100%' : undefined, left: isOpen ? 0 : undefined, width: isOpen ? '100%' : undefined, backgroundColor: isOpen ? 'var(--emerald-deep)' : undefined, padding: isOpen ? '2rem' : undefined, borderBottom: isOpen ? '1px solid var(--beige-gold)' : undefined }}>
+        <ul className={`nav-links ${isOpen ? 'open' : ''}`}>
           {navLinks.map((link) => {
             const isActive = pathname === link.path;
             return (
