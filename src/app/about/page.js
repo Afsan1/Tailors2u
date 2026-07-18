@@ -44,7 +44,8 @@ export default function About() {
   const horizTrackRef = useRef(null);
   const mCircle1Ref = useRef(null);
   const mCircle2Ref = useRef(null);
-  const bannerTextRef = useRef(null);
+  const velocityRow1Ref = useRef(null);
+  const velocityRow2Ref = useRef(null);
 
 
   // Click Navigation for Horizontal Section
@@ -311,8 +312,72 @@ export default function About() {
     };
   }, []);
 
-  // Velocity banners styling helper
-  const textSkew = `skewX(${velocity * 1.5}deg) scale(${1 + Math.abs(velocity) * 0.005})`;
+  // 5. Scroll-Based Velocity Marquee Animation
+  useEffect(() => {
+    const baseSpeed = 0.5; // px per frame at idle
+    const scrollMultiplier = 3; // how much scroll velocity boosts speed
+    const damping = 0.95; // how quickly scroll boost decays
+
+    let scrollVelocity = 0;
+    let lastScrollY = window.scrollY;
+    let xOffset1 = 0;
+    let xOffset2 = 0;
+    let animationId;
+
+    const handleScroll = () => {
+      const currentScrollY = window.scrollY;
+      const diff = currentScrollY - lastScrollY;
+      scrollVelocity = diff * scrollMultiplier;
+      lastScrollY = currentScrollY;
+    };
+
+    const animate = () => {
+      // Apply damping to scroll velocity
+      scrollVelocity *= damping;
+
+      // Row 1 moves left (negative direction)
+      const speed1 = baseSpeed + Math.abs(scrollVelocity);
+      xOffset1 -= speed1;
+
+      // Row 2 moves right (positive direction)
+      const speed2 = baseSpeed + Math.abs(scrollVelocity);
+      xOffset2 += speed2;
+
+      // Get the width of one "set" of text (total / 4 copies = 25%)
+      if (velocityRow1Ref.current) {
+        const totalWidth1 = velocityRow1Ref.current.scrollWidth;
+        const singleSetWidth1 = totalWidth1 / 4;
+        // Wrap around seamlessly
+        if (Math.abs(xOffset1) >= singleSetWidth1) {
+          xOffset1 += singleSetWidth1;
+        }
+        // Skew based on scroll velocity for a dynamic feel
+        const skew = Math.max(-15, Math.min(15, scrollVelocity * 0.8));
+        velocityRow1Ref.current.style.transform = `translate3d(${xOffset1}px, 0, 0) skewX(${skew}deg)`;
+      }
+
+      if (velocityRow2Ref.current) {
+        const totalWidth2 = velocityRow2Ref.current.scrollWidth;
+        const singleSetWidth2 = totalWidth2 / 4;
+        // Wrap around seamlessly
+        if (xOffset2 >= singleSetWidth2) {
+          xOffset2 -= singleSetWidth2;
+        }
+        const skew = Math.max(-15, Math.min(15, -scrollVelocity * 0.8));
+        velocityRow2Ref.current.style.transform = `translate3d(${xOffset2 - (velocityRow2Ref.current.scrollWidth / 4)}px, 0, 0) skewX(${skew}deg)`;
+      }
+
+      animationId = requestAnimationFrame(animate);
+    };
+
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    animationId = requestAnimationFrame(animate);
+
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+      cancelAnimationFrame(animationId);
+    };
+  }, []);
 
   return (
     <div className="about-wrapper porcelain-theme">
@@ -562,13 +627,21 @@ export default function About() {
 
       {/* Scroll Velocity Moving Banner */}
       <section className="velocity-banner-wrap">
-        <div className="velocity-track">
-          <div className="velocity-text" ref={bannerTextRef} style={{ transform: textSkew }}>
-            CRAFTED BY HAND <span className="velocity-star">★</span> <span className="velocity-text-accent">99.8% PERFECT FIT</span> <span className="velocity-star">★</span> ELEGANT DESIGN <span className="velocity-star">★</span> <span className="velocity-text-accent">DOORSTEP LUXURY</span> <span className="velocity-star">★</span> INDIVIDUALLY MEASURED <span className="velocity-star">★</span>
-          </div>
-          <div className="velocity-text" style={{ transform: textSkew }}>
-            CRAFTED BY HAND <span className="velocity-star">★</span> <span className="velocity-text-accent">99.8% PERFECT FIT</span> <span className="velocity-star">★</span> ELEGANT DESIGN <span className="velocity-star">★</span> <span className="velocity-text-accent">DOORSTEP LUXURY</span> <span className="velocity-star">★</span> INDIVIDUALLY MEASURED <span className="velocity-star">★</span>
-          </div>
+        {/* Row 1: scrolls left */}
+        <div className="velocity-track velocity-row-1" ref={velocityRow1Ref}>
+          {[...Array(4)].map((_, i) => (
+            <div key={i} className="velocity-text">
+              CRAFTED BY HAND <span className="velocity-star">★</span> <span className="velocity-text-accent">99.8% PERFECT FIT</span> <span className="velocity-star">★</span> ELEGANT DESIGN <span className="velocity-star">★</span> <span className="velocity-text-accent">DOORSTEP LUXURY</span> <span className="velocity-star">★</span> INDIVIDUALLY MEASURED <span className="velocity-star">★</span>
+            </div>
+          ))}
+        </div>
+        {/* Row 2: scrolls right */}
+        <div className="velocity-track velocity-row-2" ref={velocityRow2Ref}>
+          {[...Array(4)].map((_, i) => (
+            <div key={i} className="velocity-text velocity-text-outline">
+              BESPOKE TAILORING <span className="velocity-star">★</span> <span className="velocity-text-accent">DOORSTEP LUXURY</span> <span className="velocity-star">★</span> PREMIUM FABRICS <span className="velocity-star">★</span> <span className="velocity-text-accent">MASTER CRAFTED</span> <span className="velocity-star">★</span> TIMELESS STYLE <span className="velocity-star">★</span>
+            </div>
+          ))}
         </div>
       </section>
 
