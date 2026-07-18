@@ -108,7 +108,7 @@ export default function Tailoring() {
 
       {/* Craftsmanship Section */}
       <section className="section-alt">
-        <div className="section-container" style={{ display: 'grid', gridTemplateColumns: '1fr 1.2fr', gap: '4rem', alignItems: 'center' }}>
+        <div className="section-container craftsmanship-grid">
           <div style={{ border: '2px solid var(--beige-gold)', borderRadius: 'var(--radius-lg)', padding: '2.5rem', backgroundColor: 'var(--white)' }}>
             <h3 style={{ fontSize: '1.8rem', color: 'var(--emerald-deep)', marginBottom: '1rem' }}>
               The Golden Ratio of Styling
@@ -116,7 +116,7 @@ export default function Tailoring() {
             <p style={{ marginBottom: '1.2rem', fontSize: '0.95rem' }}>
               Our doorstep fitting is not just about measuring inches. It is an interactive design consultation. Your visiting tailor assesses shoulder slope, posture, and chest profile to draft a custom pattern unique to your anatomy.
             </p>
-            <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1rem' }}>
+            <div className="craftsmanship-stats">
               <div style={{ padding: '1rem', border: '1px solid var(--beige-border)', borderRadius: 'var(--radius-md)', textAlign: 'center' }}>
                 <strong style={{ fontSize: '1.5rem', color: 'var(--emerald-deep)', display: 'block' }}>35+</strong>
                 <span style={{ fontSize: '0.8rem', color: 'var(--text-muted)' }}>Anatomical Datapoints</span>

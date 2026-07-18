@@ -171,6 +171,9 @@ export default function About() {
 
   // 4. Lock scroll when 2016 section is in view — page stays fixed until all 3 slides seen
   useEffect(() => {
+    if (typeof window !== 'undefined' && window.innerWidth < 1024) {
+      return;
+    }
     const TOTAL_SLIDES = STORY_2016_SUB_ITEMS.length;
     let currentIndex = 0;
     let isHijacking = false;
@@ -407,6 +410,8 @@ export default function About() {
                     <div
                       key={idx}
                       className={`slide-dot ${active2016Index === idx ? 'active' : ''}`}
+                      onClick={() => setActive2016Index(idx)}
+                      style={{ cursor: 'pointer' }}
                     />
                   ))}
                 </div>
