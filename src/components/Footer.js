@@ -7,7 +7,13 @@ export default function Footer({ onOpenBooking }) {
     <footer className="footer">
       <div className="footer-container">
         <div className="footer-brand">
-          <h3><Logo className="logo-icon" />Tailors2U</h3>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '0.8rem', marginBottom: '1.2rem' }}>
+            <Logo className="logo-icon" />
+            <div style={{ display: 'flex', flexDirection: 'column' }}>
+              <h3 style={{ margin: 0, color: 'var(--white)', fontFamily: 'var(--font-sans)', fontSize: '1.8rem', fontWeight: '400', letterSpacing: '3.5px', lineHeight: '1.1' }}>Tailors2U</h3>
+              <span style={{ fontSize: '0.65rem', fontWeight: '500', opacity: 0.8, color: '#FFFFFF', letterSpacing: '0.05em', marginTop: '2px', lineHeight: '1.1' }}>Pvt. Ltd.</span>
+            </div>
+          </div>
           <p>
             Premium, bespoke tailoring and alterations delivered directly to your doorstep. We bring the luxury tailoring salon experience to your home or office.
           </p>
@@ -38,16 +44,16 @@ export default function Footer({ onOpenBooking }) {
         <div>
           <h4 className="footer-heading">Contact & Hours</h4>
           <div className="footer-contact-info">
-            <p><strong>Email:</strong> bespoke@tailors2u.com</p>
+            <p><strong>Email:</strong> executive.tailors2u@gmail.com</p>
             <p><strong>Phone:</strong> +1 (800) TAILOR-2U</p>
             <p><strong>Hours:</strong> Mon - Sat: 8:00 AM - 8:00 PM</p>
-            <p><strong>Service Area:</strong> Major metro areas. We travel to you!</p>
+            <p><strong>Service Area:</strong> Everywhere in Mumbai.</p>
           </div>
         </div>
       </div>
 
       <div className="footer-bottom">
-        <p>&copy; {new Date().getFullYear()} Tailors2U Bespoke. All rights reserved.</p>
+        <p>&copy; {new Date().getFullYear()} Tailors2U Pvt. Ltd. All rights reserved.</p>
         <p>Premium Bespoke Tailoring Services</p>
       </div>
     </footer>

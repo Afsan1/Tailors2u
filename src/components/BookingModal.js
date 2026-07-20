@@ -122,6 +122,11 @@ export default function BookingModal({ isOpen, onClose, initialService = '' }) {
         setFormData(prev => ({ ...prev, notes }));
         localStorage.removeItem('tailors2u_booking_notes');
       }
+      const savedAddress = localStorage.getItem('tailors2u_booking_address');
+      if (savedAddress) {
+        setFormData(prev => ({ ...prev, address: savedAddress }));
+        localStorage.removeItem('tailors2u_booking_address');
+      }
       if (initialService) {
         setFormData(prev => ({ ...prev, service: initialService }));
       }
