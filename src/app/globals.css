@@ -1626,6 +1626,10 @@ a {
   color: var(--text-dark);
 }
 
+.modal-success-screen p {
+  color: var(--text-dark);
+}
+
 .success-icon {
   font-size: 4rem;
   color: var(--emerald-deep);
@@ -3175,4 +3179,219 @@ a {
   color: #e2ece9;
   margin-bottom: 2rem;
   font-size: 1rem;
+}
+
+/* Floating Dock Styles (Mobile Only) */
+.floating-dock-wrapper {
+  display: none; /* Hidden by default on desktop */
+}
+
+@media (max-width: 768px) {
+  .logo {
+    margin: 0 auto !important; /* Center the logo container */
+    justify-content: center;
+    width: 100%;
+  }
+
+  .logo-text-group {
+    align-items: center; /* Center-align the text group */
+    text-align: center;
+  }
+
+  .logo-brand {
+    text-align: center;
+  }
+
+  .logo-tagline {
+    text-align: center;
+  }
+
+  .menu-toggle {
+    display: none !important; /* Hide hamburger menu icon */
+  }
+
+  .floating-dock-wrapper {
+    display: flex;
+    position: fixed;
+    bottom: 24px;
+    left: 0;
+    right: 0;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+    pointer-events: none;
+    animation: slideUpDock 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  }
+
+  @keyframes slideUpDock {
+    from {
+      transform: translateY(100px);
+      opacity: 0;
+    }
+    to {
+      transform: translateY(0);
+      opacity: 1;
+    }
+  }
+
+  .floating-dock-container {
+    pointer-events: auto;
+    display: flex;
+    align-items: center;
+    gap: 8px; /* Reduced gap to fit all items comfortably on 390px viewports */
+    background: rgba(3, 42, 32, 0.45); /* Highly transparent luxurious green */
+    backdrop-filter: blur(24px) saturate(180%);
+    -webkit-backdrop-filter: blur(24px) saturate(180%);
+    border: 1px solid rgba(255, 217, 190, 0.2);
+    padding: 0 12px; /* Reduced padding */
+    border-radius: 20px; /* Adjusted corners to match smaller height */
+    box-shadow: 
+      0 20px 50px rgba(0, 0, 0, 0.5),
+      0 1px 0px rgba(255, 217, 190, 0.2) inset,
+      0 0 30px rgba(6, 78, 59, 0.3);
+    height: 60px; /* Reduced height */
+    max-width: 95vw; /* Allow slightly more viewport usage */
+    position: relative;
+  }
+
+  /* Decorative top light streak on the dock */
+  .floating-dock-container::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 10%;
+    right: 10%;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(255, 217, 190, 0.4), transparent);
+    pointer-events: none;
+  }
+
+  .dock-item-wrapper {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 6px 0;
+  }
+
+  .dock-item {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 42px; /* Adjusted size */
+    height: 42px; /* Adjusted size */
+    border-radius: 12px; /* Squircle style matching modern macOS / iOS dock items */
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 217, 190, 0.08);
+    color: rgba(255, 217, 190, 0.7);
+    transition: 
+      transform 0.25s cubic-bezier(0.175, 0.885, 0.32, 1.275), 
+      background-color 0.25s ease, 
+      border-color 0.25s ease,
+      color 0.25s ease,
+      box-shadow 0.25s ease;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  .dock-item:active {
+    transform: scale(0.85) !important;
+    background: rgba(255, 217, 190, 0.1);
+  }
+
+  /* Premium active state: glowing outline with translucent gold tint background */
+  .dock-item.active {
+    background: rgba(255, 217, 190, 0.12);
+    color: var(--beige-gold);
+    border-color: rgba(255, 217, 190, 0.8);
+    box-shadow: 
+      0 0 15px rgba(255, 217, 190, 0.25),
+      0 0 4px rgba(255, 217, 190, 0.1) inset;
+  }
+
+  /* Tiny active indicator dot under the squircle icon */
+  .dock-item.active::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 4px;
+    height: 4px;
+    border-radius: 50%;
+    background-color: var(--beige-gold);
+    box-shadow: 0 0 8px var(--beige-gold);
+    animation: pulseDot 2s infinite;
+  }
+
+  @keyframes pulseDot {
+    0%, 100% { opacity: 0.6; transform: translateX(-50%) scale(1); }
+    50% { opacity: 1; transform: translateX(-50%) scale(1.3); }
+  }
+
+  .dock-icon {
+    width: 18px;
+    height: 18px;
+    stroke-width: 1.8; /* Thinner, higher fidelity strokes */
+    transition: transform 0.2s ease;
+  }
+
+  .dock-item:hover .dock-icon {
+    transform: scale(1.05);
+  }
+
+  .dock-tooltip {
+    position: absolute;
+    bottom: 64px;
+    background: rgba(3, 42, 32, 0.95);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    color: var(--beige-gold);
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    padding: 5px 9px;
+    border-radius: 8px;
+    border: 1px solid rgba(255, 217, 190, 0.25);
+    white-space: nowrap;
+    pointer-events: none;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+    animation: fadeInTooltip 0.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  }
+
+  @keyframes fadeInTooltip {
+    from {
+      opacity: 0;
+      transform: translateY(6px) scale(0.95);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+    }
+  }
+
+  /* Adjust Clerk User Button layout for the dock */
+  .cl-userButtonTrigger,
+  .cl-rootBox {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .dock-user-btn {
+    border-radius: 12px !important;
+    overflow: hidden;
+  }
+
+  .dock-user-btn .cl-userButtonAvatarBox {
+    width: 32px !important;
+    height: 32px !important;
+    border-radius: 8px !important; /* Rounded corners matching squircle */
+  }
+
+  .dock-user-btn .cl-userButtonTrigger {
+    width: 38px !important;
+    height: 38px !important;
+  }
 }

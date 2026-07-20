@@ -26,10 +26,11 @@ const FABRICS = [
 ];
 
 const PROGRESS = [
-  { icon: '🔍', text: 'Analyzing body proportions…' },
-  { icon: '✂️',  text: 'Detecting garment boundaries…' },
-  { icon: '🎨', text: 'Applying fabric texture…' },
-  { icon: '✨', text: 'Rendering final result…' },
+  { icon: '📤', text: 'Uploading image...' },
+  { icon: '🖼️', text: 'Preparing image...' },
+  { icon: '🤝', text: 'Connecting to AI...' },
+  { icon: '⚡', text: 'Generating virtual try-on...' },
+  { icon: '✨', text: 'Almost done...' },
 ];
 
 // ─────────────────────────────────────────────────────────────────────────────
@@ -231,13 +232,13 @@ export default function AITryOn() {
   const timerRef  = useRef(null);
 
   const fabric = selVariant
-    ? { ...selFabric, color: selVariant.color, secondColor: selVariant.secondColor, name: `${selFabric.name} — ${selVariant.name}` }
+    ? { ...selFabric, color: selVariant.color, secondColor: selVariant.secondColor, name: `${selFabric.name} — ${selVariant.name}`, id: selVariant.id }
     : selFabric;
 
   // ── File upload ───────────────────────────────────────────────────────────────
   const handleFile = useCallback(async (file) => {
     if (!file?.type?.startsWith('image/')) { setError('Please upload a JPG, PNG, or WEBP image.'); return; }
-    if (file.size > 20 * 1024 * 1024) { setError('Image too large — please use a file under 20 MB.'); return; }
+    if (file.size > 10 * 1024 * 1024) { setError('Image too large — please use a file under 10 MB.'); return; }
     setError(''); setResultImg(null); setFitAnalysis(''); setStyleAdvice(''); setMethod('');
     const reader = new FileReader();
     reader.onload = async (ev) => {
@@ -262,10 +263,10 @@ export default function AITryOn() {
     setResultImg(null); setError(''); setFitAnalysis(''); setStyleAdvice(''); setMethod('');
 
     let s = 0;
-    timerRef.current = setInterval(() => { s = Math.min(PROGRESS.length - 1, s + 1); setStepIdx(s); }, 3000);
+    timerRef.current = setInterval(() => { s = Math.min(PROGRESS.length - 1, s + 1); setStepIdx(s); }, 4000);
 
     try {
-      const res = await fetch('/api/tryon/generate', {
+      const res = await fetch('/api/tryon', {
         method: 'POST', headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
           image:      uploaded.dataUrl,
@@ -300,8 +301,8 @@ export default function AITryOn() {
       } else {
         setError('Unexpected server response. Please try again.');
       }
-    } catch {
-      setError('Network error. Please check your connection and try again.');
+    } catch (err) {
+      setError(err.message || 'Network error. Please check your connection and try again.');
     } finally {
       clearInterval(timerRef.current);
       setProcessing(false);
