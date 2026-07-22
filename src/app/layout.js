@@ -15,6 +15,8 @@ const poppins = Poppins({
   weight: ["300", "400", "500", "600", "700", "800"],
 });
 
+const montenegrinGothic = { variable: '--font-gothic' };
+
 export const metadata = {
   title: "Tailors2U | Bespoke Doorstep Tailoring & Premium Alterations",
   description: "Experience luxury bespoke tailoring at your doorstep. We offer standard, premium, and luxury tailored garments and custom alterations for shirts, pants, and kurtas.",

@@ -329,6 +329,7 @@ const validateForm = () => {
               >
                 <option value="" disabled>Choose a service...</option>
                 <option value="Alteration: Shirt">Alteration - Shirt</option>
+                <option value="Alteration: T-Shirt">Alteration - T-Shirt / Polo</option>
                 <option value="Alteration: Pant">Alteration - Pant</option>
                 <option value="Alteration: Kurtas">Alteration - Kurtas</option>
                 <option value="Bespoke Fabric Consultation">Bespoke Fabric Consultation</option>

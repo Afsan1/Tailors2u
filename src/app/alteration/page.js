@@ -3,11 +3,74 @@
 import React, { useState } from 'react';
 import { useBooking } from '../../components/ClientLayoutWrapper';
 
+const Icons = {
+  shirt: (
+    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M20.38 3.46L16 2a4 4 0 0 1-8 0L3.62 3.46a2 2 0 0 0-1.34 2.23l.58 3.47a1 1 0 0 0 .99.84H6v10a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V10h2.15a1 1 0 0 0 .99-.84l.58-3.47a2 2 0 0 0-1.34-2.23z" />
+      <path d="M12 2v18" />
+      <path d="M12 6l-3-3" />
+      <path d="M12 6l3-3" />
+    </svg>
+  ),
+  tshirt: (
+    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M6 3h12l3 5-3 2v11H6V10L3 8z" />
+      <path d="M9 3a3 3 0 0 0 6 0" />
+    </svg>
+  ),
+  pant: (
+    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M6 2h12v3H6z" />
+      <path d="M6 5l1 16h3.5L12 10l1.5 11H17L18 5" />
+    </svg>
+  ),
+  kurtas: (
+    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M7 3l5 3 5-3 3 5-2 1h-2v12H8V9H6L4 8z" />
+      <path d="M12 6v6" />
+    </svg>
+  ),
+  suit: (
+    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M4 4h16l-2 17H6L4 4z" />
+      <path d="M4 4l8 8 8-8" />
+      <path d="M12 12v9" />
+      <path d="M9 4v3" />
+      <path d="M15 4v3" />
+    </svg>
+  ),
+  dress: (
+    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M9 2l-1 5 4 2 4-2-1-5z" />
+      <path d="M8 7L4 22h16L16 7" />
+    </svg>
+  ),
+  kurti: (
+    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M7 2h10l2 5-2 2h-1v11H8V9H7L5 7z" />
+      <path d="M12 2v5" />
+    </svg>
+  ),
+  blouse: (
+    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M6 4h12l2 4-2 2h-2v6H8v-6H6L4 8z" />
+      <path d="M9 4a3 3 0 0 0 6 0" />
+    </svg>
+  ),
+  lehenga: (
+    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M8 3h8v2H8z" />
+      <path d="M8 5l-5 16h18L16 5" />
+      <path d="M3 21c3-2 6-2 9 0 3-2 6-2 9 0" />
+    </svg>
+  ),
+};
+
 const ALTERATIONS_DATA = {
   mens: {
     shirt: {
       title: 'Shirt Alterations',
-      icon: '👔',
+      icon: Icons.shirt,
       items: [
         { id: 'ms1', name: 'Sleeve Shortening', price: 149, desc: 'Shorten shirt sleeves to exact length' },
         { id: 'ms2', name: 'Slim Fit (Taper Sides)', price: 149, desc: 'Taper the torso sides for a modern contour' },
@@ -16,9 +79,21 @@ const ALTERATIONS_DATA = {
         { id: 'ms5', name: 'Length Shortening', price: 149, desc: 'Shorten shirt bottom hem' },
       ],
     },
+    tshirt: {
+      title: 'T-Shirt & Polo Alterations',
+      icon: Icons.tshirt,
+      items: [
+        { id: 'ts1', name: 'Sleeve Shortening', price: 149, desc: 'Shorten sleeves with clean cover-stitch hem' },
+        { id: 'ts2', name: 'Slim Fit (Side Tapering)', price: 149, desc: 'Take in torso sides for a streamlined fit' },
+        { id: 'ts3', name: 'Length Shortening', price: 149, desc: 'Shorten overall T-shirt / polo body length' },
+        { id: 'ts4', name: 'Collar & Neckline Adjustment', price: 149, desc: 'Resize or repair crew neck, V-neck, or polo collar' },
+        { id: 'ts5', name: 'Shoulder Narrowing', price: 149, desc: 'Adjust droopy shoulder seams' },
+        { id: 'ts6', name: 'Chest & Armhole Fitting', price: 149, desc: 'Tighten or adjust chest width and armhole comfort' },
+      ],
+    },
     pant: {
       title: 'Pant & Trouser Alterations',
-      icon: '👖',
+      icon: Icons.pant,
       items: [
         { id: 'mp1', name: 'Hemming (Length)', price: 149, desc: 'Shorten or lengthen pants with plain/cuffed hem' },
         { id: 'mp2', name: 'Waist & Seat Adjustment', price: 149, desc: 'Taper or let out the waist and seat area' },
@@ -29,7 +104,7 @@ const ALTERATIONS_DATA = {
     },
     kurtas: {
       title: 'Kurtas & Ethnic Alterations',
-      icon: '✨',
+      icon: Icons.kurtas,
       items: [
         { id: 'mk1', name: 'Kurta Side Tapering', price: 149, desc: 'Slim down the side seams of the Kurta' },
         { id: 'mk2', name: 'Sleeve Shortening', price: 149, desc: 'Shorten Kurta sleeves (with border adjustment)' },
@@ -40,7 +115,7 @@ const ALTERATIONS_DATA = {
     },
     suit: {
       title: 'Suit & Blazer Alterations',
-      icon: '🧥',
+      icon: Icons.suit,
       items: [
         { id: 'su1', name: 'Jacket Sleeve Shortening', price: 149, desc: 'Shorten suit jacket sleeves precisely' },
         { id: 'su2', name: 'Jacket Waist Suppression', price: 149, desc: 'Nip in the waist for a tailored silhouette' },
@@ -53,7 +128,7 @@ const ALTERATIONS_DATA = {
   womens: {
     dress: {
       title: 'Dress Alterations',
-      icon: '👗',
+      icon: Icons.dress,
       items: [
         { id: 'wd1', name: 'Hem Shortening / Lengthening', price: 149, desc: 'Adjust dress hem to desired length' },
         { id: 'wd2', name: 'Waist Taking In / Out', price: 149, desc: 'Adjust waist seams for the perfect fit' },
@@ -62,9 +137,21 @@ const ALTERATIONS_DATA = {
         { id: 'wd5', name: 'Bust Adjustment', price: 149, desc: 'Add or reduce fabric at the bust line' },
       ],
     },
+    tshirt: {
+      title: 'T-Shirt & Casual Tops',
+      icon: Icons.tshirt,
+      items: [
+        { id: 'wts1', name: 'Sleeve Shortening', price: 149, desc: 'Shorten T-shirt or top sleeves to desired length' },
+        { id: 'wts2', name: 'Side Seam Tapering', price: 149, desc: 'Take in sides for a fitted contour' },
+        { id: 'wts3', name: 'Length Shortening', price: 149, desc: 'Adjust bottom hem length' },
+        { id: 'wts4', name: 'Neckline Restructuring', price: 149, desc: 'Adjust scoop, crew, or V-neckline' },
+        { id: 'wts5', name: 'Crop Top Conversion', price: 149, desc: 'Convert regular T-shirt/top into a custom crop top' },
+        { id: 'wts6', name: 'Chest & Bust Line Fitting', price: 149, desc: 'Adjust chest width, armhole, and contour around chest area' },
+      ],
+    },
     kurti: {
       title: 'Kurti & Salwar Kameez',
-      icon: '🌸',
+      icon: Icons.kurti,
       items: [
         { id: 'wk1', name: 'Kurti Tapering', price: 149, desc: 'Slim down the sides for a flattering fit' },
         { id: 'wk2', name: 'Dupatta Hemming', price: 149, desc: 'Hem dupatta edges with plain or decorative finish' },
@@ -75,7 +162,7 @@ const ALTERATIONS_DATA = {
     },
     blouse: {
       title: 'Blouse & Top Alterations',
-      icon: '👚',
+      icon: Icons.blouse,
       items: [
         { id: 'wb1', name: 'Blouse Sleeve Shortening', price: 149, desc: 'Shorten blouse sleeves to exact measurement' },
         { id: 'wb2', name: 'Blouse Side Seam Adjustment', price: 149, desc: 'Take in or let out the side seams' },
@@ -86,7 +173,7 @@ const ALTERATIONS_DATA = {
     },
     lehenga: {
       title: 'Lehenga & Bridal Wear',
-      icon: '💍',
+      icon: Icons.lehenga,
       items: [
         { id: 'wl1', name: 'Lehenga Hem Adjustment', price: 149, desc: 'Shorten or lengthen heavy lehenga hem' },
         { id: 'wl2', name: 'Blouse Back Alteration', price: 149, desc: 'Reshape back design, strings, or padding' },
@@ -101,6 +188,8 @@ const ALTERATIONS_DATA = {
 export default function Alteration() {
   const [gender, setGender] = useState('mens');
   const [selectedItems, setSelectedItems] = useState({});
+  const [categoryNotes, setCategoryNotes] = useState({});
+  const [generalNote, setGeneralNote] = useState('');
   const [animating, setAnimating] = useState(false);
   const [openCategory, setOpenCategory] = useState(null);
   const { openBooking } = useBooking();
@@ -110,6 +199,8 @@ export default function Alteration() {
     setAnimating(true);
     setOpenCategory(null);
     setSelectedItems({});
+    setCategoryNotes({});
+    setGeneralNote('');
     setTimeout(() => {
       setGender(newGender);
       setAnimating(false);
@@ -143,32 +234,47 @@ export default function Alteration() {
       .reduce((sum, item) => sum + item.price, 0);
 
   const selectedList = Object.values(selectedItems);
-  const totalPrice = selectedList.reduce((sum, item) => sum + item.price, 0) + 149;
+  const subtotal = selectedList.reduce((sum, item) => sum + item.price, 0);
+  const hasDiscount = selectedList.length >= 4;
+  const discountAmount = hasDiscount ? Math.round(subtotal * 0.15) : 0;
+  const totalPrice = subtotal - discountAmount;
 
   const handleBookAlteration = () => {
+    let notesParts = [];
+
     if (selectedList.length === 0) {
-      localStorage.setItem('tailors2u_booking_notes', `Standard Alteration Appointment\nBase Price: ₹149`);
-      openBooking('Alteration: General');
-      return;
+      notesParts.push(`Standard Alteration Appointment\nBase Price: ₹0`);
+    } else {
+      notesParts.push(
+        `Selected Alterations (${gender === 'mens' ? "Men's" : "Women's"}):\n` +
+          selectedList
+            .map((item) => `- [${item.categoryTitle}] ${item.name} (₹${item.price})`)
+            .join('\n')
+      );
     }
 
-    const categoriesCount = selectedList.reduce((acc, curr) => {
-      acc[curr.category] = (acc[curr.category] || 0) + 1;
-      return acc;
-    }, {});
+    const filledCatNotes = Object.entries(categoryNotes).filter(
+      ([_, note]) => note && note.trim().length > 0
+    );
+    if (filledCatNotes.length > 0) {
+      const formattedCatNotes = filledCatNotes
+        .map(([catKey, note]) => {
+          const title = currentData[catKey]?.title || catKey;
+          return `- [${title} Notes]: ${note.trim()}`;
+        })
+        .join('\n');
+      notesParts.push(`Specific Category Notes:\n${formattedCatNotes}`);
+    }
 
-    let primaryCategory = Object.keys(categoriesCount)[0];
-    let maxCount = 0;
-    Object.entries(categoriesCount).forEach(([cat, count]) => {
-      if (count > maxCount) {
-        maxCount = count;
-        primaryCategory = cat;
-      }
-    });
+    if (generalNote.trim()) {
+      notesParts.push(`General Instructions:\n${generalNote.trim()}`);
+    }
 
-    const notesText = `Selected Alterations (${gender === 'mens' ? "Men's" : "Women's"}):\n${selectedList
-      .map((item) => `- [${item.categoryTitle}] ${item.name} (₹${item.price})`)
-      .join('\n')}\n\nStandard Alteration Price: ₹149\nEstimated Total: ₹${totalPrice}`;
+    notesParts.push(
+      `Subtotal: ₹${subtotal}${hasDiscount ? `\n15% Bundle Discount (4+ items): -₹${discountAmount}` : ''}\nEstimated Total: ₹${totalPrice}`
+    );
+
+    const notesText = notesParts.join('\n\n');
 
     openBooking(`Alteration: ${gender === 'mens' ? "Men's" : "Women's"}`);
     localStorage.setItem('tailors2u_booking_notes', notesText);
@@ -293,6 +399,49 @@ export default function Alteration() {
                           );
                         })}
                       </div>
+                      
+                      {/* ── Category Specific Note Section ── */}
+                      <div style={{ marginTop: '1.2rem', paddingTop: '1rem', borderTop: '1px dashed var(--beige-border)' }}>
+                        <label
+                          htmlFor={`note-${catKey}`}
+                          style={{
+                            fontSize: '0.84rem',
+                            fontWeight: '600',
+                            color: '#1E2D27',
+                            display: 'flex',
+                            alignItems: 'center',
+                            gap: '0.35rem',
+                            marginBottom: '0.4rem',
+                          }}
+                        >
+                          <span>✏️</span> Custom Notes / Requirements for {catData.title}
+                        </label>
+                        <textarea
+                          id={`note-${catKey}`}
+                          placeholder={`Specify exact measurements or custom requests for ${catData.title.toLowerCase()} (e.g. shorten sleeves by 1.5", narrow shoulders)...`}
+                          value={categoryNotes[catKey] || ''}
+                          onChange={(e) =>
+                            setCategoryNotes((prev) => ({
+                              ...prev,
+                              [catKey]: e.target.value,
+                            }))
+                          }
+                          rows={2}
+                          style={{
+                            width: '100%',
+                            padding: '0.65rem 0.85rem',
+                            fontSize: '0.85rem',
+                            borderRadius: '8px',
+                            border: '1px solid #D5DDD8',
+                            backgroundColor: '#FAFCFB',
+                            color: '#1E2D27',
+                            fontFamily: 'inherit',
+                            resize: 'vertical',
+                            outline: 'none',
+                            boxSizing: 'border-box',
+                          }}
+                        />
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -310,25 +459,83 @@ export default function Alteration() {
             <div className="calc-selections">
               <div className="calc-selected-item" style={{ borderBottom: '1px dashed var(--beige-border)', paddingBottom: '0.75rem', marginBottom: '0.75rem', fontWeight: '500' }}>
                 <span>Standard Alteration Price</span>
-                <span>₹149</span>
+                <span>₹0</span>
               </div>
               {selectedList.length === 0 ? (
                 <p className="calc-empty" style={{ fontSize: '0.85rem' }}>
                   No extra alterations selected yet. Open a category and select items to add.
                 </p>
               ) : (
-                selectedList.map((item) => (
-                  <div key={item.id} className="calc-selected-item">
-                    <span>{item.name}</span>
-                    <span>₹{item.price}</span>
-                  </div>
-                ))
+                <>
+                  {selectedList.map((item) => (
+                    <div key={item.id} className="calc-selected-item">
+                      <span>{item.name}</span>
+                      <span>₹{item.price}</span>
+                    </div>
+                  ))}
+
+                  {selectedList.length < 4 ? (
+                    <div style={{ marginTop: '0.75rem', padding: '0.5rem 0.75rem', background: '#F0F7F4', borderRadius: '6px', fontSize: '0.82rem', color: '#1E2D27', display: 'flex', alignItems: 'center', gap: '0.4rem' }}>
+                      <span>🏷️</span>
+                      <span>Add <strong>{4 - selectedList.length} more item{4 - selectedList.length > 1 ? 's' : ''}</strong> to unlock 15% OFF!</span>
+                    </div>
+                  ) : (
+                    <div style={{ marginTop: '0.75rem', paddingTop: '0.75rem', borderTop: '1px dashed var(--beige-border)' }}>
+                      <div className="calc-selected-item" style={{ fontSize: '0.9rem', color: 'var(--text-muted)' }}>
+                        <span>Subtotal ({selectedList.length} items)</span>
+                        <span>₹{subtotal}</span>
+                      </div>
+                      <div className="calc-selected-item" style={{ color: '#059669', fontWeight: '600', fontSize: '0.9rem', marginTop: '0.3rem' }}>
+                        <span>🎉 15% Bulk Discount (4+ items)</span>
+                        <span>-₹{discountAmount}</span>
+                      </div>
+                    </div>
+                  )}
+                </>
               )}
             </div>
 
             <div className="calc-total">
               <span>Estimated Total:</span>
               <span className="calc-total-amount">₹{totalPrice}</span>
+            </div>
+
+            {/* General Instructions Note Box */}
+            <div style={{ marginTop: '1.25rem', marginBottom: '1.25rem' }}>
+              <label
+                htmlFor="general-alteration-note"
+                style={{
+                  fontSize: '0.82rem',
+                  fontWeight: '600',
+                  color: '#1E2D27',
+                  display: 'flex',
+                  alignItems: 'center',
+                  gap: '0.35rem',
+                  marginBottom: '0.4rem',
+                }}
+              >
+                <span>📝</span> Additional Instructions for Visiting Tailor
+              </label>
+              <textarea
+                id="general-alteration-note"
+                placeholder="Any special instructions, timing preferences, or extra requests..."
+                value={generalNote}
+                onChange={(e) => setGeneralNote(e.target.value)}
+                rows={2}
+                style={{
+                  width: '100%',
+                  padding: '0.6rem 0.75rem',
+                  fontSize: '0.82rem',
+                  borderRadius: '8px',
+                  border: '1px solid #D5DDD8',
+                  backgroundColor: '#FAFCFB',
+                  color: '#1E2D27',
+                  fontFamily: 'inherit',
+                  resize: 'vertical',
+                  outline: 'none',
+                  boxSizing: 'border-box',
+                }}
+              />
             </div>
 
             <button

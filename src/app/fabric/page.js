@@ -30,27 +30,323 @@ const FABRICS_DATA = [
   },
   {
     id: 'f3',
-    name: 'Pure Irish Linen',
+    name: 'Pure White Linen',
     category: 'linen',
     patternClass: 'fabric-pattern-linen',
-    desc: 'Woven from premium flax, this open-weave fabric is highly breathable and features the signature natural slub texture.',
+    desc: 'Pure crisp white Irish flax featuring a rich tactile slub weave. Ideal for summer shirts and bespoke kurtas.',
     origin: 'Ireland',
     weight: '145 gsm',
-    threadCount: 'N/A (Pure Flax)',
+    threadCount: '100% Pure Flax',
     breathability: 'Outstanding',
-    badge: 'Summer Essential'
+    badge: 'Best Seller',
+    variants: [
+      { id: 'pw1', name: 'Texture View 1', colorHex: '#ffffff', image: '/linen/pure_white_1.png' },
+      { id: 'pw2', name: 'Texture View 2', colorHex: '#f4f4f4', image: '/linen/pure_white_2.png' }
+    ]
   },
   {
     id: 'f4',
-    name: 'Cotton-Linen Blend',
+    name: 'Off-White Linen',
     category: 'linen',
     patternClass: 'fabric-pattern-linen',
-    desc: 'Combines the structured crispness of linen with the soft, wrinkle-resisting features of premium cotton.',
+    desc: 'Soft ivory off-white shade with natural flax undertones for relaxed elegance and breezy resort wear.',
     origin: 'Italy',
-    weight: '135 gsm',
-    threadCount: '90s Blend',
+    weight: '145 gsm',
+    threadCount: '100% Pure Flax',
+    breathability: 'Outstanding',
+    badge: 'Resort Essential',
+    variants: [
+      { id: 'ow1', name: 'Texture View 1', colorHex: '#f5efe6', image: '/linen/off_white_1.png' },
+      { id: 'ow2', name: 'Texture View 2', colorHex: '#ece4d8', image: '/linen/off_white_2.png' }
+    ]
+  },
+  {
+    id: 'f9',
+    name: 'Emerald Green Linen',
+    category: 'linen',
+    patternClass: 'fabric-pattern-linen',
+    desc: 'Striking rich emerald green linen yarn-dyed for intense color depth and vibrant summer tailoring.',
+    origin: 'France',
+    weight: '155 gsm',
+    threadCount: 'Yarn-Dyed Flax',
+    breathability: 'Outstanding',
+    badge: 'Signature Color',
+    variants: [
+      { id: 'eg1', name: 'Texture View 1', colorHex: '#0c614b', image: '/linen/emerald_green_1.png' },
+      { id: 'eg2', name: 'Texture View 2', colorHex: '#064e3b', image: '/linen/emerald_green_2.png' }
+    ]
+  },
+  {
+    id: 'f10',
+    name: 'Carbon Black Linen',
+    category: 'linen',
+    patternClass: 'fabric-pattern-linen',
+    desc: 'Jet black linen with a smooth refined weave, blending structured sophistication with cool linen comfort.',
+    origin: 'Belgium',
+    weight: '150 gsm',
+    threadCount: '100% Pure Linen',
     breathability: 'High',
-    badge: 'Casual Chic'
+    badge: 'Evening Grade',
+    variants: [
+      { id: 'cb1', name: 'Texture View 1', colorHex: '#1c1c1c', image: '/linen/carbon_black_1.png' },
+      { id: 'cb2', name: 'Texture View 2', colorHex: '#2b2b2b', image: '/linen/carbon_black_2.png' }
+    ]
+  },
+  {
+    id: 'f11',
+    name: 'Slate Grey Linen',
+    category: 'linen',
+    patternClass: 'fabric-pattern-linen',
+    desc: 'Refined light slate grey linen weave offering timeless neutrality and effortless styling versatility.',
+    origin: 'Belgium',
+    weight: '140 gsm',
+    threadCount: '100% Fine Flax',
+    breathability: 'Outstanding',
+    badge: 'Versatile Wear',
+    variants: [
+      { id: 'sg1', name: 'Texture View 1', colorHex: '#6b7280', image: '/linen/slate_grey_1.png' },
+      { id: 'sg2', name: 'Texture View 2', colorHex: '#4b5563', image: '/linen/slate_grey_2.png' }
+    ]
+  },
+  {
+    id: 'f12',
+    name: 'Stone Grey Linen',
+    category: 'linen',
+    patternClass: 'fabric-pattern-linen',
+    desc: 'Earth-toned stone grey linen crafted with cross-hatched slub threads for subtle organic texture.',
+    origin: 'Ireland',
+    weight: '145 gsm',
+    threadCount: 'Cross-Hatch Flax',
+    breathability: 'Outstanding',
+    badge: 'Organic Natural',
+    variants: [
+      { id: 'st1', name: 'Texture View 1', colorHex: '#9ca3af', image: '/linen/stone_grey_1.png' },
+      { id: 'st2', name: 'Texture View 2', colorHex: '#d1d5db', image: '/linen/stone_grey_2.png' }
+    ]
+  },
+  {
+    id: 'f13',
+    name: 'Dusty Rose Linen',
+    category: 'linen',
+    patternClass: 'fabric-pattern-linen',
+    desc: 'Romantic soft blush pink dusty rose linen featuring an exquisite slub weave. Ideal for elegant summer kurtas, shirts, and bespoke suits.',
+    origin: 'Italy',
+    weight: '145 gsm',
+    threadCount: '100% Pure Linen Slub',
+    breathability: 'Outstanding',
+    badge: 'New Arrival',
+    variants: [
+      { id: 'dr1', name: 'Texture View 1', colorHex: '#dcae96', image: '/linen/dusty_rose_1.png' },
+      { id: 'dr2', name: 'Texture View 2', colorHex: '#c79880', image: '/linen/dusty_rose_2.png' }
+    ]
+  },
+  {
+    id: 'f14',
+    name: 'Dusty Mint Green Linen',
+    category: 'linen',
+    patternClass: 'fabric-pattern-linen',
+    desc: 'Refreshing soft sage-mint green linen woven from fine flax threads. Brings a cool, understated luxury to summer tailoring and casual elegance.',
+    origin: 'France',
+    weight: '145 gsm',
+    threadCount: '100% Pure Linen Slub',
+    breathability: 'Outstanding',
+    badge: 'New Arrival',
+    variants: [
+      { id: 'dmg1', name: 'Texture View 1', colorHex: '#a3c4b5', image: '/linen/dusty_mint_green_1.png' },
+      { id: 'dmg2', name: 'Texture View 2', colorHex: '#8cb5a3', image: '/linen/dusty_mint_green_2.png' }
+    ]
+  },
+  {
+    id: 'f15',
+    name: 'Chocolate Brown Linen',
+    category: 'linen',
+    patternClass: 'fabric-pattern-linen',
+    desc: 'Deep warm chocolate brown luxury linen with rich espresso tones. Excellent structure for bespoke jackets, kurtas, and pants.',
+    origin: 'Italy',
+    weight: '155 gsm',
+    threadCount: '100% Pure Linen Slub',
+    breathability: 'High',
+    badge: 'New Arrival',
+    variants: [
+      { id: 'cb1', name: 'Texture View 1', colorHex: '#4d2d22', image: '/linen/chocolate_brown_1.png' },
+      { id: 'cb2', name: 'Texture View 2', colorHex: '#3b2219', image: '/linen/chocolate_brown_2.png' }
+    ]
+  },
+  {
+    id: 'f16',
+    name: 'Mud Brown Linen',
+    category: 'linen',
+    patternClass: 'fabric-pattern-linen',
+    desc: 'Earthy taupe mud brown linen woven with organic flax slubs. A versatile warm neutral for modern casual resort wear.',
+    origin: 'Belgium',
+    weight: '150 gsm',
+    threadCount: 'Artisan Slub Flax',
+    breathability: 'Outstanding',
+    badge: 'New Arrival',
+    variants: [
+      { id: 'mb1', name: 'Texture View 1', colorHex: '#6e5647', image: '/linen/mud_brown_1.png' },
+      { id: 'mb2', name: 'Texture View 2', colorHex: '#574336', image: '/linen/mud_brown_2.png' }
+    ]
+  },
+  {
+    id: 'f17',
+    name: 'Wine Linen',
+    category: 'linen',
+    patternClass: 'fabric-pattern-linen',
+    desc: 'Opulent deep burgundy wine red linen with rich berry undertones. Statement fabric for evening wear, kurtas, and luxury shirts.',
+    origin: 'France',
+    weight: '155 gsm',
+    threadCount: 'Royal Dyed Flax',
+    breathability: 'High',
+    badge: 'New Arrival',
+    variants: [
+      { id: 'w1', name: 'Texture View 1', colorHex: '#581825', image: '/linen/wine_1.png' },
+      { id: 'w2', name: 'Texture View 2', colorHex: '#42121c', image: '/linen/wine_2.png' }
+    ]
+  },
+  {
+    id: 'f18',
+    name: 'Placid Blue Linen',
+    category: 'linen',
+    patternClass: 'fabric-pattern-linen',
+    desc: 'Calm and serene ocean-tinted placid blue linen with fine open slub weave. A refreshing Mediterranean aesthetic for summer tailoring.',
+    origin: 'Italy',
+    weight: '145 gsm',
+    threadCount: '100% Pure Linen Slub',
+    breathability: 'Outstanding',
+    badge: 'New Arrival',
+    variants: [
+      { id: 'pb1', name: 'Texture View 1', colorHex: '#7fa4c4', image: '/linen/placid_blue_1.png' },
+      { id: 'pb2', name: 'Texture View 2', colorHex: '#698fb0', image: '/linen/placid_blue_2.png' }
+    ]
+  },
+  {
+    id: 'f19',
+    name: 'Plum Linen',
+    category: 'linen',
+    patternClass: 'fabric-pattern-linen',
+    desc: 'Deep jewel-toned plum purple linen with luxurious dark violet undertones. Perfect for statement kurtas, blazers, and evening shirts.',
+    origin: 'France',
+    weight: '155 gsm',
+    threadCount: 'Royal Dyed Flax',
+    breathability: 'High',
+    badge: 'New Arrival',
+    variants: [
+      { id: 'pl1', name: 'Texture View 1', colorHex: '#522b42', image: '/linen/plum_1.png' },
+      { id: 'pl2', name: 'Texture View 2', colorHex: '#3d1f31', image: '/linen/plum_2.png' }
+    ]
+  },
+  {
+    id: 'f20',
+    name: 'Sky Blue Linen',
+    category: 'linen',
+    patternClass: 'fabric-pattern-linen',
+    desc: 'Crisp bright sky blue linen featuring a light, airy weave. A classic summer essential for sharp casual and formal shirting.',
+    origin: 'Ireland',
+    weight: '140 gsm',
+    threadCount: '100% Fine Flax',
+    breathability: 'Outstanding',
+    badge: 'New Arrival',
+    variants: [
+      { id: 'sb1', name: 'Texture View 1', colorHex: '#87ceeb', image: '/linen/sky_blue_1.png' },
+      { id: 'sb2', name: 'Texture View 2', colorHex: '#70bada', image: '/linen/sky_blue_2.png' }
+    ]
+  },
+  {
+    id: 'f21',
+    name: 'Tuscan Beige Linen',
+    category: 'linen',
+    patternClass: 'fabric-pattern-linen',
+    desc: 'Warm sun-kissed Tuscan sand beige linen woven from natural unbleached flax slubs. Effortless elegance for summer safari jackets and trousers.',
+    origin: 'Italy',
+    weight: '150 gsm',
+    threadCount: 'Artisan Slub Flax',
+    breathability: 'Outstanding',
+    badge: 'New Arrival',
+    variants: [
+      { id: 'tb1', name: 'Texture View 1', colorHex: '#d8c29d', image: '/linen/tuscan_beige_1.png' },
+      { id: 'tb2', name: 'Texture View 2', colorHex: '#c2ab85', image: '/linen/tuscan_beige_2.png' }
+    ]
+  },
+  {
+    id: 'f22',
+    name: 'Bright Red Linen',
+    category: 'linen',
+    patternClass: 'fabric-pattern-linen',
+    desc: 'Vibrant crimson bright red linen with rich yarn-dyed flax slubs. A bold statement color for celebration shirts and kurtas.',
+    origin: 'France',
+    weight: '155 gsm',
+    threadCount: 'Yarn-Dyed Flax',
+    breathability: 'High',
+    badge: 'New Arrival',
+    variants: [
+      { id: 'br1', name: 'Texture View 1', colorHex: '#d92b2b', image: '/linen/bright_red_1.png' },
+      { id: 'br2', name: 'Texture View 2', colorHex: '#b81d1d', image: '/linen/bright_red_2.png' }
+    ]
+  },
+  {
+    id: 'f23',
+    name: 'Dusty Olive Green Linen',
+    category: 'linen',
+    patternClass: 'fabric-pattern-linen',
+    desc: 'Sophisticated earthy dusty olive green linen with natural sage undertones. Ideal for casual safari jackets, shirts, and trousers.',
+    origin: 'Italy',
+    weight: '150 gsm',
+    threadCount: '100% Pure Linen Slub',
+    breathability: 'Outstanding',
+    badge: 'New Arrival',
+    variants: [
+      { id: 'dog1', name: 'Texture View 1', colorHex: '#6b705c', image: '/linen/dusty_olive_green_1.png' },
+      { id: 'dog2', name: 'Texture View 2', colorHex: '#555b49', image: '/linen/dusty_olive_green_2.png' }
+    ]
+  },
+  {
+    id: 'f24',
+    name: 'Mango Yellow Linen',
+    category: 'linen',
+    patternClass: 'fabric-pattern-linen',
+    desc: 'Warm sun-ripened mango mustard yellow linen featuring rich flax slub weave. Perfect for vibrant festive attire and resort wear.',
+    origin: 'India',
+    weight: '145 gsm',
+    threadCount: '100% Pure Flax',
+    breathability: 'Outstanding',
+    badge: 'New Arrival',
+    variants: [
+      { id: 'my1', name: 'Texture View 1', colorHex: '#e5a93b', image: '/linen/mango_yellow_1.png' },
+      { id: 'my2', name: 'Texture View 2', colorHex: '#cf9227', image: '/linen/mango_yellow_2.png' }
+    ]
+  },
+  {
+    id: 'f25',
+    name: 'Cotton Candy Linen',
+    category: 'linen',
+    patternClass: 'fabric-pattern-linen',
+    desc: 'Whimsical sweet pastel pink cotton candy linen featuring soft airy slub fibers. Perfect for light summer shirts, resort wear, and festive kurtas.',
+    origin: 'France',
+    weight: '140 gsm',
+    threadCount: '100% Fine Flax',
+    breathability: 'Outstanding',
+    badge: 'New Arrival',
+    variants: [
+      { id: 'cc1', name: 'Texture View 1', colorHex: '#ffb7c5', image: '/linen/cotton_candy_1.png' },
+      { id: 'cc2', name: 'Texture View 2', colorHex: '#f4a0b0', image: '/linen/cotton_candy_2.png' }
+    ]
+  },
+  {
+    id: 'f26',
+    name: 'Soft Pink Linen',
+    category: 'linen',
+    patternClass: 'fabric-pattern-linen',
+    desc: 'Elegant subtle blush soft pink linen with delicate natural flax texture. Offers a clean, sophisticated modern pastel aesthetic.',
+    origin: 'Italy',
+    weight: '145 gsm',
+    threadCount: '100% Pure Linen Slub',
+    breathability: 'Outstanding',
+    badge: 'New Arrival',
+    variants: [
+      { id: 'sp1', name: 'Texture View 1', colorHex: '#e8b4b8', image: '/linen/soft_pink_1.png' },
+      { id: 'sp2', name: 'Texture View 2', colorHex: '#d69fa4', image: '/linen/soft_pink_2.png' }
+    ]
   },
   {
     id: 'f5',
@@ -167,18 +463,27 @@ export default function Fabric() {
             {filteredFabrics.map((fabric) => {
               const activeVariantId = selectedVariants[fabric.id] || (fabric.variants ? fabric.variants[0].id : null);
               const activeVariant = fabric.variants?.find(v => v.id === activeVariantId);
+              const fabricImage = activeVariant?.image || fabric.image;
               return (
                 <div key={fabric.id} className="fabric-card animate-fade-in">
                   <div 
                     className="fabric-sample-render" 
-                    style={{ cursor: 'zoom-in' }}
+                    style={{ cursor: 'zoom-in', overflow: 'hidden', position: 'relative' }}
                     onClick={() => setActiveLightboxFabric({ ...fabric, activeVariant })}
                     title="Click to view full fabric swatch"
                   >
-                    <div 
-                      className={fabric.patternClass}
-                      style={activeVariant ? { backgroundImage: `url(${activeVariant.image})`, backgroundSize: 'cover', backgroundPosition: 'center' } : {}}
-                    ></div>
+                    {fabricImage ? (
+                      <img 
+                        src={fabricImage} 
+                        alt={fabric.name} 
+                        style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }} 
+                      />
+                    ) : (
+                      <div 
+                        className={fabric.patternClass}
+                        style={{ width: '100%', height: '100%' }}
+                      ></div>
+                    )}
                     <span className="fabric-badge">{fabric.badge}</span>
                   </div>
                   <div className="fabric-info">
@@ -354,26 +659,39 @@ export default function Fabric() {
               </p>
 
               {/* Large swatch render box */}
-              <div 
-                style={{
-                  width: '100%',
-                  height: '300px',
-                  borderRadius: '12px',
-                  overflow: 'hidden',
-                  border: '2px solid rgba(197, 168, 128, 0.4)',
-                  boxShadow: '0 10px 30px rgba(0,0,0,0.3)',
-                  marginBottom: '1.5rem',
-                  position: 'relative'
-                }}
-              >
-                <div 
-                  className={activeLightboxFabric.patternClass}
-                  style={activeLightboxFabric.activeVariant ? { backgroundImage: `url(${activeLightboxFabric.activeVariant.image})`, backgroundSize: 'cover', backgroundPosition: 'center' } : {}}
-                ></div>
-                <span className="fabric-badge" style={{ top: '1rem', right: '1rem' }}>
-                  {activeLightboxFabric.badge}
-                </span>
-              </div>
+              {(() => {
+                const modalImgSrc = activeLightboxFabric.activeVariant?.image || activeLightboxFabric.image;
+                return (
+                  <div 
+                    style={{
+                      width: '100%',
+                      height: '300px',
+                      borderRadius: '12px',
+                      overflow: 'hidden',
+                      border: '2px solid rgba(197, 168, 128, 0.4)',
+                      boxShadow: '0 10px 30px rgba(0,0,0,0.3)',
+                      marginBottom: '1.5rem',
+                      position: 'relative'
+                    }}
+                  >
+                    {modalImgSrc ? (
+                      <img 
+                        src={modalImgSrc} 
+                        alt={activeLightboxFabric.name} 
+                        style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }} 
+                      />
+                    ) : (
+                      <div 
+                        className={activeLightboxFabric.patternClass}
+                        style={{ width: '100%', height: '100%' }}
+                      ></div>
+                    )}
+                    <span className="fabric-badge" style={{ top: '1rem', right: '1rem' }}>
+                      {activeLightboxFabric.badge}
+                    </span>
+                  </div>
+                );
+              })()}
 
               {/* In-Lightbox Color Picker */}
               {activeLightboxFabric.variants && (
