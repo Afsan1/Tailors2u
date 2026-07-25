@@ -1834,11 +1834,12 @@ a {
 
 .footer-link {
   font-size: 0.9rem;
-  color: var(--beige-light);
+  color: var(--white);
+  transition: all 0.2s ease;
 }
 
 .footer-link:hover {
-  color: var(--white);
+  color: var(--beige-gold);
   padding-left: 4px;
 }
 
