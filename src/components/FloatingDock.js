@@ -56,7 +56,7 @@ export default function FloatingDock() {
         </svg>
       )
     },
-    {
+    /* {
       name: 'About',
       path: '/about',
       icon: (
@@ -66,7 +66,7 @@ export default function FloatingDock() {
           <line x1="12" y1="8" x2="12.01" y2="8"/>
         </svg>
       )
-    }
+    } */
   ];
 
   return (

@@ -15,7 +15,7 @@ export default function Navbar({ onOpenBooking }) {
     { name: 'Alteration', path: '/alteration' },
     { name: 'Stitching', path: '/tailoring' },
     { name: 'AI Try-On', path: '/ai-tryon' },
-    { name: 'About', path: '/about' }
+    // { name: 'About', path: '/about' }
   ];
 
   return (

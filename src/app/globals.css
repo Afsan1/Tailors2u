@@ -1821,8 +1821,14 @@ a {
 }
 
 @media (max-width: 768px) {
+  .navbar-container {
+    justify-content: center !important;
+  }
+
   .logo {
-    margin-left: 0 !important;
+    margin: 0 auto !important;
+    justify-content: center;
+    align-items: center;
   }
 
   .logo-brand {
@@ -1868,7 +1874,7 @@ a {
   }
 
   .menu-toggle {
-    display: flex;
+    display: none !important;
   }
 
   .hero-content {
