@@ -3368,12 +3368,12 @@ a {
 
 .empty-title {
   font-size: 1.75rem;
-  color: var(--beige-gold);
+  color: var(--emerald-deep);
   margin-bottom: 0.75rem;
 }
 
 .empty-description {
-  color: #e2ece9;
+  color: #4A5B55;
   margin-bottom: 2rem;
   font-size: 1rem;
 }
