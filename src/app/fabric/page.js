@@ -8,25 +8,595 @@ const FABRICS_DATA = [
     id: 'f1',
     name: 'Giza Egyptian Cotton',
     category: 'cotton',
+    subCategory: 'pure-cotton',
     patternClass: 'fabric-pattern-cotton',
-    desc: 'The gold standard of shirting. Long-staple fibers yield an incredibly soft hand-feel and beautiful natural luster.',
+    image: '/pure_cotton/natural_1.png',
+    desc: 'The gold standard of shirting. Long-staple Egyptian cotton fibers yield an incredibly soft hand-feel and beautiful natural luster.',
     origin: 'Egypt',
     weight: '110 gsm',
     threadCount: '120s Double Ply',
     breathability: 'Excellent',
-    badge: 'Best Seller'
+    badge: 'Best Seller',
+    variants: [
+      { id: 'f1_v1', name: 'Texture View 1', colorHex: '#dfd7c6', image: '/pure_cotton/natural_1.png' },
+      { id: 'f1_v2', name: 'Texture View 2', colorHex: '#cfc4b0', image: '/pure_cotton/natural_2.png' }
+    ]
   },
   {
     id: 'f2',
     name: 'Supima Luxury Cotton',
     category: 'cotton',
+    subCategory: 'pure-cotton',
     patternClass: 'fabric-pattern-cotton',
+    image: '/pure_cotton/blue_1.png',
     desc: 'Twice as strong as regular cotton, Supima is resilient, retains color exceptionally well, and becomes softer with each wash.',
     origin: 'USA',
     weight: '125 gsm',
     threadCount: '100s Double Ply',
     breathability: 'High',
-    badge: 'Premium Fit'
+    badge: 'Premium Fit',
+    variants: [
+      { id: 'f2_v1', name: 'Texture View 1', colorHex: '#3b719f', image: '/pure_cotton/blue_1.png' },
+      { id: 'f2_v2', name: 'Texture View 2', colorHex: '#2d5b83', image: '/pure_cotton/blue_2.png' }
+    ]
+  },
+  {
+    id: 'pc_burgundy',
+    name: 'Burgundy Pure Cotton',
+    category: 'cotton',
+    subCategory: 'pure-cotton',
+    patternClass: 'fabric-pattern-cotton',
+    image: '/pure_cotton/burgundy_1.png',
+    desc: 'Deep burgundy wine pure cotton with a velvety-soft touch, high color retention, and rich warmth for formal shirting and festive kurtas.',
+    origin: 'Italy',
+    weight: '125 gsm',
+    threadCount: '100s Double Ply Pure Cotton',
+    breathability: 'High',
+    badge: 'Signature Grade',
+    variants: [
+      { id: 'pc_bg_v1', name: 'Texture View 1', colorHex: '#6b2128', image: '/pure_cotton/burgundy_1.png' },
+      { id: 'pc_bg_v2', name: 'Texture View 2', colorHex: '#54191f', image: '/pure_cotton/burgundy_2.png' }
+    ]
+  },
+  {
+    id: 'pc_dusty_cornflower',
+    name: 'Dusty Cornflower Blue Pure Cotton',
+    category: 'cotton',
+    subCategory: 'pure-cotton',
+    patternClass: 'fabric-pattern-cotton',
+    image: '/pure_cotton/dusty_cornflower_blue_1.png',
+    desc: 'Soft pastel dusty cornflower blue fine cotton weave delivering cool summer comfort, ultra-smooth drape, and effortless smart-casual charm.',
+    origin: 'USA',
+    weight: '115 gsm',
+    threadCount: '120s Compact Supima Cotton',
+    breathability: 'Outstanding',
+    badge: 'New Arrival',
+    variants: [
+      { id: 'pc_cb_v1', name: 'Texture View 1', colorHex: '#6082a6', image: '/pure_cotton/dusty_cornflower_blue_1.png' },
+      { id: 'pc_cb_v2', name: 'Texture View 2', colorHex: '#4d6c8e', image: '/pure_cotton/dusty_cornflower_blue_2.png' }
+    ]
+  },
+  {
+    id: 'pc_khaki',
+    name: 'Khaki Pure Cotton',
+    category: 'cotton',
+    subCategory: 'pure-cotton',
+    patternClass: 'fabric-pattern-cotton',
+    image: '/pure_cotton/khaki_1.png',
+    desc: 'Warm earthy khaki tan pure cotton featuring resilient long-staple fibers, timeless versatile appeal, and structured soft comfort.',
+    origin: 'Italy',
+    weight: '130 gsm',
+    threadCount: '100s Double Ply Pure Cotton',
+    breathability: 'High',
+    badge: 'Versatile Wear',
+    variants: [
+      { id: 'pc_kh_v1', name: 'Texture View 1', colorHex: '#bfa588', image: '/pure_cotton/khaki_1.png' },
+      { id: 'pc_kh_v2', name: 'Texture View 2', colorHex: '#a88f73', image: '/pure_cotton/khaki_2.png' }
+    ]
+  },
+  {
+    id: 'pc_mocha',
+    name: 'Mocha Brown Pure Cotton',
+    category: 'cotton',
+    subCategory: 'pure-cotton',
+    patternClass: 'fabric-pattern-cotton',
+    image: '/pure_cotton/mocha_brown_1.png',
+    desc: 'Rich dark mocha brown pure cotton fabric crafted from premium long-staple yarns for superior luster, strength, and smooth tailored drape.',
+    origin: 'Egypt',
+    weight: '125 gsm',
+    threadCount: '120s Egyptian Cotton',
+    breathability: 'High',
+    badge: 'New Arrival',
+    variants: [
+      { id: 'pc_mb_v1', name: 'Texture View 1', colorHex: '#5c4738', image: '/pure_cotton/mocha_brown_1.png' },
+      { id: 'pc_mb_v2', name: 'Texture View 2', colorHex: '#47362a', image: '/pure_cotton/mocha_brown_2.png' }
+    ]
+  },
+  {
+    id: 'pc_navy',
+    name: 'Navy Blue Pure Cotton',
+    category: 'cotton',
+    subCategory: 'pure-cotton',
+    patternClass: 'fabric-pattern-cotton',
+    image: '/pure_cotton/navy_blue_1.png',
+    desc: 'Deep midnight navy blue pure cotton woven with ultra-fine double ply threads for crisp formal shirting and dark tailored elegance.',
+    origin: 'Italy',
+    weight: '125 gsm',
+    threadCount: '140s Double Ply Giza',
+    breathability: 'Excellent',
+    badge: 'Best Seller',
+    variants: [
+      { id: 'pc_nb_v1', name: 'Texture View 1', colorHex: '#1c2838', image: '/pure_cotton/navy_blue_1.png' },
+      { id: 'pc_nb_v2', name: 'Texture View 2', colorHex: '#141d2a', image: '/pure_cotton/navy_blue_2.png' }
+    ]
+  },
+  {
+    id: 'pc_olive',
+    name: 'Olive Green Pure Cotton',
+    category: 'cotton',
+    subCategory: 'pure-cotton',
+    patternClass: 'fabric-pattern-cotton',
+    image: '/pure_cotton/olive_green_1.png',
+    desc: 'Refined olive green pure cotton fabric combining muted military elegance with airy breathability and silky hand-feel.',
+    origin: 'USA',
+    weight: '125 gsm',
+    threadCount: '100s Supima Cotton',
+    breathability: 'High',
+    badge: 'New Arrival',
+    variants: [
+      { id: 'pc_og_v1', name: 'Texture View 1', colorHex: '#596343', image: '/pure_cotton/olive_green_1.png' },
+      { id: 'pc_og_v2', name: 'Texture View 2', colorHex: '#475035', image: '/pure_cotton/olive_green_2.png' }
+    ]
+  },
+  {
+    id: 'pc_sage',
+    name: 'Sage Green Pure Cotton',
+    category: 'cotton',
+    subCategory: 'pure-cotton',
+    patternClass: 'fabric-pattern-cotton',
+    image: '/pure_cotton/sage_green_1.png',
+    desc: 'Calming soft sage green pure cotton offering a lightweight, cooling sensation and refined pastel look for modern bespoke wear.',
+    origin: 'Italy',
+    weight: '115 gsm',
+    threadCount: '120s Egyptian Cotton',
+    breathability: 'Outstanding',
+    badge: 'New Arrival',
+    variants: [
+      { id: 'pc_sg_v1', name: 'Texture View 1', colorHex: '#849b89', image: '/pure_cotton/sage_green_1.png' },
+      { id: 'pc_sg_v2', name: 'Texture View 2', colorHex: '#6f8574', image: '/pure_cotton/sage_green_2.png' }
+    ]
+  },
+  {
+    id: 'pc_lavender',
+    name: 'Soft Lavender Pure Cotton',
+    category: 'cotton',
+    subCategory: 'pure-cotton',
+    patternClass: 'fabric-pattern-cotton',
+    image: '/pure_cotton/soft_lavender_1.png',
+    desc: 'Delicate soft lavender purple pure cotton woven with fine luxury yarns for a subtle statement shade and plush smoothness.',
+    origin: 'France',
+    weight: '115 gsm',
+    threadCount: '120s Double Ply',
+    breathability: 'Outstanding',
+    badge: 'New Arrival',
+    variants: [
+      { id: 'pc_sl_v1', name: 'Texture View 1', colorHex: '#b2a7bd', image: '/pure_cotton/soft_lavender_1.png' },
+      { id: 'pc_sl_v2', name: 'Texture View 2', colorHex: '#9b8ea7', image: '/pure_cotton/soft_lavender_2.png' }
+    ]
+  },
+  {
+    id: 'pc_pink',
+    name: 'Soft Pink Pure Cotton',
+    category: 'cotton',
+    subCategory: 'pure-cotton',
+    patternClass: 'fabric-pattern-cotton',
+    image: '/pure_cotton/soft_pink_1.png',
+    desc: 'Gentle soft pastel pink pure cotton featuring silky smooth long-staple fibers, light-catching luster, and premium comfort.',
+    origin: 'Egypt',
+    weight: '115 gsm',
+    threadCount: '140s Fine Giza Cotton',
+    breathability: 'Outstanding',
+    badge: 'New Arrival',
+    variants: [
+      { id: 'pc_sp_v1', name: 'Texture View 1', colorHex: '#e5b8c2', image: '/pure_cotton/soft_pink_1.png' },
+      { id: 'pc_sp_v2', name: 'Texture View 2', colorHex: '#d4a3ad', image: '/pure_cotton/soft_pink_2.png' }
+    ]
+  },
+  {
+    id: 'pc_terracotta',
+    name: 'Terracotta Pure Cotton',
+    category: 'cotton',
+    subCategory: 'pure-cotton',
+    patternClass: 'fabric-pattern-cotton',
+    image: '/pure_cotton/terracotta_1.png',
+    desc: 'Vibrant earthy terracotta rust-orange pure cotton fabric offering rich Mediterranean warmth, supple softness, and long-lasting durability.',
+    origin: 'Italy',
+    weight: '125 gsm',
+    threadCount: '100s Compact Cotton',
+    breathability: 'High',
+    badge: 'New Arrival',
+    variants: [
+      { id: 'pc_tc_v1', name: 'Texture View 1', colorHex: '#bc654f', image: '/pure_cotton/terracotta_1.png' },
+      { id: 'pc_tc_v2', name: 'Texture View 2', colorHex: '#a84a30', image: '/pure_cotton/terracotta_2.png' }
+    ]
+  },
+  {
+    id: 'pc_steel_blue',
+    name: 'Steel Blue Pure Cotton',
+    category: 'cotton',
+    subCategory: 'pure-cotton',
+    patternClass: 'fabric-pattern-cotton',
+    image: '/pure_cotton/steel_blue_1.png',
+    desc: 'Sophisticated cool steel blue pure cotton with a subtle slate sheen, crisp drape, and breathable structure for day-to-night tailoring.',
+    origin: 'USA',
+    weight: '120 gsm',
+    threadCount: '120s Supima Cotton',
+    breathability: 'Excellent',
+    badge: 'New Arrival',
+    variants: [
+      { id: 'pc_sb_v1', name: 'Texture View 1', colorHex: '#506b7d', image: '/pure_cotton/steel_blue_1.png' },
+      { id: 'pc_sb_v2', name: 'Texture View 2', colorHex: '#405666', image: '/pure_cotton/steel_blue_2.png' }
+    ]
+  },
+  {
+    id: 'lc1',
+    name: 'Light Beige Cotton Linen',
+    category: 'cotton',
+    subCategory: 'linen-cotton',
+    patternClass: 'fabric-pattern-linen-cotton',
+    image: '/cotton_linen/light_beige_1.png',
+    desc: 'Premium organic light beige cotton linen blend featuring tactile slub fibers, maximum airflow, and a structured soft drape for bespoke shirting, trousers & kurtas.',
+    origin: 'Italy',
+    weight: '140 gsm',
+    threadCount: '55/45 Linen Cotton',
+    breathability: 'Outstanding',
+    badge: 'Signature Linen Cotton',
+    variants: [
+      { id: 'lc_v1', name: 'Texture View 1', colorHex: '#e4d5bc', image: '/cotton_linen/light_beige_1.png' },
+      { id: 'lc_v2', name: 'Texture View 2', colorHex: '#d8c5a8', image: '/cotton_linen/light_beige_2.png' }
+    ]
+  },
+  {
+    id: 'lc2',
+    name: 'Soft Sage Green Cotton Linen',
+    category: 'cotton',
+    subCategory: 'linen-cotton',
+    patternClass: 'fabric-pattern-linen-cotton',
+    image: '/cotton_linen/soft_sage_green_1.png',
+    desc: 'Refreshing soft sage green cotton linen blend woven with fine flax slub yarns. Exceptionally lightweight and breathable for modern summer shirts, kurtas & trousers.',
+    origin: 'France',
+    weight: '140 gsm',
+    threadCount: '55/45 Linen Cotton',
+    breathability: 'Outstanding',
+    badge: 'New Arrival',
+    variants: [
+      { id: 'sg_v1', name: 'Texture View 1', colorHex: '#8cb5a3', image: '/cotton_linen/soft_sage_green_1.png' },
+      { id: 'sg_v2', name: 'Texture View 2', colorHex: '#7fa391', image: '/cotton_linen/soft_sage_green_2.png' }
+    ]
+  },
+  {
+    id: 'lc3',
+    name: 'Ocean Blue Cotton Linen',
+    category: 'cotton',
+    subCategory: 'linen-cotton',
+    patternClass: 'fabric-pattern-linen-cotton',
+    image: '/cotton_linen/blue_1.png',
+    desc: 'Vibrant ocean blue cotton linen blend featuring rich tactile slub weave, cooling breathability, and refined casual drape for bespoke shirts, kurtas & trousers.',
+    origin: 'Italy',
+    weight: '140 gsm',
+    threadCount: '55/45 Linen Cotton',
+    breathability: 'Outstanding',
+    badge: 'New Arrival',
+    variants: [
+      { id: 'bl_v1', name: 'Texture View 1', colorHex: '#4a82b8', image: '/cotton_linen/blue_1.png' },
+      { id: 'bl_v2', name: 'Texture View 2', colorHex: '#3a72a8', image: '/cotton_linen/blue_2.png' }
+    ]
+  },
+  {
+    id: 'lc4',
+    name: 'Slate Gray Cotton Linen',
+    category: 'cotton',
+    subCategory: 'linen-cotton',
+    patternClass: 'fabric-pattern-linen-cotton',
+    image: '/cotton_linen/gray_1.png',
+    desc: 'Sophisticated slate gray tone cotton linen blend featuring subtle cross-hatched slub weave, breathable structure, and versatile neutral elegance for shirts, jackets & kurtas.',
+    origin: 'Belgium',
+    weight: '145 gsm',
+    threadCount: '55/45 Linen Cotton',
+    breathability: 'Outstanding',
+    badge: 'New Arrival',
+    variants: [
+      { id: 'gr_v1', name: 'Texture View 1', colorHex: '#737a7a', image: '/cotton_linen/gray_1.png' },
+      { id: 'gr_v2', name: 'Texture View 2', colorHex: '#5e6565', image: '/cotton_linen/gray_2.png' }
+    ]
+  },
+  {
+    id: 'lc5',
+    name: 'Natural Unbleached Cotton Linen',
+    category: 'cotton',
+    subCategory: 'linen-cotton',
+    patternClass: 'fabric-pattern-linen-cotton',
+    image: '/cotton_linen/natural_1.png',
+    desc: 'Earthy unbleached natural cotton linen blend with raw flax slub texture, maximum breathability, and relaxed organic drape for resort wear, kurtas & bespoke shirts.',
+    origin: 'Italy',
+    weight: '140 gsm',
+    threadCount: '55/45 Linen Cotton',
+    breathability: 'Outstanding',
+    badge: 'New Arrival',
+    variants: [
+      { id: 'nat_v1', name: 'Texture View 1', colorHex: '#d8c7b0', image: '/cotton_linen/natural_1.png' },
+      { id: 'nat_v2', name: 'Texture View 2', colorHex: '#cabb9e', image: '/cotton_linen/natural_2.png' }
+    ]
+  },
+  {
+    id: 'lc6',
+    name: 'Blue-Gray Cotton Linen',
+    category: 'cotton',
+    subCategory: 'linen-cotton',
+    patternClass: 'fabric-pattern-linen-cotton',
+    image: '/cotton_linen/blue_gray_1.png',
+    desc: 'Refined slate blue-gray cotton linen blend featuring subtle cross-slub texture, breathable structure, and versatile cool neutrality for bespoke shirting & kurtas.',
+    origin: 'Italy',
+    weight: '140 gsm',
+    threadCount: '55/45 Linen Cotton',
+    breathability: 'Outstanding',
+    badge: 'New Arrival',
+    variants: [
+      { id: 'bg_v1', name: 'Texture View 1', colorHex: '#5b7083', image: '/cotton_linen/blue_gray_1.png' },
+      { id: 'bg_v2', name: 'Texture View 2', colorHex: '#4a5d6e', image: '/cotton_linen/blue_gray_2.png' }
+    ]
+  },
+  {
+    id: 'lc7',
+    name: 'Cocoa Brown Cotton Linen',
+    category: 'cotton',
+    subCategory: 'linen-cotton',
+    patternClass: 'fabric-pattern-linen-cotton',
+    image: '/cotton_linen/cocoa_brown_1.png',
+    desc: 'Deep warm cocoa brown luxury cotton linen with rich espresso tones, airy breathability, and structured drape for jackets, kurtas & trousers.',
+    origin: 'France',
+    weight: '145 gsm',
+    threadCount: '55/45 Linen Cotton',
+    breathability: 'Outstanding',
+    badge: 'New Arrival',
+    variants: [
+      { id: 'cb_v1', name: 'Texture View 1', colorHex: '#52382e', image: '/cotton_linen/cocoa_brown_1.png' },
+      { id: 'cb_v2', name: 'Texture View 2', colorHex: '#422c24', image: '/cotton_linen/cocoa_brown_2.png' }
+    ]
+  },
+  {
+    id: 'lc8',
+    name: 'Dusty Mauve Cotton Linen',
+    category: 'cotton',
+    subCategory: 'linen-cotton',
+    patternClass: 'fabric-pattern-linen-cotton',
+    image: '/cotton_linen/dusty_mauve_1.png',
+    desc: 'Subtle dusty mauve pink cotton linen woven with delicate flax slub threads. Offers a clean, modern pastel aesthetic for summer shirts & kurtas.',
+    origin: 'Italy',
+    weight: '140 gsm',
+    threadCount: '55/45 Linen Cotton',
+    breathability: 'Outstanding',
+    badge: 'New Arrival',
+    variants: [
+      { id: 'dm_v1', name: 'Texture View 1', colorHex: '#9e7b86', image: '/cotton_linen/dusty_mauve_1.png' },
+      { id: 'dm_v2', name: 'Texture View 2', colorHex: '#8b6974', image: '/cotton_linen/dusty_mauve_2.png' }
+    ]
+  },
+  {
+    id: 'lc9',
+    name: 'Mushroom Brown Cotton Linen',
+    category: 'cotton',
+    subCategory: 'linen-cotton',
+    patternClass: 'fabric-pattern-linen-cotton',
+    image: '/cotton_linen/mushroom_brown_1.png',
+    desc: 'Earthy taupe mushroom brown cotton linen with rich organic slub texture. A versatile warm neutral for modern casual resort wear & trousers.',
+    origin: 'Belgium',
+    weight: '145 gsm',
+    threadCount: '55/45 Linen Cotton',
+    breathability: 'Outstanding',
+    badge: 'New Arrival',
+    variants: [
+      { id: 'mb_v1', name: 'Texture View 1', colorHex: '#7a685b', image: '/cotton_linen/mushroom_brown_1.png' },
+      { id: 'mb_v2', name: 'Texture View 2', colorHex: '#68574b', image: '/cotton_linen/mushroom_brown_2.png' }
+    ]
+  },
+  {
+    id: 'lc10',
+    name: 'Navy Blue Cotton Linen',
+    category: 'cotton',
+    subCategory: 'linen-cotton',
+    patternClass: 'fabric-pattern-linen-cotton',
+    image: '/cotton_linen/navy_blue_1.png',
+    desc: 'Deep midnight navy blue cotton linen featuring a smooth refined slub weave, blending dark evening sophistication with cool linen comfort.',
+    origin: 'Italy',
+    weight: '145 gsm',
+    threadCount: '55/45 Linen Cotton',
+    breathability: 'Outstanding',
+    badge: 'Evening Grade',
+    variants: [
+      { id: 'nb_v1', name: 'Texture View 1', colorHex: '#1e2d42', image: '/cotton_linen/navy_blue_1.png' },
+      { id: 'nb_v2', name: 'Texture View 2', colorHex: '#152132', image: '/cotton_linen/navy_blue_2.png' }
+    ]
+  },
+  {
+    id: 'lc11',
+    name: 'Teal Blue Cotton Linen',
+    category: 'cotton',
+    subCategory: 'linen-cotton',
+    patternClass: 'fabric-pattern-linen-cotton',
+    image: '/cotton_linen/teal_1.png',
+    desc: 'Striking rich teal blue-green cotton linen yarn-dyed for intense color depth and vibrant Mediterranean summer tailoring.',
+    origin: 'France',
+    weight: '140 gsm',
+    threadCount: '55/45 Linen Cotton',
+    breathability: 'Outstanding',
+    badge: 'Signature Color',
+    variants: [
+      { id: 't_v1', name: 'Texture View 1', colorHex: '#25636b', image: '/cotton_linen/teal_1.png' },
+      { id: 't_v2', name: 'Texture View 2', colorHex: '#1b4d54', image: '/cotton_linen/teal_2.png' }
+    ]
+  },
+  {
+    id: 'lc12',
+    name: 'Soft Green Cotton Linen',
+    category: 'cotton',
+    subCategory: 'linen-cotton',
+    patternClass: 'fabric-pattern-linen-cotton',
+    image: '/cotton_linen/soft_green_1.png',
+    desc: 'Refreshing pastel soft mint green cotton linen woven from fine flax threads. Brings a cool, understated luxury to summer shirts & kurtas.',
+    origin: 'Ireland',
+    weight: '140 gsm',
+    threadCount: '55/45 Linen Cotton',
+    breathability: 'Outstanding',
+    badge: 'New Arrival',
+    variants: [
+      { id: 'sg2_v1', name: 'Texture View 1', colorHex: '#84a991', image: '/cotton_linen/soft_green_1.png' },
+      { id: 'sg2_v2', name: 'Texture View 2', colorHex: '#71967e', image: '/cotton_linen/soft_green_2.png' }
+    ]
+  },
+  {
+    id: 'lc13',
+    name: 'Black Cotton Linen',
+    category: 'cotton',
+    subCategory: 'linen-cotton',
+    patternClass: 'fabric-pattern-linen-cotton',
+    image: '/cotton_linen/black_1.png',
+    desc: 'Sleek black cotton linen blend featuring rich tactile slub texture, maximum breathability, and sophisticated dark tailoring for shirts, kurtas & trousers.',
+    origin: 'Italy',
+    weight: '145 gsm',
+    threadCount: '55/45 Linen Cotton',
+    breathability: 'Outstanding',
+    badge: 'New Arrival',
+    variants: [
+      { id: 'blk_v1', name: 'Texture View 1', colorHex: '#1e1e1e', image: '/cotton_linen/black_1.png' },
+      { id: 'blk_v2', name: 'Texture View 2', colorHex: '#121212', image: '/cotton_linen/black_2.png' }
+    ]
+  },
+  {
+    id: 'lc14',
+    name: 'Burgundy Cotton Linen',
+    category: 'cotton',
+    subCategory: 'linen-cotton',
+    patternClass: 'fabric-pattern-linen-cotton',
+    image: '/cotton_linen/burgundy_1.png',
+    desc: 'Deep burgundy wine cotton linen with rich red undertones and textured flax slub weave. Perfect for distinctive statement shirting and formal kurtas.',
+    origin: 'France',
+    weight: '145 gsm',
+    threadCount: '55/45 Linen Cotton',
+    breathability: 'Outstanding',
+    badge: 'New Arrival',
+    variants: [
+      { id: 'bur_v1', name: 'Texture View 1', colorHex: '#5c1d24', image: '/cotton_linen/burgundy_1.png' },
+      { id: 'bur_v2', name: 'Texture View 2', colorHex: '#4a161c', image: '/cotton_linen/burgundy_2.png' }
+    ]
+  },
+  {
+    id: 'lc15',
+    name: 'Ecru Cotton Linen',
+    category: 'cotton',
+    subCategory: 'linen-cotton',
+    patternClass: 'fabric-pattern-linen-cotton',
+    image: '/cotton_linen/ecru_1.png',
+    desc: 'Soft warm ecru off-white cotton linen with organic texture and breezy drape. Ideal for timeless resort wear and summer tailoring.',
+    origin: 'Belgium',
+    weight: '140 gsm',
+    threadCount: '55/45 Linen Cotton',
+    breathability: 'Outstanding',
+    badge: 'New Arrival',
+    variants: [
+      { id: 'ec_v1', name: 'Texture View 1', colorHex: '#e8dfd1', image: '/cotton_linen/ecru_1.png' },
+      { id: 'ec_v2', name: 'Texture View 2', colorHex: '#dbd0c0', image: '/cotton_linen/ecru_2.png' }
+    ]
+  },
+  {
+    id: 'lc16',
+    name: 'Honey Brown Cotton Linen',
+    category: 'cotton',
+    subCategory: 'linen-cotton',
+    patternClass: 'fabric-pattern-linen-cotton',
+    image: '/cotton_linen/honey_brown_1.png',
+    desc: 'Warm honey brown cotton linen woven with fine slub yarns. Delivers a rich golden-amber tone and breathable comfort for smart-casual wear.',
+    origin: 'Italy',
+    weight: '145 gsm',
+    threadCount: '55/45 Linen Cotton',
+    breathability: 'Outstanding',
+    badge: 'New Arrival',
+    variants: [
+      { id: 'hb_v1', name: 'Texture View 1', colorHex: '#b88242', image: '/cotton_linen/honey_brown_1.png' },
+      { id: 'hb_v2', name: 'Texture View 2', colorHex: '#a06f36', image: '/cotton_linen/honey_brown_2.png' }
+    ]
+  },
+  {
+    id: 'lc17',
+    name: 'Mustard Cotton Linen',
+    category: 'cotton',
+    subCategory: 'linen-cotton',
+    patternClass: 'fabric-pattern-linen-cotton',
+    image: '/cotton_linen/mustard_1.png',
+    desc: 'Vibrant mustard yellow cotton linen with rich warm tones and natural flax slub texture. A bold seasonal choice for casual shirts & kurtas.',
+    origin: 'Ireland',
+    weight: '140 gsm',
+    threadCount: '55/45 Linen Cotton',
+    breathability: 'Outstanding',
+    badge: 'New Arrival',
+    variants: [
+      { id: 'mus_v1', name: 'Texture View 1', colorHex: '#d49b29', image: '/cotton_linen/mustard_1.png' },
+      { id: 'mus_v2', name: 'Texture View 2', colorHex: '#bd871f', image: '/cotton_linen/mustard_2.png' }
+    ]
+  },
+  {
+    id: 'lc18',
+    name: 'Olive Green Cotton Linen',
+    category: 'cotton',
+    subCategory: 'linen-cotton',
+    patternClass: 'fabric-pattern-linen-cotton',
+    image: '/cotton_linen/olive_green_1.png',
+    desc: 'Earthy olive green cotton linen with natural slub weave and subtle luster. Perfect for military-inspired casual tailoring and relaxed shirts.',
+    origin: 'Italy',
+    weight: '145 gsm',
+    threadCount: '55/45 Linen Cotton',
+    breathability: 'Outstanding',
+    badge: 'New Arrival',
+    variants: [
+      { id: 'og_v1', name: 'Texture View 1', colorHex: '#556b2f', image: '/cotton_linen/olive_green_1.png' },
+      { id: 'og_v2', name: 'Texture View 2', colorHex: '#475a26', image: '/cotton_linen/olive_green_2.png' }
+    ]
+  },
+  {
+    id: 'lc19',
+    name: 'Textured Gray Cotton Linen',
+    category: 'cotton',
+    subCategory: 'linen-cotton',
+    patternClass: 'fabric-pattern-linen-cotton',
+    image: '/cotton_linen/textured_gray_1.png',
+    desc: 'Rich heather textured gray cotton linen featuring pronounced cross-hatched slub weave and versatile neutral elegance.',
+    origin: 'Belgium',
+    weight: '145 gsm',
+    threadCount: '55/45 Linen Cotton',
+    breathability: 'Outstanding',
+    badge: 'New Arrival',
+    variants: [
+      { id: 'tg_v1', name: 'Texture View 1', colorHex: '#8a8e91', image: '/cotton_linen/textured_gray_1.png' },
+      { id: 'tg_v2', name: 'Texture View 2', colorHex: '#777b7e', image: '/cotton_linen/textured_gray_2.png' }
+    ]
+  },
+  {
+    id: 'lc20',
+    name: 'Terracotta Cotton Linen',
+    category: 'cotton',
+    subCategory: 'linen-cotton',
+    patternClass: 'fabric-pattern-linen-cotton',
+    image: '/cotton_linen/terracotta_1.png',
+    desc: 'Earthy warm terracotta rust-orange cotton linen featuring rich tactile slub fibers, maximum breathability, and rustic Mediterranean charm for bespoke shirts, kurtas & trousers.',
+    origin: 'Italy',
+    weight: '145 gsm',
+    threadCount: '55/45 Linen Cotton',
+    breathability: 'Outstanding',
+    badge: 'New Arrival',
+    variants: [
+      { id: 'tc_v1', name: 'Texture View 1', colorHex: '#c05a3e', image: '/cotton_linen/terracotta_1.png' },
+      { id: 'tc_v2', name: 'Texture View 2', colorHex: '#a84a30', image: '/cotton_linen/terracotta_2.png' }
+    ]
   },
   {
     id: 'f3',
@@ -409,6 +979,7 @@ const FABRICS_DATA = [
 export default function Fabric() {
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedCategory, setSelectedCategory] = useState('all');
+  const [cottonSubCategory, setCottonSubCategory] = useState('all');
   const [activeLightboxFabric, setActiveLightboxFabric] = useState(null);
   const [selectedVariants, setSelectedVariants] = useState({});
   const { openBooking } = useBooking();
@@ -423,7 +994,11 @@ export default function Fabric() {
                           fabric.desc.toLowerCase().includes(searchTerm.toLowerCase()) ||
                           fabric.origin.toLowerCase().includes(searchTerm.toLowerCase());
     const matchesCategory = selectedCategory === 'all' || fabric.category === selectedCategory;
-    return matchesSearch && matchesCategory;
+    const matchesCottonSubCategory = 
+      selectedCategory !== 'cotton' || 
+      cottonSubCategory === 'all' || 
+      fabric.subCategory === cottonSubCategory;
+    return matchesSearch && matchesCategory && matchesCottonSubCategory;
   });
 
   return (
@@ -451,6 +1026,48 @@ export default function Fabric() {
             ))}
           </div>
         </div>
+
+        {/* Cotton Sub-Category Dropdown Bar */}
+        {selectedCategory === 'cotton' && (
+          <div className="cotton-subcategory-bar animate-fade-in">
+            <div className="cotton-dropdown-group">
+              <label htmlFor="cotton-dropdown-select" className="cotton-dropdown-label">
+                <span style={{ fontSize: '1.1rem' }}>🌿</span> Cotton Sub-Category:
+              </label>
+              <select
+                id="cotton-dropdown-select"
+                className="cotton-dropdown-select"
+                value={cottonSubCategory}
+                onChange={(e) => setCottonSubCategory(e.target.value)}
+              >
+                <option value="all">All Cotton Fabrics</option>
+                <option value="linen-cotton">✨ Linen Cotton (Linen-Cotton Blends)</option>
+                <option value="pure-cotton">Pure Egyptian & Supima Cotton</option>
+              </select>
+            </div>
+
+            <div className="cotton-pills-group">
+              <button
+                className={`cotton-pill-btn ${cottonSubCategory === 'all' ? 'active' : ''}`}
+                onClick={() => setCottonSubCategory('all')}
+              >
+                All Cotton
+              </button>
+              <button
+                className={`cotton-pill-btn ${cottonSubCategory === 'linen-cotton' ? 'active' : ''}`}
+                onClick={() => setCottonSubCategory('linen-cotton')}
+              >
+                ✨ Linen Cotton
+              </button>
+              <button
+                className={`cotton-pill-btn ${cottonSubCategory === 'pure-cotton' ? 'active' : ''}`}
+                onClick={() => setCottonSubCategory('pure-cotton')}
+              >
+                Pure Cotton
+              </button>
+            </div>
+          </div>
+        )}
 
         {/* Catalog Grid */}
         {filteredFabrics.length === 0 ? (
