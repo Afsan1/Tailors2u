@@ -239,6 +239,132 @@ const FABRICS_DATA = [
     ]
   },
   {
+    id: 'pc_black',
+    name: 'Jet Black Pure Cotton',
+    category: 'cotton',
+    subCategory: 'pure-cotton',
+    patternClass: 'fabric-pattern-cotton',
+    image: '/pure_cotton/black_1.png',
+    desc: 'Ultra-deep jet black pure cotton woven with fine double ply yarns for sleek formal shirting, black-tie attire, and sharp tailored silhouettes.',
+    origin: 'Italy',
+    weight: '125 gsm',
+    threadCount: '120s Double Ply Cotton',
+    breathability: 'High',
+    badge: 'New Arrival',
+    variants: [
+      { id: 'pc_blk_v1', name: 'Texture View 1', colorHex: '#1c1c1c', image: '/pure_cotton/black_1.png' },
+      { id: 'pc_blk_v2', name: 'Texture View 2', colorHex: '#121212', image: '/pure_cotton/black_2.png' }
+    ]
+  },
+  {
+    id: 'pc_charcoal_grey',
+    name: 'Charcoal Grey Pure Cotton',
+    category: 'cotton',
+    subCategory: 'pure-cotton',
+    patternClass: 'fabric-pattern-cotton',
+    image: '/pure_cotton/charcoal_grey_1.png',
+    desc: 'Refined dark charcoal grey pure cotton delivering understated executive sophistication, silky drape, and versatile smart-casual wear.',
+    origin: 'Egypt',
+    weight: '125 gsm',
+    threadCount: '120s Giza Cotton',
+    breathability: 'High',
+    badge: 'New Arrival',
+    variants: [
+      { id: 'pc_cg_v1', name: 'Texture View 1', colorHex: '#383b40', image: '/pure_cotton/charcoal_grey_1.png' },
+      { id: 'pc_cg_v2', name: 'Texture View 2', colorHex: '#2a2d32', image: '/pure_cotton/charcoal_grey_2.png' }
+    ]
+  },
+  {
+    id: 'pc_coral',
+    name: 'Coral Pure Cotton',
+    category: 'cotton',
+    subCategory: 'pure-cotton',
+    patternClass: 'fabric-pattern-cotton',
+    image: '/pure_cotton/coral_1.png',
+    desc: 'Vibrant sunny coral pure cotton featuring long-staple yarns with a radiant tropical glow, light breathability, and soft festive feel.',
+    origin: 'Italy',
+    weight: '115 gsm',
+    threadCount: '100s Compact Supima',
+    breathability: 'Outstanding',
+    badge: 'New Arrival',
+    variants: [
+      { id: 'pc_cr_v1', name: 'Texture View 1', colorHex: '#e06b5b', image: '/pure_cotton/coral_1.png' },
+      { id: 'pc_cr_v2', name: 'Texture View 2', colorHex: '#cc594a', image: '/pure_cotton/coral_2.png' }
+    ]
+  },
+  {
+    id: 'pc_dusty_rose',
+    name: 'Dusty Rose Pure Cotton',
+    category: 'cotton',
+    subCategory: 'pure-cotton',
+    patternClass: 'fabric-pattern-cotton',
+    image: '/pure_cotton/dusty_rose_1.png',
+    desc: 'Elegant muted dusty rose pink fine pure cotton weave bringing subtle vintage allure, smooth hand-feel, and effortless summer charm.',
+    origin: 'France',
+    weight: '115 gsm',
+    threadCount: '120s Double Ply',
+    breathability: 'Outstanding',
+    badge: 'New Arrival',
+    variants: [
+      { id: 'pc_dr_v1', name: 'Texture View 1', colorHex: '#c48b8b', image: '/pure_cotton/dusty_rose_1.png' },
+      { id: 'pc_dr_v2', name: 'Texture View 2', colorHex: '#b27878', image: '/pure_cotton/dusty_rose_2.png' }
+    ]
+  },
+  {
+    id: 'pc_forest_green',
+    name: 'Forest Green Pure Cotton',
+    category: 'cotton',
+    subCategory: 'pure-cotton',
+    patternClass: 'fabric-pattern-cotton',
+    image: '/pure_cotton/forest_green_1.png',
+    desc: 'Deep rich forest green pure cotton combining luxurious botanical depth with structured softness and long-lasting color intensity.',
+    origin: 'USA',
+    weight: '130 gsm',
+    threadCount: '100s Supima Cotton',
+    breathability: 'High',
+    badge: 'New Arrival',
+    variants: [
+      { id: 'pc_fg_v1', name: 'Texture View 1', colorHex: '#2b4736', image: '/pure_cotton/forest_green_1.png' },
+      { id: 'pc_fg_v2', name: 'Texture View 2', colorHex: '#1f3829', image: '/pure_cotton/forest_green_2.png' }
+    ]
+  },
+  {
+    id: 'pc_light_beige',
+    name: 'Light Beige Pure Cotton',
+    category: 'cotton',
+    subCategory: 'pure-cotton',
+    patternClass: 'fabric-pattern-cotton',
+    image: '/pure_cotton/light_beige_1.png',
+    desc: 'Warm oatmeal light beige pure cotton woven from fine long-staple fibers, offering airy comfort, natural texture, and versatile neutral styling.',
+    origin: 'Italy',
+    weight: '120 gsm',
+    threadCount: '120s Egyptian Cotton',
+    breathability: 'Excellent',
+    badge: 'New Arrival',
+    variants: [
+      { id: 'pc_lbe_v1', name: 'Texture View 1', colorHex: '#d8cbb7', image: '/pure_cotton/light_beige_1.png' },
+      { id: 'pc_lbe_v2', name: 'Texture View 2', colorHex: '#c7b8a2', image: '/pure_cotton/light_beige_2.png' }
+    ]
+  },
+  {
+    id: 'pc_red_wine',
+    name: 'Red Wine Pure Cotton',
+    category: 'cotton',
+    subCategory: 'pure-cotton',
+    patternClass: 'fabric-pattern-cotton',
+    image: '/pure_cotton/red_wine_1.png',
+    desc: 'Rich deep red wine crimson pure cotton crafted for bold evening shirting, festive celebrations, and opulent bespoke tailoring.',
+    origin: 'Italy',
+    weight: '125 gsm',
+    threadCount: '120s Double Ply Cotton',
+    breathability: 'High',
+    badge: 'New Arrival',
+    variants: [
+      { id: 'pc_rw_v1', name: 'Texture View 1', colorHex: '#7a1f28', image: '/pure_cotton/red_wine_1.png' },
+      { id: 'pc_rw_v2', name: 'Texture View 2', colorHex: '#63161e', image: '/pure_cotton/red_wine_2.png' }
+    ]
+  },
+  {
     id: 'lc1',
     name: 'Light Beige Cotton Linen',
     category: 'cotton',
