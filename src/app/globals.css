@@ -625,7 +625,7 @@ a {
 .feature-icon-wrapper {
   width: 70px;
   height: 70px;
-  background-color: #1E2D27;
+  background-color: var(--emerald-deep);
   border-radius: var(--radius-full);
   display: flex;
   align-items: center;
@@ -638,9 +638,9 @@ a {
 }
 
 .feature-card:hover .feature-icon-wrapper {
-  background-color: var(--beige-gold);
-  color: #1E2D27;
-  border-color: var(--beige-gold);
+  background-color: var(--emerald-medium);
+  color: #ffffff;
+  border-color: var(--emerald-bright);
 }
 
 .feature-card h3 {
@@ -781,7 +781,7 @@ a {
 .item-price {
   font-weight: 700;
   color: var(--emerald-deep);
-  font-family: var(--font-serif);
+  font-family: var(--font-sans), sans-serif;
 }
 
 .item-desc {
@@ -857,7 +857,7 @@ a {
 
 .calc-total-amount {
   font-size: 2rem !important;
-  font-family: var(--font-serif);
+  font-family: var(--font-sans), sans-serif;
   color: var(--emerald-deep);
   font-weight: 700 !important;
 }
@@ -1048,7 +1048,7 @@ a {
 }
 
 .acc-card--open .acc-icon {
-  background: #1E2D27;
+  background: var(--emerald-deep);
   color: #F4F7F5;
 }
 
@@ -1095,7 +1095,7 @@ a {
   font-size: 1rem;
   font-weight: 700;
   color: var(--emerald-deep);
-  font-family: var(--font-serif);
+  font-family: var(--font-sans), sans-serif;
 }
 
 /* Rotating chevron arrow */

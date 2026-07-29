@@ -11,7 +11,7 @@ export default function Footer({ onOpenBooking }) {
             <Logo className="logo-icon" />
             <div style={{ display: 'flex', flexDirection: 'column' }}>
               <h3 style={{ margin: 0, color: 'var(--white)', fontFamily: 'var(--font-sans)', fontSize: '1.8rem', fontWeight: '400', letterSpacing: '3.5px', lineHeight: '1.1' }}>Tailors2U</h3>
-              <span style={{ fontSize: '0.65rem', fontWeight: '500', opacity: 0.8, color: '#FFFFFF', letterSpacing: '0.05em', marginTop: '2px', lineHeight: '1.1' }}>Pvt. Ltd.</span>
+              <span style={{ fontSize: '0.65rem', fontWeight: '500', opacity: 0.8, color: '#FFFFFF', letterSpacing: '0.05em', marginTop: '2px', lineHeight: '1.1' }}>Private.Limited.</span>
             </div>
           </div>
           <p>
@@ -53,7 +53,7 @@ export default function Footer({ onOpenBooking }) {
       </div>
 
       <div className="footer-bottom">
-        <p>&copy; {new Date().getFullYear()} Tailors2U Pvt. Ltd. All rights reserved.</p>
+        <p>&copy; {new Date().getFullYear()} Tailors2U Private.Limited. All rights reserved.</p>
         <p>Premium Bespoke Tailoring Services</p>
       </div>
     </footer>
