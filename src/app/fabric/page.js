@@ -1081,23 +1081,343 @@ const FABRICS_DATA = [
     badge: 'Signature Luxury'
   },
   {
-    id: 'f8',
-    name: 'Armani Suiting Wool',
+    id: 'arm_black',
+    name: 'Armani Black Suiting Wool',
     category: 'armani',
+    image: '/armani/Armani fabric black 1.png',
     patternClass: 'fabric-pattern-armani',
-    desc: 'Exclusive high-end suiting fabric from the house of Armani. Exceptionally fluid drape, structure, and prestige.',
+    desc: 'Deep jet black luxury suiting wool from the house of Giorgio Armani. Superior fluid drape, high structural resilience, and iconic formal elegance.',
     origin: 'Italy',
     weight: '275 gsm',
     threadCount: 'Super 150s Wool-Silk',
     breathability: 'High',
     badge: 'Armani Suiting',
     variants: [
-      { id: 'v1', name: 'Cream / Beige', colorHex: '#e8e4d3', image: '/armani.png' },
-      { id: 'v2', name: 'Slate Grey', colorHex: '#737a7a', image: '/armani_grey.png' },
-      { id: 'v3', name: 'Chocolate Brown', colorHex: '#4d2d22', image: '/armani_brown.png' },
-      { id: 'v4', name: 'Dark Espresso', colorHex: '#2b1f1d', image: '/armani_darkbrown.png' },
-      { id: 'v5', name: 'Royal Purple', colorHex: '#442b45', image: '/armani_purple.png' },
-      { id: 'v6', name: 'Burgundy Wine', colorHex: '#421f24', image: '/armani_burgundy.png' }
+      { id: 'arm_blk_v1', name: 'Texture View 1', colorHex: '#1c1d21', image: '/armani/Armani fabric black 1.png' },
+      { id: 'arm_blk_v2', name: 'Texture View 2', colorHex: '#111215', image: '/armani/Armani fabric black 2.png' }
+    ]
+  },
+  {
+    id: 'arm_grey',
+    name: 'Armani Slate Grey Suiting Wool',
+    category: 'armani',
+    image: '/armani/armani fabric grey 1.png',
+    patternClass: 'fabric-pattern-armani',
+    desc: 'Refined Slate Grey fine wool suiting by Giorgio Armani. Timeless corporate and formal elegance with structured drape and subtle luster.',
+    origin: 'Italy',
+    weight: '275 gsm',
+    threadCount: 'Super 150s Wool-Silk',
+    breathability: 'High',
+    badge: 'Armani Suiting',
+    variants: [
+      { id: 'arm_gry_v1', name: 'Texture View 1', colorHex: '#687178', image: '/armani/armani fabric grey 1.png' },
+      { id: 'arm_gry_v2', name: 'Texture View 2', colorHex: '#535a60', image: '/armani/armani fabric grey 2.png' }
+    ]
+  },
+  {
+    id: 'arm_charcoal_grey',
+    name: 'Armani Charcoal Grey Suiting Wool',
+    category: 'armani',
+    image: '/armani/armani fabric charchol grey 1.png',
+    patternClass: 'fabric-pattern-armani',
+    desc: 'Deep Charcoal Grey fine Italian wool suiting. Premium dark shade providing modern executive sophistication.',
+    origin: 'Italy',
+    weight: '275 gsm',
+    threadCount: 'Super 150s Wool-Silk',
+    breathability: 'High',
+    badge: 'Armani Suiting',
+    variants: [
+      { id: 'arm_chg_v1', name: 'Texture View 1', colorHex: '#3c4146', image: '/armani/armani fabric charchol grey 1.png' },
+      { id: 'arm_chg_v2', name: 'Texture View 2', colorHex: '#2d3135', image: '/armani/armani fabric charchol grey 2.png' }
+    ]
+  },
+  {
+    id: 'arm_slate_blue',
+    name: 'Armani Slate Blue Suiting Wool',
+    category: 'armani',
+    image: '/armani/armani fabric slate blue 1.png',
+    patternClass: 'fabric-pattern-armani',
+    desc: 'Distinguished Slate Blue fine suiting wool from Armani. Deep oceanic tones crafted for modern executive suits.',
+    origin: 'Italy',
+    weight: '275 gsm',
+    threadCount: 'Super 150s Wool-Silk',
+    breathability: 'High',
+    badge: 'Armani Suiting',
+    variants: [
+      { id: 'arm_sbl_v1', name: 'Texture View 1', colorHex: '#4a5b6d', image: '/armani/armani fabric slate blue 1.png' },
+      { id: 'arm_sbl_v2', name: 'Texture View 2', colorHex: '#394757', image: '/armani/armani fabric slate blue 2.png' }
+    ]
+  },
+  {
+    id: 'arm_soft_blue_gray',
+    name: 'Armani Soft Blue Gray Suiting Wool',
+    category: 'armani',
+    image: '/armani/armani fabric soft blue gray 1.png',
+    patternClass: 'fabric-pattern-armani',
+    desc: 'Luminous Soft Blue Gray suiting wool. Subtle powdery blue-grey finish offering refined summer tailoring.',
+    origin: 'Italy',
+    weight: '275 gsm',
+    threadCount: 'Super 150s Wool-Silk',
+    breathability: 'High',
+    badge: 'Armani Suiting',
+    variants: [
+      { id: 'arm_sbg_v1', name: 'Texture View 1', colorHex: '#607282', image: '/armani/armani fabric soft blue gray 1.png' },
+      { id: 'arm_sbg_v2', name: 'Texture View 2', colorHex: '#4d5d6c', image: '/armani/armani fabric soft blue gray 2.png' }
+    ]
+  },
+  {
+    id: 'arm_mocha_brown',
+    name: 'Armani Rich Mocha Brown Suiting Wool',
+    category: 'armani',
+    image: '/armani/Armani fabric rich mocha brown 1.png',
+    patternClass: 'fabric-pattern-armani',
+    desc: 'Warm Rich Mocha Brown suiting wool by Armani. Premium Italian weave boasting a subtle luster and luxurious hand feel.',
+    origin: 'Italy',
+    weight: '275 gsm',
+    threadCount: 'Super 150s Wool-Silk',
+    breathability: 'High',
+    badge: 'Armani Suiting',
+    variants: [
+      { id: 'arm_mch_v1', name: 'Texture View 1', colorHex: '#594236', image: '/armani/Armani fabric rich mocha brown 1.png' },
+      { id: 'arm_mch_v2', name: 'Texture View 2', colorHex: '#453228', image: '/armani/Armani fabric rich mocha brown 2.png' }
+    ]
+  },
+  {
+    id: 'arm_mushroom_taupe',
+    name: 'Armani Muted Mushroom Taupe Suiting Wool',
+    category: 'armani',
+    image: '/armani/armani fabric muted mushroom taupe 1.png',
+    patternClass: 'fabric-pattern-armani',
+    desc: 'Sophisticated Muted Mushroom Taupe Italian suiting wool. Subtle earth tone offering contemporary tailored distinction.',
+    origin: 'Italy',
+    weight: '275 gsm',
+    threadCount: 'Super 150s Wool-Silk',
+    breathability: 'High',
+    badge: 'Armani Suiting',
+    variants: [
+      { id: 'arm_tau_v1', name: 'Texture View 1', colorHex: '#786b62', image: '/armani/armani fabric muted mushroom taupe 1.png' },
+      { id: 'arm_tau_v2', name: 'Texture View 2', colorHex: '#63574e', image: '/armani/armani fabric muted mushroom taupe 2.png' }
+    ]
+  },
+  {
+    id: 'arm_camel_beige',
+    name: 'Armani Camel Beige Suiting Wool',
+    category: 'armani',
+    image: '/armani/Armani fabric camel beige 1.png',
+    patternClass: 'fabric-pattern-armani',
+    desc: 'Warm Camel Beige luxury wool suiting. Elegant tan shade delivering timeless Italian sophistication.',
+    origin: 'Italy',
+    weight: '275 gsm',
+    threadCount: 'Super 150s Wool-Silk',
+    breathability: 'High',
+    badge: 'Armani Suiting',
+    variants: [
+      { id: 'arm_cam_v1', name: 'Texture View 1', colorHex: '#b59e84', image: '/armani/Armani fabric camel beige 1.png' },
+      { id: 'arm_cam_v2', name: 'Texture View 2', colorHex: '#9f8a72', image: '/armani/Armani fabric camel beige 2.png' }
+    ]
+  },
+  {
+    id: 'arm_sand_beige',
+    name: 'Armani Sand Beige Suiting Wool',
+    category: 'armani',
+    image: '/armani/armani fabric sand beige 1.png',
+    patternClass: 'fabric-pattern-armani',
+    desc: 'Luminous Sand Beige fine Italian suiting wool. Ultra-smooth weave delivering lightweight elegance for luxury spring/summer suiting.',
+    origin: 'Italy',
+    weight: '275 gsm',
+    threadCount: 'Super 150s Wool-Silk',
+    breathability: 'High',
+    badge: 'Armani Suiting',
+    variants: [
+      { id: 'arm_snd_v1', name: 'Texture View 1', colorHex: '#c4b49e', image: '/armani/armani fabric sand beige 1.png' },
+      { id: 'arm_snd_v2', name: 'Texture View 2', colorHex: '#b09f88', image: '/armani/armani fabric sand beige 2.png' }
+    ]
+  },
+  {
+    id: 'arm_plum',
+    name: 'Armani Plum Suiting Wool',
+    category: 'armani',
+    image: '/armani/Armani fabric plum 1.png',
+    patternClass: 'fabric-pattern-armani',
+    desc: 'Opulent deep Plum suiting wool from Giorgio Armani. Luxurious jewel-toned shade ideal for tuxedo jackets and evening suits.',
+    origin: 'Italy',
+    weight: '275 gsm',
+    threadCount: 'Super 150s Wool-Silk',
+    breathability: 'High',
+    badge: 'Armani Suiting',
+    variants: [
+      { id: 'arm_plm_v1', name: 'Texture View 1', colorHex: '#5c3a4d', image: '/armani/Armani fabric plum 1.png' },
+      { id: 'arm_plm_v2', name: 'Texture View 2', colorHex: '#482c3c', image: '/armani/Armani fabric plum 2.png' }
+    ]
+  },
+  {
+    id: 'arm_sage_green',
+    name: 'Armani Sage Green Suiting Wool',
+    category: 'armani',
+    image: '/armani/Armani fabric sage green 1.png',
+    patternClass: 'fabric-pattern-armani',
+    desc: 'Refined Sage Green suiting wool. Elegant muted green hue with a smooth, breathable finish.',
+    origin: 'Italy',
+    weight: '275 gsm',
+    threadCount: 'Super 150s Wool-Silk',
+    breathability: 'High',
+    badge: 'Armani Suiting',
+    variants: [
+      { id: 'arm_sge_v1', name: 'Texture View 1', colorHex: '#72826e', image: '/armani/Armani fabric sage green 1.png' },
+      { id: 'arm_sge_v2', name: 'Texture View 2', colorHex: '#5c6a59', image: '/armani/Armani fabric sage green 2.png' }
+    ]
+  },
+  {
+    id: 'arm_olive_green',
+    name: 'Armani Olive Green Suiting Wool',
+    category: 'armani',
+    image: '/armani/armani fabric olive green 1.png',
+    patternClass: 'fabric-pattern-armani',
+    desc: 'Distinguished Olive Green fine wool suiting from Armani. Warm organic tone with silky hand-feel and immaculate drape.',
+    origin: 'Italy',
+    weight: '275 gsm',
+    threadCount: 'Super 150s Wool-Silk',
+    breathability: 'High',
+    badge: 'Armani Suiting',
+    variants: [
+      { id: 'arm_olv_v1', name: 'Texture View 1', colorHex: '#4e5843', image: '/armani/armani fabric olive green 1.png' },
+      { id: 'arm_olv_v2', name: 'Texture View 2', colorHex: '#3d4633', image: '/armani/armani fabric olive green 2.png' }
+    ]
+  },
+  {
+    id: 'arm_olive_gray',
+    name: 'Armani Olive Gray Suiting Wool',
+    category: 'armani',
+    image: '/armani/armani fabric olive gray 1.png',
+    patternClass: 'fabric-pattern-armani',
+    desc: 'Contemporary Olive Gray suiting wool. Blended earthy grey-green tone offering versatile tailored style.',
+    origin: 'Italy',
+    weight: '275 gsm',
+    threadCount: 'Super 150s Wool-Silk',
+    breathability: 'High',
+    badge: 'Armani Suiting',
+    variants: [
+      { id: 'arm_ogry_v1', name: 'Texture View 1', colorHex: '#5d6256', image: '/armani/armani fabric olive gray 1.png' },
+      { id: 'arm_ogry_v2', name: 'Texture View 2', colorHex: '#4b5045', image: '/armani/armani fabric olive gray 2.png' }
+    ]
+  },
+  {
+    id: 'arm_ivory',
+    name: 'Armani Ivory Suiting Wool',
+    category: 'armani',
+    image: '/armani/Armani fabric ivory 1.png',
+    patternClass: 'fabric-pattern-armani',
+    desc: 'Luminous Ivory white luxury suiting wool from the house of Giorgio Armani. Pristine formal elegance, silky drape, and immaculate finish for wedding tuxedos and summer suiting.',
+    origin: 'Italy',
+    weight: '270 gsm',
+    threadCount: 'Super 150s Wool-Silk',
+    breathability: 'High',
+    badge: 'Armani Suiting',
+    variants: [
+      { id: 'arm_ivr_v1', name: 'Texture View 1', colorHex: '#f3efea', image: '/armani/Armani fabric ivory 1.png' },
+      { id: 'arm_ivr_v2', name: 'Texture View 2', colorHex: '#e5ded5', image: '/armani/Armani fabric ivory 2.png' }
+    ]
+  },
+  {
+    id: 'arm_mushroom_beige',
+    name: 'Armani Mushroom Beige Suiting Wool',
+    category: 'armani',
+    image: '/armani/Armani fabric mushroom beige 1.png',
+    patternClass: 'fabric-pattern-armani',
+    desc: 'Understated Mushroom Beige fine Italian wool suiting by Giorgio Armani. Subtle greige tone delivering modern executive distinction and versatile drape.',
+    origin: 'Italy',
+    weight: '275 gsm',
+    threadCount: 'Super 150s Wool-Silk',
+    breathability: 'High',
+    badge: 'Armani Suiting',
+    variants: [
+      { id: 'arm_msh_v1', name: 'Texture View 1', colorHex: '#b2a496', image: '/armani/Armani fabric mushroom beige 1.png' },
+      { id: 'arm_msh_v2', name: 'Texture View 2', colorHex: '#9c8e80', image: '/armani/Armani fabric mushroom beige 2.png' }
+    ]
+  },
+  {
+    id: 'arm_olive_khaki',
+    name: 'Armani Olive Khaki Suiting Wool',
+    category: 'armani',
+    image: '/armani/Armani fabric olive khaki 1.png',
+    patternClass: 'fabric-pattern-armani',
+    desc: 'Rich Olive Khaki luxury suiting wool from Armani. Distinctive safari-inspired organic hue with soft touch and structured tailorability.',
+    origin: 'Italy',
+    weight: '275 gsm',
+    threadCount: 'Super 150s Wool-Silk',
+    breathability: 'High',
+    badge: 'Armani Suiting',
+    variants: [
+      { id: 'arm_okh_v1', name: 'Texture View 1', colorHex: '#6b6b55', image: '/armani/Armani fabric olive khaki 1.png' },
+      { id: 'arm_okh_v2', name: 'Texture View 2', colorHex: '#575743', image: '/armani/Armani fabric olive khaki 2.png' }
+    ]
+  },
+  {
+    id: 'arm_taupe',
+    name: 'Armani Warm Taupe Suiting Wool',
+    category: 'armani',
+    image: '/armani/Armani fabric taupe 1.png',
+    patternClass: 'fabric-pattern-armani',
+    desc: 'Sophisticated Warm Taupe fine suiting wool by Giorgio Armani. Balanced grey-brown shade with a luxurious subtle sheen for year-round bespoke suits.',
+    origin: 'Italy',
+    weight: '275 gsm',
+    threadCount: 'Super 150s Wool-Silk',
+    breathability: 'High',
+    badge: 'Armani Suiting',
+    variants: [
+      { id: 'arm_tpe_v1', name: 'Texture View 1', colorHex: '#8c7d72', image: '/armani/Armani fabric taupe 1.png' },
+      { id: 'arm_tpe_v2', name: 'Texture View 2', colorHex: '#78695f', image: '/armani/Armani fabric taupe 2.png' }
+    ]
+  },
+  {
+    id: 'arm_navy_blue',
+    name: 'Armani Midnight Navy Blue Suiting Wool',
+    category: 'armani',
+    image: '/armani/Armani fabric Navy blue 1.png',
+    patternClass: 'fabric-pattern-armani',
+    desc: 'Classic Midnight Navy Blue luxury wool-silk suiting from Giorgio Armani. Imperial deep navy luster, high resilience, and quintessential executive authority.',
+    origin: 'Italy',
+    weight: '275 gsm',
+    threadCount: 'Super 150s Wool-Silk',
+    breathability: 'High',
+    badge: 'Armani Suiting',
+    variants: [
+      { id: 'arm_nbl_v1', name: 'Texture View 1', colorHex: '#1e2d42', image: '/armani/Armani fabric Navy blue 1.png' },
+      { id: 'arm_nbl_v2', name: 'Texture View 2', colorHex: '#142033', image: '/armani/Armani fabric Navy blue 2.png' }
+    ]
+  },
+  {
+    id: 'arm_dusty_rose',
+    name: 'Armani Dusty Rose Suiting Wool',
+    category: 'armani',
+    image: '/armani/Armani fabric dusty rose 1.png',
+    patternClass: 'fabric-pattern-armani',
+    desc: 'Enchanting Dusty Rose pink fine Italian wool suiting by Giorgio Armani. Subtle muted blush tone delivering modern runway elegance and fluid drape.',
+    origin: 'Italy',
+    weight: '270 gsm',
+    threadCount: 'Super 150s Wool-Silk',
+    breathability: 'High',
+    badge: 'Armani Suiting',
+    variants: [
+      { id: 'arm_drs_v1', name: 'Texture View 1', colorHex: '#a87979', image: '/armani/Armani fabric dusty rose 1.png' },
+      { id: 'arm_drs_v2', name: 'Texture View 2', colorHex: '#946666', image: '/armani/Armani fabric dusty rose 2.png' }
+    ]
+  },
+  {
+    id: 'arm_lavender',
+    name: 'Armani Soft Lavender Suiting Wool',
+    category: 'armani',
+    image: '/armani/Armani fabric lavender 1.png',
+    patternClass: 'fabric-pattern-armani',
+    desc: 'Luminous Soft Lavender purple luxury suiting wool from Armani. Delicate pastel violet sheen crafted for statement tuxedos and summer suiting.',
+    origin: 'Italy',
+    weight: '270 gsm',
+    threadCount: 'Super 150s Wool-Silk',
+    breathability: 'High',
+    badge: 'Armani Suiting',
+    variants: [
+      { id: 'arm_lvd_v1', name: 'Texture View 1', colorHex: '#a295b8', image: '/armani/Armani fabric lavender 1.png' },
+      { id: 'arm_lvd_v2', name: 'Texture View 2', colorHex: '#8e81a3', image: '/armani/Armani fabric lavender 2.png' }
     ]
   }
 ];
@@ -1236,37 +1556,42 @@ export default function Fabric() {
                     </div>
                     <p className="fabric-description">{fabric.desc}</p>
 
-                    {fabric.variants && (
-                      <div style={{ marginBottom: '1.2rem', marginTop: '0.6rem' }}>
-                        <span style={{ fontSize: '0.85rem', color: 'var(--beige-light)', display: 'block', marginBottom: '0.5rem', fontWeight: 500 }}>
-                          Select Color: <span style={{ color: 'var(--white)', fontWeight: 600 }}>{activeVariant?.name}</span>
-                        </span>
-                        <div style={{ display: 'flex', gap: '0.5rem', flexWrap: 'wrap' }}>
-                          {fabric.variants.map((v) => (
+                    {fabric.variants && fabric.variants.length > 0 && (
+                      <div style={{ display: 'flex', gap: '0.6rem', marginTop: '0.8rem', marginBottom: '1rem' }}>
+                        {fabric.variants.map((v) => {
+                          const isSelected = activeVariantId === v.id;
+                          return (
                             <button
                               key={v.id}
+                              onClick={() => setSelectedVariants(prev => ({ ...prev, [fabric.id]: v.id }))}
                               style={{
-                                width: '26px',
-                                height: '26px',
-                                borderRadius: '50%',
-                                backgroundColor: v.colorHex,
-                                border: activeVariantId === v.id ? '2px solid var(--beige-gold)' : '1px solid rgba(255,255,255,0.2)',
+                                width: '48px',
+                                height: '48px',
+                                borderRadius: '8px',
+                                overflow: 'hidden',
+                                border: isSelected ? '2px solid var(--beige-gold)' : '1px solid rgba(255,255,255,0.2)',
                                 cursor: 'pointer',
                                 padding: 0,
-                                transform: activeVariantId === v.id ? 'scale(1.15)' : 'scale(1)',
-                                boxShadow: activeVariantId === v.id ? '0 0 8px var(--beige-gold)' : 'none',
+                                opacity: isSelected ? 1 : 0.6,
                                 transition: 'all 0.2s ease',
-                                outline: 'none'
-                              }}
-                              onClick={() => {
-                                setSelectedVariants(prev => ({ ...prev, [fabric.id]: v.id }));
+                                outline: 'none',
+                                boxShadow: isSelected ? '0 0 10px rgba(255, 217, 190, 0.4)' : 'none',
+                                transform: isSelected ? 'scale(1.05)' : 'scale(1)'
                               }}
                               title={v.name}
-                            />
-                          ))}
-                        </div>
+                            >
+                              <img 
+                                src={v.image} 
+                                alt={v.name} 
+                                style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }} 
+                              />
+                            </button>
+                          );
+                        })}
                       </div>
                     )}
+
+
                   
                   <div className="fabric-meta-grid">
                     <div className="fabric-meta-item">
@@ -1436,39 +1761,45 @@ export default function Fabric() {
                 );
               })()}
 
-              {/* In-Lightbox Color Picker */}
-              {activeLightboxFabric.variants && (
-                <div style={{ marginBottom: '1.5rem', textAlign: 'center' }}>
-                  <span style={{ fontSize: '0.85rem', color: 'var(--beige-light)', display: 'block', marginBottom: '0.5rem' }}>
-                    Available Colors: <span style={{ color: 'var(--white)', fontWeight: 'bold' }}>{activeLightboxFabric.activeVariant?.name}</span>
-                  </span>
-                  <div style={{ display: 'flex', gap: '0.5rem', justifyContent: 'center', flexWrap: 'wrap' }}>
-                    {activeLightboxFabric.variants.map((v) => (
+              {activeLightboxFabric.variants && activeLightboxFabric.variants.length > 0 && (
+                <div style={{ display: 'flex', gap: '0.8rem', justifyContent: 'center', marginBottom: '1.5rem' }}>
+                  {activeLightboxFabric.variants.map((v) => {
+                    const isSelected = activeLightboxFabric.activeVariant?.id === v.id;
+                    return (
                       <button
                         key={v.id}
-                        style={{
-                          width: '26px',
-                          height: '26px',
-                          borderRadius: '50%',
-                          backgroundColor: v.colorHex,
-                          border: activeLightboxFabric.activeVariant?.id === v.id ? '2px solid var(--beige-gold)' : '1px solid rgba(255,255,255,0.2)',
-                          cursor: 'pointer',
-                          padding: 0,
-                          transform: activeLightboxFabric.activeVariant?.id === v.id ? 'scale(1.15)' : 'scale(1)',
-                          boxShadow: activeLightboxFabric.activeVariant?.id === v.id ? '0 0 8px var(--beige-gold)' : 'none',
-                          transition: 'all 0.2s ease',
-                          outline: 'none'
-                        }}
                         onClick={() => {
                           setActiveLightboxFabric(prev => ({ ...prev, activeVariant: v }));
                           setSelectedVariants(prev => ({ ...prev, [activeLightboxFabric.id]: v.id }));
                         }}
+                        style={{
+                          width: '56px',
+                          height: '56px',
+                          borderRadius: '8px',
+                          overflow: 'hidden',
+                          border: isSelected ? '2px solid var(--beige-gold)' : '1px solid rgba(255,255,255,0.2)',
+                          cursor: 'pointer',
+                          padding: 0,
+                          opacity: isSelected ? 1 : 0.6,
+                          transition: 'all 0.2s ease',
+                          outline: 'none',
+                          boxShadow: isSelected ? '0 0 12px rgba(255, 217, 190, 0.5)' : 'none',
+                          transform: isSelected ? 'scale(1.05)' : 'scale(1)'
+                        }}
                         title={v.name}
-                      />
-                    ))}
-                  </div>
+                      >
+                        <img 
+                          src={v.image} 
+                          alt={v.name} 
+                          style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }} 
+                        />
+                      </button>
+                    );
+                  })}
                 </div>
               )}
+
+
 
               <p style={{ 
                 color: 'var(--beige-light)', 
