@@ -23,6 +23,366 @@ const FABRICS_DATA = [
     ]
   },
   {
+    id: 'egc_blue',
+    name: 'Blue Pure Egyptian Giza Cotton',
+    category: 'cotton',
+    subCategory: 'pure-egyptian-giza-cotton',
+    patternClass: 'fabric-pattern-cotton',
+    image: '/pure_egyptian_giza_cotton/Blue giza cotton fabric 1.png',
+    desc: 'Luminous sky-blue Pure Egyptian Giza Cotton woven from extra-long staple Giza fibers. Delivers ultra-soft hand-feel, rich color depth, and crisp formal drape.',
+    origin: 'Egypt (Giza Valley)',
+    weight: '120 gsm',
+    threadCount: '160s Double Ply Giza',
+    breathability: 'Outstanding',
+    badge: 'Pure Giza Luxury',
+    variants: [
+      { id: 'egc_blue_v1', name: 'Texture View 1', colorHex: '#4b7bb0', image: '/pure_egyptian_giza_cotton/Blue giza cotton fabric 1.png' },
+      { id: 'egc_blue_v2', name: 'Texture View 2', colorHex: '#3a6696', image: '/pure_egyptian_giza_cotton/Blue giza cotton fabric 2.png' }
+    ]
+  },
+  {
+    id: 'egc_cream',
+    name: 'Cream Pure Egyptian Giza Cotton',
+    category: 'cotton',
+    subCategory: 'pure-egyptian-giza-cotton',
+    patternClass: 'fabric-pattern-cotton',
+    image: '/pure_egyptian_giza_cotton/Cream giza cotton 1.png',
+    desc: 'Warm buttery cream Pure Egyptian Giza Cotton with a subtle silky luster. Unrivalled smoothness and breathable luxury for bespoke executive shirting.',
+    origin: 'Egypt (Giza Valley)',
+    weight: '115 gsm',
+    threadCount: '160s Extra-Long Staple Giza',
+    breathability: 'Outstanding',
+    badge: 'Pure Giza Luxury',
+    variants: [
+      { id: 'egc_cream_v1', name: 'Texture View 1', colorHex: '#ece3d2', image: '/pure_egyptian_giza_cotton/Cream giza cotton 1.png' },
+      { id: 'egc_cream_v2', name: 'Texture View 2', colorHex: '#dfd4bf', image: '/pure_egyptian_giza_cotton/Cream giza cotton 2.png' }
+    ]
+  },
+  {
+    id: 'egc_forest_green',
+    name: 'Forest Green Pure Egyptian Giza Cotton',
+    category: 'cotton',
+    subCategory: 'pure-egyptian-giza-cotton',
+    patternClass: 'fabric-pattern-cotton',
+    image: '/pure_egyptian_giza_cotton/forest green giza cotton 1.png',
+    desc: 'Deep regal forest green Giza cotton featuring opulent botanical depth, silky soft texture, and durable color vibrancy for statement shirts & kurtas.',
+    origin: 'Egypt (Giza Valley)',
+    weight: '125 gsm',
+    threadCount: '140s Double Ply Giza',
+    breathability: 'Excellent',
+    badge: 'Pure Giza Luxury',
+    variants: [
+      { id: 'egc_fg_v1', name: 'Texture View 1', colorHex: '#264230', image: '/pure_egyptian_giza_cotton/forest green giza cotton 1.png' },
+      { id: 'egc_fg_v2', name: 'Texture View 2', colorHex: '#1b3323', image: '/pure_egyptian_giza_cotton/forest green giza cotton 2.png' }
+    ]
+  },
+  {
+    id: 'egc_mauve',
+    name: 'Mauve Pure Egyptian Giza Cotton',
+    category: 'cotton',
+    subCategory: 'pure-egyptian-giza-cotton',
+    patternClass: 'fabric-pattern-cotton',
+    image: '/pure_egyptian_giza_cotton/Mauve giza cotton 1.png',
+    desc: 'Sophisticated dusty mauve pink Pure Egyptian Giza Cotton. Offers a refined pastel undertone with silky smoothness and airy year-round comfort.',
+    origin: 'Egypt (Giza Valley)',
+    weight: '120 gsm',
+    threadCount: '160s Double Ply Giza',
+    breathability: 'Outstanding',
+    badge: 'Pure Giza Luxury',
+    variants: [
+      { id: 'egc_mauve_v1', name: 'Texture View 1', colorHex: '#9b7685', image: '/pure_egyptian_giza_cotton/Mauve giza cotton 1.png' },
+      { id: 'egc_mauve_v2', name: 'Texture View 2', colorHex: '#886372', image: '/pure_egyptian_giza_cotton/Mauve giza cotton 2.png' }
+    ]
+  },
+  {
+    id: 'egc_olive_green',
+    name: 'Olive Green Pure Egyptian Giza Cotton',
+    category: 'cotton',
+    subCategory: 'pure-egyptian-giza-cotton',
+    patternClass: 'fabric-pattern-cotton',
+    image: '/pure_egyptian_giza_cotton/olive green giza cotton 1.png',
+    desc: 'Distinguished earthy olive green Giza cotton. Fine compact weave delivering a soft hand-feel, subtle sheen, and effortless smart-casual charm.',
+    origin: 'Egypt (Giza Valley)',
+    weight: '125 gsm',
+    threadCount: '140s Double Ply Giza',
+    breathability: 'Excellent',
+    badge: 'Pure Giza Luxury',
+    variants: [
+      { id: 'egc_og_v1', name: 'Texture View 1', colorHex: '#525d3f', image: '/pure_egyptian_giza_cotton/olive green giza cotton 1.png' },
+      { id: 'egc_og_v2', name: 'Texture View 2', colorHex: '#414b30', image: '/pure_egyptian_giza_cotton/olive green giza cotton 2.png' }
+    ]
+  },
+  {
+    id: 'egc_stone_beige',
+    name: 'Stone Beige Pure Egyptian Giza Cotton',
+    category: 'cotton',
+    subCategory: 'pure-egyptian-giza-cotton',
+    patternClass: 'fabric-pattern-cotton',
+    image: '/pure_egyptian_giza_cotton/stone beige giza fabric 1.png',
+    desc: 'Neutral stone beige Pure Egyptian Giza Cotton woven with ultra-fine yarns for a clean, understated luxury look and smooth tailored silhouette.',
+    origin: 'Egypt (Giza Valley)',
+    weight: '120 gsm',
+    threadCount: '160s Double Ply Giza',
+    breathability: 'Outstanding',
+    badge: 'Pure Giza Luxury',
+    variants: [
+      { id: 'egc_sb_v1', name: 'Texture View 1', colorHex: '#c2b39e', image: '/pure_egyptian_giza_cotton/stone beige giza fabric 1.png' },
+      { id: 'egc_sb_v2', name: 'Texture View 2', colorHex: '#afa08b', image: '/pure_egyptian_giza_cotton/stone beige giza fabric 2.png' }
+    ]
+  },
+  {
+    id: 'egc_terracotta',
+    name: 'Terracotta Pure Egyptian Giza Cotton',
+    category: 'cotton',
+    subCategory: 'pure-egyptian-giza-cotton',
+    patternClass: 'fabric-pattern-cotton',
+    image: '/pure_egyptian_giza_cotton/Terracotta giza cotton 1.png',
+    desc: 'Vibrant Mediterranean terracotta rust Giza cotton. Features long-staple Egyptian cotton strength, rich warmth, and plush breathability.',
+    origin: 'Egypt (Giza Valley)',
+    weight: '125 gsm',
+    threadCount: '140s Double Ply Giza',
+    breathability: 'Excellent',
+    badge: 'Pure Giza Luxury',
+    variants: [
+      { id: 'egc_tc_v1', name: 'Texture View 1', colorHex: '#b85c44', image: '/pure_egyptian_giza_cotton/Terracotta giza cotton 1.png' },
+      { id: 'egc_tc_v2', name: 'Texture View 2', colorHex: '#a34a33', image: '/pure_egyptian_giza_cotton/Terracotta giza cotton 2.png' }
+    ]
+  },
+  {
+    id: 'egc_warm_taupe',
+    name: 'Warm Taupe Pure Egyptian Giza Cotton',
+    category: 'cotton',
+    subCategory: 'pure-egyptian-giza-cotton',
+    patternClass: 'fabric-pattern-cotton',
+    image: '/pure_egyptian_giza_cotton/warm taupe giza cotton 1.png',
+    desc: 'Sophisticated warm taupe grey-brown Giza cotton with a smooth silky finish. Perfect for versatile bespoke shirting and modern formal wear.',
+    origin: 'Egypt (Giza Valley)',
+    weight: '120 gsm',
+    threadCount: '160s Double Ply Giza',
+    breathability: 'Outstanding',
+    badge: 'Pure Giza Luxury',
+    variants: [
+      { id: 'egc_wt_v1', name: 'Texture View 1', colorHex: '#8e7f74', image: '/pure_egyptian_giza_cotton/warm taupe giza cotton 1.png' },
+      { id: 'egc_wt_v2', name: 'Texture View 2', colorHex: '#796c62', image: '/pure_egyptian_giza_cotton/Warm taupe giza cotton 2.png' }
+    ]
+  },
+  {
+    id: 'egc_white',
+    name: 'Pristine White Pure Egyptian Giza Cotton',
+    category: 'cotton',
+    subCategory: 'pure-egyptian-giza-cotton',
+    patternClass: 'fabric-pattern-cotton',
+    image: '/pure_egyptian_giza_cotton/White giza cotton 1.png',
+    desc: 'Quintessential pristine white Pure Egyptian Giza Cotton. The pinnacle of luxury shirting with exceptional softness, natural sheen, and crisp elegance.',
+    origin: 'Egypt (Giza Valley)',
+    weight: '115 gsm',
+    threadCount: '180s Ultra-Fine Giza',
+    breathability: 'Outstanding',
+    badge: 'Pure Giza Flagship',
+    variants: [
+      { id: 'egc_w_v1', name: 'Texture View 1', colorHex: '#fcfcfc', image: '/pure_egyptian_giza_cotton/White giza cotton 1.png' },
+      { id: 'egc_w_v2', name: 'Texture View 2', colorHex: '#f2f2f2', image: '/pure_egyptian_giza_cotton/White giza cotton 2.png' }
+    ]
+  },
+  {
+    id: 'egc_mustard',
+    name: 'Mustard Pure Egyptian Giza Cotton',
+    category: 'cotton',
+    subCategory: 'pure-egyptian-giza-cotton',
+    patternClass: 'fabric-pattern-cotton',
+    image: '/pure_egyptian_giza_cotton/Mustard giza cotton fabric 1.png',
+    desc: 'Vibrant warm mustard golden Pure Egyptian Giza Cotton. Features extra-long staple yarns with rich seasonal warmth, silky soft hand-feel, and breathable comfort.',
+    origin: 'Egypt (Giza Valley)',
+    weight: '120 gsm',
+    threadCount: '160s Double Ply Giza',
+    breathability: 'Outstanding',
+    badge: 'Pure Giza Luxury',
+    variants: [
+      { id: 'egc_mus_v1', name: 'Texture View 1', colorHex: '#d49b29', image: '/pure_egyptian_giza_cotton/Mustard giza cotton fabric 1.png' },
+      { id: 'egc_mus_v2', name: 'Texture View 2', colorHex: '#bd871f', image: '/pure_egyptian_giza_cotton/Mustard giza cotton fabric 2.png' }
+    ]
+  },
+  {
+    id: 'egc_slate_blue',
+    name: 'Slate Blue Pure Egyptian Giza Cotton',
+    category: 'cotton',
+    subCategory: 'pure-egyptian-giza-cotton',
+    patternClass: 'fabric-pattern-cotton',
+    image: '/pure_egyptian_giza_cotton/Slate blue giza cotton 1.png',
+    desc: 'Sophisticated cool slate blue Pure Egyptian Giza Cotton. Delivers smooth executive luster, crisp drape, and exceptional year-round comfort for bespoke shirting.',
+    origin: 'Egypt (Giza Valley)',
+    weight: '120 gsm',
+    threadCount: '160s Double Ply Giza',
+    breathability: 'Outstanding',
+    badge: 'Pure Giza Luxury',
+    variants: [
+      { id: 'egc_sbl_v1', name: 'Texture View 1', colorHex: '#506b7d', image: '/pure_egyptian_giza_cotton/Slate blue giza cotton 1.png' },
+      { id: 'egc_sbl_v2', name: 'Texture View 2', colorHex: '#405666', image: '/pure_egyptian_giza_cotton/Slate blue giza cotton 2.png' }
+    ]
+  },
+  {
+    id: 'egc_beige',
+    name: 'Beige Pure Egyptian Giza Cotton',
+    category: 'cotton',
+    subCategory: 'pure-egyptian-giza-cotton',
+    patternClass: 'fabric-pattern-cotton',
+    image: '/pure_egyptian_giza_cotton/Beige giza cotton 1.png',
+    desc: 'Light warm beige Pure Egyptian Giza Cotton with a subtle silky sheen. Silky smooth texture and superior breathability for bespoke shirting.',
+    origin: 'Egypt (Giza Valley)',
+    weight: '120 gsm',
+    threadCount: '160s Double Ply Giza',
+    breathability: 'Outstanding',
+    badge: 'Pure Giza Luxury',
+    variants: [
+      { id: 'egc_bge_v1', name: 'Texture View 1', colorHex: '#d4c4b0', image: '/pure_egyptian_giza_cotton/Beige giza cotton 1.png' },
+      { id: 'egc_bge_v2', name: 'Texture View 2', colorHex: '#c2b09a', image: '/pure_egyptian_giza_cotton/Beige giza cotton 2.png' }
+    ]
+  },
+  {
+    id: 'egc_camel',
+    name: 'Camel Pure Egyptian Giza Cotton',
+    category: 'cotton',
+    subCategory: 'pure-egyptian-giza-cotton',
+    patternClass: 'fabric-pattern-cotton',
+    image: '/pure_egyptian_giza_cotton/Camel giza cotton fabric 1.png',
+    desc: 'Rich golden camel tan Pure Egyptian Giza Cotton. Offers luxurious warmth, long-staple durability, and soft tailored drape.',
+    origin: 'Egypt (Giza Valley)',
+    weight: '125 gsm',
+    threadCount: '160s Double Ply Giza',
+    breathability: 'Outstanding',
+    badge: 'Pure Giza Luxury',
+    variants: [
+      { id: 'egc_cam_v1', name: 'Texture View 1', colorHex: '#b89768', image: '/pure_egyptian_giza_cotton/Camel giza cotton fabric 1.png' },
+      { id: 'egc_cam_v2', name: 'Texture View 2', colorHex: '#a48455', image: '/pure_egyptian_giza_cotton/Camel giza cotton fabric 2.png' }
+    ]
+  },
+  {
+    id: 'egc_dusty_mauve',
+    name: 'Dusty Mauve Pure Egyptian Giza Cotton',
+    category: 'cotton',
+    subCategory: 'pure-egyptian-giza-cotton',
+    patternClass: 'fabric-pattern-cotton',
+    image: '/pure_egyptian_giza_cotton/Dusty Mauve giza cotton 1.png',
+    desc: 'Elegant dusty mauve pink Pure Egyptian Giza Cotton woven from fine Giza yarns for a clean vintage pastel aesthetic.',
+    origin: 'Egypt (Giza Valley)',
+    weight: '120 gsm',
+    threadCount: '160s Double Ply Giza',
+    breathability: 'Outstanding',
+    badge: 'Pure Giza Luxury',
+    variants: [
+      { id: 'egc_dmv_v1', name: 'Texture View 1', colorHex: '#9e7b86', image: '/pure_egyptian_giza_cotton/Dusty Mauve giza cotton 1.png' },
+      { id: 'egc_dmv_v2', name: 'Texture View 2', colorHex: '#8b6974', image: '/pure_egyptian_giza_cotton/Dusty Mauve giza cotton 2.png' }
+    ]
+  },
+  {
+    id: 'egc_lavender',
+    name: 'Soft Lavender Pure Egyptian Giza Cotton',
+    category: 'cotton',
+    subCategory: 'pure-egyptian-giza-cotton',
+    patternClass: 'fabric-pattern-cotton',
+    image: '/pure_egyptian_giza_cotton/Lavender giza cotton 1.png',
+    desc: 'Delicate soft lavender purple Pure Egyptian Giza Cotton with a light-catching luster and plush hand-feel for smart-casual wear.',
+    origin: 'Egypt (Giza Valley)',
+    weight: '115 gsm',
+    threadCount: '160s Double Ply Giza',
+    breathability: 'Outstanding',
+    badge: 'Pure Giza Luxury',
+    variants: [
+      { id: 'egc_lvd_v1', name: 'Texture View 1', colorHex: '#a295b8', image: '/pure_egyptian_giza_cotton/Lavender giza cotton 1.png' },
+      { id: 'egc_lvd_v2', name: 'Texture View 2', colorHex: '#8e81a3', image: '/pure_egyptian_giza_cotton/Lavender giza cotton 2.png' }
+    ]
+  },
+  {
+    id: 'egc_mushroom',
+    name: 'Mushroom Brown Pure Egyptian Giza Cotton',
+    category: 'cotton',
+    subCategory: 'pure-egyptian-giza-cotton',
+    patternClass: 'fabric-pattern-cotton',
+    image: '/pure_egyptian_giza_cotton/Mushroom brown giza cotton 1.png',
+    desc: 'Earthy mushroom taupe brown Giza cotton woven with ultra-fine double ply threads for sophisticated modern tailoring.',
+    origin: 'Egypt (Giza Valley)',
+    weight: '125 gsm',
+    threadCount: '160s Double Ply Giza',
+    breathability: 'Outstanding',
+    badge: 'Pure Giza Luxury',
+    variants: [
+      { id: 'egc_msh_v1', name: 'Texture View 1', colorHex: '#7a685b', image: '/pure_egyptian_giza_cotton/Mushroom brown giza cotton 1.png' },
+      { id: 'egc_msh_v2', name: 'Texture View 2', colorHex: '#68574b', image: '/pure_egyptian_giza_cotton/Mushroom brown giza cotton 2.png' }
+    ]
+  },
+  {
+    id: 'egc_rust',
+    name: 'Rust Pure Egyptian Giza Cotton',
+    category: 'cotton',
+    subCategory: 'pure-egyptian-giza-cotton',
+    patternClass: 'fabric-pattern-cotton',
+    image: '/pure_egyptian_giza_cotton/Rust giza cotton 1.png',
+    desc: 'Rich burnt rust orange Pure Egyptian Giza Cotton. Features intense yarn-dyed color depth, silky soft touch, and crisp structure.',
+    origin: 'Egypt (Giza Valley)',
+    weight: '125 gsm',
+    threadCount: '140s Double Ply Giza',
+    breathability: 'Excellent',
+    badge: 'Pure Giza Luxury',
+    variants: [
+      { id: 'egc_rst_v1', name: 'Texture View 1', colorHex: '#b04e38', image: '/pure_egyptian_giza_cotton/Rust giza cotton 1.png' },
+      { id: 'egc_rst_v2', name: 'Texture View 2', colorHex: '#993f2c', image: '/pure_egyptian_giza_cotton/Rust giza cotton 2.png' }
+    ]
+  },
+  {
+    id: 'egc_steel_blue',
+    name: 'Steel Blue Pure Egyptian Giza Cotton',
+    category: 'cotton',
+    subCategory: 'pure-egyptian-giza-cotton',
+    patternClass: 'fabric-pattern-cotton',
+    image: '/pure_egyptian_giza_cotton/Steel blue giza cotton 1.png',
+    desc: 'Slate steel blue Pure Egyptian Giza Cotton combining subtle metallic sheen with breathable long-staple cotton luxury.',
+    origin: 'Egypt (Giza Valley)',
+    weight: '120 gsm',
+    threadCount: '160s Double Ply Giza',
+    breathability: 'Outstanding',
+    badge: 'Pure Giza Luxury',
+    variants: [
+      { id: 'egc_stb_v1', name: 'Texture View 1', colorHex: '#506b7d', image: '/pure_egyptian_giza_cotton/Steel blue giza cotton 1.png' },
+      { id: 'egc_stb_v2', name: 'Texture View 2', colorHex: '#405666', image: '/pure_egyptian_giza_cotton/Steel blue giza cotton 2.png' }
+    ]
+  },
+  {
+    id: 'egc_teal',
+    name: 'Teal Pure Egyptian Giza Cotton',
+    category: 'cotton',
+    subCategory: 'pure-egyptian-giza-cotton',
+    patternClass: 'fabric-pattern-cotton',
+    image: '/pure_egyptian_giza_cotton/Teal giza cotton fabric 1.png',
+    desc: 'Striking deep teal blue-green Giza cotton with a radiant luster, smooth hand-feel, and exceptional color retention.',
+    origin: 'Egypt (Giza Valley)',
+    weight: '120 gsm',
+    threadCount: '160s Double Ply Giza',
+    breathability: 'Outstanding',
+    badge: 'Pure Giza Luxury',
+    variants: [
+      { id: 'egc_tel_v1', name: 'Texture View 1', colorHex: '#25636b', image: '/pure_egyptian_giza_cotton/Teal giza cotton fabric 1.png' },
+      { id: 'egc_tel_v2', name: 'Texture View 2', colorHex: '#1b4d54', image: '/pure_egyptian_giza_cotton/Teal giza cotton fabric 2.png' }
+    ]
+  },
+  {
+    id: 'egc_soft_sage',
+    name: 'Soft Sage Green Pure Egyptian Giza Cotton',
+    category: 'cotton',
+    subCategory: 'pure-egyptian-giza-cotton',
+    patternClass: 'fabric-pattern-cotton',
+    image: '/pure_egyptian_giza_cotton/soft sage giza cotton fabric 1.png',
+    desc: 'Refreshing soft sage mint green Pure Egyptian Giza Cotton offering a cooling hand-feel and elegant pastel tone.',
+    origin: 'Egypt (Giza Valley)',
+    weight: '115 gsm',
+    threadCount: '160s Double Ply Giza',
+    breathability: 'Outstanding',
+    badge: 'Pure Giza Luxury',
+    variants: [
+      { id: 'egc_ssg_v1', name: 'Texture View 1', colorHex: '#84a991', image: '/pure_egyptian_giza_cotton/soft sage giza cotton fabric 1.png' },
+      { id: 'egc_ssg_v2', name: 'Texture View 2', colorHex: '#71967e', image: '/pure_egyptian_giza_cotton/soft sage giza cotton fabric 2.png' }
+    ]
+  },
+  {
     id: 'f2',
     name: 'Supima Luxury Cotton',
     category: 'cotton',
@@ -1419,6 +1779,91 @@ const FABRICS_DATA = [
       { id: 'arm_lvd_v1', name: 'Texture View 1', colorHex: '#a295b8', image: '/armani/Armani fabric lavender 1.png' },
       { id: 'arm_lvd_v2', name: 'Texture View 2', colorHex: '#8e81a3', image: '/armani/Armani fabric lavender 2.png' }
     ]
+  },
+  {
+    id: 'spn_sage',
+    name: 'Sage Spun / Spoon Fabric',
+    category: 'spoon',
+    patternClass: 'fabric-pattern-cotton',
+    image: '/spoon_fabric/Sage spoon fabric 1.png',
+    desc: 'Refined soft sage green spun fabric featuring a rich tactile micro-weave, wrinkle-resistant drape, and exceptional comfort for versatile bespoke tailoring.',
+    origin: 'Italy',
+    weight: '135 gsm',
+    threadCount: 'Micro-Spun Fine Weave',
+    breathability: 'High',
+    badge: 'Signature Spun',
+    variants: [
+      { id: 'spn_sg_v1', name: 'Texture View 1', colorHex: '#84a991', image: '/spoon_fabric/Sage spoon fabric 1.png' },
+      { id: 'spn_sg_v2', name: 'Texture View 2', colorHex: '#71967e', image: '/spoon_fabric/Sage spoon fabric 2.png' }
+    ]
+  },
+  {
+    id: 'spn_slate_blue',
+    name: 'Slate Blue Spun / Spoon Fabric',
+    category: 'spoon',
+    patternClass: 'fabric-pattern-cotton',
+    image: '/spoon_fabric/Slate blue spoon fabric 1.png',
+    desc: 'Sophisticated slate blue spun fabric with subtle heather texture, smooth hand-feel, and crisp structure for modern shirting and kurtas.',
+    origin: 'Italy',
+    weight: '135 gsm',
+    threadCount: 'Micro-Spun Fine Weave',
+    breathability: 'High',
+    badge: 'Signature Spun',
+    variants: [
+      { id: 'spn_sb_v1', name: 'Texture View 1', colorHex: '#506b7d', image: '/spoon_fabric/Slate blue spoon fabric 1.png' },
+      { id: 'spn_sb_v2', name: 'Texture View 2', colorHex: '#405666', image: '/spoon_fabric/Slate blue spoon fabric 2.png' }
+    ]
+  },
+  {
+    id: 'spn_taupe',
+    name: 'Warm Taupe Spun / Spoon Fabric',
+    category: 'spoon',
+    patternClass: 'fabric-pattern-cotton',
+    image: '/spoon_fabric/Taupe spoon fabric 1.png',
+    desc: 'Warm earthy taupe brown spun fabric. Offers ultra-smooth feel, durable shape retention, and breathable versatility.',
+    origin: 'France',
+    weight: '140 gsm',
+    threadCount: 'Micro-Spun Fine Weave',
+    breathability: 'High',
+    badge: 'Signature Spun',
+    variants: [
+      { id: 'spn_tp_v1', name: 'Texture View 1', colorHex: '#8c7d72', image: '/spoon_fabric/Taupe spoon fabric 1.png' },
+      { id: 'spn_tp_v2', name: 'Texture View 2', colorHex: '#78695f', image: '/spoon_fabric/Taupe spoon fabric 2.png' }
+    ]
+  },
+  {
+    id: 'spn_beige',
+    name: 'Warm Beige Spun / Spoon Fabric',
+    category: 'spoon',
+    patternClass: 'fabric-pattern-cotton',
+    image: '/spoon_fabric/Warm beige spoon fabric 1.png',
+    desc: 'Luminous warm oatmeal beige spun fabric featuring fine long-staple spun yarns for a clean neutral look and soft drape.',
+    origin: 'Italy',
+    weight: '135 gsm',
+    threadCount: 'Micro-Spun Fine Weave',
+    breathability: 'High',
+    badge: 'Signature Spun',
+    variants: [
+      { id: 'spn_bg_v1', name: 'Texture View 1', colorHex: '#d8cbb7', image: '/spoon_fabric/Warm beige spoon fabric 1.png' },
+      { id: 'spn_bg_v2', name: 'Texture View 2', colorHex: '#c7b8a2', image: '/spoon_fabric/Warm beige spoon fabric 2.png' }
+    ]
+  },
+  {
+    id: 'spn_mauve',
+    name: 'Mauve Spun / Spoon Fabric',
+    category: 'spoon',
+    patternClass: 'fabric-pattern-cotton',
+    image: '/spoon_fabric/mauve spoon fabric 1.png',
+    desc: 'Chic dusty mauve pink spun fabric with a soft-touch finish, elegant drape, and resilient color vibrancy.',
+    origin: 'France',
+    weight: '135 gsm',
+    threadCount: 'Micro-Spun Fine Weave',
+    breathability: 'High',
+    badge: 'Signature Spun',
+    variants: [
+      { id: 'spn_mv_v1', name: 'Texture View 1', colorHex: '#9e7b86', image: '/spoon_fabric/mauve spoon fabric 1.png' },
+      { id: 'spn_mv_v2', name: 'Texture View 2', colorHex: '#8b6974', image: '/spoon_fabric/mauve spoon fabric 2.png' }
+    ]
   }
 ];
 
@@ -1461,13 +1906,19 @@ export default function Fabric() {
             onChange={(e) => setSearchTerm(e.target.value)}
           />
           <div className="filter-tabs">
-            {['all', 'cotton', 'linen', 'other', 'armani'].map((cat) => (
+            {['all', 'cotton', 'linen', 'other', 'armani', 'spoon'].map((cat) => (
               <button
                 key={cat}
                 className={`filter-tab ${selectedCategory === cat ? 'active' : ''}`}
                 onClick={() => setSelectedCategory(cat)}
               >
-                {cat.charAt(0).toUpperCase() + cat.slice(1) + (cat === 'other' ? 's (Silk / Wool)' : '')}
+                {cat === 'all'
+                  ? 'All'
+                  : cat === 'other'
+                  ? 'Others (Silk / Wool)'
+                  : cat === 'spoon'
+                  ? 'Spun / Spoon'
+                  : cat.charAt(0).toUpperCase() + cat.slice(1)}
               </button>
             ))}
           </div>
@@ -1478,7 +1929,7 @@ export default function Fabric() {
           <div className="cotton-subcategory-bar animate-fade-in">
             <div className="cotton-dropdown-group">
               <label htmlFor="cotton-dropdown-select" className="cotton-dropdown-label">
-                <span style={{ fontSize: '1.1rem' }}>🌿</span> Cotton Sub-Category:
+                Cotton Sub-Category:
               </label>
               <select
                 id="cotton-dropdown-select"
@@ -1487,8 +1938,9 @@ export default function Fabric() {
                 onChange={(e) => setCottonSubCategory(e.target.value)}
               >
                 <option value="all">All Cotton Fabrics</option>
-                <option value="linen-cotton">✨ Linen Cotton (Linen-Cotton Blends)</option>
-                <option value="pure-cotton">Pure Egyptian & Supima Cotton</option>
+                <option value="pure-egyptian-giza-cotton">Pure Egyptian Giza Cotton</option>
+                <option value="linen-cotton">Linen Cotton (Linen-Cotton Blends)</option>
+                <option value="pure-cotton">Pure Supima & Fine Cotton</option>
               </select>
             </div>
 
@@ -1500,10 +1952,16 @@ export default function Fabric() {
                 All Cotton
               </button>
               <button
+                className={`cotton-pill-btn ${cottonSubCategory === 'pure-egyptian-giza-cotton' ? 'active' : ''}`}
+                onClick={() => setCottonSubCategory('pure-egyptian-giza-cotton')}
+              >
+                Pure Egyptian Giza Cotton
+              </button>
+              <button
                 className={`cotton-pill-btn ${cottonSubCategory === 'linen-cotton' ? 'active' : ''}`}
                 onClick={() => setCottonSubCategory('linen-cotton')}
               >
-                ✨ Linen Cotton
+                Linen Cotton
               </button>
               <button
                 className={`cotton-pill-btn ${cottonSubCategory === 'pure-cotton' ? 'active' : ''}`}
