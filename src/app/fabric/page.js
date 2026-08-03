@@ -1407,14 +1407,104 @@ const FABRICS_DATA = [
   {
     id: 'f5',
     name: 'Mulberry Royal Silk',
-    category: 'other',
+    category: 'satin',
     patternClass: 'fabric-pattern-silk',
+    image: '/satin/royal_mulberry_satin_1.png',
     desc: 'Luxurious heavy silk with a magnificent fluid drape and a subtle, high-end satin glow. Perfect for kurtas and wedding attire.',
     origin: 'India',
     weight: '90 gsm',
     threadCount: '100% Pure Silk',
     breathability: 'Medium',
-    badge: 'Wedding Grade'
+    badge: 'Wedding Grade',
+    variants: [
+      { id: 'f5_v1', name: 'Texture View 1', colorHex: '#e6cfb3', image: '/satin/royal_mulberry_satin_1.png' },
+      { id: 'f5_v2', name: 'Texture View 2', colorHex: '#d9bf9e', image: '/satin/royal_mulberry_satin_2.png' }
+    ]
+  },
+  {
+    id: 'stn_black',
+    name: 'Midnight Black Silk Satin',
+    category: 'satin',
+    patternClass: 'fabric-pattern-silk',
+    image: '/satin/royal_mulberry_satin_1.png',
+    desc: 'Deep jet black high-luster silk satin featuring incredible softness, crisp fluid drape, and timeless evening formal appeal.',
+    origin: 'France',
+    weight: '120 gsm',
+    threadCount: 'High-Density Silk Satin',
+    breathability: 'High',
+    badge: 'Tuxedo Grade',
+    variants: [
+      { id: 'stn_b1', name: 'Texture View 1', colorHex: '#1a1a1c', image: '/satin/royal_mulberry_satin_1.png' },
+      { id: 'stn_b2', name: 'Texture View 2', colorHex: '#111113', image: '/satin/royal_mulberry_satin_2.png' }
+    ]
+  },
+  {
+    id: 'stn_emerald',
+    name: 'Emerald Imperial Silk Satin',
+    category: 'satin',
+    patternClass: 'fabric-pattern-silk',
+    image: '/satin/royal_mulberry_satin_1.png',
+    desc: 'Regal jewel-toned emerald green satin with smooth silk weave, rich color depth, and elegant liquid drape for statement attire.',
+    origin: 'Italy',
+    weight: '115 gsm',
+    threadCount: 'Micro-Silk Satin Weave',
+    breathability: 'High',
+    badge: 'Signature Satin',
+    variants: [
+      { id: 'stn_e1', name: 'Texture View 1', colorHex: '#144e39', image: '/satin/royal_mulberry_satin_1.png' },
+      { id: 'stn_e2', name: 'Texture View 2', colorHex: '#0e3d2c', image: '/satin/royal_mulberry_satin_2.png' }
+    ]
+  },
+  {
+    id: 'stn_rose_gold',
+    name: 'Rose Gold Liquid Satin',
+    category: 'satin',
+    patternClass: 'fabric-pattern-silk',
+    image: '/satin/royal_mulberry_satin_1.png',
+    desc: 'Soft romantic blush rose gold silk satin with delicate metallic sheen, silky-smooth hand feel, and airy drape.',
+    origin: 'France',
+    weight: '105 gsm',
+    threadCount: 'Fine Mulberry Satin',
+    breathability: 'High',
+    badge: 'Bridal & Evening',
+    variants: [
+      { id: 'stn_rg1', name: 'Texture View 1', colorHex: '#e8b8c2', image: '/satin/royal_mulberry_satin_1.png' },
+      { id: 'stn_rg2', name: 'Texture View 2', colorHex: '#d9a5b0', image: '/satin/royal_mulberry_satin_2.png' }
+    ]
+  },
+  {
+    id: 'stn_sapphire',
+    name: 'Sapphire Blue Duchess Satin',
+    category: 'satin',
+    patternClass: 'fabric-pattern-silk',
+    image: '/satin/royal_mulberry_satin_1.png',
+    desc: 'Deep royal sapphire navy duchess satin offering high structural body, glossy finish, and executive formal elegance.',
+    origin: 'Italy',
+    weight: '125 gsm',
+    threadCount: 'Duchess Satin Weave',
+    breathability: 'High',
+    badge: 'Royal Grade',
+    variants: [
+      { id: 'stn_s1', name: 'Texture View 1', colorHex: '#1e3a5f', image: '/satin/royal_mulberry_satin_1.png' },
+      { id: 'stn_s2', name: 'Texture View 2', colorHex: '#142944', image: '/satin/royal_mulberry_satin_2.png' }
+    ]
+  },
+  {
+    id: 'stn_wine',
+    name: 'Wine Burgundy Heavyweight Satin',
+    category: 'satin',
+    patternClass: 'fabric-pattern-silk',
+    image: '/satin/royal_mulberry_satin_1.png',
+    desc: 'Rich deep wine burgundy satin with luxurious weight, subtle sheen, and rich texture for bespoke jackets and linings.',
+    origin: 'Italy',
+    weight: '130 gsm',
+    threadCount: 'Heavyweight Fine Satin',
+    breathability: 'High',
+    badge: 'Bespoke Formal',
+    variants: [
+      { id: 'stn_w1', name: 'Texture View 1', colorHex: '#581825', image: '/satin/royal_mulberry_satin_1.png' },
+      { id: 'stn_w2', name: 'Texture View 2', colorHex: '#42101b', image: '/satin/royal_mulberry_satin_2.png' }
+    ]
   },
   {
     id: 'f6',
@@ -1798,23 +1888,6 @@ const FABRICS_DATA = [
     ]
   },
   {
-    id: 'spn_slate_blue',
-    name: 'Slate Blue Spun / Spoon Fabric',
-    category: 'spoon',
-    patternClass: 'fabric-pattern-cotton',
-    image: '/spoon_fabric/Slate blue spoon fabric 1.png',
-    desc: 'Sophisticated slate blue spun fabric with subtle heather texture, smooth hand-feel, and crisp structure for modern shirting and kurtas.',
-    origin: 'Italy',
-    weight: '135 gsm',
-    threadCount: 'Micro-Spun Fine Weave',
-    breathability: 'High',
-    badge: 'Signature Spun',
-    variants: [
-      { id: 'spn_sb_v1', name: 'Texture View 1', colorHex: '#506b7d', image: '/spoon_fabric/Slate blue spoon fabric 1.png' },
-      { id: 'spn_sb_v2', name: 'Texture View 2', colorHex: '#405666', image: '/spoon_fabric/Slate blue spoon fabric 2.png' }
-    ]
-  },
-  {
     id: 'spn_taupe',
     name: 'Warm Taupe Spun / Spoon Fabric',
     category: 'spoon',
@@ -1832,37 +1905,309 @@ const FABRICS_DATA = [
     ]
   },
   {
-    id: 'spn_beige',
-    name: 'Warm Beige Spun / Spoon Fabric',
+    id: 'spn_buttery_yellow',
+    name: 'Buttery Yellow Spun / Spoon Fabric',
     category: 'spoon',
     patternClass: 'fabric-pattern-cotton',
-    image: '/spoon_fabric/Warm beige spoon fabric 1.png',
-    desc: 'Luminous warm oatmeal beige spun fabric featuring fine long-staple spun yarns for a clean neutral look and soft drape.',
+    image: '/spoon_fabric/Buttery yellow spoon fabric 1.png',
+    desc: 'Radiant buttery soft yellow spun fabric featuring a delicate micro-texture, airy breathability, and vibrant sunny tone for casual and formal bespoke tailoring.',
     origin: 'Italy',
     weight: '135 gsm',
     threadCount: 'Micro-Spun Fine Weave',
     breathability: 'High',
     badge: 'Signature Spun',
     variants: [
-      { id: 'spn_bg_v1', name: 'Texture View 1', colorHex: '#d8cbb7', image: '/spoon_fabric/Warm beige spoon fabric 1.png' },
-      { id: 'spn_bg_v2', name: 'Texture View 2', colorHex: '#c7b8a2', image: '/spoon_fabric/Warm beige spoon fabric 2.png' }
+      { id: 'spn_by_v1', name: 'Texture View 1', colorHex: '#f3e496', image: '/spoon_fabric/Buttery yellow spoon fabric 1.png' },
+      { id: 'spn_by_v2', name: 'Texture View 2', colorHex: '#e8d682', image: '/spoon_fabric/Buttery yellow spoon fabric 2.png' }
     ]
   },
   {
-    id: 'spn_mauve',
-    name: 'Mauve Spun / Spoon Fabric',
+    id: 'spn_charcoal',
+    name: 'Charcoal Spun / Spoon Fabric',
     category: 'spoon',
     patternClass: 'fabric-pattern-cotton',
-    image: '/spoon_fabric/mauve spoon fabric 1.png',
-    desc: 'Chic dusty mauve pink spun fabric with a soft-touch finish, elegant drape, and resilient color vibrancy.',
+    image: '/spoon_fabric/Charcol spoon fabric 1.png',
+    desc: 'Deep moody charcoal grey spun fabric offering structured elegance, wrinkle-resistant resilience, and smooth sophisticated drape for modern attire.',
+    origin: 'Italy',
+    weight: '140 gsm',
+    threadCount: 'Micro-Spun Fine Weave',
+    breathability: 'High',
+    badge: 'Signature Spun',
+    variants: [
+      { id: 'spn_ch_v1', name: 'Texture View 1', colorHex: '#383b42', image: '/spoon_fabric/Charcol spoon fabric 1.png' },
+      { id: 'spn_ch_v2', name: 'Texture View 2', colorHex: '#2d3036', image: '/spoon_fabric/Charcol spoon fabric 2.png' }
+    ]
+  },
+  {
+    id: 'spn_chocolate_brown',
+    name: 'Chocolate Brown Spun / Spoon Fabric',
+    category: 'spoon',
+    patternClass: 'fabric-pattern-cotton',
+    image: '/spoon_fabric/Choclate brown spoon fabric 1.png',
+    desc: 'Rich espresso chocolate brown spun fabric featuring warm earthy undertones and ultra-smooth hand-feel for luxury bespoke attire.',
+    origin: 'France',
+    weight: '140 gsm',
+    threadCount: 'Micro-Spun Fine Weave',
+    breathability: 'High',
+    badge: 'Signature Spun',
+    variants: [
+      { id: 'spn_cb_v1', name: 'Texture View 1', colorHex: '#4a3528', image: '/spoon_fabric/Choclate brown spoon fabric 1.png' },
+      { id: 'spn_cb_v2', name: 'Texture View 2', colorHex: '#3b291d', image: '/spoon_fabric/Choclate brown spoon fabric 2.png' }
+    ]
+  },
+  {
+    id: 'spn_cream',
+    name: 'Cream Spun / Spoon Fabric',
+    category: 'spoon',
+    patternClass: 'fabric-pattern-cotton',
+    image: '/spoon_fabric/cream spoon fabric 1.png',
+    desc: 'Elegant ivory cream spun fabric with a clean subtle lustre, lightweight breathability, and pristine natural drape.',
+    origin: 'Italy',
+    weight: '135 gsm',
+    threadCount: 'Micro-Spun Fine Weave',
+    breathability: 'High',
+    badge: 'Signature Spun',
+    variants: [
+      { id: 'spn_cr_v1', name: 'Texture View 1', colorHex: '#f4eee0', image: '/spoon_fabric/cream spoon fabric 1.png' },
+      { id: 'spn_cr_v2', name: 'Texture View 2', colorHex: '#e8dfcd', image: '/spoon_fabric/cream spoon fabric 2.png' }
+    ]
+  },
+  {
+    id: 'spn_emerald_green',
+    name: 'Emerald Green Spun / Spoon Fabric',
+    category: 'spoon',
+    patternClass: 'fabric-pattern-cotton',
+    image: '/spoon_fabric/emerald green spoon fabric 1.png',
+    desc: 'Deep luxurious emerald green spun fabric crafted from fine spun yarns for a rich tactile finish and vibrant jewel-tone elegance.',
+    origin: 'Italy',
+    weight: '140 gsm',
+    threadCount: 'Micro-Spun Fine Weave',
+    breathability: 'High',
+    badge: 'Signature Spun',
+    variants: [
+      { id: 'spn_eg_v1', name: 'Texture View 1', colorHex: '#144e39', image: '/spoon_fabric/emerald green spoon fabric 1.png' },
+      { id: 'spn_eg_v2', name: 'Texture View 2', colorHex: '#0e3d2c', image: '/spoon_fabric/emerald green spoon fabric 2.png' }
+    ]
+  },
+  {
+    id: 'spn_moss_green',
+    name: 'Moss Green Spun / Spoon Fabric',
+    category: 'spoon',
+    patternClass: 'fabric-pattern-cotton',
+    image: '/spoon_fabric/green spoon fabric 1.png',
+    desc: 'Earthy soft moss green spun fabric featuring fine long-staple spun yarns for an organic, relaxed look and breathable comfort.',
+    origin: 'Italy',
+    weight: '135 gsm',
+    threadCount: 'Micro-Spun Fine Weave',
+    breathability: 'High',
+    badge: 'Signature Spun',
+    variants: [
+      { id: 'spn_mg_v1', name: 'Texture View 1', colorHex: '#86916c', image: '/spoon_fabric/green spoon fabric 1.png' },
+      { id: 'spn_mg_v2', name: 'Texture View 2', colorHex: '#747e5b', image: '/spoon_fabric/green spoon fabric 2.png' }
+    ]
+  },
+  {
+    id: 'spn_jet_black',
+    name: 'Jet Black Spun / Spoon Fabric',
+    category: 'spoon',
+    patternClass: 'fabric-pattern-cotton',
+    image: '/spoon_fabric/Jet black spoon fabric 1.png',
+    desc: 'Intensely dark jet black spun fabric with immaculate color depth, crisp tailoring drape, and timeless formal appeal.',
+    origin: 'Italy',
+    weight: '140 gsm',
+    threadCount: 'Micro-Spun Fine Weave',
+    breathability: 'High',
+    badge: 'Signature Spun',
+    variants: [
+      { id: 'spn_jb_v1', name: 'Texture View 1', colorHex: '#1c1c1e', image: '/spoon_fabric/Jet black spoon fabric 1.png' },
+      { id: 'spn_jb_v2', name: 'Texture View 2', colorHex: '#121214', image: '/spoon_fabric/Jet black spoon fabric 2.png' }
+    ]
+  },
+  {
+    id: 'spn_lavender',
+    name: 'Lavender Spun / Spoon Fabric',
+    category: 'spoon',
+    patternClass: 'fabric-pattern-cotton',
+    image: '/spoon_fabric/Lavender spoon fabric 1.png',
+    desc: 'Delicate lilac lavender spun fabric with soft purple undertones, offering a refined modern palette and silky comfortable touch.',
     origin: 'France',
     weight: '135 gsm',
     threadCount: 'Micro-Spun Fine Weave',
     breathability: 'High',
     badge: 'Signature Spun',
     variants: [
-      { id: 'spn_mv_v1', name: 'Texture View 1', colorHex: '#9e7b86', image: '/spoon_fabric/mauve spoon fabric 1.png' },
-      { id: 'spn_mv_v2', name: 'Texture View 2', colorHex: '#8b6974', image: '/spoon_fabric/mauve spoon fabric 2.png' }
+      { id: 'spn_lv_v1', name: 'Texture View 1', colorHex: '#a89cb8', image: '/spoon_fabric/Lavender spoon fabric 1.png' },
+      { id: 'spn_lv_v2', name: 'Texture View 2', colorHex: '#9688a6', image: '/spoon_fabric/Lavender spoon fabric 2.png' }
+    ]
+  },
+  {
+    id: 'spn_mocha_muse',
+    name: 'Mocha Muse Spun / Spoon Fabric',
+    category: 'spoon',
+    patternClass: 'fabric-pattern-cotton',
+    image: '/spoon_fabric/Mocha muse spoon fabric 1.png',
+    desc: 'Warm toasted mocha brown spun fabric with subtle heather variations, ideal for contemporary tailored shirts and jacket linings.',
+    origin: 'Italy',
+    weight: '140 gsm',
+    threadCount: 'Micro-Spun Fine Weave',
+    breathability: 'High',
+    badge: 'Signature Spun',
+    variants: [
+      { id: 'spn_mm_v1', name: 'Texture View 1', colorHex: '#6e594d', image: '/spoon_fabric/Mocha muse spoon fabric 1.png' },
+      { id: 'spn_mm_v2', name: 'Texture View 2', colorHex: '#5d4b3f', image: '/spoon_fabric/Mocha muse spoon fabric 2.png' }
+    ]
+  },
+  {
+    id: 'spn_olive_khaki',
+    name: 'Olive Khaki Spun / Spoon Fabric',
+    category: 'spoon',
+    patternClass: 'fabric-pattern-cotton',
+    image: '/spoon_fabric/Olive khaki spoon fabric 1.png',
+    desc: 'Earthy olive khaki spun fabric with a rugged yet smooth texture, incredible durability, and versatile year-round style.',
+    origin: 'Italy',
+    weight: '140 gsm',
+    threadCount: 'Micro-Spun Fine Weave',
+    breathability: 'High',
+    badge: 'Signature Spun',
+    variants: [
+      { id: 'spn_ok_v1', name: 'Texture View 1', colorHex: '#5e6146', image: '/spoon_fabric/Olive khaki spoon fabric 1.png' },
+      { id: 'spn_ok_v2', name: 'Texture View 2', colorHex: '#4d5038', image: '/spoon_fabric/Olive khaki spoon fabric 2.png' }
+    ]
+  },
+  {
+    id: 'spn_rust',
+    name: 'Rust Spun / Spoon Fabric',
+    category: 'spoon',
+    patternClass: 'fabric-pattern-cotton',
+    image: '/spoon_fabric/rust spoon fabric 1.png',
+    desc: 'Warm terracotta rust red spun fabric featuring rich autumnal warmth and supple micro-spun texture.',
+    origin: 'France',
+    weight: '135 gsm',
+    threadCount: 'Micro-Spun Fine Weave',
+    breathability: 'High',
+    badge: 'Signature Spun',
+    variants: [
+      { id: 'spn_rs_v1', name: 'Texture View 1', colorHex: '#9e4e37', image: '/spoon_fabric/rust spoon fabric 1.png' },
+      { id: 'spn_rs_v2', name: 'Texture View 2', colorHex: '#8a412c', image: '/spoon_fabric/rust spoon fabric 2.png' }
+    ]
+  },
+  {
+    id: 'spn_slate',
+    name: 'Slate Spun / Spoon Fabric',
+    category: 'spoon',
+    patternClass: 'fabric-pattern-cotton',
+    image: '/spoon_fabric/Slate spoon fabric 1.png',
+    desc: 'Sleek neutral slate grey spun fabric boasting a crisp texture and refined modern finish.',
+    origin: 'Italy',
+    weight: '135 gsm',
+    threadCount: 'Micro-Spun Fine Weave',
+    breathability: 'High',
+    badge: 'Signature Spun',
+    variants: [
+      { id: 'spn_st_v1', name: 'Texture View 1', colorHex: '#5c646b', image: '/spoon_fabric/Slate spoon fabric 1.png' },
+      { id: 'spn_st_v2', name: 'Texture View 2', colorHex: '#4a5158', image: '/spoon_fabric/Slate spoon fabric 2.png' }
+    ]
+  },
+  {
+    id: 'spn_aubergine',
+    name: 'Aubergine Spun / Spoon Fabric',
+    category: 'spoon',
+    patternClass: 'fabric-pattern-cotton',
+    image: '/spoon_fabric/Aubergine spoon fabric 1.png',
+    desc: 'Deep luxurious aubergine plum spun fabric featuring fine micro-spun weave, rich color saturation, and elegant drape for distinguished tailoring.',
+    origin: 'Italy',
+    weight: '140 gsm',
+    threadCount: 'Micro-Spun Fine Weave',
+    breathability: 'High',
+    badge: 'Signature Spun',
+    variants: [
+      { id: 'spn_ab_v1', name: 'Texture View 1', colorHex: '#4d2e43', image: '/spoon_fabric/Aubergine spoon fabric 1.png' },
+      { id: 'spn_ab_v2', name: 'Texture View 2', colorHex: '#3b2133', image: '/spoon_fabric/Aubergine spoon fabric 2.png' }
+    ]
+  },
+  {
+    id: 'spn_blush_pink',
+    name: 'Blush Pink Spun / Spoon Fabric',
+    category: 'spoon',
+    patternClass: 'fabric-pattern-cotton',
+    image: '/spoon_fabric/blush pink spoon fabric 1.png',
+    desc: 'Soft romantic blush pink spun fabric with a silky-smooth hand feel, subtle sheen, and effortless year-round breathability.',
+    origin: 'France',
+    weight: '135 gsm',
+    threadCount: 'Micro-Spun Fine Weave',
+    breathability: 'High',
+    badge: 'Signature Spun',
+    variants: [
+      { id: 'spn_bp_v1', name: 'Texture View 1', colorHex: '#e8b8c2', image: '/spoon_fabric/blush pink spoon fabric 1.png' },
+      { id: 'spn_bp_v2', name: 'Texture View 2', colorHex: '#d9a5b0', image: '/spoon_fabric/blush pink spoon fabric 2.png' }
+    ]
+  },
+  {
+    id: 'spn_camel',
+    name: 'Camel Spun / Spoon Fabric',
+    category: 'spoon',
+    patternClass: 'fabric-pattern-cotton',
+    image: '/spoon_fabric/camel spoon fabric 1.png',
+    desc: 'Classic warm camel spun fabric offering a timeless golden-tan hue, soft tactile finish, and refined drape for modern bespoke wardrobe essentials.',
+    origin: 'Italy',
+    weight: '140 gsm',
+    threadCount: 'Micro-Spun Fine Weave',
+    breathability: 'High',
+    badge: 'Signature Spun',
+    variants: [
+      { id: 'spn_cm_v1', name: 'Texture View 1', colorHex: '#c19a6b', image: '/spoon_fabric/camel spoon fabric 1.png' },
+      { id: 'spn_cm_v2', name: 'Texture View 2', colorHex: '#b0885a', image: '/spoon_fabric/camel spoon fabric 2.png' }
+    ]
+  },
+  {
+    id: 'spn_maroon',
+    name: 'Maroon Spun / Spoon Fabric',
+    category: 'spoon',
+    patternClass: 'fabric-pattern-cotton',
+    image: '/spoon_fabric/maroon spoon fabric 1.png',
+    desc: 'Regal deep maroon wine spun fabric with rich depth of tone, exceptional wrinkle resistance, and sophisticated tailored drape.',
+    origin: 'Italy',
+    weight: '140 gsm',
+    threadCount: 'Micro-Spun Fine Weave',
+    breathability: 'High',
+    badge: 'Signature Spun',
+    variants: [
+      { id: 'spn_mr_v1', name: 'Texture View 1', colorHex: '#6b1d2f', image: '/spoon_fabric/maroon spoon fabric 1.png' },
+      { id: 'spn_mr_v2', name: 'Texture View 2', colorHex: '#571524', image: '/spoon_fabric/maroon spoon fabric 2.png' }
+    ]
+  },
+  {
+    id: 'spn_peach_beige',
+    name: 'Peach Beige Spun / Spoon Fabric',
+    category: 'spoon',
+    patternClass: 'fabric-pattern-cotton',
+    image: '/spoon_fabric/peach beige spoon fabric 1.png',
+    desc: 'Warm comforting peach beige spun fabric featuring a delicate sun-kissed tone, airy weave, and ultra-soft comfort.',
+    origin: 'France',
+    weight: '135 gsm',
+    threadCount: 'Micro-Spun Fine Weave',
+    breathability: 'High',
+    badge: 'Signature Spun',
+    variants: [
+      { id: 'spn_pb_v1', name: 'Texture View 1', colorHex: '#e4bfab', image: '/spoon_fabric/peach beige spoon fabric 1.png' },
+      { id: 'spn_pb_v2', name: 'Texture View 2', colorHex: '#d5ac97', image: '/spoon_fabric/peach beige spoon fabric 2.png' }
+    ]
+  },
+  {
+    id: 'spn_purple',
+    name: 'Purple Spun / Spoon Fabric',
+    category: 'spoon',
+    patternClass: 'fabric-pattern-cotton',
+    image: '/spoon_fabric/purple spoon fabric 1.png',
+    desc: 'Vibrant royal purple spun fabric crafted with high-density spun yarns for a striking color statement and smooth fluid drape.',
+    origin: 'Italy',
+    weight: '140 gsm',
+    threadCount: 'Micro-Spun Fine Weave',
+    breathability: 'High',
+    badge: 'Signature Spun',
+    variants: [
+      { id: 'spn_pr_v1', name: 'Texture View 1', colorHex: '#6a3b7b', image: '/spoon_fabric/purple spoon fabric 1.png' },
+      { id: 'spn_pr_v2', name: 'Texture View 2', colorHex: '#582d68', image: '/spoon_fabric/purple spoon fabric 2.png' }
     ]
   }
 ];
@@ -1906,7 +2251,7 @@ export default function Fabric() {
             onChange={(e) => setSearchTerm(e.target.value)}
           />
           <div className="filter-tabs">
-            {['all', 'cotton', 'linen', 'other', 'armani', 'spoon'].map((cat) => (
+            {['all', 'cotton', 'linen', 'satin', 'armani', 'spoon', 'other'].map((cat) => (
               <button
                 key={cat}
                 className={`filter-tab ${selectedCategory === cat ? 'active' : ''}`}
@@ -1918,6 +2263,8 @@ export default function Fabric() {
                   ? 'Others (Silk / Wool)'
                   : cat === 'spoon'
                   ? 'Spun / Spoon'
+                  : cat === 'satin'
+                  ? 'Satin'
                   : cat.charAt(0).toUpperCase() + cat.slice(1)}
               </button>
             ))}
