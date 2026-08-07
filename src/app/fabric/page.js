@@ -1405,105 +1405,666 @@ const FABRICS_DATA = [
     ]
   },
   {
-    id: 'f5',
-    name: 'Mulberry Royal Silk',
-    category: 'satin',
-    patternClass: 'fabric-pattern-silk',
-    image: '/satin/royal_mulberry_satin_1.png',
-    desc: 'Luxurious heavy silk with a magnificent fluid drape and a subtle, high-end satin glow. Perfect for kurtas and wedding attire.',
-    origin: 'India',
-    weight: '90 gsm',
-    threadCount: '100% Pure Silk',
-    breathability: 'Medium',
-    badge: 'Wedding Grade',
-    variants: [
-      { id: 'f5_v1', name: 'Texture View 1', colorHex: '#e6cfb3', image: '/satin/royal_mulberry_satin_1.png' },
-      { id: 'f5_v2', name: 'Texture View 2', colorHex: '#d9bf9e', image: '/satin/royal_mulberry_satin_2.png' }
-    ]
-  },
-  {
     id: 'stn_black',
-    name: 'Midnight Black Silk Satin',
+    name: 'Jet Black Mulberry Satin',
     category: 'satin',
     patternClass: 'fabric-pattern-silk',
-    image: '/satin/royal_mulberry_satin_1.png',
-    desc: 'Deep jet black high-luster silk satin featuring incredible softness, crisp fluid drape, and timeless evening formal appeal.',
-    origin: 'France',
-    weight: '120 gsm',
-    threadCount: 'High-Density Silk Satin',
+    image: '/satin/Black satin fabric 1.png',
+    desc: 'Ultra-luxurious jet black Mulberry silk satin with high-gloss liquid shine, featherlight softness, and sleek formal drape for tuxedos & gowns.',
+    origin: 'Italy',
+    weight: '115 gsm',
+    threadCount: '100% Pure Mulberry Satin',
     breathability: 'High',
     badge: 'Tuxedo Grade',
     variants: [
-      { id: 'stn_b1', name: 'Texture View 1', colorHex: '#1a1a1c', image: '/satin/royal_mulberry_satin_1.png' },
-      { id: 'stn_b2', name: 'Texture View 2', colorHex: '#111113', image: '/satin/royal_mulberry_satin_2.png' }
+      { id: 'stn_blk_v1', name: 'Texture View 1', colorHex: '#141416', image: '/satin/Black satin fabric 1.png' },
+      { id: 'stn_blk_v2', name: 'Texture View 2', colorHex: '#0c0c0e', image: '/satin/Black satin fabric 2.png' }
     ]
   },
   {
-    id: 'stn_emerald',
-    name: 'Emerald Imperial Silk Satin',
+    id: 'stn_champagne_gold',
+    name: 'Champagne Gold Liquid Satin',
     category: 'satin',
     patternClass: 'fabric-pattern-silk',
-    image: '/satin/royal_mulberry_satin_1.png',
-    desc: 'Regal jewel-toned emerald green satin with smooth silk weave, rich color depth, and elegant liquid drape for statement attire.',
-    origin: 'Italy',
-    weight: '115 gsm',
-    threadCount: 'Micro-Silk Satin Weave',
-    breathability: 'High',
-    badge: 'Signature Satin',
-    variants: [
-      { id: 'stn_e1', name: 'Texture View 1', colorHex: '#144e39', image: '/satin/royal_mulberry_satin_1.png' },
-      { id: 'stn_e2', name: 'Texture View 2', colorHex: '#0e3d2c', image: '/satin/royal_mulberry_satin_2.png' }
-    ]
-  },
-  {
-    id: 'stn_rose_gold',
-    name: 'Rose Gold Liquid Satin',
-    category: 'satin',
-    patternClass: 'fabric-pattern-silk',
-    image: '/satin/royal_mulberry_satin_1.png',
-    desc: 'Soft romantic blush rose gold silk satin with delicate metallic sheen, silky-smooth hand feel, and airy drape.',
+    image: '/satin/Champagne Gold satin fabric 1.png',
+    desc: 'Luminous champagne gold satin with subtle metallic radiance and fluid drape. Perfect for bespoke evening wear, kurtas, and luxury linings.',
     origin: 'France',
-    weight: '105 gsm',
-    threadCount: 'Fine Mulberry Satin',
+    weight: '110 gsm',
+    threadCount: '100% Pure Silk Satin',
     breathability: 'High',
-    badge: 'Bridal & Evening',
+    badge: 'Royal Glamour',
     variants: [
-      { id: 'stn_rg1', name: 'Texture View 1', colorHex: '#e8b8c2', image: '/satin/royal_mulberry_satin_1.png' },
-      { id: 'stn_rg2', name: 'Texture View 2', colorHex: '#d9a5b0', image: '/satin/royal_mulberry_satin_2.png' }
+      { id: 'stn_cg_v1', name: 'Texture View 1', colorHex: '#e6d0a4', image: '/satin/Champagne Gold satin fabric 1.png' },
+      { id: 'stn_cg_v2', name: 'Texture View 2', colorHex: '#d8be8f', image: '/satin/Champagne Gold satin fabric 2.png' }
     ]
   },
   {
-    id: 'stn_sapphire',
-    name: 'Sapphire Blue Duchess Satin',
+    id: 'stn_cocoa_brown',
+    name: 'Cocoa Brown Duchess Satin',
     category: 'satin',
     patternClass: 'fabric-pattern-silk',
-    image: '/satin/royal_mulberry_satin_1.png',
-    desc: 'Deep royal sapphire navy duchess satin offering high structural body, glossy finish, and executive formal elegance.',
+    image: '/satin/Cocoa brown satin fabric 1.png',
+    desc: 'Rich chocolate cocoa brown satin boasting opulent depth of color, heavyweight fluid drape, and silky smooth hand feel.',
     origin: 'Italy',
     weight: '125 gsm',
     threadCount: 'Duchess Satin Weave',
     breathability: 'High',
-    badge: 'Royal Grade',
+    badge: 'Bespoke Luxury',
     variants: [
-      { id: 'stn_s1', name: 'Texture View 1', colorHex: '#1e3a5f', image: '/satin/royal_mulberry_satin_1.png' },
-      { id: 'stn_s2', name: 'Texture View 2', colorHex: '#142944', image: '/satin/royal_mulberry_satin_2.png' }
+      { id: 'stn_cb_v1', name: 'Texture View 1', colorHex: '#4d3326', image: '/satin/Cocoa brown satin fabric 1.png' },
+      { id: 'stn_cb_v2', name: 'Texture View 2', colorHex: '#3d261b', image: '/satin/Cocoa brown satin fabric 2.png' }
     ]
   },
   {
-    id: 'stn_wine',
-    name: 'Wine Burgundy Heavyweight Satin',
+    id: 'stn_coral_peach',
+    name: 'Coral Peach Mulberry Satin',
     category: 'satin',
     patternClass: 'fabric-pattern-silk',
-    image: '/satin/royal_mulberry_satin_1.png',
-    desc: 'Rich deep wine burgundy satin with luxurious weight, subtle sheen, and rich texture for bespoke jackets and linings.',
+    image: '/satin/Coral peach satin fabric 1.png',
+    desc: 'Radiant warm coral peach silk satin with soft golden undertones, silky touch, and vibrant light reflection for festive couture.',
     origin: 'Italy',
-    weight: '130 gsm',
-    threadCount: 'Heavyweight Fine Satin',
+    weight: '110 gsm',
+    threadCount: 'Fine Mulberry Satin',
     breathability: 'High',
-    badge: 'Bespoke Formal',
+    badge: 'Festive Special',
     variants: [
-      { id: 'stn_w1', name: 'Texture View 1', colorHex: '#581825', image: '/satin/royal_mulberry_satin_1.png' },
-      { id: 'stn_w2', name: 'Texture View 2', colorHex: '#42101b', image: '/satin/royal_mulberry_satin_2.png' }
+      { id: 'stn_cp_v1', name: 'Texture View 1', colorHex: '#e88d7d', image: '/satin/Coral peach satin fabric 1.png' },
+      { id: 'stn_cp_v2', name: 'Texture View 2', colorHex: '#d67969', image: '/satin/Coral peach satin fabric 2.png' }
+    ]
+  },
+  {
+    id: 'stn_dark_blue',
+    name: 'Imperial Navy Dark Blue Satin',
+    category: 'satin',
+    patternClass: 'fabric-pattern-silk',
+    image: '/satin/Dark blue satin fabric 1.png',
+    desc: 'Deep regal dark navy blue silk satin featuring intense jewel-toned radiance, elegant weight, and classic formal presence.',
+    origin: 'France',
+    weight: '120 gsm',
+    threadCount: 'High-Density Silk Satin',
+    breathability: 'High',
+    badge: 'Royal Grade',
+    variants: [
+      { id: 'stn_db_v1', name: 'Texture View 1', colorHex: '#1b2a4a', image: '/satin/Dark blue satin fabric 1.png' },
+      { id: 'stn_db_v2', name: 'Texture View 2', colorHex: '#121d36', image: '/satin/Dark blue satin fabric 2.png' }
+    ]
+  },
+  {
+    id: 'stn_dark_turquoise',
+    name: 'Dark Turquoise Silk Satin',
+    category: 'satin',
+    patternClass: 'fabric-pattern-silk',
+    image: '/satin/Dark turquoise satin fabric 1.png',
+    desc: 'Vibrant oceanic dark turquoise teal satin offering mesmerising color shifting glow, ultra-smooth feel, and statement elegance.',
+    origin: 'Italy',
+    weight: '115 gsm',
+    threadCount: 'Micro-Silk Satin Weave',
+    breathability: 'High',
+    badge: 'Statement Wear',
+    variants: [
+      { id: 'stn_dt_v1', name: 'Texture View 1', colorHex: '#1d6e75', image: '/satin/Dark turquoise satin fabric 1.png' },
+      { id: 'stn_dt_v2', name: 'Texture View 2', colorHex: '#14565c', image: '/satin/Dark turquoise satin fabric 2.png' }
+    ]
+  },
+  {
+    id: 'stn_deep_olive_green',
+    name: 'Deep Olive Green Satin',
+    category: 'satin',
+    patternClass: 'fabric-pattern-silk',
+    image: '/satin/Deep Olive Green satin fabric 1.png',
+    desc: 'Sophisticated botanical deep olive green satin with soft metallic undertones, silky drape, and understated luxury character.',
+    origin: 'Italy',
+    weight: '120 gsm',
+    threadCount: 'Fine Silk Satin Weave',
+    breathability: 'High',
+    badge: 'Signature Satin',
+    variants: [
+      { id: 'stn_dog_v1', name: 'Texture View 1', colorHex: '#3b4a32', image: '/satin/Deep Olive Green satin fabric 1.png' },
+      { id: 'stn_dog_v2', name: 'Texture View 2', colorHex: '#2d3b25', image: '/satin/Deep Olive Green satin fabric 2.png' }
+    ]
+  },
+  {
+    id: 'stn_dusty_rose',
+    name: 'Dusty Rose Liquid Satin',
+    category: 'satin',
+    patternClass: 'fabric-pattern-silk',
+    image: '/satin/Dusty rose satin fabric 1.png',
+    desc: 'Romantic muted dusty rose blush silk satin. Unmatched softness with a delicate vintage luster for evening wear & bridal attire.',
+    origin: 'France',
+    weight: '110 gsm',
+    threadCount: 'Pure Mulberry Satin',
+    breathability: 'High',
+    badge: 'Bridal & Evening',
+    variants: [
+      { id: 'stn_dr_v1', name: 'Texture View 1', colorHex: '#c78d9b', image: '/satin/Dusty rose satin fabric 1.png' },
+      { id: 'stn_dr_v2', name: 'Texture View 2', colorHex: '#b57a88', image: '/satin/Dusty rose satin fabric 2.png' }
+    ]
+  },
+  {
+    id: 'stn_ivory',
+    name: 'Pristine Ivory Silk Satin',
+    category: 'satin',
+    patternClass: 'fabric-pattern-silk',
+    image: '/satin/Ivory satin fabric 1.png',
+    desc: 'Pure pristine ivory white silk satin boasting pearl-like shimmer, fluid grace, and immaculate hand feel for wedding attire.',
+    origin: 'Italy',
+    weight: '115 gsm',
+    threadCount: 'Ultra-Fine Silk Satin',
+    breathability: 'High',
+    badge: 'Bridal Grade',
+    variants: [
+      { id: 'stn_ivr_v1', name: 'Texture View 1', colorHex: '#f5f0e6', image: '/satin/Ivory satin fabric 1.png' },
+      { id: 'stn_ivr_v2', name: 'Texture View 2', colorHex: '#e8e1d5', image: '/satin/Ivory satin fabric 2.png' }
+    ]
+  },
+  {
+    id: 'stn_mauve',
+    name: 'Vintage Mauve Silk Satin',
+    category: 'satin',
+    patternClass: 'fabric-pattern-silk',
+    image: '/satin/Mauve satin fabric 1.png',
+    desc: 'Sophisticated dusty plum mauve satin woven from fine mulberry silk yarns, providing subtle warmth and fluid grace.',
+    origin: 'France',
+    weight: '115 gsm',
+    threadCount: 'Mulberry Satin Weave',
+    breathability: 'High',
+    badge: 'New Arrival',
+    variants: [
+      { id: 'stn_mv_v1', name: 'Texture View 1', colorHex: '#9c6f82', image: '/satin/Mauve satin fabric 1.png' },
+      { id: 'stn_mv_v2', name: 'Texture View 2', colorHex: '#885c6f', image: '/satin/Mauve satin fabric 2.png' }
+    ]
+  },
+  {
+    id: 'stn_pistachio',
+    name: 'Pistachio Mint Silk Satin',
+    category: 'satin',
+    patternClass: 'fabric-pattern-silk',
+    image: '/satin/Pistachio satin fabric 1.png',
+    desc: 'Refreshing soft pistachio sage-mint silk satin with a luminous soft-focus sheen, cooling touch, and elegant pastel drape.',
+    origin: 'Italy',
+    weight: '110 gsm',
+    threadCount: 'Fine Mulberry Satin',
+    breathability: 'High',
+    badge: 'Summer Luxe',
+    variants: [
+      { id: 'stn_pst_v1', name: 'Texture View 1', colorHex: '#9bb89c', image: '/satin/Pistachio satin fabric 1.png' },
+      { id: 'stn_pst_v2', name: 'Texture View 2', colorHex: '#87a488', image: '/satin/Pistachio satin fabric 2.png' }
+    ]
+  },
+  {
+    id: 'stn_platinum_silver',
+    name: 'Platinum Silver Duchess Satin',
+    category: 'satin',
+    patternClass: 'fabric-pattern-silk',
+    image: '/satin/Platinum silver satin fabric 1.png',
+    desc: 'Sleek metallic platinum silver duchess satin boasting crisp formal structure, liquid mirror shine, and high-end elegance.',
+    origin: 'Italy',
+    weight: '125 gsm',
+    threadCount: 'Heavyweight Duchess Satin',
+    breathability: 'High',
+    badge: 'Formal Flagship',
+    variants: [
+      { id: 'stn_ps_v1', name: 'Texture View 1', colorHex: '#b0b8c2', image: '/satin/Platinum silver satin fabric 1.png' },
+      { id: 'stn_ps_v2', name: 'Texture View 2', colorHex: '#9ca4ae', image: '/satin/Platinum silver satin fabric 2.png' }
+    ]
+  },
+  {
+    id: 'stn_ruby_red',
+    name: 'Imperial Ruby Red Satin',
+    category: 'satin',
+    patternClass: 'fabric-pattern-silk',
+    image: '/satin/Ruby red satin fabric 1.png',
+    desc: 'Opulent deep crimson ruby red silk satin featuring vibrant jewel-tone radiance, rich weight, and regal festive charm.',
+    origin: 'India',
+    weight: '120 gsm',
+    threadCount: 'Pure Mulberry Satin',
+    breathability: 'High',
+    badge: 'Wedding & Gala',
+    variants: [
+      { id: 'stn_rr_v1', name: 'Texture View 1', colorHex: '#a31c2b', image: '/satin/Ruby red satin fabric 1.png' },
+      { id: 'stn_rr_v2', name: 'Texture View 2', colorHex: '#8c1320', image: '/satin/Ruby red satin fabric 2.png' }
+    ]
+  },
+  {
+    id: 'stn_rust_orange',
+    name: 'Rust Orange Liquid Satin',
+    category: 'satin',
+    patternClass: 'fabric-pattern-silk',
+    image: '/satin/Rust orange satin fabric 1.png',
+    desc: 'Warm sunlit terracotta rust orange satin with rich golden reflection, supple smoothness, and bold autumn warmth.',
+    origin: 'Italy',
+    weight: '115 gsm',
+    threadCount: 'Fine Silk Satin',
+    breathability: 'High',
+    badge: 'Signature Satin',
+    variants: [
+      { id: 'stn_ro_v1', name: 'Texture View 1', colorHex: '#c45a33', image: '/satin/Rust orange satin fabric 1.png' },
+      { id: 'stn_ro_v2', name: 'Texture View 2', colorHex: '#b04924', image: '/satin/Rust orange satin fabric 2.png' }
+    ]
+  },
+  {
+    id: 'stn_sage',
+    name: 'Sage Green Mulberry Satin',
+    category: 'satin',
+    patternClass: 'fabric-pattern-silk',
+    image: '/satin/Sage satin fabric 1.png',
+    desc: 'Tranquil soft sage green silk satin combining delicate botanical tones with liquid-smooth luster and graceful drape.',
+    origin: 'France',
+    weight: '110 gsm',
+    threadCount: 'Pure Mulberry Satin',
+    breathability: 'High',
+    badge: 'New Arrival',
+    variants: [
+      { id: 'stn_sg_v1', name: 'Texture View 1', colorHex: '#7fa38a', image: '/satin/Sage satin fabric 1.png' },
+      { id: 'stn_sg_v2', name: 'Texture View 2', colorHex: '#6c8e76', image: '/satin/Sage satin fabric 2.png' }
+    ]
+  },
+  {
+    id: 'stn_smokey_lavender',
+    name: 'Smokey Lavender Silk Satin',
+    category: 'satin',
+    patternClass: 'fabric-pattern-silk',
+    image: '/satin/Smokey lavender satin fabric 1.png',
+    desc: 'Mystical dusky smokey lavender purple satin with silvery highlights, featherlight touch, and refined evening allure.',
+    origin: 'Italy',
+    weight: '110 gsm',
+    threadCount: 'Fine Mulberry Satin',
+    breathability: 'High',
+    badge: 'New Arrival',
+    variants: [
+      { id: 'stn_sl_v1', name: 'Texture View 1', colorHex: '#9082a6', image: '/satin/Smokey lavender satin fabric 1.png' },
+      { id: 'stn_sl_v2', name: 'Texture View 2', colorHex: '#7c6e92', image: '/satin/Smokey lavender satin fabric 2.png' }
+    ]
+  },
+  {
+    id: 'stn_smokey_lilac',
+    name: 'Smokey Lilac Silk Satin',
+    category: 'satin',
+    patternClass: 'fabric-pattern-silk',
+    image: '/satin/Smokey liac satin fabric 1.png',
+    desc: 'Soft muted smokey lilac pink-violet silk satin offering delicate iridescent glow and fluid drape for couture garments.',
+    origin: 'France',
+    weight: '110 gsm',
+    threadCount: 'Mulberry Satin Weave',
+    breathability: 'High',
+    badge: 'New Arrival',
+    variants: [
+      { id: 'stn_slc_v1', name: 'Texture View 1', colorHex: '#a489a6', image: '/satin/Smokey liac satin fabric 1.png' },
+      { id: 'stn_slc_v2', name: 'Texture View 2', colorHex: '#907592', image: '/satin/Smokey liac satin fabric 2.png' }
+    ]
+  },
+  {
+    id: 'stn_steel_blue',
+    name: 'Steel Blue Duchess Satin',
+    category: 'satin',
+    patternClass: 'fabric-pattern-silk',
+    image: '/satin/Steel blue satin fabric 1.png',
+    desc: 'Sleek slate steel blue satin with metallic oceanic shimmer, high structural body, and executive evening sophistication.',
+    origin: 'Italy',
+    weight: '125 gsm',
+    threadCount: 'Duchess Satin Weave',
+    breathability: 'High',
+    badge: 'Executive Formal',
+    variants: [
+      { id: 'stn_stb_v1', name: 'Texture View 1', colorHex: '#48637a', image: '/satin/Steel blue satin fabric 1.png' },
+      { id: 'stn_stb_v2', name: 'Texture View 2', colorHex: '#385066', image: '/satin/Steel blue satin fabric 2.png' }
+    ]
+  },
+  {
+    id: 'stn_terracotta',
+    name: 'Terracotta Rust Silk Satin',
+    category: 'satin',
+    patternClass: 'fabric-pattern-silk',
+    image: '/satin/Terracotta satin fabric 1.png',
+    desc: 'Earthy Mediterranean terracotta rust silk satin featuring warm copper highlights and supple fluid drape.',
+    origin: 'Italy',
+    weight: '115 gsm',
+    threadCount: 'Pure Mulberry Satin',
+    breathability: 'High',
+    badge: 'New Arrival',
+    variants: [
+      { id: 'stn_tc_v1', name: 'Texture View 1', colorHex: '#b8583a', image: '/satin/Terracotta satin fabric 1.png' },
+      { id: 'stn_tc_v2', name: 'Texture View 2', colorHex: '#a4472a', image: '/satin/Terracotta satin fabric 2.png' }
+    ]
+  },
+  {
+    id: 'stn_camel',
+    name: 'Camel Gold Silk Satin',
+    category: 'satin',
+    patternClass: 'fabric-pattern-silk',
+    image: '/satin/camel satin fabric 1.png',
+    desc: 'Warm rich golden camel tan silk satin with high-luster finish, supple soft hand feel, and timeless luxury aesthetic.',
+    origin: 'Italy',
+    weight: '115 gsm',
+    threadCount: 'Fine Mulberry Satin',
+    breathability: 'High',
+    badge: 'Signature Satin',
+    variants: [
+      { id: 'stn_cml_v1', name: 'Texture View 1', colorHex: '#b89466', image: '/satin/camel satin fabric 1.png' },
+      { id: 'stn_cml_v2', name: 'Texture View 2', colorHex: '#a48255', image: '/satin/camel satin fabric 2.png' }
+    ]
+  },
+  {
+    id: 'slk_amethyst_purple',
+    name: 'Amethyst Purple Fine Silk',
+    category: 'silk',
+    image: '/silk/Amethyst Purple silk fabric 1.png',
+    patternClass: 'fabric-pattern-silk',
+    desc: 'Regal Amethyst Purple fine Mulberry silk featuring intense jewel-toned radiance, fluid drape, and lightweight soft touch for statement festive wear.',
+    origin: 'Italy',
+    weight: '105 gsm',
+    threadCount: '100% Fine Pure Silk',
+    breathability: 'High',
+    badge: 'Pure Silk',
+    variants: [
+      { id: 'slk_ap_v1', name: 'Texture View 1', colorHex: '#6a3b7b', image: '/silk/Amethyst Purple silk fabric 1.png' },
+      { id: 'slk_ap_v2', name: 'Texture View 2', colorHex: '#582d68', image: '/silk/Amethyst Purple silk fabric 2.png' }
+    ]
+  },
+  {
+    id: 'slk_bronze',
+    name: 'Bronze Metallic Fine Silk',
+    category: 'silk',
+    image: '/silk/Bronze silk fabric 1.png',
+    patternClass: 'fabric-pattern-silk',
+    desc: 'Sophisticated warm bronze silk with subtle metallic sheen and supple fluid drape. Ideal for bespoke formal kurtas, shirts, and jacket linings.',
+    origin: 'India',
+    weight: '110 gsm',
+    threadCount: '100% Fine Pure Silk',
+    breathability: 'High',
+    badge: 'Pure Silk',
+    variants: [
+      { id: 'slk_brz_v1', name: 'Texture View 1', colorHex: '#8c6747', image: '/silk/Bronze silk fabric 1.png' },
+      { id: 'slk_brz_v2', name: 'Texture View 2', colorHex: '#785437', image: '/silk/Bronze silk fabric 2.png' }
+    ]
+  },
+  {
+    id: 'slk_burgundy',
+    name: 'Burgundy Wine Fine Silk',
+    category: 'silk',
+    image: '/silk/Burgundy silk fabric 1.png',
+    patternClass: 'fabric-pattern-silk',
+    desc: 'Deep opulent burgundy wine pure silk woven with fine long-staple mulberry threads, offering rich color depth and immaculate drape.',
+    origin: 'France',
+    weight: '108 gsm',
+    threadCount: '100% Fine Pure Silk',
+    breathability: 'High',
+    badge: 'Pure Silk',
+    variants: [
+      { id: 'slk_bur_v1', name: 'Texture View 1', colorHex: '#6b1d2f', image: '/silk/Burgundy silk fabric 1.png' },
+      { id: 'slk_bur_v2', name: 'Texture View 2', colorHex: '#571524', image: '/silk/Burgundy silk fabric 2.png' }
+    ]
+  },
+  {
+    id: 'slk_butter_yellow',
+    name: 'Butter Yellow Fine Silk',
+    category: 'silk',
+    image: '/silk/Butter yellow silk fabric 1.png',
+    patternClass: 'fabric-pattern-silk',
+    desc: 'Radiant warm butter yellow fine silk boasting light-reflecting luster, ultra-smooth touch, and delicate seasonal elegance.',
+    origin: 'Italy',
+    weight: '100 gsm',
+    threadCount: '100% Fine Pure Silk',
+    breathability: 'High',
+    badge: 'Pure Silk',
+    variants: [
+      { id: 'slk_by_v1', name: 'Texture View 1', colorHex: '#f3e496', image: '/silk/Butter yellow silk fabric 1.png' },
+      { id: 'slk_by_v2', name: 'Texture View 2', colorHex: '#e8d682', image: '/silk/Butter yellow silk fabric 2.png' }
+    ]
+  },
+  {
+    id: 'slk_chocolate_brown',
+    name: 'Chocolate Brown Fine Silk',
+    category: 'silk',
+    image: '/silk/Choclate brown silk fabric 1.png',
+    patternClass: 'fabric-pattern-silk',
+    desc: 'Rich espresso chocolate brown pure silk with opulent warm undertones, heavyweight fluid drape, and silky smooth hand feel.',
+    origin: 'Italy',
+    weight: '112 gsm',
+    threadCount: '100% Fine Pure Silk',
+    breathability: 'High',
+    badge: 'Pure Silk',
+    variants: [
+      { id: 'slk_cb_v1', name: 'Texture View 1', colorHex: '#4a3528', image: '/silk/Choclate brown silk fabric 1.png' },
+      { id: 'slk_cb_v2', name: 'Texture View 2', colorHex: '#3b291d', image: '/silk/Choclate brown silk fabric 2.png' }
+    ]
+  },
+  {
+    id: 'slk_coral_peach',
+    name: 'Coral Peach Fine Silk',
+    category: 'silk',
+    image: '/silk/Coral peach silk fabric 1.png',
+    patternClass: 'fabric-pattern-silk',
+    desc: 'Delicate coral peach fine silk with soft golden undertones, silky feel, and elegant light reflection for festive & formal tailoring.',
+    origin: 'India',
+    weight: '105 gsm',
+    threadCount: '100% Fine Pure Silk',
+    breathability: 'High',
+    badge: 'Pure Silk',
+    variants: [
+      { id: 'slk_cp_v1', name: 'Texture View 1', colorHex: '#e4bfab', image: '/silk/Coral peach silk fabric 1.png' },
+      { id: 'slk_cp_v2', name: 'Texture View 2', colorHex: '#d5ac97', image: '/silk/Coral peach silk fabric 2.png' }
+    ]
+  },
+  {
+    id: 'slk_deep_plum',
+    name: 'Deep Plum Fine Silk',
+    category: 'silk',
+    image: '/silk/Deep plum silk fabric 1.png',
+    patternClass: 'fabric-pattern-silk',
+    desc: 'Sophisticated dark plum mauve fine silk boasting deep jewel tones, refined luster, and effortless drape for evening wear.',
+    origin: 'France',
+    weight: '110 gsm',
+    threadCount: '100% Fine Pure Silk',
+    breathability: 'High',
+    badge: 'Pure Silk',
+    variants: [
+      { id: 'slk_dp_v1', name: 'Texture View 1', colorHex: '#522b47', image: '/silk/Deep plum silk fabric 1.png' },
+      { id: 'slk_dp_v2', name: 'Texture View 2', colorHex: '#422039', image: '/silk/Deep plum silk fabric 2.png' }
+    ]
+  },
+  {
+    id: 'slk_deep_teal',
+    name: 'Deep Teal Fine Silk',
+    category: 'silk',
+    image: '/silk/deep teal silk fabric 1.png',
+    patternClass: 'fabric-pattern-silk',
+    desc: 'Enchanting deep teal blue-green pure silk combining dramatic color saturation with liquid-smooth softness and formal presence.',
+    origin: 'Italy',
+    weight: '108 gsm',
+    threadCount: '100% Fine Pure Silk',
+    breathability: 'High',
+    badge: 'Pure Silk',
+    variants: [
+      { id: 'slk_dt_v1', name: 'Texture View 1', colorHex: '#1c5253', image: '/silk/deep teal silk fabric 1.png' },
+      { id: 'slk_dt_v2', name: 'Texture View 2', colorHex: '#133f40', image: '/silk/deep teal silk fabric 2.png' }
+    ]
+  },
+  {
+    id: 'slk_dusty_blue',
+    name: 'Dusty Blue Fine Silk',
+    category: 'silk',
+    image: '/silk/Dusty blue silk fabric 1.png',
+    patternClass: 'fabric-pattern-silk',
+    desc: 'Serene dusty slate blue fine silk featuring a soft pastel shimmer, cooling hand-feel, and versatile executive drape.',
+    origin: 'Italy',
+    weight: '105 gsm',
+    threadCount: '100% Fine Pure Silk',
+    breathability: 'High',
+    badge: 'Pure Silk',
+    variants: [
+      { id: 'slk_dbl_v1', name: 'Texture View 1', colorHex: '#5e7a92', image: '/silk/Dusty blue silk fabric 1.png' },
+      { id: 'slk_dbl_v2', name: 'Texture View 2', colorHex: '#4b6478', image: '/silk/Dusty blue silk fabric 2.png' }
+    ]
+  },
+  {
+    id: 'slk_emerald_green',
+    name: 'Emerald Green Fine Silk',
+    category: 'silk',
+    image: '/silk/Emerald green silk fabric 1.png',
+    patternClass: 'fabric-pattern-silk',
+    desc: 'Vibrant imperial emerald green pure silk with high-gloss sheen, rich tactile depth, and royal distinction for couture garments.',
+    origin: 'India',
+    weight: '110 gsm',
+    threadCount: '100% Fine Pure Silk',
+    breathability: 'High',
+    badge: 'Pure Silk',
+    variants: [
+      { id: 'slk_eg_v1', name: 'Texture View 1', colorHex: '#144e39', image: '/silk/Emerald green silk fabric 1.png' },
+      { id: 'slk_eg_v2', name: 'Texture View 2', colorHex: '#0e3d2c', image: '/silk/Emerald green silk fabric 2.png' }
+    ]
+  },
+  {
+    id: 'slk_graphite',
+    name: 'Graphite Charcoal Fine Silk',
+    category: 'silk',
+    image: '/silk/Graphite silk fabric 1.png',
+    patternClass: 'fabric-pattern-silk',
+    desc: 'Modern graphite charcoal grey fine silk delivering sleek minimalist sophistication, subtle silver undertones, and smooth drape.',
+    origin: 'Italy',
+    weight: '110 gsm',
+    threadCount: '100% Fine Pure Silk',
+    breathability: 'High',
+    badge: 'Pure Silk',
+    variants: [
+      { id: 'slk_grp_v1', name: 'Texture View 1', colorHex: '#383b42', image: '/silk/Graphite silk fabric 1.png' },
+      { id: 'slk_grp_v2', name: 'Texture View 2', colorHex: '#2d3036', image: '/silk/Graphite silk fabric 2.png' }
+    ]
+  },
+  {
+    id: 'slk_jet_black',
+    name: 'Jet Black Fine Silk',
+    category: 'silk',
+    image: '/silk/jet black silk fabric 1.png',
+    patternClass: 'fabric-pattern-silk',
+    desc: 'Ultra-luxurious jet black Mulberry fine silk featuring fluid drape, midnight radiance, and timeless tuxedo & gown luxury.',
+    origin: 'Italy',
+    weight: '115 gsm',
+    threadCount: '100% Fine Pure Silk',
+    breathability: 'High',
+    badge: 'Pure Silk',
+    variants: [
+      { id: 'slk_jb_v1', name: 'Texture View 1', colorHex: '#1c1c1e', image: '/silk/jet black silk fabric 1.png' },
+      { id: 'slk_jb_v2', name: 'Texture View 2', colorHex: '#121214', image: '/silk/jet black silk fabric 2.png' }
+    ]
+  },
+  {
+    id: 'slk_midnight_navy',
+    name: 'Midnight Navy Fine Silk',
+    category: 'silk',
+    image: '/silk/Midnight navy silk fabric 1.png',
+    patternClass: 'fabric-pattern-silk',
+    desc: 'Classic deep midnight navy blue fine silk with subtle lustrous highlights and superior formal drape for luxury evening attire.',
+    origin: 'Italy',
+    weight: '110 gsm',
+    threadCount: '100% Fine Pure Silk',
+    breathability: 'High',
+    badge: 'Pure Silk',
+    variants: [
+      { id: 'slk_mn_v1', name: 'Texture View 1', colorHex: '#1b2936', image: '/silk/Midnight navy silk fabric 1.png' },
+      { id: 'slk_mn_v2', name: 'Texture View 2', colorHex: '#121c26', image: '/silk/Midnight navy silk fabric 2.png' }
+    ]
+  },
+  {
+    id: 'slk_rust_orange',
+    name: 'Rust Orange Fine Silk',
+    category: 'silk',
+    image: '/silk/rust orange silk fabric 1.png',
+    patternClass: 'fabric-pattern-silk',
+    desc: 'Warm burnt rust orange pure silk with rich metallic undertones and fluid drape for statement kurtas and festive attire.',
+    origin: 'India',
+    weight: '108 gsm',
+    threadCount: '100% Fine Pure Silk',
+    breathability: 'High',
+    badge: 'Pure Silk',
+    variants: [
+      { id: 'slk_ro_v1', name: 'Texture View 1', colorHex: '#b85935', image: '/silk/rust orange silk fabric 1.png' },
+      { id: 'slk_ro_v2', name: 'Texture View 2', colorHex: '#a04a29', image: '/silk/rust orange silk fabric 2.png' }
+    ]
+  },
+  {
+    id: 'slk_sage',
+    name: 'Sage Green Fine Silk',
+    category: 'silk',
+    image: '/silk/Sage silk fabric 1.png',
+    patternClass: 'fabric-pattern-silk',
+    desc: 'Tranquil soft sage green fine silk combining delicate botanical tones with soft sheen and light cooling touch.',
+    origin: 'France',
+    weight: '105 gsm',
+    threadCount: '100% Fine Pure Silk',
+    breathability: 'High',
+    badge: 'Pure Silk',
+    variants: [
+      { id: 'slk_sg_v1', name: 'Texture View 1', colorHex: '#84a991', image: '/silk/Sage silk fabric 1.png' },
+      { id: 'slk_sg_v2', name: 'Texture View 2', colorHex: '#71967e', image: '/silk/Sage silk fabric 2.png' }
+    ]
+  },
+  {
+    id: 'slk_silver',
+    name: 'Silver Metallic Fine Silk',
+    category: 'silk',
+    image: '/silk/Silver silk fabric 1.png',
+    patternClass: 'fabric-pattern-silk',
+    desc: 'Luminous platinum silver fine silk boasting high-reflective sheen, crisp fluid drape, and immaculate formal glamour.',
+    origin: 'Italy',
+    weight: '108 gsm',
+    threadCount: '100% Fine Pure Silk',
+    breathability: 'High',
+    badge: 'Pure Silk',
+    variants: [
+      { id: 'slk_slv_v1', name: 'Texture View 1', colorHex: '#c4c8cc', image: '/silk/Silver silk fabric 1.png' },
+      { id: 'slk_slv_v2', name: 'Texture View 2', colorHex: '#b2b6bb', image: '/silk/Silver silk fabric 2.png' }
+    ]
+  },
+  {
+    id: 'slk_silvery_blue',
+    name: 'Silvery Blue Fine Silk',
+    category: 'silk',
+    image: '/silk/Silvery blue silk fabric 1.png',
+    patternClass: 'fabric-pattern-silk',
+    desc: 'Ethereal silvery sky blue fine silk offering iridescent shimmer, delicate cool touch, and refined luxury appeal.',
+    origin: 'Italy',
+    weight: '105 gsm',
+    threadCount: '100% Fine Pure Silk',
+    breathability: 'High',
+    badge: 'Pure Silk',
+    variants: [
+      { id: 'slk_sb_v1', name: 'Texture View 1', colorHex: '#88a2b8', image: '/silk/Silvery blue silk fabric 1.png' },
+      { id: 'slk_sb_v2', name: 'Texture View 2', colorHex: '#7690a6', image: '/silk/Silvery blue silk fabric 2.png' }
+    ]
+  },
+  {
+    id: 'slk_taupe',
+    name: 'Warm Taupe Fine Silk',
+    category: 'silk',
+    image: '/silk/Taupe silk fabric 1.png',
+    patternClass: 'fabric-pattern-silk',
+    desc: 'Sophisticated warm taupe grey-brown pure silk with smooth luster, versatile elegance, and fluid drape.',
+    origin: 'France',
+    weight: '108 gsm',
+    threadCount: '100% Fine Pure Silk',
+    breathability: 'High',
+    badge: 'Pure Silk',
+    variants: [
+      { id: 'slk_tp_v1', name: 'Texture View 1', colorHex: '#8c7d72', image: '/silk/Taupe silk fabric 1.png' },
+      { id: 'slk_tp_v2', name: 'Texture View 2', colorHex: '#78695f', image: '/silk/Taupe silk fabric 2.png' }
+    ]
+  },
+  {
+    id: 'slk_warm_ivory',
+    name: 'Warm Ivory Fine Silk',
+    category: 'silk',
+    image: '/silk/Warm ivory slik fabric 1.png',
+    patternClass: 'fabric-pattern-silk',
+    desc: 'Pristine warm ivory white fine silk with soft pearl shimmer, featherlight feel, and immaculate bridal and festive grace.',
+    origin: 'Italy',
+    weight: '105 gsm',
+    threadCount: '100% Fine Pure Silk',
+    breathability: 'High',
+    badge: 'Pure Silk',
+    variants: [
+      { id: 'slk_wi_v1', name: 'Texture View 1', colorHex: '#f4eee0', image: '/silk/Warm ivory slik fabric 1.png' },
+      { id: 'slk_wi_v2', name: 'Texture View 2', colorHex: '#e8dfcd', image: '/silk/Warm ivory slik fabric 2.png' }
     ]
   },
   {
@@ -2251,7 +2812,7 @@ export default function Fabric() {
             onChange={(e) => setSearchTerm(e.target.value)}
           />
           <div className="filter-tabs">
-            {['all', 'cotton', 'linen', 'satin', 'armani', 'spoon', 'other'].map((cat) => (
+            {['all', 'cotton', 'linen', 'silk', 'satin', 'armani', 'spoon', 'other'].map((cat) => (
               <button
                 key={cat}
                 className={`filter-tab ${selectedCategory === cat ? 'active' : ''}`}
@@ -2259,8 +2820,10 @@ export default function Fabric() {
               >
                 {cat === 'all'
                   ? 'All'
+                  : cat === 'silk'
+                  ? 'Silk'
                   : cat === 'other'
-                  ? 'Others (Silk / Wool)'
+                  ? 'Others (Wool)'
                   : cat === 'spoon'
                   ? 'Spun / Spoon'
                   : cat === 'satin'

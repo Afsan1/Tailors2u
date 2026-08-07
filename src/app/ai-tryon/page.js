@@ -587,13 +587,14 @@ export default function AITryOn() {
 
   const assistantCss = `
     .wa-container {
-      padding: 4rem 1.4rem 6rem;
+      padding: 3rem 1.4rem 5rem;
       max-width: 1200px;
       margin: 0 auto;
       text-align: center;
+      border-top: 1px solid #edeae4;
     }
     .wa-title {
-      font-size: clamp(2rem, 5vw, 3.2rem);
+      font-size: clamp(1.8rem, 4vw, 2.5rem);
       font-weight: 800;
       color: #1E2D27;
       letter-spacing: -0.025em;
@@ -601,10 +602,10 @@ export default function AITryOn() {
     }
     .wa-subtitle {
       color: #4A5B55;
-      font-size: 1.15rem;
+      font-size: 1.05rem;
       line-height: 1.65;
       max-width: 680px;
-      margin: 0 auto 3rem;
+      margin: 0 auto 2.5rem;
     }
     .wa-phone-mockup {
       background: #032a20;
@@ -676,7 +677,7 @@ export default function AITryOn() {
     }
     .wa-chat-body {
       padding: 1.5rem 1.2rem;
-      background: #f4f0ea; /* Luxury linen / porcelain background color */
+      background: #f4f0ea;
       display: flex;
       flex-direction: column;
       gap: 1.2rem;
@@ -758,51 +759,55 @@ export default function AITryOn() {
   `;
 
   return (
-    <div className="porcelain-theme">
-      <style>{assistantCss}</style>
-      <div className="wa-container">
-        <h1 className="wa-title">Sartorial Styling Bot</h1>
-        <p className="wa-subtitle">
-          Connect with our premium WhatsApp styling assistant. Send details of your required garments, fabric preferences, and custom measurements directly to our doorstep tailoring desk.
-        </p>
+    <>
+      <OriginalAITryOn />
+      <div className="porcelain-theme">
+        <style>{assistantCss}</style>
+        <div className="wa-container">
+          <h2 className="wa-title">Need Personal Styling Assistance?</h2>
+          <p className="wa-subtitle">
+            Connect directly with our luxury WhatsApp styling assistant. Send your measurements, fabric choices, and custom requests to our doorstep tailoring team.
+          </p>
 
-        <div className="wa-phone-mockup">
-          <div className="wa-phone-notch" />
-          
-          <div className="wa-chat-header">
-            <div className="wa-chat-avatar">👔</div>
-            <div>
-              <h3 className="wa-chat-name">Tailors2U Stylist</h3>
-              <span className="wa-chat-status">● Online Assistant</span>
+          <div className="wa-phone-mockup">
+            <div className="wa-phone-notch" />
+            
+            <div className="wa-chat-header">
+              <div className="wa-chat-avatar">👔</div>
+              <div>
+                <h3 className="wa-chat-name">Tailors2U Stylist</h3>
+                <span className="wa-chat-status">● Online Assistant</span>
+              </div>
             </div>
-          </div>
 
-          <div className="wa-chat-body">
-            <div className="wa-msg wa-msg-in">
-              Hi there! Welcome to Tailors2U. 💎
-              <span className="wa-time">14:32</span>
+            <div className="wa-chat-body">
+              <div className="wa-msg wa-msg-in">
+                Hi there! Welcome to Tailors2U. 💎
+                <span className="wa-time">14:32</span>
+              </div>
+              <div className="wa-msg wa-msg-in">
+                I can help you coordinate custom tailoring measurements, select luxury mills, and set up your booking appointments.
+                <span className="wa-time">14:32</span>
+              </div>
+              <div className="wa-msg wa-msg-in">
+                Click the button below to start a live session with our tailoring team. Let's design your perfect fit! ✨
+                <span className="wa-time">14:33</span>
+              </div>
             </div>
-            <div className="wa-msg wa-msg-in">
-              I can help you coordinate custom tailoring measurements, select luxury mills, and set up your booking appointments.
-              <span className="wa-time">14:32</span>
-            </div>
-            <div className="wa-msg wa-msg-in">
-              Click the button below to start a live session with our tailoring team. Let's design your perfect fit! ✨
-              <span className="wa-time">14:33</span>
-            </div>
-          </div>
 
-          <div className="wa-chat-footer">
-            <a href={waLink} target="_blank" rel="noopener noreferrer" className="wa-pulse-btn">
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-                <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946C.06 5.348 5.397.01 12.008.01c3.202.001 6.212 1.246 8.477 3.514 2.266 2.268 3.507 5.28 3.505 8.484-.004 6.657-5.34 11.997-11.953 11.997-2.005-.001-3.973-.502-5.717-1.456L0 24zm6.59-4.846c1.6.95 3.188 1.449 4.825 1.451 5.436 0 9.86-4.37 9.864-9.799.002-2.63-1.023-5.101-2.885-6.965C16.528 3.977 14.07 2.95 11.478 2.95c-5.44 0-9.866 4.372-9.87 9.802 0 1.714.47 3.387 1.357 4.881L1.925 21.05l3.666-.957.056-.039zM16.6 13.99c-.274-.137-1.62-.8-1.87-.892-.252-.093-.437-.137-.62.137-.183.275-.707.892-.867 1.077-.16.183-.32.206-.593.07-1.206-.605-2.01-1.002-2.812-2.38-.21-.363.21-.337.6-.112.35.203.498.41.67.75.093.183.047.343-.024.48-.07.137-.62 1.5-1.005 2.425-.38.92-.765.795-.945.785-.183-.01-.39-.01-.6-.01-.21 0-.55.08-.838.4-.288.32-1.1 1.077-1.1 2.63 0 1.55 1.13 3.05 1.282 3.256.152.206 2.223 3.393 5.385 4.757.752.324 1.34.518 1.8.662.756.24 1.445.207 1.99.125.607-.09 1.62-.662 1.85-1.27.23-.607.23-1.127.16-1.27-.07-.143-.258-.23-.532-.366z"/>
-              </svg>
-              Chat on WhatsApp
-            </a>
+            <div className="wa-chat-footer">
+              <a href={waLink} target="_blank" rel="noopener noreferrer" className="wa-pulse-btn">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                  <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946C.06 5.348 5.397.01 12.008.01c3.202.001 6.212 1.246 8.477 3.514 2.266 2.268 3.507 5.28 3.505 8.484-.004 6.657-5.34 11.997-11.953 11.997-2.005-.001-3.973-.502-5.717-1.456L0 24zm6.59-4.846c1.6.95 3.188 1.449 4.825 1.451 5.436 0 9.86-4.37 9.864-9.799.002-2.63-1.023-5.101-2.885-6.965C16.528 3.977 14.07 2.95 11.478 2.95c-5.44 0-9.866 4.372-9.87 9.802 0 1.714.47 3.387 1.357 4.881L1.925 21.05l3.666-.957.056-.039zM16.6 13.99c-.274-.137-1.62-.8-1.87-.892-.252-.093-.437-.137-.62.137-.183.275-.707.892-.867 1.077-.16.183-.32.206-.593.07-1.206-.605-2.01-1.002-2.812-2.38-.21-.363.21-.337.6-.112.35.203.498.41.67.75.093.183.047.343-.024.48-.07.137-.62 1.5-1.005 2.425-.38.92-.765.795-.945.785-.183-.01-.39-.01-.6-.01-.21 0-.55.08-.838.4-.288.32-1.1 1.077-1.1 2.63 0 1.55 1.13 3.05 1.282 3.256.152.206 2.223 3.393 5.385 4.757.752.324 1.34.518 1.8.662.756.24 1.445.207 1.99.125.607-.09 1.62-.662 1.85-1.27.23-.607.23-1.127.16-1.27-.07-.143-.258-.23-.532-.366z"/>
+                </svg>
+                Chat on WhatsApp
+              </a>
+            </div>
           </div>
         </div>
       </div>
-    </div>
+    </>
   );
 }
+
 
