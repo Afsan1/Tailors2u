@@ -1324,6 +1324,7 @@ a {
   display: flex;
   gap: 0.6rem;
   align-items: center;
+  flex-wrap: wrap;
 }
 
 .cotton-pill-btn {
@@ -1353,7 +1354,7 @@ a {
 }
 
 .fabric-pattern-armani {
-  background-image: url('/armani.png');
+  background-image: url('/armani/Armani fabric black 1.png');
   background-size: cover;
   background-position: center;
   width: 100%;

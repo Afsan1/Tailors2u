@@ -42,12 +42,25 @@ export async function POST(request) {
     let garmentBuffer = null;
     let swatchSource = 'generated';
 
-    // Check if it's one of the Armani suiting variants which has a static texture file in /public
-    // We try to extract a variant ID or map it based on matching the name or ID
-    const variantId = fabric.id && fabric.id.startsWith('v') ? fabric.id : null;
-    const swatchFile = ARMANI_SWATCH_MAP[variantId];
+    // If the fabric object specifies an image path starting with "/", load it directly from /public
+    if (fabric.image && fabric.image.startsWith('/')) {
+      try {
+        const relativePath = fabric.image.replace(/^\//, '');
+        const filePath = path.join(process.cwd(), 'public', relativePath);
+        if (fs.existsSync(filePath)) {
+          console.log(`[TryOn API] Loading static swatch file from image path: ${filePath}`);
+          garmentBuffer = fs.readFileSync(filePath);
+          swatchSource = `static-file (${relativePath})`;
+        }
+      } catch (err) {
+        console.warn(`[TryOn API] Failed to load static swatch from fabric.image:`, err.message);
+      }
+    }
 
-    if (swatchFile) {
+    const variantId = !garmentBuffer && fabric.id && fabric.id.startsWith('v') ? fabric.id : null;
+    const swatchFile = variantId ? ARMANI_SWATCH_MAP[variantId] : null;
+
+    if (swatchFile && !garmentBuffer) {
       try {
         const filePath = path.join(process.cwd(), 'public', swatchFile);
         console.log(`[TryOn API] Loading static Armani swatch file: ${filePath}`);
