@@ -47,6 +47,17 @@ export default function FloatingDock() {
       )
     },
     {
+      name: 'Fabrics',
+      path: '/fabric',
+      icon: (
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" className="dock-icon">
+          <path d="m12 3-10 5 10 5 10-5-10-5Z"/>
+          <path d="m2 17 10 5 10-5"/>
+          <path d="m2 12 10 5 10-5"/>
+        </svg>
+      )
+    },
+    {
       name: 'AI Try-On',
       path: '/ai-tryon',
       icon: (
