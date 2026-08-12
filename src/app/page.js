@@ -173,19 +173,19 @@ export default function Home() {
               <p style={{ fontStyle: 'italic', marginBottom: '1.5rem', fontSize: '0.95rem' }}>
                 "As a busy executive, I never found time to visit tailoring stores. Tailors2U visited me at my office, took measurements, and 10 days later I had three perfectly fitted shirts. Amazing!"
               </p>
-              <strong style={{ color: 'var(--beige-gold)', fontSize: '0.9rem' }}>— David K., Corporate Director</strong>
+              <strong style={{ color: '#000000', fontSize: '0.9rem', fontWeight: '700' }}>— David K., Corporate Director</strong>
             </div>
             <div className="feature-card" style={{ padding: '2rem' }}>
               <p style={{ fontStyle: 'italic', marginBottom: '1.5rem', fontSize: '0.95rem' }}>
                 "The alteration service is remarkable. They altered my wedding Kurtas and three pairs of trousers. The fits are flawless, and the deep emerald linen fabric feels absolutely premium."
               </p>
-              <strong style={{ color: 'var(--beige-gold)', fontSize: '0.9rem' }}>— Priya R., Event Designer</strong>
+              <strong style={{ color: '#000000', fontSize: '0.9rem', fontWeight: '700' }}>— Priya R., Event Designer</strong>
             </div>
             <div className="feature-card" style={{ padding: '2rem' }}>
               <p style={{ fontStyle: 'italic', marginBottom: '1.5rem', fontSize: '0.95rem' }}>
                 "I ordered the Luxury Combo package. The merino wool suit fits like a glove and the silk linings are exquisite. Alessandro is a true master of his craft. Highly recommend!"
               </p>
-              <strong style={{ color: 'var(--beige-gold)', fontSize: '0.9rem' }}>— Marcus T., Entrepreneur</strong>
+              <strong style={{ color: '#000000', fontSize: '0.9rem', fontWeight: '700' }}>— Marcus T., Entrepreneur</strong>
             </div>
           </div>
         </div>

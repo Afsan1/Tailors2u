@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useState, useEffect } from 'react';
+import { usePathname } from 'next/navigation';
 import Navbar from './Navbar';
 import Footer from './Footer';
 import BookingModal from './BookingModal';
@@ -11,6 +12,9 @@ export default function ClientLayoutWrapper({ children }) {
   const [selectedService, setSelectedService] = useState('');
   const { isSignedIn } = useAuth();
   const clerk = useClerk();
+  const pathname = usePathname();
+
+  const isAdminPage = pathname?.startsWith('/admin');
 
   const openBooking = (service = '') => {
     if (!isSignedIn) {
@@ -38,13 +42,14 @@ export default function ClientLayoutWrapper({ children }) {
     }
   }, [isSignedIn]);
 
-  // Clone children to inject openBooking callback if needed, or pass it via context.
-  // A simpler way is to use context or just pass the openBooking function as a custom prop,
-  // but since Next.js app router children are pages, let's store openBooking in a global event
-  // or window event, or create a simple context provider.
-  // Let's create a small Context for the Booking Modal so any page can open it!
-  // That is the most professional React architectural pattern.
-  
+  if (isAdminPage) {
+    return (
+      <BookingContext.Provider value={{ openBooking }}>
+        <main>{children}</main>
+      </BookingContext.Provider>
+    );
+  }
+
   return (
     <BookingContext.Provider value={{ openBooking }}>
       <Navbar onOpenBooking={() => openBooking()} />
@@ -59,7 +64,6 @@ export default function ClientLayoutWrapper({ children }) {
   );
 }
 
-// Create and export the context so pages can use it
 export const BookingContext = React.createContext({
   openBooking: () => {}
 });

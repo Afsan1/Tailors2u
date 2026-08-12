@@ -21,7 +21,7 @@ export default async function MyBookingsPage() {
   });
 
   const formatDate = (dateObj) => {
-    return dateObj.toLocaleDateString('en-US', {
+    return new Date(dateObj).toLocaleDateString('en-US', {
       weekday: 'short',
       year: 'numeric',
       month: 'short',
@@ -30,7 +30,7 @@ export default async function MyBookingsPage() {
   };
 
   const formatCreatedDate = (dateObj) => {
-    return dateObj.toLocaleDateString('en-US', {
+    return new Date(dateObj).toLocaleDateString('en-US', {
       year: 'numeric',
       month: 'short',
       day: 'numeric',
@@ -39,20 +39,46 @@ export default async function MyBookingsPage() {
     });
   };
 
+  const renderStatusBadge = (status) => {
+    switch (status?.toUpperCase()) {
+      case 'APPROVED':
+        return (
+          <span className="status-badge badge-approved">
+            <span className="dot-indicator dot-approved"></span>
+            Confirmed
+          </span>
+        );
+      case 'REJECTED':
+        return (
+          <span className="status-badge badge-rejected">
+            <span className="dot-indicator dot-rejected"></span>
+            Rejected
+          </span>
+        );
+      case 'PENDING':
+      default:
+        return (
+          <span className="status-badge badge-pending">
+            <span className="dot-indicator dot-pending"></span>
+            Pending Approval
+          </span>
+        );
+    }
+  };
+
   return (
     <div className="my-bookings-page animate-fade-in">
       <div className="my-bookings-container">
         <div className="my-bookings-header">
           <h1 className="my-bookings-title">My Bookings</h1>
-          <p className="my-bookings-subtitle">Manage your doorstep styling and alteration appointments</p>
+          <p className="my-bookings-subtitle">Track and view your doorstep tailoring & alteration requests</p>
         </div>
 
         {bookings.length === 0 ? (
           <div className="empty-state">
-            <span className="empty-icon">📅</span>
             <h2 className="empty-title">No bookings yet</h2>
             <p className="empty-description">
-              You haven't scheduled any Tailors2U appointments yet.
+              You haven't requested any Tailors2U appointments yet.
             </p>
             <Link href="/" className="btn-primary" style={{ display: 'inline-block' }}>
               Book Your First Appointment
@@ -64,7 +90,7 @@ export default async function MyBookingsPage() {
               <div key={booking.id} className="booking-card">
                 <div className="booking-card-header">
                   <span className="booking-service">{booking.service}</span>
-                  <span className="booking-badge">Scheduled</span>
+                  {renderStatusBadge(booking.status)}
                 </div>
 
                 <div className="booking-card-body">
@@ -76,10 +102,14 @@ export default async function MyBookingsPage() {
                     <span className="booking-detail-label">Time</span>
                     <span className="booking-detail-value">{booking.time}</span>
                   </div>
+                  <div className="booking-detail-item" style={{ gridColumn: '1 / -1' }}>
+                    <span className="booking-detail-label">Doorstep Address</span>
+                    <span className="booking-detail-value">{booking.address || 'Not provided'}</span>
+                  </div>
                 </div>
 
                 {booking.notes && (
-                  <div className="booking-detail-item" style={{ marginBottom: '1.5rem' }}>
+                  <div className="booking-detail-item" style={{ marginBottom: '1.25rem' }}>
                     <span className="booking-detail-label" style={{ marginBottom: '0.4rem' }}>Notes</span>
                     <div className="booking-notes-section">
                       <p className="booking-notes-text">{booking.notes}</p>
@@ -87,8 +117,16 @@ export default async function MyBookingsPage() {
                   </div>
                 )}
 
+                {booking.status === 'REJECTED' && booking.rejectionReason && (
+                  <div className="rejection-reason-banner">
+                    <span className="rejection-label">Rejection Reason:</span>
+                    <p className="rejection-text">{booking.rejectionReason}</p>
+                  </div>
+                )}
+
                 <div className="booking-card-footer">
-                  <span>Booked on: {formatCreatedDate(booking.createdAt)}</span>
+                  <span>Created At: {formatCreatedDate(booking.createdAt)}</span>
+                  {booking.approvedAt && <span style={{ color: '#10b981' }}>Approved At: {formatCreatedDate(booking.approvedAt)}</span>}
                 </div>
               </div>
             ))}

@@ -44,8 +44,8 @@ export default function Footer({ onOpenBooking }) {
         <div>
           <h4 className="footer-heading">Contact & Hours</h4>
           <div className="footer-contact-info">
-            <p><strong>Email:</strong> executive.tailors2u@gmail.com</p>
-            <p><strong>Phone:</strong> 8879951533</p>
+            <p><strong>Email:</strong> <a href="mailto:executive.tailors2u@gmail.com" className="footer-contact-link">executive.tailors2u@gmail.com</a></p>
+            <p><strong>Phone:</strong> <a href="tel:8879951533" className="footer-contact-link">8879951533</a></p>
             <p><strong>Hours:</strong> Mon - Sat: 9:00 AM - 9:00 PM</p>
             <p><strong>Service Area:</strong> Everywhere in Mumbai.</p>
           </div>

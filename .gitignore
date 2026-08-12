@@ -47,3 +47,6 @@ Tailors2u/
 
 # test scripts (may contain API keys — never commit)
 test-*.js
+
+# clerk configuration (can include secrets)
+/.clerk/

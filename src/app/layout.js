@@ -27,7 +27,13 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en" className={`${playfair.variable} ${poppins.variable}`}>
       <body>
-        <ClerkProvider>
+        <ClerkProvider
+          appearance={{
+            layout: {
+              unsafe_disableDevelopmentModeWarnings: true,
+            },
+          }}
+        >
           <ClientLayoutWrapper>{children}</ClientLayoutWrapper>
         </ClerkProvider>
       </body>
