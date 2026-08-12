@@ -12,10 +12,10 @@ export default function Navbar({ onOpenBooking }) {
   const pathname = usePathname();
 
   const navLinks = [
+    { name: 'Fabrics', path: '/fabric' },
     { name: 'Alteration', path: '/alteration' },
     { name: 'Stitching', path: '/tailoring' },
     { name: 'AI Try-On', path: '/ai-tryon' },
-    // { name: 'About', path: '/about' }
   ];
 
   return (

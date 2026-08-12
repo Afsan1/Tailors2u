@@ -1263,6 +1263,16 @@ a {
   height: 100%;
 }
 
+.fabric-pattern-bamboo-cotton {
+  background-color: #dbe4d7;
+  background-image: radial-gradient(circle, rgba(120, 160, 130, 0.3) 15%, transparent 16%),
+    linear-gradient(rgba(140, 175, 150, 0.25) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(140, 175, 150, 0.25) 1px, transparent 1px);
+  background-size: 12px 12px, 8px 8px, 8px 8px;
+  width: 100%;
+  height: 100%;
+}
+
 /* Cotton Sub-Category Dropdown Bar Styling */
 .cotton-subcategory-bar {
   display: flex;

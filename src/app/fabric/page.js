@@ -725,6 +725,78 @@ const FABRICS_DATA = [
     ]
   },
   {
+    id: 'bc1',
+    name: 'Emerald Green Bamboo Cotton',
+    category: 'cotton',
+    subCategory: 'bamboo-cotton',
+    patternClass: 'fabric-pattern-bamboo-cotton',
+    image: '/bamboo_cotton/emerald_bamboo_1.png',
+    desc: 'Luxurious eco-friendly emerald green bamboo cotton blend. Combines natural antibacterial properties, thermo-regulating breathability, and a silky smooth texture for elegant bespoke shirting & kurtas.',
+    origin: 'Japan',
+    weight: '130 gsm',
+    threadCount: '60/40 Bamboo Cotton',
+    breathability: 'Ultra High',
+    badge: 'Eco-Luxury',
+    variants: [
+      { id: 'bc_eg_v1', name: 'Texture View 1', colorHex: '#1e4d3b', image: '/bamboo_cotton/emerald_bamboo_1.png' },
+      { id: 'bc_eg_v2', name: 'Texture View 2', colorHex: '#163d2e', image: '/bamboo_cotton/emerald_bamboo_2.png' }
+    ]
+  },
+  {
+    id: 'bc2',
+    name: 'Soft Sage Bamboo Cotton',
+    category: 'cotton',
+    subCategory: 'bamboo-cotton',
+    patternClass: 'fabric-pattern-bamboo-cotton',
+    image: '/bamboo_cotton/sage_bamboo_1.png',
+    desc: 'Refreshing soft sage green bamboo cotton fabric. Ultra-soft against sensitive skin with superior moisture-wicking and fluid natural drape.',
+    origin: 'Taiwan',
+    weight: '125 gsm',
+    threadCount: '65/35 Bamboo Cotton',
+    breathability: 'Ultra High',
+    badge: 'Organic Blend',
+    variants: [
+      { id: 'bc_sg_v1', name: 'Texture View 1', colorHex: '#88a895', image: '/bamboo_cotton/sage_bamboo_1.png' },
+      { id: 'bc_sg_v2', name: 'Texture View 2', colorHex: '#779784', image: '/bamboo_cotton/sage_bamboo_2.png' }
+    ]
+  },
+  {
+    id: 'bc3',
+    name: 'Pristine Ivory Bamboo Cotton',
+    category: 'cotton',
+    subCategory: 'bamboo-cotton',
+    patternClass: 'fabric-pattern-bamboo-cotton',
+    image: '/bamboo_cotton/ivory_bamboo_1.png',
+    desc: 'Classic pristine ivory white bamboo cotton blend. Delivers a soft luminous luster, hypo-allergenic gentle touch, and crisp executive tailored elegance.',
+    origin: 'Japan',
+    weight: '130 gsm',
+    threadCount: '60/40 Bamboo Fine Cotton',
+    breathability: 'Ultra High',
+    badge: 'Eco-Luxury',
+    variants: [
+      { id: 'bc_iv_v1', name: 'Texture View 1', colorHex: '#f5f0e6', image: '/bamboo_cotton/ivory_bamboo_1.png' },
+      { id: 'bc_iv_v2', name: 'Texture View 2', colorHex: '#e8e1d5', image: '/bamboo_cotton/ivory_bamboo_2.png' }
+    ]
+  },
+  {
+    id: 'bc4',
+    name: 'Sky Blue Bamboo Cotton',
+    category: 'cotton',
+    subCategory: 'bamboo-cotton',
+    patternClass: 'fabric-pattern-bamboo-cotton',
+    image: '/bamboo_cotton/sky_blue_bamboo_1.png',
+    desc: 'Cool sky blue bamboo cotton fabric. High-performance natural thermo-regulation keeps you comfortable all day while maintaining a crisp bespoke look.',
+    origin: 'Taiwan',
+    weight: '130 gsm',
+    threadCount: '60/40 Bamboo Cotton',
+    breathability: 'Ultra High',
+    badge: 'Best Seller',
+    variants: [
+      { id: 'bc_sb_v1', name: 'Texture View 1', colorHex: '#6b93b8', image: '/bamboo_cotton/sky_blue_bamboo_1.png' },
+      { id: 'bc_sb_v2', name: 'Texture View 2', colorHex: '#5880a5', image: '/bamboo_cotton/sky_blue_bamboo_2.png' }
+    ]
+  },
+  {
     id: 'lc1',
     name: 'Light Beige Cotton Linen',
     category: 'cotton',
@@ -2068,28 +2140,344 @@ const FABRICS_DATA = [
     ]
   },
   {
-    id: 'f6',
-    name: 'Fine Merino Wool (Super 140s)',
-    category: 'other',
+    id: 'wl_blue',
+    name: 'Royal Blue Suiting Wool',
+    category: 'wool',
     patternClass: 'fabric-pattern-wool',
-    desc: 'Extremely fine wool fibers that regulate temperature naturally. Wrinkle-resistant with a premium drape for bespoke suits.',
-    origin: 'Australia',
-    weight: '260 gsm',
-    threadCount: 'Super 140s',
-    breathability: 'Medium-High',
-    badge: 'Tailoring Grade'
+    image: '/wool/Blue wool fabric 1.png',
+    desc: 'Luminous royal blue fine suiting wool woven from Super 140s Australian Merino fibers. Features immaculate drape, natural elasticity, and year-round breathability for luxury tailored suits.',
+    origin: 'Australia (Biella Mill)',
+    weight: '265 gsm',
+    threadCount: 'Super 140s Merino Wool',
+    breathability: 'High',
+    badge: 'Pure Wool',
+    variants: [
+      { id: 'wl_bl_v1', name: 'Texture View 1', colorHex: '#315582', image: '/wool/Blue wool fabric 1.png' },
+      { id: 'wl_bl_v2', name: 'Texture View 2', colorHex: '#27446b', image: '/wool/Blue wool fabric 2.png' }
+    ]
   },
   {
-    id: 'f7',
-    name: 'Cashmere-Silk Blend',
-    category: 'other',
+    id: 'wl_brown',
+    name: 'Espresso Brown Suiting Wool',
+    category: 'wool',
     patternClass: 'fabric-pattern-wool',
-    desc: 'The ultimate in comfort. Cashmere warmth combined with silk elasticity, producing a coat or blazer of unmatched prestige.',
-    origin: 'Mongolia',
+    image: '/wool/Brown wool fabric 1.png',
+    desc: 'Rich espresso brown suiting wool featuring a velvety smooth hand feel, high wrinkle recovery, and warm executive sophistication for bespoke suiting.',
+    origin: 'Italy',
+    weight: '270 gsm',
+    threadCount: 'Super 130s Pure Wool',
+    breathability: 'High',
+    badge: 'Pure Wool',
+    variants: [
+      { id: 'wl_br_v1', name: 'Texture View 1', colorHex: '#5e4133', image: '/wool/Brown wool fabric 1.png' },
+      { id: 'wl_br_v2', name: 'Texture View 2', colorHex: '#4d3428', image: '/wool/Brown wool fabric 2.png' }
+    ]
+  },
+  {
+    id: 'wl_charcoal_black',
+    name: 'Charcoal Black Suiting Wool',
+    category: 'wool',
+    patternClass: 'fabric-pattern-wool',
+    image: '/wool/Charcol black wool fabric 1.png',
+    desc: 'Regal charcoal black fine suiting wool. Offers supreme formal elegance, deep matte luster, and flawless tailoring drape for black-tie suits and tuxedos.',
+    origin: 'England',
+    weight: '280 gsm',
+    threadCount: 'Super 150s Merino Wool',
+    breathability: 'High',
+    badge: 'Executive Black',
+    variants: [
+      { id: 'wl_cb_v1', name: 'Texture View 1', colorHex: '#2c2e33', image: '/wool/Charcol black wool fabric 1.png' },
+      { id: 'wl_cb_v2', name: 'Texture View 2', colorHex: '#1e2024', image: '/wool/Charcol black wool fabric 2.png' }
+    ]
+  },
+  {
+    id: 'wl_grey',
+    name: 'Classic Slate Grey Suiting Wool',
+    category: 'wool',
+    patternClass: 'fabric-pattern-wool',
+    image: '/wool/Grey wool fabric 1.png',
+    desc: 'Timeless slate grey suiting wool. Offers exceptional structural resilience, wrinkle-free performance, and subtle sheen for corporate & formal tailoring.',
+    origin: 'England',
+    weight: '275 gsm',
+    threadCount: 'Super 140s Fine Merino',
+    breathability: 'High',
+    badge: 'Pure Wool',
+    variants: [
+      { id: 'wl_gr_v1', name: 'Texture View 1', colorHex: '#6d757d', image: '/wool/Grey wool fabric 1.png' },
+      { id: 'wl_gr_v2', name: 'Texture View 2', colorHex: '#585e65', image: '/wool/Grey wool fabric 2.png' }
+    ]
+  },
+  {
+    id: 'wl_honey_gold',
+    name: 'Honey Gold Suiting Wool',
+    category: 'wool',
+    patternClass: 'fabric-pattern-wool',
+    image: '/wool/Honey gold wool fabric 1.png',
+    desc: 'Opulent honey gold wool featuring warm golden tones, silky tactile smoothness, and distinctive Italian flair for statement blazers and kurtas.',
+    origin: 'Italy',
+    weight: '260 gsm',
+    threadCount: 'Super 130s Pure Wool',
+    breathability: 'High',
+    badge: 'Signature Luster',
+    variants: [
+      { id: 'wl_hg_v1', name: 'Texture View 1', colorHex: '#d8a04f', image: '/wool/Honey gold wool fabric 1.png' },
+      { id: 'wl_hg_v2', name: 'Texture View 2', colorHex: '#c48e3d', image: '/wool/Honey gold wool fabric 2.png' }
+    ]
+  },
+  {
+    id: 'wl_khaki',
+    name: 'Sandy Khaki Suiting Wool',
+    category: 'wool',
+    patternClass: 'fabric-pattern-wool',
+    image: '/wool/Khaki wool fabric 1.png',
+    desc: 'Sophisticated sandy khaki fine suiting wool. Crafted for lightweight, breathable summer tailoring and versatile smart-casual blazers.',
+    origin: 'Italy',
+    weight: '250 gsm',
+    threadCount: 'Super 130s Pure Wool',
+    breathability: 'High',
+    badge: 'Pure Wool',
+    variants: [
+      { id: 'wl_kh_v1', name: 'Texture View 1', colorHex: '#a99879', image: '/wool/Khaki wool fabric 1.png' },
+      { id: 'wl_kh_v2', name: 'Texture View 2', colorHex: '#948366', image: '/wool/Khaki wool fabric 2.png' }
+    ]
+  },
+  {
+    id: 'wl_latte',
+    name: 'Warm Latte Suiting Wool',
+    category: 'wool',
+    patternClass: 'fabric-pattern-wool',
+    image: '/wool/Latte wool fabric 1.png',
+    desc: 'Creamy warm latte beige fine suiting wool. Delivers soft neutral aesthetic, compact weave structure, and luxurious fluid drape.',
+    origin: 'Italy',
+    weight: '255 gsm',
+    threadCount: 'Super 140s Fine Merino',
+    breathability: 'High',
+    badge: 'Pure Wool',
+    variants: [
+      { id: 'wl_lt_v1', name: 'Texture View 1', colorHex: '#c2ab91', image: '/wool/Latte wool fabric 1.png' },
+      { id: 'wl_lt_v2', name: 'Texture View 2', colorHex: '#b0997f', image: '/wool/Latte wool fabric 2.png' }
+    ]
+  },
+  {
+    id: 'wl_mauve',
+    name: 'Dusty Mauve Suiting Wool',
+    category: 'wool',
+    patternClass: 'fabric-pattern-wool',
+    image: '/wool/Mauve wool fabric 1.png',
+    desc: 'Elegant dusty mauve pink wool suiting. Soft pastel undertones paired with breathable extra-fine Merino fibers for modern bespoke tailoring.',
+    origin: 'France',
+    weight: '260 gsm',
+    threadCount: 'Super 140s Wool',
+    breathability: 'High',
+    badge: 'Pure Wool',
+    variants: [
+      { id: 'wl_mv_v1', name: 'Texture View 1', colorHex: '#9e7c87', image: '/wool/Mauve wool fabric 1.png' },
+      { id: 'wl_mv_v2', name: 'Texture View 2', colorHex: '#8b6974', image: '/wool/Mauve wool fabric 2.png' }
+    ]
+  },
+  {
+    id: 'wl_mocha',
+    name: 'Rich Mocha Suiting Wool',
+    category: 'wool',
+    patternClass: 'fabric-pattern-wool',
+    image: '/wool/Mocha wool fabric 1.png',
+    desc: 'Deep rich mocha brown wool suiting with chocolate undertones, warm tactile finish, and robust structural resilience.',
+    origin: 'Italy',
+    weight: '275 gsm',
+    threadCount: 'Super 130s Merino',
+    breathability: 'High',
+    badge: 'Pure Wool',
+    variants: [
+      { id: 'wl_mc_v1', name: 'Texture View 1', colorHex: '#705345', image: '/wool/Mocha wool fabric 1.png' },
+      { id: 'wl_mc_v2', name: 'Texture View 2', colorHex: '#5d4134', image: '/wool/Mocha wool fabric 2.png' }
+    ]
+  },
+  {
+    id: 'wl_olive',
+    name: 'Earthy Olive Green Suiting Wool',
+    category: 'wool',
+    patternClass: 'fabric-pattern-wool',
+    image: '/wool/Olive wool fabric 1.png',
+    desc: 'Distinguished olive green wool suiting with rich organic earth tones, luxurious softness, and flawless drape for modern bespoke tailoring.',
+    origin: 'Italy',
+    weight: '270 gsm',
+    threadCount: 'Super 140s Wool',
+    breathability: 'High',
+    badge: 'Pure Wool',
+    variants: [
+      { id: 'wl_ol_v1', name: 'Texture View 1', colorHex: '#525d43', image: '/wool/Olive wool fabric 1.png' },
+      { id: 'wl_ol_v2', name: 'Texture View 2', colorHex: '#424c35', image: '/wool/Olive wool fabric 2.png' }
+    ]
+  },
+  {
+    id: 'wl_pearl_white',
+    name: 'Pearl White Suiting Wool',
+    category: 'wool',
+    patternClass: 'fabric-pattern-wool',
+    image: '/wool/Pearl white wool fabric 1.png',
+    desc: 'Luminous ivory pearl white suiting wool. Immaculate purity and silk-like soft hand feel for ceremonial tuxedos and wedding blazers.',
+    origin: 'Italy',
+    weight: '260 gsm',
+    threadCount: 'Super 150s Pure Wool',
+    breathability: 'High',
+    badge: 'Ceremonial White',
+    variants: [
+      { id: 'wl_pw_v1', name: 'Texture View 1', colorHex: '#edebe6', image: '/wool/Pearl white wool fabric 1.png' },
+      { id: 'wl_pw_v2', name: 'Texture View 2', colorHex: '#dcdad5', image: '/wool/Pearl white wool fabric 2.png' }
+    ]
+  },
+  {
+    id: 'wl_petrol_blue',
+    name: 'Petrol Blue Suiting Wool',
+    category: 'wool',
+    patternClass: 'fabric-pattern-wool',
+    image: '/wool/Petrol blue wool fabric 1.png',
+    desc: 'Deep oceanic petrol blue suiting wool. Captivating teal-blue undertones with crisp shape retention and refined formal drape.',
+    origin: 'England',
+    weight: '270 gsm',
+    threadCount: 'Super 140s Merino',
+    breathability: 'High',
+    badge: 'Pure Wool',
+    variants: [
+      { id: 'wl_pb_v1', name: 'Texture View 1', colorHex: '#1f4f5b', image: '/wool/Petrol blue wool fabric 1.png' },
+      { id: 'wl_pb_v2', name: 'Texture View 2', colorHex: '#153e49', image: '/wool/Petrol blue wool fabric 2.png' }
+    ]
+  },
+  {
+    id: 'wl_burgundy',
+    name: 'Burgundy Wine Suiting Wool',
+    category: 'wool',
+    patternClass: 'fabric-pattern-wool',
+    image: '/wool/burgundy wool fabric 1.png',
+    desc: 'Opulent deep burgundy wine fine suiting wool. Rich jewel-toned luster perfect for dinner jackets, tuxedos, and statement evening suits.',
+    origin: 'Italy',
+    weight: '275 gsm',
+    threadCount: 'Super 150s Merino Wool',
+    breathability: 'High',
+    badge: 'Pure Wool',
+    variants: [
+      { id: 'wl_bg_v1', name: 'Texture View 1', colorHex: '#6c2533', image: '/wool/burgundy wool fabric 1.png' },
+      { id: 'wl_bg_v2', name: 'Texture View 2', colorHex: '#591c27', image: '/wool/burgundy wool fabric 2.png' }
+    ]
+  },
+  {
+    id: 'wl_camel',
+    name: 'Camel Tan Suiting Wool',
+    category: 'wool',
+    patternClass: 'fabric-pattern-wool',
+    image: '/wool/camel wool fabric 1.png',
+    desc: 'Classic warm camel tan suiting wool featuring a silky smooth finish, supreme thermal comfort, and iconic Italian elegance.',
+    origin: 'Italy',
+    weight: '280 gsm',
+    threadCount: 'Super 140s Wool',
+    breathability: 'High',
+    badge: 'Pure Wool',
+    variants: [
+      { id: 'wl_cm_v1', name: 'Texture View 1', colorHex: '#be8c5c', image: '/wool/camel wool fabric 1.png' },
+      { id: 'wl_cm_v2', name: 'Texture View 2', colorHex: '#a97a4d', image: '/wool/camel wool fabric  2.png' }
+    ]
+  },
+  {
+    id: 'wl_dusty_lavender',
+    name: 'Dusty Lavender Suiting Wool',
+    category: 'wool',
+    patternClass: 'fabric-pattern-wool',
+    image: '/wool/dusty lavender wool fabric 1.png',
+    desc: 'Refined dusty lavender pastel wool suiting with an ultra-fine compact weave, soft fluid drape, and contemporary aesthetic.',
+    origin: 'France',
+    weight: '260 gsm',
+    threadCount: 'Super 140s Fine Wool',
+    breathability: 'High',
+    badge: 'Pure Wool',
+    variants: [
+      { id: 'wl_dl_v1', name: 'Texture View 1', colorHex: '#8b7e94', image: '/wool/dusty lavender wool fabric 1.png' },
+      { id: 'wl_dl_v2', name: 'Texture View 2', colorHex: '#776b80', image: '/wool/dusty lavender wool fabric 2.png' }
+    ]
+  },
+  {
+    id: 'wl_forest_pine',
+    name: 'Forest Pine Suiting Wool',
+    category: 'wool',
+    patternClass: 'fabric-pattern-wool',
+    image: '/wool/forest pine wool fabric 1.png',
+    desc: 'Deep emerald forest pine green suiting wool with rich botanical depth, natural wrinkle resistance, and executive prestige.',
+    origin: 'England',
+    weight: '275 gsm',
+    threadCount: 'Super 140s Merino',
+    breathability: 'High',
+    badge: 'Pure Wool',
+    variants: [
+      { id: 'wl_fp_v1', name: 'Texture View 1', colorHex: '#254736', image: '/wool/forest pine wool fabric 1.png' },
+      { id: 'wl_fp_v2', name: 'Texture View 2', colorHex: '#183627', image: '/wool/forest pine wool fabric 2.png' }
+    ]
+  },
+  {
+    id: 'wl_plum_purple',
+    name: 'Plum Purple Suiting Wool',
+    category: 'wool',
+    patternClass: 'fabric-pattern-wool',
+    image: '/wool/plum purple wool fabric 1.png',
+    desc: 'Opulent deep plum purple suiting wool featuring jewel-toned luster, velvety tactile softness, and regal tailored presence.',
+    origin: 'Italy',
+    weight: '270 gsm',
+    threadCount: 'Super 150s Merino',
+    breathability: 'High',
+    badge: 'Pure Wool',
+    variants: [
+      { id: 'wl_pp_v1', name: 'Texture View 1', colorHex: '#592743', image: '/wool/plum purple wool fabric 1.png' },
+      { id: 'wl_pp_v2', name: 'Texture View 2', colorHex: '#471c34', image: '/wool/plum purple wool fabric 2.png' }
+    ]
+  },
+  {
+    id: 'wl_rust_boucle',
+    name: 'Rust Bouclé Textured Wool',
+    category: 'wool',
+    patternClass: 'fabric-pattern-wool',
+    image: '/wool/rust Bouclé wool fabric 1.png',
+    desc: 'Distinctive rust orange bouclé textured wool. Features looped yarn micro-texture, rich warmth, and eye-catching tactile depth for bespoke blazers and coats.',
+    origin: 'Italy',
     weight: '290 gsm',
-    threadCount: 'Exclusive Blend',
-    breathability: 'Medium',
-    badge: 'Signature Luxury'
+    threadCount: 'Bouclé Wool Weave',
+    breathability: 'Medium-High',
+    badge: 'Textured Wool',
+    variants: [
+      { id: 'wl_rb_v1', name: 'Texture View 1', colorHex: '#ac4d33', image: '/wool/rust Bouclé wool fabric 1.png' },
+      { id: 'wl_rb_v2', name: 'Texture View 2', colorHex: '#964028', image: '/wool/rust Bouclé wool fabric 2.png' }
+    ]
+  },
+  {
+    id: 'wl_sandstone',
+    name: 'Sandstone Beige Suiting Wool',
+    category: 'wool',
+    patternClass: 'fabric-pattern-wool',
+    image: '/wool/sandstone wool fabric 1.png',
+    desc: 'Warm sandstone tan wool suiting offering light neutral elegance, smooth breathable weave, and timeless versatility.',
+    origin: 'Italy',
+    weight: '255 gsm',
+    threadCount: 'Super 130s Merino',
+    breathability: 'High',
+    badge: 'Pure Wool',
+    variants: [
+      { id: 'wl_ss_v1', name: 'Texture View 1', colorHex: '#d4c2a5', image: '/wool/sandstone wool fabric 1.png' },
+      { id: 'wl_ss_v2', name: 'Texture View 2', colorHex: '#c2b093', image: '/wool/sandstone wool fabric 2.png' }
+    ]
+  },
+  {
+    id: 'wl_sapphire_blue',
+    name: 'Sapphire Blue Suiting Wool',
+    category: 'wool',
+    patternClass: 'fabric-pattern-wool',
+    image: '/wool/sapphire blue wool fabric 1.png',
+    desc: 'Deep vibrant sapphire blue suiting wool crafted from extra-fine Australian Merino yarn with rich sheen and flawless structural drape.',
+    origin: 'Australia',
+    weight: '270 gsm',
+    threadCount: 'Super 140s Wool',
+    breathability: 'High',
+    badge: 'Pure Wool',
+    variants: [
+      { id: 'wl_sb_v1', name: 'Texture View 1', colorHex: '#1d3b66', image: '/wool/sapphire blue wool fabric 1.png' },
+      { id: 'wl_sb_v2', name: 'Texture View 2', colorHex: '#142c4f', image: '/wool/sapphire blue wool fabric 2.png' }
+    ]
   },
   {
     id: 'arm_black',
@@ -2812,7 +3200,7 @@ export default function Fabric() {
             onChange={(e) => setSearchTerm(e.target.value)}
           />
           <div className="filter-tabs">
-            {['all', 'cotton', 'linen', 'silk', 'satin', 'armani', 'spoon', 'other'].map((cat) => (
+            {['all', 'cotton', 'linen', 'wool', 'silk', 'satin', 'armani', 'spoon', 'other'].map((cat) => (
               <button
                 key={cat}
                 className={`filter-tab ${selectedCategory === cat ? 'active' : ''}`}
@@ -2822,8 +3210,10 @@ export default function Fabric() {
                   ? 'All'
                   : cat === 'silk'
                   ? 'Silk'
+                  : cat === 'wool'
+                  ? 'Wool'
                   : cat === 'other'
-                  ? 'Others (Wool)'
+                  ? 'Others'
                   : cat === 'spoon'
                   ? 'Spun / Spoon'
                   : cat === 'satin'
@@ -2849,6 +3239,7 @@ export default function Fabric() {
               >
                 <option value="all">All Cotton Fabrics</option>
                 <option value="pure-egyptian-giza-cotton">Pure Egyptian Giza Cotton</option>
+                <option value="bamboo-cotton">Bamboo Cotton (Eco-Friendly Bamboo Blend)</option>
                 <option value="linen-cotton">Linen Cotton (Linen-Cotton Blends)</option>
                 <option value="pure-cotton">Pure Supima & Fine Cotton</option>
               </select>
@@ -2866,6 +3257,12 @@ export default function Fabric() {
                 onClick={() => setCottonSubCategory('pure-egyptian-giza-cotton')}
               >
                 Pure Egyptian Giza Cotton
+              </button>
+              <button
+                className={`cotton-pill-btn ${cottonSubCategory === 'bamboo-cotton' ? 'active' : ''}`}
+                onClick={() => setCottonSubCategory('bamboo-cotton')}
+              >
+                Bamboo Cotton
               </button>
               <button
                 className={`cotton-pill-btn ${cottonSubCategory === 'linen-cotton' ? 'active' : ''}`}
