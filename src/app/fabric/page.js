@@ -724,76 +724,365 @@ const FABRICS_DATA = [
       { id: 'pc_rw_v2', name: 'Texture View 2', colorHex: '#63161e', image: '/pure_cotton/red_wine_2.png' }
     ]
   },
+
   {
-    id: 'bc1',
-    name: 'Emerald Green Bamboo Cotton',
+    id: 'bc_alexandrite',
+    name: 'Alexandrite Bamboo Cotton',
     category: 'cotton',
     subCategory: 'bamboo-cotton',
     patternClass: 'fabric-pattern-bamboo-cotton',
-    image: '/bamboo_cotton/emerald_bamboo_1.png',
-    desc: 'Luxurious eco-friendly emerald green bamboo cotton blend. Combines natural antibacterial properties, thermo-regulating breathability, and a silky smooth texture for elegant bespoke shirting & kurtas.',
+    image: '/bamboo_cotton/Alexandrite bamboo fabric 1.png',
+    desc: 'Radiant alexandrite teal bamboo cotton blend. Features unique gemstone color depth, thermal breathability, and luxurious silky soft drape for bespoke shirting & kurtas.',
     origin: 'Japan',
     weight: '130 gsm',
     threadCount: '60/40 Bamboo Cotton',
     breathability: 'Ultra High',
     badge: 'Eco-Luxury',
     variants: [
-      { id: 'bc_eg_v1', name: 'Texture View 1', colorHex: '#1e4d3b', image: '/bamboo_cotton/emerald_bamboo_1.png' },
-      { id: 'bc_eg_v2', name: 'Texture View 2', colorHex: '#163d2e', image: '/bamboo_cotton/emerald_bamboo_2.png' }
+      { id: 'bc_alex_v1', name: 'Texture View 1', colorHex: '#2e5b60', image: '/bamboo_cotton/Alexandrite bamboo fabric 1.png' },
+      { id: 'bc_alex_v2', name: 'Texture View 2', colorHex: '#22474b', image: '/bamboo_cotton/Alexandrite bamboo fabric 2.png' }
     ]
   },
   {
-    id: 'bc2',
-    name: 'Soft Sage Bamboo Cotton',
+    id: 'bc_burnished_lilac',
+    name: 'Burnished Lilac Bamboo Cotton',
     category: 'cotton',
     subCategory: 'bamboo-cotton',
     patternClass: 'fabric-pattern-bamboo-cotton',
-    image: '/bamboo_cotton/sage_bamboo_1.png',
-    desc: 'Refreshing soft sage green bamboo cotton fabric. Ultra-soft against sensitive skin with superior moisture-wicking and fluid natural drape.',
+    image: '/bamboo_cotton/Burnished liac bamboo fabric 1.png',
+    desc: 'Sophisticated burnished lilac bamboo cotton. Superbly soft against sensitive skin with superior moisture-wicking and fluid natural drape.',
     origin: 'Taiwan',
     weight: '125 gsm',
     threadCount: '65/35 Bamboo Cotton',
     breathability: 'Ultra High',
     badge: 'Organic Blend',
     variants: [
-      { id: 'bc_sg_v1', name: 'Texture View 1', colorHex: '#88a895', image: '/bamboo_cotton/sage_bamboo_1.png' },
-      { id: 'bc_sg_v2', name: 'Texture View 2', colorHex: '#779784', image: '/bamboo_cotton/sage_bamboo_2.png' }
+      { id: 'bc_bl_v1', name: 'Texture View 1', colorHex: '#937b8d', image: '/bamboo_cotton/Burnished liac bamboo fabric 1.png' },
+      { id: 'bc_bl_v2', name: 'Texture View 2', colorHex: '#7d6777', image: '/bamboo_cotton/Burnished liac bamboo fabric 2.png' }
     ]
   },
   {
-    id: 'bc3',
-    name: 'Pristine Ivory Bamboo Cotton',
+    id: 'bc_khaki',
+    name: 'Khaki Bamboo Cotton',
     category: 'cotton',
     subCategory: 'bamboo-cotton',
     patternClass: 'fabric-pattern-bamboo-cotton',
-    image: '/bamboo_cotton/ivory_bamboo_1.png',
-    desc: 'Classic pristine ivory white bamboo cotton blend. Delivers a soft luminous luster, hypo-allergenic gentle touch, and crisp executive tailored elegance.',
+    image: '/bamboo_cotton/Khaki bamboo fabric 1.png',
+    desc: 'Versatile warm khaki bamboo cotton blend. Perfect balance of natural structure and bamboo softness for executive and leisure tailoring.',
     origin: 'Japan',
     weight: '130 gsm',
     threadCount: '60/40 Bamboo Fine Cotton',
     breathability: 'Ultra High',
-    badge: 'Eco-Luxury',
+    badge: 'Best Seller',
     variants: [
-      { id: 'bc_iv_v1', name: 'Texture View 1', colorHex: '#f5f0e6', image: '/bamboo_cotton/ivory_bamboo_1.png' },
-      { id: 'bc_iv_v2', name: 'Texture View 2', colorHex: '#e8e1d5', image: '/bamboo_cotton/ivory_bamboo_2.png' }
+      { id: 'bc_kh_v1', name: 'Texture View 1', colorHex: '#8a7b66', image: '/bamboo_cotton/Khaki bamboo fabric 1.png' },
+      { id: 'bc_kh_v2', name: 'Texture View 2', colorHex: '#756854', image: '/bamboo_cotton/Khaki bamboo fabric 2.png' }
     ]
   },
   {
-    id: 'bc4',
-    name: 'Sky Blue Bamboo Cotton',
+    id: 'bc_magenta',
+    name: 'Magenta Bamboo Cotton',
     category: 'cotton',
     subCategory: 'bamboo-cotton',
     patternClass: 'fabric-pattern-bamboo-cotton',
-    image: '/bamboo_cotton/sky_blue_bamboo_1.png',
-    desc: 'Cool sky blue bamboo cotton fabric. High-performance natural thermo-regulation keeps you comfortable all day while maintaining a crisp bespoke look.',
+    image: '/bamboo_cotton/Magneta bamboo fabric 1.png',
+    desc: 'Vibrant deep magenta bamboo cotton. High-performance natural thermo-regulation keeps you comfortable all day while maintaining a bold bespoke aesthetic.',
+    origin: 'Taiwan',
+    weight: '130 gsm',
+    threadCount: '60/40 Bamboo Cotton',
+    breathability: 'Ultra High',
+    badge: 'New Arrival',
+    variants: [
+      { id: 'bc_mg_v1', name: 'Texture View 1', colorHex: '#8b2649', image: '/bamboo_cotton/Magneta bamboo fabric 1.png' },
+      { id: 'bc_mg_v2', name: 'Texture View 2', colorHex: '#731d3b', image: '/bamboo_cotton/Magneta bamboo fabric 2.png' }
+    ]
+  },
+  {
+    id: 'bc_moss_green',
+    name: 'Moss Green Bamboo Cotton',
+    category: 'cotton',
+    subCategory: 'bamboo-cotton',
+    patternClass: 'fabric-pattern-bamboo-cotton',
+    image: '/bamboo_cotton/Moss green bamboo fabric 1.png',
+    desc: 'Earthy moss green bamboo cotton fabric. Hypoallergenic, eco-friendly, and naturally thermoregulating for elegant green tailored garments.',
+    origin: 'Japan',
+    weight: '135 gsm',
+    threadCount: '60/40 Bamboo Fine Cotton',
+    breathability: 'Ultra High',
+    badge: 'Eco-Luxury',
+    variants: [
+      { id: 'bc_mg_green_v1', name: 'Texture View 1', colorHex: '#4a5d43', image: '/bamboo_cotton/Moss green bamboo fabric 1.png' },
+      { id: 'bc_mg_green_v2', name: 'Texture View 2', colorHex: '#3a4b34', image: '/bamboo_cotton/Moss green bamboo fabric 2.png' }
+    ]
+  },
+  {
+    id: 'bc_muted_sage',
+    name: 'Muted Sage Green Bamboo Cotton',
+    category: 'cotton',
+    subCategory: 'bamboo-cotton',
+    patternClass: 'fabric-pattern-bamboo-cotton',
+    image: '/bamboo_cotton/Muted sage green bamboo fabric 1.png',
+    desc: 'Subtle muted sage green bamboo cotton weave. Gentle pastel finish offering exceptional breathability and fluid natural drape.',
+    origin: 'Taiwan',
+    weight: '125 gsm',
+    threadCount: '65/35 Bamboo Cotton',
+    breathability: 'Ultra High',
+    badge: 'Organic Blend',
+    variants: [
+      { id: 'bc_ms_v1', name: 'Texture View 1', colorHex: '#788a75', image: '/bamboo_cotton/Muted sage green bamboo fabric 1.png' },
+      { id: 'bc_ms_v2', name: 'Texture View 2', colorHex: '#647562', image: '/bamboo_cotton/Muted sage green bamboo fabric 2.png' }
+    ]
+  },
+  {
+    id: 'bc_purple',
+    name: 'Royal Purple Bamboo Cotton',
+    category: 'cotton',
+    subCategory: 'bamboo-cotton',
+    patternClass: 'fabric-pattern-bamboo-cotton',
+    image: '/bamboo_cotton/Purple bamboo fabric 1.png',
+    desc: 'Opulent deep purple bamboo cotton. Soft natural sheen with antibacterial benefits and exceptional luxury hand feel.',
+    origin: 'Japan',
+    weight: '130 gsm',
+    threadCount: '60/40 Bamboo Cotton',
+    breathability: 'Ultra High',
+    badge: 'Eco-Luxury',
+    variants: [
+      { id: 'bc_pr_v1', name: 'Texture View 1', colorHex: '#5a335c', image: '/bamboo_cotton/Purple bamboo fabric 1.png' },
+      { id: 'bc_pr_v2', name: 'Texture View 2', colorHex: '#472649', image: '/bamboo_cotton/Purple bamboo fabric 2.png' }
+    ]
+  },
+  {
+    id: 'bc_cocoa_plum',
+    name: 'Cocoa Plum Bamboo Cotton',
+    category: 'cotton',
+    subCategory: 'bamboo-cotton',
+    patternClass: 'fabric-pattern-bamboo-cotton',
+    image: '/bamboo_cotton/cocoa plum bamboo fabric 1.png',
+    desc: 'Warm cocoa plum bamboo cotton blend. Unique deep earthy-purple hue with a buttery smooth hand and superior breathability.',
+    origin: 'Taiwan',
+    weight: '130 gsm',
+    threadCount: '60/40 Bamboo Cotton',
+    breathability: 'Ultra High',
+    badge: 'New Arrival',
+    variants: [
+      { id: 'bc_cp_v1', name: 'Texture View 1', colorHex: '#5c3d48', image: '/bamboo_cotton/cocoa plum bamboo fabric 1.png' },
+      { id: 'bc_cp_v2', name: 'Texture View 2', colorHex: '#492f39', image: '/bamboo_cotton/cocoa plum bamboo fabric 2.png' }
+    ]
+  },
+  {
+    id: 'bc_dusty_teal',
+    name: 'Dusty Teal Blue Bamboo Cotton',
+    category: 'cotton',
+    subCategory: 'bamboo-cotton',
+    patternClass: 'fabric-pattern-bamboo-cotton',
+    image: '/bamboo_cotton/dusty teal blue bamboo fabric 1.png',
+    desc: 'Cool dusty teal blue bamboo cotton. Natural moisture management, gentle luster, and refined ocean shade for contemporary shirting.',
+    origin: 'Japan',
+    weight: '125 gsm',
+    threadCount: '65/35 Bamboo Fine Cotton',
+    breathability: 'Ultra High',
+    badge: 'Best Seller',
+    variants: [
+      { id: 'bc_dt_v1', name: 'Texture View 1', colorHex: '#38687a', image: '/bamboo_cotton/dusty teal blue bamboo fabric 1.png' },
+      { id: 'bc_dt_v2', name: 'Texture View 2', colorHex: '#2b5463', image: '/bamboo_cotton/dusty teal blue bamboo fabric 2.png' }
+    ]
+  },
+  {
+    id: 'bc_light_blue',
+    name: 'Light Blue Bamboo Cotton',
+    category: 'cotton',
+    subCategory: 'bamboo-cotton',
+    patternClass: 'fabric-pattern-bamboo-cotton',
+    image: '/bamboo_cotton/light blue bamboo fabric 1.png',
+    desc: 'Classic light blue bamboo cotton fabric. Light, breathable, and silky soft for executive business and smart casual shirting.',
+    origin: 'Taiwan',
+    weight: '125 gsm',
+    threadCount: '60/40 Bamboo Cotton',
+    breathability: 'Ultra High',
+    badge: 'Eco-Luxury',
+    variants: [
+      { id: 'bc_lb_v1', name: 'Texture View 1', colorHex: '#7da7ca', image: '/bamboo_cotton/light blue bamboo fabric 1.png' },
+      { id: 'bc_lb_v2', name: 'Texture View 2', colorHex: '#6790b3', image: '/bamboo_cotton/light blue bamboo fabric 2.png' }
+    ]
+  },
+  {
+    id: 'bc_light_brown',
+    name: 'Light Brown Bamboo Cotton',
+    category: 'cotton',
+    subCategory: 'bamboo-cotton',
+    patternClass: 'fabric-pattern-bamboo-cotton',
+    image: '/bamboo_cotton/light brown bamboo fabric 1.png',
+    desc: 'Warm light brown bamboo cotton weave. Subtle textured appearance, hypoallergenic comfort, and rich organic neutral appeal.',
+    origin: 'Japan',
+    weight: '130 gsm',
+    threadCount: '60/40 Bamboo Fine Cotton',
+    breathability: 'Ultra High',
+    badge: 'Organic Blend',
+    variants: [
+      { id: 'bc_lbr_v1', name: 'Texture View 1', colorHex: '#967b66', image: '/bamboo_cotton/light brown bamboo fabric 1.png' },
+      { id: 'bc_lbr_v2', name: 'Texture View 2', colorHex: '#816653', image: '/bamboo_cotton/light brown bamboo fabric 2.png' }
+    ]
+  },
+  {
+    id: 'bc_off_white',
+    name: 'Off-White Bamboo Cotton',
+    category: 'cotton',
+    subCategory: 'bamboo-cotton',
+    patternClass: 'fabric-pattern-bamboo-cotton',
+    image: '/bamboo_cotton/off-white bamboo fabric 1.png',
+    desc: 'Pristine off-white bamboo cotton fabric. Elegant silky sheen, natural softness, and airy breathability for sharp formalwear.',
+    origin: 'Taiwan',
+    weight: '125 gsm',
+    threadCount: '65/35 Bamboo Fine Cotton',
+    breathability: 'Ultra High',
+    badge: 'Eco-Luxury',
+    variants: [
+      { id: 'bc_ow_v1', name: 'Texture View 1', colorHex: '#f4f0ea', image: '/bamboo_cotton/off-white bamboo fabric 1.png' },
+      { id: 'bc_ow_v2', name: 'Texture View 2', colorHex: '#e5dfd7', image: '/bamboo_cotton/off-white bamboo fabric 2.png' }
+    ]
+  },
+  {
+    id: 'bc_pale_yellow',
+    name: 'Pale Yellow Bamboo Cotton',
+    category: 'cotton',
+    subCategory: 'bamboo-cotton',
+    patternClass: 'fabric-pattern-bamboo-cotton',
+    image: '/bamboo_cotton/pale yellow bamboo fabric 1.png',
+    desc: 'Warm pale yellow bamboo cotton blend. Gentle pastel tone with silky touch and natural thermal control for summer tailor-made wear.',
+    origin: 'Japan',
+    weight: '125 gsm',
+    threadCount: '60/40 Bamboo Cotton',
+    breathability: 'Ultra High',
+    badge: 'New Arrival',
+    variants: [
+      { id: 'bc_py_v1', name: 'Texture View 1', colorHex: '#edd99b', image: '/bamboo_cotton/pale yellow bamboo fabric 1.png' },
+      { id: 'bc_py_v2', name: 'Texture View 2', colorHex: '#dbb384', image: '/bamboo_cotton/pale yellow bamboo fabric 2.png' }
+    ]
+  },
+  {
+    id: 'bc_red',
+    name: 'Crimson Red Bamboo Cotton',
+    category: 'cotton',
+    subCategory: 'bamboo-cotton',
+    patternClass: 'fabric-pattern-bamboo-cotton',
+    image: '/bamboo_cotton/red bamboo fabric 1.png',
+    desc: 'Striking crimson red bamboo cotton blend. Rich color saturation, ultra-soft hand feel, and natural moisture wicking.',
     origin: 'Taiwan',
     weight: '130 gsm',
     threadCount: '60/40 Bamboo Cotton',
     breathability: 'Ultra High',
     badge: 'Best Seller',
     variants: [
-      { id: 'bc_sb_v1', name: 'Texture View 1', colorHex: '#6b93b8', image: '/bamboo_cotton/sky_blue_bamboo_1.png' },
-      { id: 'bc_sb_v2', name: 'Texture View 2', colorHex: '#5880a5', image: '/bamboo_cotton/sky_blue_bamboo_2.png' }
+      { id: 'bc_red_v1', name: 'Texture View 1', colorHex: '#99222a', image: '/bamboo_cotton/red bamboo fabric 1.png' },
+      { id: 'bc_red_v2', name: 'Texture View 2', colorHex: '#801a21', image: '/bamboo_cotton/red bamboo fabric 2.png' }
+    ]
+  },
+  {
+    id: 'bc_teaberry',
+    name: 'Teaberry Bamboo Cotton',
+    category: 'cotton',
+    subCategory: 'bamboo-cotton',
+    patternClass: 'fabric-pattern-bamboo-cotton',
+    image: '/bamboo_cotton/teaberry bamboo fabric 1.png',
+    desc: 'Delicate teaberry pink bamboo cotton. Refined dusty rose undertone with smooth drape and hypoallergenic eco-luxury feel.',
+    origin: 'Japan',
+    weight: '125 gsm',
+    threadCount: '65/35 Bamboo Cotton',
+    breathability: 'Ultra High',
+    badge: 'Organic Blend',
+    variants: [
+      { id: 'bc_tb_v1', name: 'Texture View 1', colorHex: '#ab4b5d', image: '/bamboo_cotton/teaberry bamboo fabric 1.png' },
+      { id: 'bc_tb_v2', name: 'Texture View 2', colorHex: '#943c4d', image: '/bamboo_cotton/teaberry bamboo fabric 2.png' }
+    ]
+  },
+  {
+    id: 'bc_natural_ivory',
+    name: 'Natural Cream Bamboo Cotton',
+    category: 'cotton',
+    subCategory: 'bamboo-cotton',
+    patternClass: 'fabric-pattern-bamboo-cotton',
+    image: '/bamboo_cotton/Screenshot 2026-08-10 161935.png',
+    desc: 'Premium organic natural cream bamboo cotton. Highlighted by tactile swirl fold texture, maximum breathability, and fluid bespoke drape.',
+    origin: 'Japan',
+    weight: '135 gsm',
+    threadCount: '60/40 Bamboo Fine Cotton',
+    breathability: 'Ultra High',
+    badge: 'Eco-Luxury',
+    variants: [
+      { id: 'bc_ni_v1', name: 'Texture View 1', colorHex: '#eae4d8', image: '/bamboo_cotton/Screenshot 2026-08-10 161935.png' },
+      { id: 'bc_ni_v2', name: 'Texture View 2', colorHex: '#dad3c5', image: '/bamboo_cotton/Screenshot 2026-08-10 161952.png' }
+    ]
+  },
+  {
+    id: 'bc_berry_purple',
+    name: 'Berry Purple Bamboo Cotton',
+    category: 'cotton',
+    subCategory: 'bamboo-cotton',
+    patternClass: 'fabric-pattern-bamboo-cotton',
+    image: '/bamboo_cotton/Berry purple bamboo fabric 1.png',
+    desc: 'Lush berry purple bamboo cotton blend. Rich, vibrant jewel tone with natural thermal regulation, moisture-wicking comfort, and a silky smooth drape.',
+    origin: 'Taiwan',
+    weight: '130 gsm',
+    threadCount: '60/40 Bamboo Cotton',
+    breathability: 'Ultra High',
+    badge: 'New Arrival',
+    variants: [
+      { id: 'bc_bp_v1', name: 'Texture View 1', colorHex: '#6b2d5c', image: '/bamboo_cotton/Berry purple bamboo fabric 1.png' },
+      { id: 'bc_bp_v2', name: 'Texture View 2', colorHex: '#58234b', image: '/bamboo_cotton/Berry purple bamboo fabric 2.png' }
+    ]
+  },
+  {
+    id: 'bc_chartreuse',
+    name: 'Chartreuse Bamboo Cotton',
+    category: 'cotton',
+    subCategory: 'bamboo-cotton',
+    patternClass: 'fabric-pattern-bamboo-cotton',
+    image: '/bamboo_cotton/Chartreuse bamboo fabric 1.png',
+    desc: 'Electrifying chartreuse yellow-green bamboo cotton. Striking modern colorway offering silky soft texture, antibacterial freshness, and airy summer breathability.',
+    origin: 'Japan',
+    weight: '125 gsm',
+    threadCount: '65/35 Bamboo Fine Cotton',
+    breathability: 'Ultra High',
+    badge: 'New Arrival',
+    variants: [
+      { id: 'bc_ch_v1', name: 'Texture View 1', colorHex: '#a3b83b', image: '/bamboo_cotton/Chartreuse bamboo fabric 1.png' },
+      { id: 'bc_ch_v2', name: 'Texture View 2', colorHex: '#8da02e', image: '/bamboo_cotton/Chartreuse bamboo fabric 2.png' }
+    ]
+  },
+  {
+    id: 'bc_dark_brown',
+    name: 'Dark Brown Bamboo Cotton',
+    category: 'cotton',
+    subCategory: 'bamboo-cotton',
+    patternClass: 'fabric-pattern-bamboo-cotton',
+    image: '/bamboo_cotton/dark brown bamboo fabric 1.png',
+    desc: 'Deep espresso dark brown bamboo cotton blend. Rich organic hue with hypoallergenic softness and a structured yet supple bespoke finish.',
+    origin: 'Taiwan',
+    weight: '135 gsm',
+    threadCount: '60/40 Bamboo Cotton',
+    breathability: 'Ultra High',
+    badge: 'Organic Blend',
+    variants: [
+      { id: 'bc_dbr_v1', name: 'Texture View 1', colorHex: '#4a3728', image: '/bamboo_cotton/dark brown bamboo fabric 1.png' },
+      { id: 'bc_dbr_v2', name: 'Texture View 2', colorHex: '#3a2a1d', image: '/bamboo_cotton/dark brown bamboo fabric 2.png' }
+    ]
+  },
+  {
+    id: 'bc_fuchsia_pink',
+    name: 'Fuchsia Pink Bamboo Cotton',
+    category: 'cotton',
+    subCategory: 'bamboo-cotton',
+    patternClass: 'fabric-pattern-bamboo-cotton',
+    image: '/bamboo_cotton/Fuschia pink bamboo fabric 1.png',
+    desc: 'Vivid fuchsia pink bamboo cotton fabric. Eye-catching statement color featuring bamboo natural sheen, ultra-soft feel, and moisture-wicking comfort.',
+    origin: 'Japan',
+    weight: '130 gsm',
+    threadCount: '60/40 Bamboo Cotton',
+    breathability: 'Ultra High',
+    badge: 'New Arrival',
+    variants: [
+      { id: 'bc_fp_v1', name: 'Texture View 1', colorHex: '#c72b74', image: '/bamboo_cotton/Fuschia pink bamboo fabric 1.png' },
+      { id: 'bc_fp_v2', name: 'Texture View 2', colorHex: '#a81f5e', image: '/bamboo_cotton/Fuschia pink bamboo fabric 2.png' }
     ]
   },
   {
@@ -3192,35 +3481,51 @@ export default function Fabric() {
       <section className="section">
         {/* Search and Filters */}
         <div className="filter-bar">
-          <input
-            type="text"
-            placeholder="Search fabrics by name, mill, or origin..."
-            className="search-input"
-            value={searchTerm}
-            onChange={(e) => setSearchTerm(e.target.value)}
-          />
-          <div className="filter-tabs">
-            {['all', 'cotton', 'linen', 'wool', 'silk', 'satin', 'armani', 'spoon', 'other'].map((cat) => (
-              <button
-                key={cat}
-                className={`filter-tab ${selectedCategory === cat ? 'active' : ''}`}
-                onClick={() => setSelectedCategory(cat)}
-              >
-                {cat === 'all'
-                  ? 'All'
-                  : cat === 'silk'
-                  ? 'Silk'
-                  : cat === 'wool'
-                  ? 'Wool'
-                  : cat === 'other'
-                  ? 'Others'
-                  : cat === 'spoon'
-                  ? 'Spun / Spoon'
-                  : cat === 'satin'
-                  ? 'Satin'
-                  : cat.charAt(0).toUpperCase() + cat.slice(1)}
+          <div className="search-input-wrapper">
+            <svg className="search-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+              <circle cx="11" cy="11" r="8"/>
+              <line x1="21" y1="21" x2="16.65" y2="16.65"/>
+            </svg>
+            <input
+              type="text"
+              placeholder="Search fabrics by name, mill, or origin..."
+              className="search-input"
+              value={searchTerm}
+              onChange={(e) => setSearchTerm(e.target.value)}
+            />
+            {searchTerm && (
+              <button className="clear-search-btn" onClick={() => setSearchTerm('')} title="Clear search">
+                ✕
               </button>
-            ))}
+            )}
+          </div>
+          <div className="filter-tabs-wrapper">
+            <div className="filter-tabs">
+              {['all', 'cotton', 'linen', 'wool', 'silk', 'satin', 'armani', 'spoon', 'other'].map((cat) => (
+                <button
+                  key={cat}
+                  className={`filter-tab ${selectedCategory === cat ? 'active' : ''}`}
+                  onClick={() => setSelectedCategory(cat)}
+                >
+                  <span className="tab-label">
+                    {cat === 'all'
+                      ? 'All'
+                      : cat === 'silk'
+                      ? 'Silk'
+                      : cat === 'wool'
+                      ? 'Wool'
+                      : cat === 'other'
+                      ? 'Others'
+                      : cat === 'spoon'
+                      ? 'Spun / Spoon'
+                      : cat === 'satin'
+                      ? 'Satin'
+                      : cat.charAt(0).toUpperCase() + cat.slice(1)}
+                  </span>
+                  {selectedCategory === cat && <span className="active-dot" />}
+                </button>
+              ))}
+            </div>
           </div>
         </div>
 
