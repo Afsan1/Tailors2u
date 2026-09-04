@@ -407,7 +407,7 @@ export default function Alteration() {
                           style={{
                             fontSize: '0.84rem',
                             fontWeight: '600',
-                            color: '#1E2D27',
+                            color: '#ffffff',
                             display: 'flex',
                             alignItems: 'center',
                             gap: '0.35rem',

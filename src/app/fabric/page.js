@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useState, useMemo, useEffect, useRef } from 'react';
 import { useBooking } from '../../components/ClientLayoutWrapper';
 
 const FABRICS_DATA = [
@@ -3447,6 +3447,757 @@ const FABRICS_DATA = [
       { id: 'spn_pr_v1', name: 'Texture View 1', colorHex: '#6a3b7b', image: '/spoon_fabric/purple spoon fabric 1.png' },
       { id: 'spn_pr_v2', name: 'Texture View 2', colorHex: '#582d68', image: '/spoon_fabric/purple spoon fabric 2.png' }
     ]
+  },
+  {
+    id: 'khadi_white',
+    name: 'Pure White Khadi Fabric',
+    category: 'khaadi',
+    subCategory: 'handspun-khaadi',
+    patternClass: 'fabric-pattern-linen',
+    image: '/khadi_fabrics/white khadi fabric 1.png',
+    desc: 'Pristine pure white handspun Khadi fabric woven from 100% organic cotton yarns. Exceptionally breathable and soft, ideal for classic kurtas, formal shirts, and summer tailoring.',
+    origin: 'India (Wardha / Bengal)',
+    weight: '135 gsm',
+    threadCount: 'Handspun Organic Single Ply',
+    breathability: 'Maximum',
+    badge: 'Organic Classic',
+    variants: [
+      { id: 'kh_wh_v1', name: 'Texture View 1', colorHex: '#efece6', image: '/khadi_fabrics/white khadi fabric 1.png' },
+      { id: 'kh_wh_v2', name: 'Texture View 2', colorHex: '#e5e1d8', image: '/khadi_fabrics/white khadi fabric 2.png' }
+    ]
+  },
+  {
+    id: 'khadi_navy_blue',
+    name: 'Navy Blue Khadi Fabric',
+    category: 'khaadi',
+    subCategory: 'handspun-khaadi',
+    patternClass: 'fabric-pattern-linen',
+    image: '/khadi_fabrics/Navy blue khadi fabric 1.png',
+    desc: 'Deep royal navy blue handspun Khadi with rich micro-texture. Perfect for regal waistcoats, formal kurtas, and structured casual blazers.',
+    origin: 'India',
+    weight: '140 gsm',
+    threadCount: 'Handspun Fine Double Ply',
+    breathability: 'High',
+    badge: 'Formal Luxury',
+    variants: [
+      { id: 'kh_nb_v1', name: 'Texture View 1', colorHex: '#1b2a4a', image: '/khadi_fabrics/Navy blue khadi fabric 1.png' },
+      { id: 'kh_nb_v2', name: 'Texture View 2', colorHex: '#14213d', image: '/khadi_fabrics/Navy blue khadi fabric 2.png' }
+    ]
+  },
+  {
+    id: 'khadi_blue',
+    name: 'Royal Blue Khadi Fabric',
+    category: 'khaadi',
+    subCategory: 'handspun-khaadi',
+    patternClass: 'fabric-pattern-linen',
+    image: '/khadi_fabrics/blue khadi fabric 1.png',
+    desc: 'Vibrant indigo royal blue handwoven Khadi with organic slub depth. Exceptional drape for modern kurtas and smart casual shirts.',
+    origin: 'India',
+    weight: '135 gsm',
+    threadCount: 'Handspun Organic',
+    breathability: 'High',
+    badge: 'Best Seller',
+    variants: [
+      { id: 'kh_bl_v1', name: 'Texture View 1', colorHex: '#3b6ba5', image: '/khadi_fabrics/blue khadi fabric 1.png' },
+      { id: 'kh_bl_v2', name: 'Texture View 2', colorHex: '#2f5a8c', image: '/khadi_fabrics/blue khadi fabric 2.png' }
+    ]
+  },
+  {
+    id: 'khadi_cobalt_blue',
+    name: 'Cobalt Blue Khadi Fabric',
+    category: 'khaadi',
+    subCategory: 'handspun-khaadi',
+    patternClass: 'fabric-pattern-linen',
+    image: '/khadi_fabrics/cobalt blue khadi fabric 1.png',
+    desc: 'Striking cobalt blue handspun Khadi yarn featuring rich texture weave and vibrant dye absorption for bold summer attire.',
+    origin: 'India',
+    weight: '145 gsm',
+    threadCount: 'Handloom Slub Weave',
+    breathability: 'Excellent',
+    badge: 'Vibrant Heritage',
+    variants: [
+      { id: 'kh_cb_v1', name: 'Texture View 1', colorHex: '#1e4b88', image: '/khadi_fabrics/cobalt blue khadi fabric 1.png' },
+      { id: 'kh_cb_v2', name: 'Texture View 2', colorHex: '#153e74', image: '/khadi_fabrics/cobalt blue khadi fabric 2.png' }
+    ]
+  },
+  {
+    id: 'khadi_sage_green',
+    name: 'Sage Green Khadi Fabric',
+    category: 'khaadi',
+    subCategory: 'handspun-khaadi',
+    patternClass: 'fabric-pattern-linen',
+    image: '/khadi_fabrics/sage green khadi fabric 1.png',
+    desc: 'Soothing organic sage green handspun Khadi with soft botanical tones and comfortable, cool breathability.',
+    origin: 'India',
+    weight: '130 gsm',
+    threadCount: 'Handspun Soft Weave',
+    breathability: 'Maximum',
+    badge: 'Eco Essential',
+    variants: [
+      { id: 'kh_sg_v1', name: 'Texture View 1', colorHex: '#5a7263', image: '/khadi_fabrics/sage green khadi fabric 1.png' },
+      { id: 'kh_sg_v2', name: 'Texture View 2', colorHex: '#4a6052', image: '/khadi_fabrics/sage green khadi fabric 2.png' }
+    ]
+  },
+  {
+    id: 'khadi_green_pine',
+    name: 'Pine Green Khadi Fabric',
+    category: 'khaadi',
+    subCategory: 'handspun-khaadi',
+    patternClass: 'fabric-pattern-linen',
+    image: '/khadi_fabrics/green pine khadi fabric 1.png',
+    desc: 'Rich forest pine green handwoven Khadi fabric with subtle luster and durable handspun yarn density.',
+    origin: 'India',
+    weight: '140 gsm',
+    threadCount: 'Handloom Dense Weave',
+    breathability: 'High',
+    badge: 'Rich Earth Tones',
+    variants: [
+      { id: 'kh_gp_v1', name: 'Texture View 1', colorHex: '#284838', image: '/khadi_fabrics/green pine khadi fabric 1.png' },
+      { id: 'kh_gp_v2', name: 'Texture View 2', colorHex: '#1e382b', image: '/khadi_fabrics/green pine khadi fabric 2.png' }
+    ]
+  },
+  {
+    id: 'khadi_terracotta',
+    name: 'Terracotta Khadi Fabric',
+    category: 'khaadi',
+    subCategory: 'handspun-khaadi',
+    patternClass: 'fabric-pattern-linen',
+    image: '/khadi_fabrics/terractta khadi fabric 1.png',
+    desc: 'Warm earthy terracotta handspun Khadi featuring natural clay hues and rustic textured weave for casual jackets and kurtas.',
+    origin: 'India',
+    weight: '140 gsm',
+    threadCount: 'Handspun Clay Weave',
+    breathability: 'High',
+    badge: 'Earthy Chic',
+    variants: [
+      { id: 'kh_tc_v1', name: 'Texture View 1', colorHex: '#b85a3a', image: '/khadi_fabrics/terractta khadi fabric 1.png' },
+      { id: 'kh_tc_v2', name: 'Texture View 2', colorHex: '#a44c2e', image: '/khadi_fabrics/terractta khadi fabric 2.png' }
+    ]
+  },
+  {
+    id: 'khadi_burnt_sienna',
+    name: 'Burnt Sienna Khadi Fabric',
+    category: 'khaadi',
+    subCategory: 'handspun-khaadi',
+    patternClass: 'fabric-pattern-linen',
+    image: '/khadi_fabrics/burnt sierra khadi fabric 1.png',
+    desc: 'Deep warm burnt sienna handspun Khadi fabric with artisanal texture definition and breathable drape.',
+    origin: 'India',
+    weight: '135 gsm',
+    threadCount: 'Handwoven Natural Cotton',
+    breathability: 'High',
+    badge: 'Artisanal Shade',
+    variants: [
+      { id: 'kh_bs_v1', name: 'Texture View 1', colorHex: '#99442c', image: '/khadi_fabrics/burnt sierra khadi fabric 1.png' },
+      { id: 'kh_bs_v2', name: 'Texture View 2', colorHex: '#853822', image: '/khadi_fabrics/burnt sierra khadi fabric 2.png' }
+    ]
+  },
+  {
+    id: 'khadi_arabian_spice',
+    name: 'Arabian Spice Khadi Fabric',
+    category: 'khaadi',
+    subCategory: 'handspun-khaadi',
+    patternClass: 'fabric-pattern-linen',
+    image: '/khadi_fabrics/Arabian spice khadi fabric 1.png',
+    desc: 'Exotic cinnamon spice handspun Khadi with rich warm undertones, ideal for statement ethnic kurtas and waistcoats.',
+    origin: 'India',
+    weight: '145 gsm',
+    threadCount: 'Handloom Spice Weave',
+    breathability: 'Excellent',
+    badge: 'Signature Tone',
+    variants: [
+      { id: 'kh_as_v1', name: 'Texture View 1', colorHex: '#a05030', image: '/khadi_fabrics/Arabian spice khadi fabric 1.png' },
+      { id: 'kh_as_v2', name: 'Texture View 2', colorHex: '#8c4224', image: '/khadi_fabrics/Arabian spice khadi fabric 2.png' }
+    ]
+  },
+  {
+    id: 'khadi_mustard_yellow',
+    name: 'Mustard Yellow Khadi Fabric',
+    category: 'khaadi',
+    subCategory: 'handspun-khaadi',
+    patternClass: 'fabric-pattern-linen',
+    image: '/khadi_fabrics/mustard yellow khadi fabric 1.png',
+    desc: 'Bright festive mustard yellow handspun Khadi fabric with warm golden undertones for celebratory occasion wear.',
+    origin: 'India',
+    weight: '135 gsm',
+    threadCount: 'Handspun Organic Cotton',
+    breathability: 'Maximum',
+    badge: 'Festive Favorite',
+    variants: [
+      { id: 'kh_my_v1', name: 'Texture View 1', colorHex: '#c89a38', image: '/khadi_fabrics/mustard yellow khadi fabric 1.png' },
+      { id: 'kh_my_v2', name: 'Texture View 2', colorHex: '#b4882c', image: '/khadi_fabrics/mustard yellow khadi fabric 2.png' }
+    ]
+  },
+  {
+    id: 'khadi_lavender',
+    name: 'Lavender Khadi Fabric',
+    category: 'khaadi',
+    subCategory: 'handspun-khaadi',
+    patternClass: 'fabric-pattern-linen',
+    image: '/khadi_fabrics/Lavender khadi fabric 1.png',
+    desc: 'Subtle pastel lavender handspun Khadi fabric offering a soft, contemporary hue with airy comfort.',
+    origin: 'India',
+    weight: '130 gsm',
+    threadCount: 'Handloom Fine Slub',
+    breathability: 'Maximum',
+    badge: 'Pastel Luxe',
+    variants: [
+      { id: 'kh_lv_v1', name: 'Texture View 1', colorHex: '#8e7c93', image: '/khadi_fabrics/Lavender khadi fabric 1.png' },
+      { id: 'kh_lv_v2', name: 'Texture View 2', colorHex: '#7b6b80', image: '/khadi_fabrics/Lavender khadi fabric 2.png' }
+    ]
+  },
+  {
+    id: 'khadi_mauve_pink',
+    name: 'Mauve Pink Khadi Fabric',
+    category: 'khaadi',
+    subCategory: 'handspun-khaadi',
+    patternClass: 'fabric-pattern-linen',
+    image: '/khadi_fabrics/Mauve pink khadi fabric 1.png',
+    desc: 'Elegant muted mauve pink handspun Khadi fabric with delicate natural slubs and light breathable drape.',
+    origin: 'India',
+    weight: '130 gsm',
+    threadCount: 'Handspun Soft Cotton',
+    breathability: 'Maximum',
+    badge: 'Soft Elegance',
+    variants: [
+      { id: 'kh_mp_v1', name: 'Texture View 1', colorHex: '#a87082', image: '/khadi_fabrics/Mauve pink khadi fabric 1.png' },
+      { id: 'kh_mp_v2', name: 'Texture View 2', colorHex: '#955e70', image: '/khadi_fabrics/Mauve pink khadi fabric 2.png' }
+    ]
+  },
+  {
+    id: 'khadi_charcoal_grey',
+    name: 'Charcoal Grey Khadi Fabric',
+    category: 'khaadi',
+    subCategory: 'handspun-khaadi',
+    patternClass: 'fabric-pattern-linen',
+    image: '/khadi_fabrics/charcol grey khadi fabric 1.png',
+    desc: 'Sophisticated dark charcoal grey handspun Khadi with subtle salt-and-pepper slub character for executive ethnic tailoring.',
+    origin: 'India',
+    weight: '145 gsm',
+    threadCount: 'Handspun Double Ply',
+    breathability: 'High',
+    badge: 'Executive Slate',
+    variants: [
+      { id: 'kh_cg_v1', name: 'Texture View 1', colorHex: '#383d42', image: '/khadi_fabrics/charcol grey khadi fabric 1.png' },
+      { id: 'kh_cg_v2', name: 'Texture View 2', colorHex: '#2c3135', image: '/khadi_fabrics/charcol grey khadi fabric 2.png' }
+    ]
+  },
+  {
+    id: 'khadi_brownish_grey',
+    name: 'Brownish Grey Khadi Fabric',
+    category: 'khaadi',
+    subCategory: 'handspun-khaadi',
+    patternClass: 'fabric-pattern-linen',
+    image: '/khadi_fabrics/Brownish grey khadi fabric 1.png',
+    desc: 'Neutral brownish grey handspun Khadi yarn featuring a balanced earth tone and textured slub finish.',
+    origin: 'India',
+    weight: '140 gsm',
+    threadCount: 'Handloom Organic Weave',
+    breathability: 'High',
+    badge: 'Neutral Earth',
+    variants: [
+      { id: 'kh_bg_v1', name: 'Texture View 1', colorHex: '#5c544e', image: '/khadi_fabrics/Brownish grey khadi fabric 1.png' },
+      { id: 'kh_bg_v2', name: 'Texture View 2', colorHex: '#4d4641', image: '/khadi_fabrics/Brownish grey khadi fabric 2.png' }
+    ]
+  },
+  {
+    id: 'khadi_brown',
+    name: 'Warm Brown Khadi Fabric',
+    category: 'khaadi',
+    subCategory: 'handspun-khaadi',
+    patternClass: 'fabric-pattern-linen',
+    image: '/khadi_fabrics/brown khadi fabric 1.png',
+    desc: 'Classic warm chestnut brown handspun Khadi fabric offering durable structure and natural organic hand-feel.',
+    origin: 'India',
+    weight: '140 gsm',
+    threadCount: 'Handspun Organic Cotton',
+    breathability: 'High',
+    badge: 'Classic Brown',
+    variants: [
+      { id: 'kh_br_v1', name: 'Texture View 1', colorHex: '#5c3d2e', image: '/khadi_fabrics/brown khadi fabric 1.png' },
+      { id: 'kh_br_v2', name: 'Texture View 2', colorHex: '#4a3023', image: '/khadi_fabrics/brown khadi fabric 2.png' }
+    ]
+  },
+  {
+    id: 'khadi_khaki',
+    name: 'Earthy Khaki Khadi Fabric',
+    category: 'khaadi',
+    subCategory: 'handspun-khaadi',
+    patternClass: 'fabric-pattern-linen',
+    image: '/khadi_fabrics/khaki fabric 1.png',
+    desc: 'Timeless earthy khaki handspun Khadi fabric with rich texture, ideal for casual trousers, safari shirts, and waistcoats.',
+    origin: 'India',
+    weight: '140 gsm',
+    threadCount: 'Handspun Fine Cotton',
+    breathability: 'High',
+    badge: 'Safari Classic',
+    variants: [
+      { id: 'kh_kk_v1', name: 'Texture View 1', colorHex: '#9a8b70', image: '/khadi_fabrics/khaki fabric 1.png' },
+      { id: 'kh_kk_v2', name: 'Texture View 2', colorHex: '#877960', image: '/khadi_fabrics/khaki fabric 2.png' }
+    ]
+  },
+  {
+    id: 'khadi_choclate_brown',
+    name: 'Chocolate Brown Khadi Blend',
+    category: 'khaadi',
+    subCategory: 'handspun-khaadi',
+    patternClass: 'fabric-pattern-linen',
+    image: '/khadi_fabrics/choclate brown bamboo fabric 1.png',
+    desc: 'Deep chocolate brown handspun Khadi blend fabric offering a luxurious dark coffee shade and soft fluid drape.',
+    origin: 'India',
+    weight: '145 gsm',
+    threadCount: 'Handloom Dense Cotton Blend',
+    breathability: 'High',
+    badge: 'Deep Espresso',
+    variants: [
+      { id: 'kh_cb2_v1', name: 'Texture View 1', colorHex: '#4a2c1d', image: '/khadi_fabrics/choclate brown bamboo fabric 1.png' },
+      { id: 'kh_cb2_v2', name: 'Texture View 2', colorHex: '#3a2114', image: '/khadi_fabrics/choclate brown bamboo fabric 2.png' }
+    ]
+  },
+  {
+    id: 'khadi_burgundy',
+    name: 'Burgundy Khadi Fabric',
+    category: 'khaadi',
+    subCategory: 'handspun-khaadi',
+    patternClass: 'fabric-pattern-linen',
+    image: '/khadi_fabrics/Burgundy khadi fabric 1.png',
+    desc: 'Rich deep burgundy handspun Khadi fabric with subtle textured slub structure, ideal for regal evening waistcoats, kurtas, and tailored shirts.',
+    origin: 'India',
+    weight: '145 gsm',
+    threadCount: 'Handspun Fine Double Ply',
+    breathability: 'High',
+    badge: 'Regal Burgundy',
+    variants: [
+      { id: 'kh_bgd_v1', name: 'Texture View 1', colorHex: '#6b1d2f', image: '/khadi_fabrics/Burgundy khadi fabric 1.png' },
+      { id: 'kh_bgd_v2', name: 'Texture View 2', colorHex: '#541424', image: '/khadi_fabrics/Burgundy khadi fabric 2.png' }
+    ]
+  },
+  {
+    id: 'khadi_green_emerald',
+    name: 'Emerald Green Khadi Fabric',
+    category: 'khaadi',
+    subCategory: 'handspun-khaadi',
+    patternClass: 'fabric-pattern-linen',
+    image: '/khadi_fabrics/Green emerald khadi fabric 1.png',
+    desc: 'Lush emerald green handspun Khadi fabric featuring vibrant botanical tones and breathable organic cotton weave for festive and celebratory wear.',
+    origin: 'India',
+    weight: '140 gsm',
+    threadCount: 'Handloom Dense Weave',
+    breathability: 'High',
+    badge: 'Vibrant Emerald',
+    variants: [
+      { id: 'kh_ge_v1', name: 'Texture View 1', colorHex: '#1b5e3f', image: '/khadi_fabrics/Green emerald khadi fabric 1.png' },
+      { id: 'kh_ge_v2', name: 'Texture View 2', colorHex: '#12442d', image: '/khadi_fabrics/Green emerald khadi fabric 2.png' }
+    ]
+  },
+  {
+    id: 'khadi_cherry_red',
+    name: 'Cherry Red Khadi Fabric',
+    category: 'khaadi',
+    subCategory: 'handspun-khaadi',
+    patternClass: 'fabric-pattern-linen',
+    image: '/khadi_fabrics/cherry red khadi fabric 1.png',
+    desc: 'Bold cherry red handspun Khadi fabric crafted from fine organic cotton yarns with striking color depth and breezy comfort.',
+    origin: 'India',
+    weight: '135 gsm',
+    threadCount: 'Handspun Soft Weave',
+    breathability: 'Maximum',
+    badge: 'Festive Red',
+    variants: [
+      { id: 'kh_cr_v1', name: 'Texture View 1', colorHex: '#a81c24', image: '/khadi_fabrics/cherry red khadi fabric 1.png' },
+      { id: 'kh_cr_v2', name: 'Texture View 2', colorHex: '#8c1319', image: '/khadi_fabrics/cherry red khadi fabric 2.png' }
+    ]
+  },
+  {
+    id: 'pv_alexandrite_teal',
+    name: 'Alexandrite Teal Poly-Viscose',
+    category: 'polyviscose',
+    patternClass: 'fabric-pattern-polyviscose',
+    image: '/polyviscose/Alexandrite teal fabric 1.png',
+    desc: 'Lustrous Alexandrite teal poly-viscose blend fabric featuring rich gem-toned depth, fluid drape, and wrinkle-resistant structure for statement blazers and suits.',
+    origin: 'India / Italy Mill',
+    weight: '240 gsm',
+    threadCount: '65/35 High-Twist Twill',
+    breathability: 'High',
+    badge: 'Jewel Tone',
+    variants: [
+      { id: 'pv_at_v1', name: 'Texture View 1', colorHex: '#2a6f78', image: '/polyviscose/Alexandrite teal fabric 1.png' },
+      { id: 'pv_at_v2', name: 'Texture View 2', colorHex: '#205860', image: '/polyviscose/Alexandrite teal fabric 2.png' }
+    ]
+  },
+  {
+    id: 'pv_beige',
+    name: 'Classic Beige Poly-Viscose',
+    category: 'polyviscose',
+    patternClass: 'fabric-pattern-polyviscose',
+    image: '/polyviscose/beige fabric 1.png',
+    desc: 'Refined warm neutral beige poly-viscose fabric. Perfect for versatile summer suits, trousers, waistcoats, and casual bespoke tailoring.',
+    origin: 'India / Italy Mill',
+    weight: '235 gsm',
+    threadCount: '65/35 High-Twist Twill',
+    breathability: 'High',
+    badge: 'Neutral Classic',
+    variants: [
+      { id: 'pv_bg_v1', name: 'Texture View 1', colorHex: '#d2c4b0', image: '/polyviscose/beige fabric 1.png' },
+      { id: 'pv_bg_v2', name: 'Texture View 2', colorHex: '#c2b39f', image: '/polyviscose/beige fabric 2.png' }
+    ]
+  },
+  {
+    id: 'pv_berry_purple',
+    name: 'Berry Purple Poly-Viscose',
+    category: 'polyviscose',
+    patternClass: 'fabric-pattern-polyviscose',
+    image: '/polyviscose/berry purple fabric 1.png',
+    desc: 'Opulent deep berry purple poly-viscose fabric with a luxurious tactile finish and smooth drape for bespoke evening wear and party blazers.',
+    origin: 'India / Italy Mill',
+    weight: '245 gsm',
+    threadCount: '65/35 High-Twist Twill',
+    breathability: 'High',
+    badge: 'Evening Luxury',
+    variants: [
+      { id: 'pv_bp_v1', name: 'Texture View 1', colorHex: '#5c2849', image: '/polyviscose/berry purple fabric 1.png' },
+      { id: 'pv_bp_v2', name: 'Texture View 2', colorHex: '#481f3a', image: '/polyviscose/berry purple fabric 2.png' }
+    ]
+  },
+  {
+    id: 'pv_blue_gray',
+    name: 'Blue Gray Poly-Viscose',
+    category: 'polyviscose',
+    patternClass: 'fabric-pattern-polyviscose',
+    image: '/polyviscose/blue gray poly viscos fabric 1.png',
+    desc: 'Sophisticated slate blue-gray poly-viscose cloth. Offers exceptional crease recovery and sharp silhouette retention for daily executive wear.',
+    origin: 'India / Italy Mill',
+    weight: '240 gsm',
+    threadCount: '65/35 High-Twist Twill',
+    breathability: 'High',
+    badge: 'Executive Choice',
+    variants: [
+      { id: 'pv_bgy_v1', name: 'Texture View 1', colorHex: '#54687a', image: '/polyviscose/blue gray poly viscos fabric 1.png' },
+      { id: 'pv_bgy_v2', name: 'Texture View 2', colorHex: '#435463', image: '/polyviscose/blue gray poly viscos fabric 2.png' }
+    ]
+  },
+  {
+    id: 'pv_charcoal_grey',
+    name: 'Charcoal Grey Poly-Viscose',
+    category: 'polyviscose',
+    patternClass: 'fabric-pattern-polyviscose',
+    image: '/polyviscose/charcol grey fabric 1.png',
+    desc: 'Timeless charcoal grey poly-viscose blend. Crisp, professional, and durable for two-piece business suits and tailored formal trousers.',
+    origin: 'India / Italy Mill',
+    weight: '245 gsm',
+    threadCount: '65/35 High-Twist Twill',
+    breathability: 'High',
+    badge: 'Corporate Essential',
+    variants: [
+      { id: 'pv_cg_v1', name: 'Texture View 1', colorHex: '#383b40', image: '/polyviscose/charcol grey fabric 1.png' },
+      { id: 'pv_cg_v2', name: 'Texture View 2', colorHex: '#2a2c30', image: '/polyviscose/charcol grey fabric 2.png' }
+    ]
+  },
+  {
+    id: 'pv_chartreuse',
+    name: 'Chartreuse Lime Poly-Viscose',
+    category: 'polyviscose',
+    patternClass: 'fabric-pattern-polyviscose',
+    image: '/polyviscose/chartreuse fabric 1.png',
+    desc: 'Bold and vibrant chartreuse yellow-green poly-viscose fabric. Crafted for distinctive statement pieces, kurtas, and designer jackets.',
+    origin: 'India / Italy Mill',
+    weight: '235 gsm',
+    threadCount: '65/35 High-Twist Twill',
+    breathability: 'High',
+    badge: 'Designer Vibrant',
+    variants: [
+      { id: 'pv_ch_v1', name: 'Texture View 1', colorHex: '#a6b547', image: '/polyviscose/chartreuse fabric 1.png' },
+      { id: 'pv_ch_v2', name: 'Texture View 2', colorHex: '#94a23d', image: '/polyviscose/chartreuse fabric 2.png' }
+    ]
+  },
+  {
+    id: 'pv_cloud_cream',
+    name: 'Cloud Cream Poly-Viscose',
+    category: 'polyviscose',
+    patternClass: 'fabric-pattern-polyviscose',
+    image: '/polyviscose/cloud cream fabric 1.png',
+    desc: 'Soft buttery cloud cream poly-viscose blend with an ultra-smooth finish and clean matte look for summer bandhgalas and tuxedos.',
+    origin: 'India / Italy Mill',
+    weight: '230 gsm',
+    threadCount: '65/35 High-Twist Twill',
+    breathability: 'High',
+    badge: 'Summer Luxe',
+    variants: [
+      { id: 'pv_cc_v1', name: 'Texture View 1', colorHex: '#f0ece1', image: '/polyviscose/cloud cream fabric 1.png' },
+      { id: 'pv_cc_v2', name: 'Texture View 2', colorHex: '#e0dacf', image: '/polyviscose/cloud cream fabric 2.png' }
+    ]
+  },
+  {
+    id: 'pv_cobalt_blue',
+    name: 'Cobalt Blue Poly-Viscose',
+    category: 'polyviscose',
+    patternClass: 'fabric-pattern-polyviscose',
+    image: '/polyviscose/cobalt blue fabric 1.png',
+    desc: 'Striking electric cobalt blue poly-viscose suiting fabric. High color brilliance and sharp drape designed for standout formal attire.',
+    origin: 'India / Italy Mill',
+    weight: '245 gsm',
+    threadCount: '65/35 High-Twist Twill',
+    breathability: 'High',
+    badge: 'Bold Suiting',
+    variants: [
+      { id: 'pv_cb_v1', name: 'Texture View 1', colorHex: '#1f4b8e', image: '/polyviscose/cobalt blue fabric 1.png' },
+      { id: 'pv_cb_v2', name: 'Texture View 2', colorHex: '#173b70', image: '/polyviscose/cobalt blue fabric 2.png' }
+    ]
+  },
+  {
+    id: 'pv_cocoa_brown',
+    name: 'Cocoa Brown Poly-Viscose',
+    category: 'polyviscose',
+    patternClass: 'fabric-pattern-polyviscose',
+    image: '/polyviscose/cocoa brown fabric 1.png',
+    desc: 'Deep rich cocoa chocolate brown poly-viscose blend with warm undertones, soft viscose hand-feel, and robust shape retention.',
+    origin: 'India / Italy Mill',
+    weight: '240 gsm',
+    threadCount: '65/35 High-Twist Twill',
+    breathability: 'High',
+    badge: 'Earth Tone',
+    variants: [
+      { id: 'pv_coc_v1', name: 'Texture View 1', colorHex: '#4a332a', image: '/polyviscose/cocoa brown fabric 1.png' },
+      { id: 'pv_coc_v2', name: 'Texture View 2', colorHex: '#3a2720', image: '/polyviscose/cocoa brown fabric 2.png' }
+    ]
+  },
+  {
+    id: 'pv_deep_plum',
+    name: 'Deep Plum Poly-Viscose',
+    category: 'polyviscose',
+    patternClass: 'fabric-pattern-polyviscose',
+    image: '/polyviscose/Deep plum fabric 1.png',
+    desc: 'Intense deep plum wine poly-viscose tailored cloth featuring a subtle sheen and wrinkle-free composition for evening jackets.',
+    origin: 'India / Italy Mill',
+    weight: '245 gsm',
+    threadCount: '65/35 High-Twist Twill',
+    breathability: 'High',
+    badge: 'Evening Plum',
+    variants: [
+      { id: 'pv_dp_v1', name: 'Texture View 1', colorHex: '#4a203b', image: '/polyviscose/Deep plum fabric 1.png' },
+      { id: 'pv_dp_v2', name: 'Texture View 2', colorHex: '#38162c', image: '/polyviscose/Deep plum fabric 2.png' }
+    ]
+  },
+  {
+    id: 'pv_dusty_rose',
+    name: 'Dusty Rose Poly-Viscose',
+    category: 'polyviscose',
+    patternClass: 'fabric-pattern-polyviscose',
+    image: '/polyviscose/Dusty rose fabric 1.png',
+    desc: 'Delicate pastel dusty rose poly-viscose fabric. Subtle vintage undertones and smooth drape suitable for festive attire and contemporary suits.',
+    origin: 'India / Italy Mill',
+    weight: '235 gsm',
+    threadCount: '65/35 High-Twist Twill',
+    breathability: 'High',
+    badge: 'Pastel Elegance',
+    variants: [
+      { id: 'pv_dr_v1', name: 'Texture View 1', colorHex: '#aa7382', image: '/polyviscose/Dusty rose fabric 1.png' },
+      { id: 'pv_dr_v2', name: 'Texture View 2', colorHex: '#94616f', image: '/polyviscose/Dusty rose fabric 2.png' }
+    ]
+  },
+  {
+    id: 'pv_fuchsia_pink',
+    name: 'Fuchsia Pink Poly-Viscose',
+    category: 'polyviscose',
+    patternClass: 'fabric-pattern-polyviscose',
+    image: '/polyviscose/fushia pink fabric 1.png',
+    desc: 'Lively fuchsia pink poly-viscose fabric engineered with high color saturation and fluid drape for eye-catching statement garments.',
+    origin: 'India / Italy Mill',
+    weight: '235 gsm',
+    threadCount: '65/35 High-Twist Twill',
+    breathability: 'High',
+    badge: 'Festive Pop',
+    variants: [
+      { id: 'pv_fp_v1', name: 'Texture View 1', colorHex: '#a82963', image: '/polyviscose/fushia pink fabric 1.png' },
+      { id: 'pv_fp_v2', name: 'Texture View 2', colorHex: '#8e2053', image: '/polyviscose/fushia pink fabric 2.png' }
+    ]
+  },
+  {
+    id: 'pv_ice_blue',
+    name: 'Ice Blue Poly-Viscose',
+    category: 'polyviscose',
+    patternClass: 'fabric-pattern-polyviscose',
+    image: '/polyviscose/ice blue fabric 1.png',
+    desc: 'Cool, refreshing ice blue poly-viscose blend. Crisp hand feel and wrinkle resistance tailored for airy spring-summer suiting.',
+    origin: 'India / Italy Mill',
+    weight: '235 gsm',
+    threadCount: '65/35 High-Twist Twill',
+    breathability: 'High',
+    badge: 'Cool Pastel',
+    variants: [
+      { id: 'pv_ib_v1', name: 'Texture View 1', colorHex: '#9bb7c9', image: '/polyviscose/ice blue fabric 1.png' },
+      { id: 'pv_ib_v2', name: 'Texture View 2', colorHex: '#88a4b5', image: '/polyviscose/ice blue fabric 2.png' }
+    ]
+  },
+  {
+    id: 'pv_ivory',
+    name: 'Ivory Poly-Viscose',
+    category: 'polyviscose',
+    patternClass: 'fabric-pattern-polyviscose',
+    image: '/polyviscose/ivory fabric 1.png',
+    desc: 'Pristine warm ivory poly-viscose fabric. Offers structured elegance, soft breathability, and ease of care for dinner jackets and ceremonial wear.',
+    origin: 'India / Italy Mill',
+    weight: '230 gsm',
+    threadCount: '65/35 High-Twist Twill',
+    breathability: 'High',
+    badge: 'Ceremonial Classic',
+    variants: [
+      { id: 'pv_iv_v1', name: 'Texture View 1', colorHex: '#f4f0e6', image: '/polyviscose/ivory fabric 1.png' },
+      { id: 'pv_iv_v2', name: 'Texture View 2', colorHex: '#e5e1d7', image: '/polyviscose/ivory fabric 2.png' }
+    ]
+  },
+  {
+    id: 'pv_jade_green',
+    name: 'Jade Green Poly-Viscose',
+    category: 'polyviscose',
+    patternClass: 'fabric-pattern-polyviscose',
+    image: '/polyviscose/jade green fabric 1.png',
+    desc: 'Regal emerald jade green poly-viscose fabric featuring rich jewel tone depth, high color fastness, and tailored structural elegance.',
+    origin: 'India / Italy Mill',
+    weight: '245 gsm',
+    threadCount: '65/35 High-Twist Twill',
+    breathability: 'High',
+    badge: 'Jewel Suiting',
+    variants: [
+      { id: 'pv_jg_v1', name: 'Texture View 1', colorHex: '#2d7357', image: '/polyviscose/jade green fabric 1.png' },
+      { id: 'pv_jg_v2', name: 'Texture View 2', colorHex: '#235c45', image: '/polyviscose/jade green fabric 2.png' }
+    ]
+  },
+  {
+    id: 'pv_mauve_pink',
+    name: 'Mauve Pink Poly-Viscose',
+    category: 'polyviscose',
+    patternClass: 'fabric-pattern-polyviscose',
+    image: '/polyviscose/Mauve pink fabric 1.png',
+    desc: 'Sophisticated dusty mauve pink poly-viscose blend. Subtle tone and soft hand-feel suited for modern contemporary jackets and suits.',
+    origin: 'India / Italy Mill',
+    weight: '235 gsm',
+    threadCount: '65/35 High-Twist Twill',
+    breathability: 'High',
+    badge: 'Modern Pastel',
+    variants: [
+      { id: 'pv_mp_v1', name: 'Texture View 1', colorHex: '#966d7c', image: '/polyviscose/Mauve pink fabric 1.png' },
+      { id: 'pv_mp_v2', name: 'Texture View 2', colorHex: '#805b6a', image: '/polyviscose/Mauve pink fabric 2.png' }
+    ]
+  },
+  {
+    id: 'pv_merlot',
+    name: 'Merlot Wine Poly-Viscose',
+    category: 'polyviscose',
+    patternClass: 'fabric-pattern-polyviscose',
+    image: '/polyviscose/merlot fabric 1.png',
+    desc: 'Deep velvety merlot wine poly-viscose cloth. Rich wine-red tones with superior crease recovery for bespoke evening wear.',
+    origin: 'India / Italy Mill',
+    weight: '245 gsm',
+    threadCount: '65/35 High-Twist Twill',
+    breathability: 'High',
+    badge: 'Wine Collection',
+    variants: [
+      { id: 'pv_mr_v1', name: 'Texture View 1', colorHex: '#5c1a26', image: '/polyviscose/merlot fabric 1.png' },
+      { id: 'pv_mr_v2', name: 'Texture View 2', colorHex: '#4a131e', image: '/polyviscose/merlot fabric 2.png' }
+    ]
+  },
+  {
+    id: 'pv_midnight_navy',
+    name: 'Midnight Navy Blue Poly-Viscose',
+    category: 'polyviscose',
+    patternClass: 'fabric-pattern-polyviscose',
+    image: '/polyviscose/Midnight navy blue fabric 1.png',
+    desc: 'Quintessential midnight navy blue poly-viscose fabric. Deep dark navy shade engineered for versatile formal and corporate suits.',
+    origin: 'India / Italy Mill',
+    weight: '245 gsm',
+    threadCount: '65/35 High-Twist Twill',
+    breathability: 'High',
+    badge: 'Best Seller',
+    variants: [
+      { id: 'pv_mn_v1', name: 'Texture View 1', colorHex: '#1b273b', image: '/polyviscose/Midnight navy blue fabric 1.png' },
+      { id: 'pv_mn_v2', name: 'Texture View 2', colorHex: '#131c2b', image: '/polyviscose/Midnight navy blue fabric 2.png' }
+    ]
+  },
+  {
+    id: 'pv_petrol_blue',
+    name: 'Petrol Blue Poly-Viscose',
+    category: 'polyviscose',
+    patternClass: 'fabric-pattern-polyviscose',
+    image: '/polyviscose/Petrol blue fabric 1.png',
+    desc: 'Modern deep oceanic petrol blue poly-viscose blend. Rich chromatic depth and smooth wrinkle-free drape for executive attire.',
+    origin: 'India / Italy Mill',
+    weight: '240 gsm',
+    threadCount: '65/35 High-Twist Twill',
+    breathability: 'High',
+    badge: 'Oceanic Suiting',
+    variants: [
+      { id: 'pv_pb_v1', name: 'Texture View 1', colorHex: '#1f4e5b', image: '/polyviscose/Petrol blue fabric 1.png' },
+      { id: 'pv_pb_v2', name: 'Texture View 2', colorHex: '#173c47', image: '/polyviscose/Petrol blue fabric 2.png' }
+    ]
+  },
+  {
+    id: 'pv_pine_green',
+    name: 'Pine Green Poly-Viscose',
+    category: 'polyviscose',
+    patternClass: 'fabric-pattern-polyviscose',
+    image: '/polyviscose/pine green viscos fabric 1.png',
+    desc: 'Earthy deep pine green poly-viscose blend cloth. Robust structural body and natural drape crafted for safari jackets and formal suits.',
+    origin: 'India / Italy Mill',
+    weight: '240 gsm',
+    threadCount: '65/35 High-Twist Twill',
+    breathability: 'High',
+    badge: 'Forest Deep',
+    variants: [
+      { id: 'pv_pg_v1', name: 'Texture View 1', colorHex: '#224733', image: '/polyviscose/pine green viscos fabric 1.png' },
+      { id: 'pv_pg_v2', name: 'Texture View 2', colorHex: '#193626', image: '/polyviscose/pine green viscos fabric 2.png' }
+    ]
+  },
+  {
+    id: 'pv_pistachio',
+    name: 'Pistachio Green Poly-Viscose',
+    category: 'polyviscose',
+    patternClass: 'fabric-pattern-polyviscose',
+    image: '/polyviscose/pistachio fabric 1.png',
+    desc: 'Light calming pistachio green poly-viscose blend. Airy look and easy care performance for spring, summer, and daytime events.',
+    origin: 'India / Italy Mill',
+    weight: '235 gsm',
+    threadCount: '65/35 High-Twist Twill',
+    breathability: 'High',
+    badge: 'Light Pastel',
+    variants: [
+      { id: 'pv_pst_v1', name: 'Texture View 1', colorHex: '#9cb58b', image: '/polyviscose/pistachio fabric 1.png' },
+      { id: 'pv_pst_v2', name: 'Texture View 2', colorHex: '#89a278', image: '/polyviscose/pistachio fabric 2.png' }
+    ]
+  },
+  {
+    id: 'pv_sapphire_blue',
+    name: 'Sapphire Blue Poly-Viscose',
+    category: 'polyviscose',
+    patternClass: 'fabric-pattern-polyviscose',
+    image: '/polyviscose/sapphire blue viscos fabric 1.png',
+    desc: 'Brilliant royal sapphire blue poly-viscose fabric with deep luster, high thread density, and crisp wrinkle recovery.',
+    origin: 'India / Italy Mill',
+    weight: '245 gsm',
+    threadCount: '65/35 High-Twist Twill',
+    breathability: 'High',
+    badge: 'Royal Suiting',
+    variants: [
+      { id: 'pv_sb_v1', name: 'Texture View 1', colorHex: '#1d3d6b', image: '/polyviscose/sapphire blue viscos fabric 1.png' },
+      { id: 'pv_sb_v2', name: 'Texture View 2', colorHex: '#152e52', image: '/polyviscose/sapphire blue viscos fabric 2.png' }
+    ]
+  },
+  {
+    id: 'pv_taupe_grey',
+    name: 'Taupe Grey Poly-Viscose',
+    category: 'polyviscose',
+    patternClass: 'fabric-pattern-polyviscose',
+    image: '/polyviscose/taupe grey fabric 1.png',
+    desc: 'Refined earthy taupe grey poly-viscose blend. Versatile neutral tone with durable shape retention for bespoke trousers and suits.',
+    origin: 'India / Italy Mill',
+    weight: '240 gsm',
+    threadCount: '65/35 High-Twist Twill',
+    breathability: 'High',
+    badge: 'All-Season Suiting',
+    variants: [
+      { id: 'pv_tg_v1', name: 'Texture View 1', colorHex: '#6c6760', image: '/polyviscose/taupe grey fabric 1.png' },
+      { id: 'pv_tg_v2', name: 'Texture View 2', colorHex: '#58534d', image: '/polyviscose/taupe grey fabric 2.png' }
+    ]
   }
 ];
 
@@ -3456,6 +4207,10 @@ export default function Fabric() {
   const [cottonSubCategory, setCottonSubCategory] = useState('all');
   const [activeLightboxFabric, setActiveLightboxFabric] = useState(null);
   const [selectedVariants, setSelectedVariants] = useState({});
+  const [fullscreenIndex, setFullscreenIndex] = useState(null);
+  const activeThumbRef = useRef(null);
+  const touchStartXRef = useRef(0);
+  const touchEndXRef = useRef(0);
   const { openBooking } = useBooking();
 
   const handleBookWithFabric = (fabricName) => {
@@ -3474,6 +4229,100 @@ export default function Fabric() {
       fabric.subCategory === cottonSubCategory;
     return matchesSearch && matchesCategory && matchesCottonSubCategory;
   });
+
+  // Flat array of all images across filtered fabrics for gallery navigation
+  const allGalleryImages = useMemo(() => {
+    const list = [];
+    filteredFabrics.forEach((fabric) => {
+      if (fabric.variants && fabric.variants.length > 0) {
+        fabric.variants.forEach((v) => {
+          list.push({
+            id: `${fabric.id}-${v.id}`,
+            fabricId: fabric.id,
+            fabricName: fabric.name,
+            variantId: v.id,
+            variantName: v.name,
+            image: v.image,
+            origin: fabric.origin,
+            badge: fabric.badge,
+            desc: fabric.desc,
+            weight: fabric.weight,
+            threadCount: fabric.threadCount,
+            breathability: fabric.breathability,
+            category: fabric.category,
+            patternClass: fabric.patternClass
+          });
+        });
+      } else if (fabric.image) {
+        list.push({
+          id: `${fabric.id}-main`,
+          fabricId: fabric.id,
+          fabricName: fabric.name,
+          variantId: null,
+          variantName: '',
+          image: fabric.image,
+          origin: fabric.origin,
+          badge: fabric.badge,
+          desc: fabric.desc,
+          weight: fabric.weight,
+          threadCount: fabric.threadCount,
+          breathability: fabric.breathability,
+          category: fabric.category,
+          patternClass: fabric.patternClass
+        });
+      }
+    });
+    return list;
+  }, [filteredFabrics]);
+
+  const openFullscreenForImage = (imageSrc, fabricId) => {
+    let index = allGalleryImages.findIndex(
+      (item) => item.image === imageSrc && (!fabricId || item.fabricId === fabricId)
+    );
+    if (index === -1 && imageSrc) {
+      index = allGalleryImages.findIndex((item) => item.image === imageSrc);
+    }
+    if (index === -1 && fabricId) {
+      index = allGalleryImages.findIndex((item) => item.fabricId === fabricId);
+    }
+    setFullscreenIndex(index !== -1 ? index : 0);
+  };
+
+  // Keyboard navigation
+  useEffect(() => {
+    if (fullscreenIndex === null) return;
+    const handleKeyDown = (e) => {
+      if (e.key === 'ArrowRight') {
+        setFullscreenIndex((prev) => (prev === null ? null : (prev + 1) % allGalleryImages.length));
+      } else if (e.key === 'ArrowLeft') {
+        setFullscreenIndex((prev) => (prev === null ? null : (prev - 1 + allGalleryImages.length) % allGalleryImages.length));
+      } else if (e.key === 'Escape') {
+        setFullscreenIndex(null);
+      }
+    };
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, [fullscreenIndex, allGalleryImages.length]);
+
+  // Thumbnail autoscroll into view
+  useEffect(() => {
+    if (fullscreenIndex !== null && activeThumbRef.current) {
+      activeThumbRef.current.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+    }
+  }, [fullscreenIndex]);
+
+  const handleTouchStart = (e) => {
+    touchStartXRef.current = e.targetTouches[0].clientX;
+  };
+  const handleTouchEnd = (e) => {
+    touchEndXRef.current = e.changedTouches[0].clientX;
+    const diff = touchStartXRef.current - touchEndXRef.current;
+    if (diff > 50) {
+      setFullscreenIndex((prev) => (prev === null ? null : (prev + 1) % allGalleryImages.length));
+    } else if (diff < -50) {
+      setFullscreenIndex((prev) => (prev === null ? null : (prev - 1 + allGalleryImages.length) % allGalleryImages.length));
+    }
+  };
 
   return (
     <div className="fabric-page-wrapper">
@@ -3501,7 +4350,7 @@ export default function Fabric() {
           </div>
           <div className="filter-tabs-wrapper">
             <div className="filter-tabs">
-              {['all', 'cotton', 'linen', 'wool', 'silk', 'satin', 'armani', 'spoon', 'other'].map((cat) => (
+              {['all', 'cotton', 'khaadi', 'linen', 'wool', 'silk', 'satin', 'armani', 'polyviscose', 'spoon', 'other'].map((cat) => (
                 <button
                   key={cat}
                   className={`filter-tab ${selectedCategory === cat ? 'active' : ''}`}
@@ -3514,12 +4363,16 @@ export default function Fabric() {
                       ? 'Silk'
                       : cat === 'wool'
                       ? 'Wool'
+                      : cat === 'khaadi'
+                      ? 'Khaadi'
                       : cat === 'other'
                       ? 'Others'
                       : cat === 'spoon'
                       ? 'Spun / Spoon'
                       : cat === 'satin'
                       ? 'Satin'
+                      : cat === 'polyviscose'
+                      ? 'Poly-Viscose'
                       : cat.charAt(0).toUpperCase() + cat.slice(1)}
                   </span>
                   {selectedCategory === cat && <span className="active-dot" />}
@@ -3622,7 +4475,6 @@ export default function Fabric() {
                   <div className="fabric-info">
                     <div className="fabric-title-row">
                       <h3>{fabric.name}</h3>
-                      <span className="fabric-origin">{fabric.origin}</span>
                     </div>
                     <p className="fabric-description">{fabric.desc}</p>
 
@@ -3751,7 +4603,7 @@ export default function Fabric() {
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'center',
-                color: 'var(--beige-gold)',
+                color: '#000000',
                 fontSize: '1.5rem',
                 cursor: 'pointer',
                 lineHeight: 1,
@@ -3778,23 +4630,12 @@ export default function Fabric() {
               <h3 style={{ 
                 fontSize: '1.6rem', 
                 color: 'var(--beige-gold)', 
-                marginBottom: '0.5rem',
+                marginBottom: '1rem',
                 fontFamily: 'var(--font-serif)',
                 textAlign: 'center'
               }}>
                 {activeLightboxFabric.name}
               </h3>
-              
-              <p style={{ 
-                color: 'var(--white)', 
-                fontSize: '0.9rem', 
-                textAlign: 'center', 
-                marginBottom: '1.5rem',
-                textTransform: 'uppercase',
-                letterSpacing: '1px'
-              }}>
-                Origin: {activeLightboxFabric.origin}
-              </p>
 
               {/* Large swatch render box */}
               {(() => {
@@ -3809,14 +4650,17 @@ export default function Fabric() {
                       border: '2px solid rgba(197, 168, 128, 0.4)',
                       boxShadow: '0 10px 30px rgba(0,0,0,0.3)',
                       marginBottom: '1.5rem',
-                      position: 'relative'
+                      position: 'relative',
+                      cursor: 'zoom-in'
                     }}
+                    onClick={() => openFullscreenForImage(modalImgSrc, activeLightboxFabric.id)}
+                    title="Click for full screen view"
                   >
                     {modalImgSrc ? (
                       <img 
                         src={modalImgSrc} 
                         alt={activeLightboxFabric.name} 
-                        style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }} 
+                        style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block', transition: 'transform 0.3s ease' }} 
                       />
                     ) : (
                       <div 
@@ -3827,6 +4671,27 @@ export default function Fabric() {
                     <span className="fabric-badge" style={{ top: '1rem', right: '1rem' }}>
                       {activeLightboxFabric.badge}
                     </span>
+                    <div 
+                      style={{
+                        position: 'absolute',
+                        bottom: '0.8rem',
+                        right: '0.8rem',
+                        background: 'rgba(0, 0, 0, 0.7)',
+                        backdropFilter: 'blur(4px)',
+                        color: 'var(--beige-gold)',
+                        padding: '0.35rem 0.75rem',
+                        borderRadius: '20px',
+                        fontSize: '0.75rem',
+                        fontWeight: '600',
+                        display: 'flex',
+                        alignItems: 'center',
+                        gap: '0.3rem',
+                        border: '1px solid rgba(197, 168, 128, 0.3)',
+                        pointerEvents: 'none'
+                      }}
+                    >
+                      Tap for Full Screen
+                    </div>
                   </div>
                 );
               })()}
@@ -3926,6 +4791,256 @@ export default function Fabric() {
           </div>
         </div>
       )}
+
+      {/* ── Ultra Fullscreen Image Lightbox & Gallery Viewer ── */}
+      {fullscreenIndex !== null && allGalleryImages.length > 0 && (() => {
+        const currentItem = allGalleryImages[fullscreenIndex];
+        return (
+          <div 
+            style={{
+              position: 'fixed',
+              top: 0,
+              left: 0,
+              right: 0,
+              bottom: 0,
+              backgroundColor: 'rgba(5, 12, 10, 0.96)',
+              backdropFilter: 'blur(16px)',
+              zIndex: 99999,
+              display: 'flex',
+              flexDirection: 'column',
+              justifyContent: 'space-between',
+              alignItems: 'center',
+              padding: '1rem',
+              animation: 'modalFadeIn 0.2s ease-out forwards',
+              userSelect: 'none'
+            }}
+            onClick={() => setFullscreenIndex(null)}
+          >
+            {/* Top Controls Bar */}
+            <div 
+              style={{
+                width: '100%',
+                maxWidth: '1200px',
+                display: 'flex',
+                justifyContent: 'space-between',
+                alignItems: 'center',
+                padding: '0.5rem 1rem',
+                zIndex: 10
+              }}
+              onClick={(e) => e.stopPropagation()}
+            >
+              <div>
+                <h3 style={{ margin: 0, color: 'var(--beige-gold)', fontSize: '1.2rem', fontFamily: 'var(--font-serif)' }}>
+                  {currentItem.fabricName} {currentItem.variantName ? `— ${currentItem.variantName}` : ''}
+                </h3>
+                <span style={{ fontSize: '0.8rem', color: 'rgba(255, 255, 255, 0.7)' }}>
+                  Image {fullscreenIndex + 1} of {allGalleryImages.length}
+                </span>
+              </div>
+
+              <div style={{ display: 'flex', gap: '0.8rem', alignItems: 'center' }}>
+                <button
+                  onClick={() => {
+                    if (document.fullscreenElement) {
+                      document.exitFullscreen().catch(() => {});
+                    } else {
+                      document.documentElement.requestFullscreen().catch(() => {});
+                    }
+                  }}
+                  style={{
+                    background: 'rgba(255, 255, 255, 0.1)',
+                    border: '1px solid rgba(255, 255, 255, 0.2)',
+                    color: '#FFF',
+                    borderRadius: '8px',
+                    padding: '0.4rem 0.8rem',
+                    fontSize: '0.82rem',
+                    cursor: 'pointer',
+                    display: 'flex',
+                    alignItems: 'center',
+                    gap: '0.3rem',
+                    transition: 'all 0.2s ease'
+                  }}
+                  title="Toggle native full screen"
+                >
+                  ⛶ Expand
+                </button>
+                
+                <button
+                  onClick={() => setFullscreenIndex(null)}
+                  style={{
+                    background: 'rgba(255, 255, 255, 0.15)',
+                    border: 'none',
+                    color: '#000000',
+                    width: '38px',
+                    height: '38px',
+                    borderRadius: '50%',
+                    fontSize: '1.4rem',
+                    cursor: 'pointer',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    lineHeight: 1,
+                    transition: 'transform 0.2s ease'
+                  }}
+                  title="Close Full Screen (Esc)"
+                >
+                  ✕
+                </button>
+              </div>
+            </div>
+
+            {/* Main Image Container with Next / Prev Chevrons */}
+            <div 
+              style={{
+                flex: 1,
+                width: '100%',
+                maxWidth: '1200px',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'space-between',
+                position: 'relative',
+                gap: '1rem',
+                padding: '0.5rem'
+              }}
+              onClick={(e) => e.stopPropagation()}
+              onTouchStart={handleTouchStart}
+              onTouchEnd={handleTouchEnd}
+            >
+              {/* Previous Button */}
+              <button
+                onClick={() => setFullscreenIndex((prev) => (prev === null ? null : (prev - 1 + allGalleryImages.length) % allGalleryImages.length))}
+                style={{
+                  background: 'rgba(0, 0, 0, 0.5)',
+                  border: '1px solid rgba(255, 217, 190, 0.3)',
+                  color: 'var(--beige-gold)',
+                  width: '48px',
+                  height: '48px',
+                  borderRadius: '50%',
+                  fontSize: '1.8rem',
+                  cursor: 'pointer',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  flexShrink: 0,
+                  zIndex: 5,
+                  backdropFilter: 'blur(4px)',
+                  transition: 'all 0.2s ease'
+                }}
+                title="Previous image (Left Arrow)"
+              >
+                ‹
+              </button>
+
+              {/* Center Active Image */}
+              <div style={{ flex: 1, height: '100%', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', position: 'relative' }}>
+                {currentItem.image ? (
+                  <img
+                    src={currentItem.image}
+                    alt={currentItem.fabricName}
+                    style={{
+                      maxWidth: '100%',
+                      maxHeight: 'calc(80vh - 120px)',
+                      objectFit: 'contain',
+                      borderRadius: '12px',
+                      boxShadow: '0 25px 70px rgba(0,0,0,0.8)',
+                      border: '1px solid rgba(197, 168, 128, 0.25)',
+                      transition: 'transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1)'
+                    }}
+                  />
+                ) : (
+                  <div
+                    className={currentItem.patternClass}
+                    style={{ width: '400px', height: '400px', borderRadius: '12px' }}
+                  ></div>
+                )}
+                <p style={{ marginTop: '0.8rem', color: '#E0E7E4', fontSize: '0.88rem', textAlign: 'center', maxWidth: '600px' }}>
+                  {currentItem.desc}
+                </p>
+              </div>
+
+              {/* Next Button */}
+              <button
+                onClick={() => setFullscreenIndex((prev) => (prev === null ? null : (prev + 1) % allGalleryImages.length))}
+                style={{
+                  background: 'rgba(0, 0, 0, 0.5)',
+                  border: '1px solid rgba(255, 217, 190, 0.3)',
+                  color: 'var(--beige-gold)',
+                  width: '48px',
+                  height: '48px',
+                  borderRadius: '50%',
+                  fontSize: '1.8rem',
+                  cursor: 'pointer',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  flexShrink: 0,
+                  zIndex: 5,
+                  backdropFilter: 'blur(4px)',
+                  transition: 'all 0.2s ease'
+                }}
+                title="Next image (Right Arrow)"
+              >
+                ›
+              </button>
+            </div>
+
+            {/* Bottom Horizontal Thumbnail Strip */}
+            <div 
+              style={{
+                width: '100%',
+                maxWidth: '1000px',
+                display: 'flex',
+                gap: '0.6rem',
+                overflowX: 'auto',
+                padding: '0.6rem 1rem',
+                backgroundColor: 'rgba(0, 0, 0, 0.4)',
+                borderRadius: '16px',
+                border: '1px solid rgba(255, 255, 255, 0.1)',
+                zIndex: 10,
+                scrollbarWidth: 'thin'
+              }}
+              onClick={(e) => e.stopPropagation()}
+            >
+              {allGalleryImages.map((item, idx) => {
+                const isSelected = idx === fullscreenIndex;
+                return (
+                  <button
+                    key={item.id + '-' + idx}
+                    ref={isSelected ? activeThumbRef : null}
+                    onClick={() => setFullscreenIndex(idx)}
+                    style={{
+                      width: '64px',
+                      height: '64px',
+                      flexShrink: 0,
+                      borderRadius: '8px',
+                      overflow: 'hidden',
+                      border: isSelected ? '2px solid var(--beige-gold)' : '1px solid rgba(255,255,255,0.2)',
+                      cursor: 'pointer',
+                      padding: 0,
+                      opacity: isSelected ? 1 : 0.45,
+                      transition: 'all 0.2s ease',
+                      outline: 'none',
+                      transform: isSelected ? 'scale(1.08)' : 'scale(1)',
+                      boxShadow: isSelected ? '0 0 14px rgba(255, 217, 190, 0.6)' : 'none'
+                    }}
+                    title={`${item.fabricName} ${item.variantName ? '(' + item.variantName + ')' : ''}`}
+                  >
+                    {item.image ? (
+                      <img
+                        src={item.image}
+                        alt={item.fabricName}
+                        style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }}
+                      />
+                    ) : (
+                      <div className={item.patternClass} style={{ width: '100%', height: '100%' }}></div>
+                    )}
+                  </button>
+                );
+              })}
+            </div>
+          </div>
+        );
+      })()}
     </div>
   );
 }

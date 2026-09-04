@@ -132,18 +132,18 @@ export default function Tailoring() {
             <h2 style={{ fontSize: '2.4rem', color: 'var(--white)', marginBottom: '1.2rem' }}>
               Hand-Cut & Hand-Finished Detailings
             </h2>
-            <p style={{ marginBottom: '1.5rem', fontSize: '1.05rem' }}>
+            <p className="white-text" style={{ marginBottom: '1.5rem', fontSize: '1.05rem' }}>
               Every shirt and trouser we tailor passes through strict multi-phase quality inspections. Our tailors focus on double-reinforced stitching, high-density buttonholes, hand-basted lining inserts, and perfect seam matching.
             </p>
             <ul style={{ listStyle: 'none', display: 'flex', flexDirection: 'column', gap: '0.8rem' }}>
               <li style={{ display: 'flex', alignItems: 'center', gap: '0.8rem', fontWeight: 500 }}>
-                <span style={{ color: 'var(--beige-gold)', fontSize: '1.2rem' }}>✓</span> German gutermann thread systems for durability
+                <span style={{ color: 'var(--beige-gold)', fontSize: '1.2rem' }}>✓</span> <span className="black-text">German gutermann thread systems for durability</span>
               </li>
               <li style={{ display: 'flex', alignItems: 'center', gap: '0.8rem', fontWeight: 500 }}>
-                <span style={{ color: 'var(--beige-gold)', fontSize: '1.2rem' }}>✓</span> High collar stances & removable collar stays
+                <span style={{ color: 'var(--beige-gold)', fontSize: '1.2rem' }}>✓</span> <span className="black-text">High collar stances & removable collar stays</span>
               </li>
               <li style={{ display: 'flex', alignItems: 'center', gap: '0.8rem', fontWeight: 500 }}>
-                <span style={{ color: 'var(--beige-gold)', fontSize: '1.2rem' }}>✓</span> Seamless side-slits & custom sleeve plackets
+                <span style={{ color: 'var(--beige-gold)', fontSize: '1.2rem' }}>✓</span> <span className="black-text">Seamless side-slits & custom sleeve plackets</span>
               </li>
             </ul>
           </div>

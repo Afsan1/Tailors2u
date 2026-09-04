@@ -47,6 +47,48 @@ const FABRICS = [
       { id: 'v6', name: 'Burgundy Wine',  color: '#6A1428', secondColor: '#540E1E' },
     ],
   },
+  {
+    id: 'f9',
+    name: 'Handspun Organic Khaadi',
+    color: '#D8C8B0',
+    secondColor: '#C4B49C',
+    patternType: 'linen',
+    origin: 'India (Handspun)',
+    weight: '135 gsm',
+    badge: 'Heritage Handspun',
+    desc: 'Traditional handspun organic cotton with rich natural texture & maximum breathability',
+    variants: [
+      { id: 'kh_v1', name: 'Raw Natural Cream', color: '#D8C8B0', secondColor: '#C4B49C' },
+      { id: 'kh_v2', name: 'Indigo Khadi',      color: '#2A4365', secondColor: '#1A3355' },
+      { id: 'kh_v3', name: 'Earthy Olive',      color: '#4A5D4E', secondColor: '#3A4D3E' },
+      { id: 'kh_v4', name: 'Sunset Rust',       color: '#9B4E36', secondColor: '#8B3E26' },
+      { id: 'kh_v5', name: 'Charcoal Grey',     color: '#3A3F47', secondColor: '#2A2F37' },
+    ],
+  },
+  {
+    id: 'f10',
+    name: 'Poly-Viscose Executive Suiting',
+    color: '#1a2a40',
+    secondColor: '#121e30',
+    patternType: 'cotton',
+    origin: 'India / Italy Blend',
+    weight: '240 gsm',
+    badge: 'Crease Resistant',
+    desc: 'Durable 65/35 poly-viscose blend offering crisp structured drape, wrinkle resistance, and all-day comfort',
+    variants: [
+      { id: 'pv_v1', name: 'Classic Navy',    color: '#1a2a40', secondColor: '#121e30' },
+      { id: 'pv_v2', name: 'Charcoal Heather',color: '#36393f', secondColor: '#282b30' },
+      { id: 'pv_v3', name: 'Jet Black',       color: '#161719', secondColor: '#0e0f10' },
+      { id: 'pv_v4', name: 'Rich Mocha',      color: '#4e382d', secondColor: '#3c2b22' },
+      { id: 'pv_v5', name: 'Burgundy Wine',   color: '#541926', secondColor: '#42121d' },
+      { id: 'pv_v6', name: 'Emerald Green',   color: '#1e3a2b', secondColor: '#15291e' },
+      { id: 'pv_v7', name: 'Camel Tan',       color: '#b08a5e', secondColor: '#9c774d' },
+      { id: 'pv_v8', name: 'Slate Blue',      color: '#44596b', secondColor: '#344554' },
+      { id: 'pv_v9', name: 'Silver Grey',     color: '#9da2a6', secondColor: '#8a8f93' },
+      { id: 'pv_v10', name: 'Olive Khaki',    color: '#4f5844', secondColor: '#3e4635' },
+      { id: 'pv_v11', name: 'Plum Violet',    color: '#4d263f', secondColor: '#3b1c30' },
+    ],
+  },
 ];
 
 const PROGRESS = [
@@ -783,9 +825,7 @@ export default function AITryOn() {
   `;
 
   return (
-    <>
-      <OriginalAITryOn />
-      <div className="porcelain-theme">
+    <div className="porcelain-theme">
         <style>{assistantCss}</style>
         <div className="wa-container">
           <h2 className="wa-title">Need Personal Styling Assistance?</h2>
@@ -830,7 +870,6 @@ export default function AITryOn() {
           </div>
         </div>
       </div>
-    </>
   );
 }
 

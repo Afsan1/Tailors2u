@@ -69,6 +69,36 @@ body {
   font-family: var(--font-sans);
   overflow-x: hidden;
   scroll-behavior: smooth;
+  scrollbar-width: thin;
+  scrollbar-color: #000000 transparent;
+}
+
+/* Global Custom Black Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #000000;
+  border-radius: 9999px;
+  border: 2px solid transparent;
+  background-clip: content-box;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #222222;
+  border-radius: 9999px;
+  border: 1px solid transparent;
+  background-clip: content-box;
+}
+
+::-webkit-scrollbar-corner {
+  background: transparent;
 }
 
 body {
@@ -1476,6 +1506,16 @@ a {
   height: 100%;
 }
 
+.fabric-pattern-polyviscose {
+  background-color: #2b3a4a;
+  background-image: 
+    repeating-linear-gradient(45deg, rgba(255, 255, 255, 0.07) 0px, rgba(255, 255, 255, 0.07) 1px, transparent 1px, transparent 4px),
+    repeating-linear-gradient(-45deg, rgba(0, 0, 0, 0.15) 0px, rgba(0, 0, 0, 0.15) 1px, transparent 1px, transparent 4px);
+  background-size: 8px 8px;
+  width: 100%;
+  height: 100%;
+}
+
 .fabric-badge {
   position: absolute;
   top: 1rem;
@@ -1767,7 +1807,7 @@ a {
   /* Scroll inside form if layout is constrained */
   flex-grow: 1;
   scrollbar-width: thin;
-  scrollbar-color: rgba(6, 78, 59, 0.2) transparent;
+  scrollbar-color: #000000 transparent;
 }
 
 /* Custom premium scrollbar for glass form */
@@ -1780,12 +1820,12 @@ a {
 }
 
 .modal-form::-webkit-scrollbar-thumb {
-  background: rgba(6, 78, 59, 0.2);
+  background: #000000;
   border-radius: var(--radius-full);
 }
 
 .modal-form::-webkit-scrollbar-thumb:hover {
-  background: rgba(6, 78, 59, 0.4);
+  background: #222222;
 }
 
 .form-group {
@@ -3057,6 +3097,11 @@ a {
 }
 
 /* Custom scrollbar for Lightbox scroll container */
+.fabric-page-wrapper .lightbox-scroll-container {
+  scrollbar-width: thin;
+  scrollbar-color: #000000 transparent;
+}
+
 .fabric-page-wrapper .lightbox-scroll-container::-webkit-scrollbar {
   width: 6px;
 }
@@ -3067,12 +3112,12 @@ a {
 }
 
 .fabric-page-wrapper .lightbox-scroll-container::-webkit-scrollbar-thumb {
-  background: rgba(197, 168, 128, 0.35);
+  background: #000000;
   border-radius: 8px;
 }
 
 .fabric-page-wrapper .lightbox-scroll-container::-webkit-scrollbar-thumb:hover {
-  background: rgba(197, 168, 128, 0.55);
+  background: #222222;
 }
 
 /* Porcelain Light Theme (copied and adapted from Fabric Page) */
@@ -3093,6 +3138,14 @@ a {
 
 .porcelain-theme p {
   color: #4A5B55 !important;
+}
+
+.porcelain-theme p.white-text {
+  color: #ffffff !important;
+}
+
+.black-text {
+  color: #000000 !important;
 }
 
 /* Hero Section override for Porcelain subpages */
