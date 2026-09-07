@@ -4198,6 +4198,301 @@ const FABRICS_DATA = [
       { id: 'pv_tg_v1', name: 'Texture View 1', colorHex: '#6c6760', image: '/polyviscose/taupe grey fabric 1.png' },
       { id: 'pv_tg_v2', name: 'Texture View 2', colorHex: '#58534d', image: '/polyviscose/taupe grey fabric 2.png' }
     ]
+  },
+  {
+    id: 'pv_neptune_green',
+    name: 'Neptune Green Poly-Viscose',
+    category: 'polyviscose',
+    patternClass: 'fabric-pattern-polyviscose',
+    image: '/polyviscose/Neptune green fabric 1.png',
+    desc: 'Distinctive oceanic Neptune green poly-viscose blend fabric featuring refreshing depth, fluid drape, and wrinkle-resistant structure for modern bespoke suits.',
+    origin: 'India / Italy Mill',
+    weight: '240 gsm',
+    threadCount: '65/35 High-Twist Twill',
+    breathability: 'High',
+    badge: 'Oceanic Tone',
+    variants: [
+      { id: 'pv_ng_v1', name: 'Texture View 1', colorHex: '#1d5e56', image: '/polyviscose/Neptune green fabric 1.png' },
+      { id: 'pv_ng_v2', name: 'Texture View 2', colorHex: '#144640', image: '/polyviscose/Neptune green fabric 2.png' }
+    ]
+  },
+  {
+    id: 'pv_dark_chocolate',
+    name: 'Dark Chocolate Poly-Viscose',
+    category: 'polyviscose',
+    patternClass: 'fabric-pattern-polyviscose',
+    image: '/polyviscose/dark chocolate fabric 1.png',
+    desc: 'Indulgent deep dark chocolate brown poly-viscose cloth. Offers rich earthy warmth, lustrous finish, and exceptional crease resistance for tailored blazers and suits.',
+    origin: 'India / Italy Mill',
+    weight: '245 gsm',
+    threadCount: '65/35 High-Twist Twill',
+    breathability: 'High',
+    badge: 'Deep Earth',
+    variants: [
+      { id: 'pv_dc_v1', name: 'Texture View 1', colorHex: '#38241d', image: '/polyviscose/dark chocolate fabric 1.png' },
+      { id: 'pv_dc_v2', name: 'Texture View 2', colorHex: '#291913', image: '/polyviscose/dark chocolate fabric 2.png' }
+    ]
+  },
+  {
+    id: 'pv_frosted_pink',
+    name: 'Frosted Pink Poly-Viscose',
+    category: 'polyviscose',
+    patternClass: 'fabric-pattern-polyviscose',
+    image: '/polyviscose/frosted pink fabric 1.png',
+    desc: 'Subtle frosted pale pink poly-viscose blend with an airy modern pastel aesthetic and soft viscose drape, ideal for contemporary suits and summer jackets.',
+    origin: 'India / Italy Mill',
+    weight: '235 gsm',
+    threadCount: '65/35 High-Twist Twill',
+    breathability: 'High',
+    badge: 'Pastel Luxe',
+    variants: [
+      { id: 'pv_fpk_v1', name: 'Texture View 1', colorHex: '#d8aab4', image: '/polyviscose/frosted pink fabric 1.png' },
+      { id: 'pv_fpk_v2', name: 'Texture View 2', colorHex: '#c496a0', image: '/polyviscose/frosted pink fabric 2.png' }
+    ]
+  },
+  {
+    id: 'pv_oxblood',
+    name: 'Oxblood Red Poly-Viscose',
+    category: 'polyviscose',
+    patternClass: 'fabric-pattern-polyviscose',
+    image: '/polyviscose/oxblood fabric 1.png',
+    desc: 'Commanding rich oxblood crimson-brown poly-viscose fabric designed for bold evening statement pieces, dinner jackets, and bespoke trousers.',
+    origin: 'India / Italy Mill',
+    weight: '245 gsm',
+    threadCount: '65/35 High-Twist Twill',
+    breathability: 'High',
+    badge: 'Statement Luxury',
+    variants: [
+      { id: 'pv_ox_v1', name: 'Texture View 1', colorHex: '#52191e', image: '/polyviscose/oxblood fabric 1.png' },
+      { id: 'pv_ox_v2', name: 'Texture View 2', colorHex: '#3d1115', image: '/polyviscose/oxblood fabric 2.png' }
+    ]
+  },
+  {
+    id: 'pv_raspberry_red',
+    name: 'Raspberry Red Poly-Viscose',
+    category: 'polyviscose',
+    patternClass: 'fabric-pattern-polyviscose',
+    image: '/polyviscose/raspberry red fabric 1.png',
+    desc: 'Lustrous vibrant raspberry red poly-viscose blend featuring jewel-like radiance, superb drape, and durable shape retention for party and festive tailoring.',
+    origin: 'India / Italy Mill',
+    weight: '240 gsm',
+    threadCount: '65/35 High-Twist Twill',
+    breathability: 'High',
+    badge: 'Festive Jewel',
+    variants: [
+      { id: 'pv_rr_v1', name: 'Texture View 1', colorHex: '#8b1e3f', image: '/polyviscose/raspberry red fabric 1.png' },
+      { id: 'pv_rr_v2', name: 'Texture View 2', colorHex: '#731633', image: '/polyviscose/raspberry red fabric 2.png' }
+    ]
+  },
+  {
+    id: 'pv_rust_orange',
+    name: 'Rust Orange Poly-Viscose',
+    category: 'polyviscose',
+    patternClass: 'fabric-pattern-polyviscose',
+    image: '/polyviscose/rust orange fabric 1.png',
+    desc: 'Warm autumnal terracotta rust orange poly-viscose fabric. Richly saturated hue with structured resilience for safari jackets, overcoats, and festive blazers.',
+    origin: 'India / Italy Mill',
+    weight: '240 gsm',
+    threadCount: '65/35 High-Twist Twill',
+    breathability: 'High',
+    badge: 'Autumn Warmth',
+    variants: [
+      { id: 'pv_ro_v1', name: 'Texture View 1', colorHex: '#9c4323', image: '/polyviscose/rust orange fabric 1.png' },
+      { id: 'pv_ro_v2', name: 'Texture View 2', colorHex: '#803419', image: '/polyviscose/rust orange fabric 2.png' }
+    ]
+  },
+  {
+    id: 'pv_teaberry_pink',
+    name: 'Teaberry Pink Poly-Viscose',
+    category: 'polyviscose',
+    patternClass: 'fabric-pattern-polyviscose',
+    image: '/polyviscose/teaberry pink fabric 1.png',
+    desc: 'Charming dusky teaberry pink poly-viscose cloth. Soft texture, flattering modern undertone, and excellent wrinkle recovery for stylish smart-casual attire.',
+    origin: 'India / Italy Mill',
+    weight: '235 gsm',
+    threadCount: '65/35 High-Twist Twill',
+    breathability: 'High',
+    badge: 'Dusk Rose',
+    variants: [
+      { id: 'pv_tp_v1', name: 'Texture View 1', colorHex: '#b25d74', image: '/polyviscose/teaberry pink fabric 1.png' },
+      { id: 'pv_tp_v2', name: 'Texture View 2', colorHex: '#9c4d62', image: '/polyviscose/teaberry pink fabric 2.png' }
+    ]
+  },
+  {
+    id: 'pv_onyx_black',
+    name: 'Onyx Black Poly-Viscose',
+    category: 'polyviscose',
+    patternClass: 'fabric-pattern-polyviscose',
+    image: '/polyviscose/black_polyviscose_1.jpg',
+    desc: 'Deep jet black poly-viscose blend suiting cloth with clean weave structure, crisp drape, and complete wrinkle resistance for tuxedos and formal suits.',
+    origin: 'India / Italy Mill',
+    weight: '250 gsm',
+    threadCount: '65/35 High-Twist Twill',
+    breathability: 'High',
+    badge: 'Formal Classic',
+    variants: [
+      { id: 'pv_obk_v1', name: 'Texture View 1', colorHex: '#141416', image: '/polyviscose/black_polyviscose_1.jpg' }
+    ]
+  },
+  {
+    id: 'pv_imperial_burgundy',
+    name: 'Imperial Burgundy Poly-Viscose',
+    category: 'polyviscose',
+    patternClass: 'fabric-pattern-polyviscose',
+    image: '/polyviscose/burgundy_polyviscose_1.jpg',
+    desc: 'Rich imperial burgundy poly-viscose suiting with deep wine undertones and a refined silky finish for luxury dinner jackets and evening blazers.',
+    origin: 'India / Italy Mill',
+    weight: '245 gsm',
+    threadCount: '65/35 High-Twist Twill',
+    breathability: 'High',
+    badge: 'Evening Regal',
+    variants: [
+      { id: 'pv_ibg_v1', name: 'Texture View 1', colorHex: '#4d121e', image: '/polyviscose/burgundy_polyviscose_1.jpg' }
+    ]
+  },
+  {
+    id: 'pv_heritage_camel',
+    name: 'Heritage Camel Poly-Viscose',
+    category: 'polyviscose',
+    patternClass: 'fabric-pattern-polyviscose',
+    image: '/polyviscose/camel_polyviscose_1.jpg',
+    desc: 'Distinguished warm camel tan poly-viscose blend. Versatile neutral aesthetic with a resilient drape suited for overcoats and stylish daywear.',
+    origin: 'India / Italy Mill',
+    weight: '240 gsm',
+    threadCount: '65/35 High-Twist Twill',
+    breathability: 'High',
+    badge: 'Autumn Classic',
+    variants: [
+      { id: 'pv_hcm_v1', name: 'Texture View 1', colorHex: '#a8794f', image: '/polyviscose/camel_polyviscose_1.jpg' }
+    ]
+  },
+  {
+    id: 'pv_estate_charcoal',
+    name: 'Estate Charcoal Poly-Viscose',
+    category: 'polyviscose',
+    patternClass: 'fabric-pattern-polyviscose',
+    image: '/polyviscose/charcoal_polyviscose_1.jpg',
+    desc: 'Dense estate charcoal poly-viscose cloth offering sharp tailoring lines, long-lasting durability, and crease recovery for executive 2-piece suits.',
+    origin: 'India / Italy Mill',
+    weight: '250 gsm',
+    threadCount: '65/35 High-Twist Twill',
+    breathability: 'High',
+    badge: 'Executive Suiting',
+    variants: [
+      { id: 'pv_ech_v1', name: 'Texture View 1', colorHex: '#2b2d30', image: '/polyviscose/charcoal_polyviscose_1.jpg' }
+    ]
+  },
+  {
+    id: 'pv_royal_emerald',
+    name: 'Royal Emerald Poly-Viscose',
+    category: 'polyviscose',
+    patternClass: 'fabric-pattern-polyviscose',
+    image: '/polyviscose/emerald_polyviscose_1.jpg',
+    desc: 'Deep royal emerald green poly-viscose blend fabric featuring rich gem luster and supple drape for ceremonial and celebratory garments.',
+    origin: 'India / Italy Mill',
+    weight: '245 gsm',
+    threadCount: '65/35 High-Twist Twill',
+    breathability: 'High',
+    badge: 'Gemstone Luxury',
+    variants: [
+      { id: 'pv_rem_v1', name: 'Texture View 1', colorHex: '#163d2c', image: '/polyviscose/emerald_polyviscose_1.jpg' }
+    ]
+  },
+  {
+    id: 'pv_espresso_mocha',
+    name: 'Espresso Mocha Poly-Viscose',
+    category: 'polyviscose',
+    patternClass: 'fabric-pattern-polyviscose',
+    image: '/polyviscose/mocha_polyviscose_1.jpg',
+    desc: 'Deep warm espresso mocha poly-viscose cloth. Rich earthy elegance with high wrinkle resistance for sharp modern silhouettes.',
+    origin: 'India / Italy Mill',
+    weight: '240 gsm',
+    threadCount: '65/35 High-Twill Blend',
+    breathability: 'High',
+    badge: 'Warm Earth',
+    variants: [
+      { id: 'pv_esm_v1', name: 'Texture View 1', colorHex: '#483327', image: '/polyviscose/mocha_polyviscose_1.jpg' }
+    ]
+  },
+  {
+    id: 'pv_admiral_navy',
+    name: 'Admiral Navy Poly-Viscose',
+    category: 'polyviscose',
+    patternClass: 'fabric-pattern-polyviscose',
+    image: '/polyviscose/navy_polyviscose_1.jpg',
+    desc: 'Authoritative deep admiral navy blue poly-viscose blend suiting fabric. Structured, comfortable, and tailored for executive leadership wear.',
+    origin: 'India / Italy Mill',
+    weight: '245 gsm',
+    threadCount: '65/35 High-Twist Twill',
+    breathability: 'High',
+    badge: 'Corporate Standard',
+    variants: [
+      { id: 'pv_anv_v1', name: 'Texture View 1', colorHex: '#162338', image: '/polyviscose/navy_polyviscose_1.jpg' }
+    ]
+  },
+  {
+    id: 'pv_savannah_olive',
+    name: 'Savannah Olive Poly-Viscose',
+    category: 'polyviscose',
+    patternClass: 'fabric-pattern-polyviscose',
+    image: '/polyviscose/olive_polyviscose_1.jpg',
+    desc: 'Muted savannah olive green poly-viscose blend. Subtle natural tones with durable weave and comfortable drape for safari jackets and casual trousers.',
+    origin: 'India / Italy Mill',
+    weight: '240 gsm',
+    threadCount: '65/35 High-Twist Twill',
+    breathability: 'High',
+    badge: 'Modern Earth',
+    variants: [
+      { id: 'pv_svo_v1', name: 'Texture View 1', colorHex: '#474f3b', image: '/polyviscose/olive_polyviscose_1.jpg' }
+    ]
+  },
+  {
+    id: 'pv_velvet_plum',
+    name: 'Velvet Plum Poly-Viscose',
+    category: 'polyviscose',
+    patternClass: 'fabric-pattern-polyviscose',
+    image: '/polyviscose/plum_polyviscose_1.jpg',
+    desc: 'Opulent velvet plum purple poly-viscose cloth. Deep chromatic intensity, smooth hand-feel, and crisp crease recovery for statement tailoring.',
+    origin: 'India / Italy Mill',
+    weight: '245 gsm',
+    threadCount: '65/35 High-Twist Twill',
+    breathability: 'High',
+    badge: 'Evening Velvet',
+    variants: [
+      { id: 'pv_vpl_v1', name: 'Texture View 1', colorHex: '#441d36', image: '/polyviscose/plum_polyviscose_1.jpg' }
+    ]
+  },
+  {
+    id: 'pv_sterling_silver',
+    name: 'Sterling Silver Grey Poly-Viscose',
+    category: 'polyviscose',
+    patternClass: 'fabric-pattern-polyviscose',
+    image: '/polyviscose/silver_grey_polyviscose_1.jpg',
+    desc: 'Contemporary luminous sterling silver-grey poly-viscose fabric with a fine sheen, crisp drape, and exceptional versatility across seasons.',
+    origin: 'India / Italy Mill',
+    weight: '235 gsm',
+    threadCount: '65/35 High-Twist Twill',
+    breathability: 'High',
+    badge: 'Silver Luxe',
+    variants: [
+      { id: 'pv_ssg_v1', name: 'Texture View 1', colorHex: '#9da3a6', image: '/polyviscose/silver_grey_polyviscose_1.jpg' }
+    ]
+  },
+  {
+    id: 'pv_nordic_slate',
+    name: 'Nordic Slate Blue Poly-Viscose',
+    category: 'polyviscose',
+    patternClass: 'fabric-pattern-polyviscose',
+    image: '/polyviscose/slate_blue_polyviscose_1.jpg',
+    desc: 'Sophisticated Nordic slate blue poly-viscose blend. Subtle grey-blue character with all-day crease resistance for boardroom and evening wear.',
+    origin: 'India / Italy Mill',
+    weight: '240 gsm',
+    threadCount: '65/35 High-Twist Twill',
+    breathability: 'High',
+    badge: 'Nordic Blue',
+    variants: [
+      { id: 'pv_nsb_v1', name: 'Texture View 1', colorHex: '#3c4e5e', image: '/polyviscose/slate_blue_polyviscose_1.jpg' }
+    ]
   }
 ];
 

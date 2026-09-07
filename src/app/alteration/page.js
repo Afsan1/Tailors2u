@@ -408,13 +408,11 @@ export default function Alteration() {
                             fontSize: '0.84rem',
                             fontWeight: '600',
                             color: '#ffffff',
-                            display: 'flex',
-                            alignItems: 'center',
-                            gap: '0.35rem',
+                            display: 'block',
                             marginBottom: '0.4rem',
                           }}
                         >
-                          <span>✏️</span> Custom Notes / Requirements for {catData.title}
+                          Custom Notes / Requirements for {catData.title}
                         </label>
                         <textarea
                           id={`note-${catKey}`}
