@@ -1,0 +1,97 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="840" height="160" viewBox="0 0 840 160">
+  <defs>
+    <style>
+      .body-bg { fill: #FBF9F5; stroke: #D8D0C5; stroke-width: 1.5; }
+      .placket { fill: #FFFFFF; stroke: #DDD5C7; stroke-width: 1.2; }
+      .neck-band { fill: #C4B39D; stroke: #6F5D4B; stroke-width: 1.8; stroke-linejoin: round; }
+      .collar-leaf { fill: #D6C5AF; stroke: #6F5D4B; stroke-width: 2; stroke-linejoin: round; }
+      .btn-outer { fill: #FFFFFF; stroke: #6F5D4B; stroke-width: 1.2; }
+      .btn-inner { fill: #D6C5AF; }
+      .shadow-crease { stroke: #B5A28A; stroke-width: 1.2; }
+    </style>
+  </defs>
+
+  <!-- 1. CLASSIC (x: 0) -->
+  <g transform="translate(0, 10)">
+    <rect x="5" y="0" width="130" height="140" rx="10" fill="#FFFFFF" stroke="#E5E0D8" stroke-width="1.5"/>
+    <path d="M15 45 L50 32 L90 32 L125 45 L125 135 L15 135 Z" class="body-bg"/>
+    <rect x="61" y="32" width="18" height="103" class="placket"/>
+    <circle cx="70" cy="52" r="3.5" class="btn-outer"/><circle cx="70" cy="52" r="1.5" class="btn-inner"/>
+    <circle cx="70" cy="80" r="3.5" class="btn-outer"/><circle cx="70" cy="80" r="1.5" class="btn-inner"/>
+    <circle cx="70" cy="108" r="3.5" class="btn-outer"/><circle cx="70" cy="108" r="1.5" class="btn-inner"/>
+    <path d="M48 24 C48 10 92 10 92 24 C92 34 48 34 48 24 Z" class="neck-band"/>
+    <path d="M48 20 C46 36 54 64 66 70 C68 56 69 44 70 38 C60 28 52 22 48 20 Z" class="collar-leaf"/>
+    <path d="M92 20 C94 36 86 64 74 70 C72 56 71 44 70 38 C80 28 88 22 92 20 Z" class="collar-leaf"/>
+  </g>
+
+  <!-- 2. SPREAD (x: 140) -->
+  <g transform="translate(140, 10)">
+    <rect x="5" y="0" width="130" height="140" rx="10" fill="#FFFFFF" stroke="#E5E0D8" stroke-width="1.5"/>
+    <path d="M15 45 L50 32 L90 32 L125 45 L125 135 L15 135 Z" class="body-bg"/>
+    <rect x="61" y="32" width="18" height="103" class="placket"/>
+    <circle cx="70" cy="52" r="3.5" class="btn-outer"/><circle cx="70" cy="52" r="1.5" class="btn-inner"/>
+    <circle cx="70" cy="80" r="3.5" class="btn-outer"/><circle cx="70" cy="80" r="1.5" class="btn-inner"/>
+    <circle cx="70" cy="108" r="3.5" class="btn-outer"/><circle cx="70" cy="108" r="1.5" class="btn-inner"/>
+    <path d="M48 24 C48 10 92 10 92 24 C92 34 48 34 48 24 Z" class="neck-band"/>
+    <path d="M48 20 C44 32 46 48 55 58 C62 48 67 42 70 38 C60 28 52 22 48 20 Z" class="collar-leaf"/>
+    <path d="M92 20 C96 32 94 48 85 58 C78 48 73 42 70 38 C80 28 88 22 92 20 Z" class="collar-leaf"/>
+  </g>
+
+  <!-- 3. CUTAWAY (x: 280) -->
+  <g transform="translate(280, 10)">
+    <rect x="5" y="0" width="130" height="140" rx="10" fill="#FFFFFF" stroke="#E5E0D8" stroke-width="1.5"/>
+    <path d="M15 45 L50 32 L90 32 L125 45 L125 135 L15 135 Z" class="body-bg"/>
+    <rect x="61" y="32" width="18" height="103" class="placket"/>
+    <circle cx="70" cy="52" r="3.5" class="btn-outer"/><circle cx="70" cy="52" r="1.5" class="btn-inner"/>
+    <circle cx="70" cy="80" r="3.5" class="btn-outer"/><circle cx="70" cy="80" r="1.5" class="btn-inner"/>
+    <circle cx="70" cy="108" r="3.5" class="btn-outer"/><circle cx="70" cy="108" r="1.5" class="btn-inner"/>
+    <path d="M48 24 C48 10 92 10 92 24 C92 34 48 34 48 24 Z" class="neck-band"/>
+    <path d="M48 20 C42 26 40 38 46 45 C56 42 65 40 70 38 C60 28 52 22 48 20 Z" class="collar-leaf"/>
+    <path d="M92 20 C98 26 100 38 94 45 C84 42 75 40 70 38 C80 28 88 22 92 20 Z" class="collar-leaf"/>
+  </g>
+
+  <!-- 4. BUTTON DOWN (x: 420) -->
+  <g transform="translate(420, 10)">
+    <rect x="5" y="0" width="130" height="140" rx="10" fill="#FFFFFF" stroke="#E5E0D8" stroke-width="1.5"/>
+    <path d="M15 45 L50 32 L90 32 L125 45 L125 135 L15 135 Z" class="body-bg"/>
+    <rect x="61" y="32" width="18" height="103" class="placket"/>
+    <circle cx="70" cy="52" r="3.5" class="btn-outer"/><circle cx="70" cy="52" r="1.5" class="btn-inner"/>
+    <circle cx="70" cy="80" r="3.5" class="btn-outer"/><circle cx="70" cy="80" r="1.5" class="btn-inner"/>
+    <circle cx="70" cy="108" r="3.5" class="btn-outer"/><circle cx="70" cy="108" r="1.5" class="btn-inner"/>
+    <path d="M48 24 C48 10 92 10 92 24 C92 34 48 34 48 24 Z" class="neck-band"/>
+    <path d="M48 20 C46 36 54 64 66 70 C68 56 69 44 70 38 C60 28 52 22 48 20 Z" class="collar-leaf"/>
+    <path d="M92 20 C94 36 86 64 74 70 C72 56 71 44 70 38 C80 28 88 22 92 20 Z" class="collar-leaf"/>
+    <circle cx="63" cy="64" r="2" fill="#FFFFFF" stroke="#6F5D4B" stroke-width="1"/>
+    <circle cx="77" cy="64" r="2" fill="#FFFFFF" stroke="#6F5D4B" stroke-width="1"/>
+  </g>
+
+  <!-- 5. HIDDEN BUTTON (x: 560) -->
+  <g transform="translate(560, 10)">
+    <rect x="5" y="0" width="130" height="140" rx="10" fill="#FFFFFF" stroke="#E5E0D8" stroke-width="1.5"/>
+    <path d="M15 45 L50 32 L90 32 L125 45 L125 135 L15 135 Z" class="body-bg"/>
+    <rect x="61" y="32" width="18" height="103" class="placket"/>
+    <circle cx="70" cy="52" r="3.5" class="btn-outer"/><circle cx="70" cy="52" r="1.5" class="btn-inner"/>
+    <circle cx="70" cy="80" r="3.5" class="btn-outer"/><circle cx="70" cy="80" r="1.5" class="btn-inner"/>
+    <circle cx="70" cy="108" r="3.5" class="btn-outer"/><circle cx="70" cy="108" r="1.5" class="btn-inner"/>
+    <path d="M48 24 C48 10 92 10 92 24 C92 34 48 34 48 24 Z" class="neck-band"/>
+    <path d="M48 20 C46 36 54 64 66 70 C68 56 69 44 70 38 C60 28 52 22 48 20 Z" class="collar-leaf"/>
+    <path d="M92 20 C94 36 86 64 74 70 C72 56 71 44 70 38 C80 28 88 22 92 20 Z" class="collar-leaf"/>
+    <!-- Lifted flap on right collar tip -->
+    <path d="M74 70 L80 58 L86 64 Z" fill="#7A6852" stroke="#6F5D4B" stroke-width="1.2"/>
+    <circle cx="78" cy="65" r="2" fill="#FFFFFF" stroke="#6F5D4B" stroke-width="1"/>
+  </g>
+
+  <!-- 6. MANDARIN (x: 700) -->
+  <g transform="translate(700, 10)">
+    <rect x="5" y="0" width="130" height="140" rx="10" fill="#FFFFFF" stroke="#E5E0D8" stroke-width="1.5"/>
+    <path d="M15 45 L50 32 L90 32 L125 45 L125 135 L15 135 Z" class="body-bg"/>
+    <rect x="61" y="46" width="18" height="89" class="placket"/>
+    <circle cx="70" cy="60" r="3.5" class="btn-outer"/><circle cx="70" cy="60" r="1.5" class="btn-inner"/>
+    <circle cx="70" cy="88" r="3.5" class="btn-outer"/><circle cx="70" cy="88" r="1.5" class="btn-inner"/>
+    <circle cx="70" cy="114" r="3.5" class="btn-outer"/><circle cx="70" cy="114" r="1.5" class="btn-inner"/>
+    <path d="M48 24 C48 10 92 10 92 24 C92 34 48 34 48 24 Z" class="neck-band"/>
+    <!-- Mandarin rounded collar band with center button -->
+    <path d="M46 22 C46 14 94 14 94 22 C94 36 78 44 70 44 C62 44 46 36 46 22 Z" class="collar-leaf"/>
+    <circle cx="70" cy="38" r="3" class="btn-outer"/><circle cx="70" cy="38" r="1.2" class="btn-inner"/>
+  </g>
+</svg>

@@ -4317,184 +4317,90 @@ const FABRICS_DATA = [
       { id: 'pv_tp_v1', name: 'Texture View 1', colorHex: '#b25d74', image: '/polyviscose/teaberry pink fabric 1.png' },
       { id: 'pv_tp_v2', name: 'Texture View 2', colorHex: '#9c4d62', image: '/polyviscose/teaberry pink fabric 2.png' }
     ]
-  },
-  {
-    id: 'pv_onyx_black',
-    name: 'Onyx Black Poly-Viscose',
-    category: 'polyviscose',
-    patternClass: 'fabric-pattern-polyviscose',
-    image: '/polyviscose/black_polyviscose_1.jpg',
-    desc: 'Deep jet black poly-viscose blend suiting cloth with clean weave structure, crisp drape, and complete wrinkle resistance for tuxedos and formal suits.',
-    origin: 'India / Italy Mill',
-    weight: '250 gsm',
-    threadCount: '65/35 High-Twist Twill',
-    breathability: 'High',
-    badge: 'Formal Classic',
-    variants: [
-      { id: 'pv_obk_v1', name: 'Texture View 1', colorHex: '#141416', image: '/polyviscose/black_polyviscose_1.jpg' }
-    ]
-  },
-  {
-    id: 'pv_imperial_burgundy',
-    name: 'Imperial Burgundy Poly-Viscose',
-    category: 'polyviscose',
-    patternClass: 'fabric-pattern-polyviscose',
-    image: '/polyviscose/burgundy_polyviscose_1.jpg',
-    desc: 'Rich imperial burgundy poly-viscose suiting with deep wine undertones and a refined silky finish for luxury dinner jackets and evening blazers.',
-    origin: 'India / Italy Mill',
-    weight: '245 gsm',
-    threadCount: '65/35 High-Twist Twill',
-    breathability: 'High',
-    badge: 'Evening Regal',
-    variants: [
-      { id: 'pv_ibg_v1', name: 'Texture View 1', colorHex: '#4d121e', image: '/polyviscose/burgundy_polyviscose_1.jpg' }
-    ]
-  },
-  {
-    id: 'pv_heritage_camel',
-    name: 'Heritage Camel Poly-Viscose',
-    category: 'polyviscose',
-    patternClass: 'fabric-pattern-polyviscose',
-    image: '/polyviscose/camel_polyviscose_1.jpg',
-    desc: 'Distinguished warm camel tan poly-viscose blend. Versatile neutral aesthetic with a resilient drape suited for overcoats and stylish daywear.',
-    origin: 'India / Italy Mill',
-    weight: '240 gsm',
-    threadCount: '65/35 High-Twist Twill',
-    breathability: 'High',
-    badge: 'Autumn Classic',
-    variants: [
-      { id: 'pv_hcm_v1', name: 'Texture View 1', colorHex: '#a8794f', image: '/polyviscose/camel_polyviscose_1.jpg' }
-    ]
-  },
-  {
-    id: 'pv_estate_charcoal',
-    name: 'Estate Charcoal Poly-Viscose',
-    category: 'polyviscose',
-    patternClass: 'fabric-pattern-polyviscose',
-    image: '/polyviscose/charcoal_polyviscose_1.jpg',
-    desc: 'Dense estate charcoal poly-viscose cloth offering sharp tailoring lines, long-lasting durability, and crease recovery for executive 2-piece suits.',
-    origin: 'India / Italy Mill',
-    weight: '250 gsm',
-    threadCount: '65/35 High-Twist Twill',
-    breathability: 'High',
-    badge: 'Executive Suiting',
-    variants: [
-      { id: 'pv_ech_v1', name: 'Texture View 1', colorHex: '#2b2d30', image: '/polyviscose/charcoal_polyviscose_1.jpg' }
-    ]
-  },
-  {
-    id: 'pv_royal_emerald',
-    name: 'Royal Emerald Poly-Viscose',
-    category: 'polyviscose',
-    patternClass: 'fabric-pattern-polyviscose',
-    image: '/polyviscose/emerald_polyviscose_1.jpg',
-    desc: 'Deep royal emerald green poly-viscose blend fabric featuring rich gem luster and supple drape for ceremonial and celebratory garments.',
-    origin: 'India / Italy Mill',
-    weight: '245 gsm',
-    threadCount: '65/35 High-Twist Twill',
-    breathability: 'High',
-    badge: 'Gemstone Luxury',
-    variants: [
-      { id: 'pv_rem_v1', name: 'Texture View 1', colorHex: '#163d2c', image: '/polyviscose/emerald_polyviscose_1.jpg' }
-    ]
-  },
-  {
-    id: 'pv_espresso_mocha',
-    name: 'Espresso Mocha Poly-Viscose',
-    category: 'polyviscose',
-    patternClass: 'fabric-pattern-polyviscose',
-    image: '/polyviscose/mocha_polyviscose_1.jpg',
-    desc: 'Deep warm espresso mocha poly-viscose cloth. Rich earthy elegance with high wrinkle resistance for sharp modern silhouettes.',
-    origin: 'India / Italy Mill',
-    weight: '240 gsm',
-    threadCount: '65/35 High-Twill Blend',
-    breathability: 'High',
-    badge: 'Warm Earth',
-    variants: [
-      { id: 'pv_esm_v1', name: 'Texture View 1', colorHex: '#483327', image: '/polyviscose/mocha_polyviscose_1.jpg' }
-    ]
-  },
-  {
-    id: 'pv_admiral_navy',
-    name: 'Admiral Navy Poly-Viscose',
-    category: 'polyviscose',
-    patternClass: 'fabric-pattern-polyviscose',
-    image: '/polyviscose/navy_polyviscose_1.jpg',
-    desc: 'Authoritative deep admiral navy blue poly-viscose blend suiting fabric. Structured, comfortable, and tailored for executive leadership wear.',
-    origin: 'India / Italy Mill',
-    weight: '245 gsm',
-    threadCount: '65/35 High-Twist Twill',
-    breathability: 'High',
-    badge: 'Corporate Standard',
-    variants: [
-      { id: 'pv_anv_v1', name: 'Texture View 1', colorHex: '#162338', image: '/polyviscose/navy_polyviscose_1.jpg' }
-    ]
-  },
-  {
-    id: 'pv_savannah_olive',
-    name: 'Savannah Olive Poly-Viscose',
-    category: 'polyviscose',
-    patternClass: 'fabric-pattern-polyviscose',
-    image: '/polyviscose/olive_polyviscose_1.jpg',
-    desc: 'Muted savannah olive green poly-viscose blend. Subtle natural tones with durable weave and comfortable drape for safari jackets and casual trousers.',
-    origin: 'India / Italy Mill',
-    weight: '240 gsm',
-    threadCount: '65/35 High-Twist Twill',
-    breathability: 'High',
-    badge: 'Modern Earth',
-    variants: [
-      { id: 'pv_svo_v1', name: 'Texture View 1', colorHex: '#474f3b', image: '/polyviscose/olive_polyviscose_1.jpg' }
-    ]
-  },
-  {
-    id: 'pv_velvet_plum',
-    name: 'Velvet Plum Poly-Viscose',
-    category: 'polyviscose',
-    patternClass: 'fabric-pattern-polyviscose',
-    image: '/polyviscose/plum_polyviscose_1.jpg',
-    desc: 'Opulent velvet plum purple poly-viscose cloth. Deep chromatic intensity, smooth hand-feel, and crisp crease recovery for statement tailoring.',
-    origin: 'India / Italy Mill',
-    weight: '245 gsm',
-    threadCount: '65/35 High-Twist Twill',
-    breathability: 'High',
-    badge: 'Evening Velvet',
-    variants: [
-      { id: 'pv_vpl_v1', name: 'Texture View 1', colorHex: '#441d36', image: '/polyviscose/plum_polyviscose_1.jpg' }
-    ]
-  },
-  {
-    id: 'pv_sterling_silver',
-    name: 'Sterling Silver Grey Poly-Viscose',
-    category: 'polyviscose',
-    patternClass: 'fabric-pattern-polyviscose',
-    image: '/polyviscose/silver_grey_polyviscose_1.jpg',
-    desc: 'Contemporary luminous sterling silver-grey poly-viscose fabric with a fine sheen, crisp drape, and exceptional versatility across seasons.',
-    origin: 'India / Italy Mill',
-    weight: '235 gsm',
-    threadCount: '65/35 High-Twist Twill',
-    breathability: 'High',
-    badge: 'Silver Luxe',
-    variants: [
-      { id: 'pv_ssg_v1', name: 'Texture View 1', colorHex: '#9da3a6', image: '/polyviscose/silver_grey_polyviscose_1.jpg' }
-    ]
-  },
-  {
-    id: 'pv_nordic_slate',
-    name: 'Nordic Slate Blue Poly-Viscose',
-    category: 'polyviscose',
-    patternClass: 'fabric-pattern-polyviscose',
-    image: '/polyviscose/slate_blue_polyviscose_1.jpg',
-    desc: 'Sophisticated Nordic slate blue poly-viscose blend. Subtle grey-blue character with all-day crease resistance for boardroom and evening wear.',
-    origin: 'India / Italy Mill',
-    weight: '240 gsm',
-    threadCount: '65/35 High-Twist Twill',
-    breathability: 'High',
-    badge: 'Nordic Blue',
-    variants: [
-      { id: 'pv_nsb_v1', name: 'Texture View 1', colorHex: '#3c4e5e', image: '/polyviscose/slate_blue_polyviscose_1.jpg' }
-    ]
   }
 ];
+
+export const FABRIC_PRICING_BY_TYPE = {
+  'giza-cotton': { name: 'Giza Cotton', price: 499, unit: 'per meter', formatted: '₹499 / meter' },
+  'bamboo-cotton': { name: 'Bamboo Cotton', price: 699, unit: 'per meter', formatted: '₹699 / meter' },
+  'linen-cotton': { name: 'Linen Cotton', price: 699, unit: 'per meter', formatted: '₹699 / meter' },
+  'pure-cotton': { name: 'Pure Cotton', price: 799, unit: 'per meter', formatted: '₹799 / meter' },
+  'khadi': { name: 'Khadi', price: 499, unit: 'per meter', formatted: '₹499 / meter' },
+  'linen': { name: 'Linen', price: 899, unit: 'per meter', formatted: '₹899 / meter' },
+  'wool': { name: 'Wool', price: 899, unit: 'per meter', formatted: '₹899 / meter' },
+  'silk': { name: 'Silk', price: 499, unit: 'per meter', formatted: '₹499 / meter' },
+  'satin': { name: 'Satin', price: 399, unit: 'per meter', formatted: '₹399 / meter' },
+  'armani': { name: 'Armani', price: 799, unit: 'per meter', formatted: '₹799 / meter' },
+  'polyviscose': { name: 'Poly Viscose', price: 499, unit: 'per meter', formatted: '₹499 / meter' },
+  'spoon': { name: 'Spoon Fabric', price: 499, unit: 'per meter', formatted: '₹499 / meter' },
+};
+
+export function getFabricPrice(fabric) {
+  if (!fabric) return { price: 499, unit: 'per meter', formatted: '₹499 / meter', raw: 499 };
+  if (typeof fabric.price === 'number') {
+    return {
+      price: fabric.price,
+      unit: fabric.priceUnit || 'per meter',
+      formatted: `₹${fabric.price} / ${fabric.priceUnit || 'meter'}`,
+      raw: fabric.price
+    };
+  }
+
+  const name = (fabric.name || '').toLowerCase();
+  const cat = (fabric.category || '').toLowerCase();
+  const subCat = (fabric.subCategory || '').toLowerCase();
+
+  // 1. Giza Cotton: 499 / meter
+  if (subCat === 'pure-egyptian-giza-cotton' || name.includes('giza')) {
+    return FABRIC_PRICING_BY_TYPE['giza-cotton'];
+  }
+  // 2. Bamboo Cotton: 699 / meter
+  if (subCat === 'bamboo-cotton' || name.includes('bamboo')) {
+    return FABRIC_PRICING_BY_TYPE['bamboo-cotton'];
+  }
+  // 3. Linen Cotton: 699 / meter
+  if (subCat === 'linen-cotton' || (name.includes('linen') && name.includes('cotton'))) {
+    return FABRIC_PRICING_BY_TYPE['linen-cotton'];
+  }
+  // 4. Pure Cotton: 799 / meter
+  if (subCat === 'pure-cotton' || cat === 'cotton') {
+    return FABRIC_PRICING_BY_TYPE['pure-cotton'];
+  }
+  // 5. Khadi / Khaadi: 499 / meter
+  if (cat === 'khaadi' || cat === 'khadi' || name.includes('khadi') || name.includes('khaadi')) {
+    return FABRIC_PRICING_BY_TYPE['khadi'];
+  }
+  // 6. Linen: 899 / meter
+  if (cat === 'linen' || name.includes('linen')) {
+    return FABRIC_PRICING_BY_TYPE['linen'];
+  }
+  // 7. Wool: 899 / meter
+  if (cat === 'wool' || name.includes('wool')) {
+    return FABRIC_PRICING_BY_TYPE['wool'];
+  }
+  // 8. Silk: 499 / meter
+  if (cat === 'silk' || name.includes('silk')) {
+    return FABRIC_PRICING_BY_TYPE['silk'];
+  }
+  // 9. Satin: 399 / meter
+  if (cat === 'satin' || name.includes('satin')) {
+    return FABRIC_PRICING_BY_TYPE['satin'];
+  }
+  // 10. Armani: 799 / meter
+  if (cat === 'armani' || name.includes('armani')) {
+    return FABRIC_PRICING_BY_TYPE['armani'];
+  }
+  // 11. Poly Viscose: 499 / meter
+  if (cat === 'polyviscose' || cat === 'poly-viscose' || name.includes('poly') || name.includes('viscos')) {
+    return FABRIC_PRICING_BY_TYPE['polyviscose'];
+  }
+  // 12. Spoon Fabric / Spun: 499 / meter
+  if (cat === 'spoon' || cat === 'spun' || name.includes('spoon') || name.includes('spun')) {
+    return FABRIC_PRICING_BY_TYPE['spoon'];
+  }
+
+  return { price: 499, unit: 'per meter', formatted: '₹499 / meter', raw: 499 };
+}
 
 export default function Fabric() {
   const [searchTerm, setSearchTerm] = useState('');
@@ -4508,8 +4414,9 @@ export default function Fabric() {
   const touchEndXRef = useRef(0);
   const { openBooking } = useBooking();
 
-  const handleBookWithFabric = (fabricName) => {
-    localStorage.setItem('tailors2u_booking_notes', `Customer is interested in custom tailoring using fabric: ${fabricName}`);
+  const handleBookWithFabric = (fabricName, fabricPrice) => {
+    const priceText = fabricPrice ? ` (₹${fabricPrice}/meter)` : '';
+    localStorage.setItem('tailors2u_booking_notes', `Customer is interested in custom tailoring using fabric: ${fabricName}${priceText}`);
     openBooking('Bespoke Fabric Consultation');
   };
 
@@ -4529,6 +4436,7 @@ export default function Fabric() {
   const allGalleryImages = useMemo(() => {
     const list = [];
     filteredFabrics.forEach((fabric) => {
+      const priceInfo = getFabricPrice(fabric);
       if (fabric.variants && fabric.variants.length > 0) {
         fabric.variants.forEach((v) => {
           list.push({
@@ -4545,7 +4453,8 @@ export default function Fabric() {
             threadCount: fabric.threadCount,
             breathability: fabric.breathability,
             category: fabric.category,
-            patternClass: fabric.patternClass
+            patternClass: fabric.patternClass,
+            priceInfo
           });
         });
       } else if (fabric.image) {
@@ -4563,7 +4472,8 @@ export default function Fabric() {
           threadCount: fabric.threadCount,
           breathability: fabric.breathability,
           category: fabric.category,
-          patternClass: fabric.patternClass
+          patternClass: fabric.patternClass,
+          priceInfo
         });
       }
     });
@@ -4645,30 +4555,26 @@ export default function Fabric() {
           </div>
           <div className="filter-tabs-wrapper">
             <div className="filter-tabs">
-              {['all', 'cotton', 'khaadi', 'linen', 'wool', 'silk', 'satin', 'armani', 'polyviscose', 'spoon', 'other'].map((cat) => (
+              {[
+                { key: 'all', label: 'All' },
+                { key: 'cotton', label: 'Cotton' },
+                { key: 'khaadi', label: 'Khadi' },
+                { key: 'linen', label: 'Linen' },
+                { key: 'wool', label: 'Wool' },
+                { key: 'silk', label: 'Silk' },
+                { key: 'satin', label: 'Satin' },
+                { key: 'armani', label: 'Armani' },
+                { key: 'polyviscose', label: 'Poly-Viscose' },
+                { key: 'spoon', label: 'Spun / Spoon' },
+                { key: 'other', label: 'Others' }
+              ].map(({ key: cat, label }) => (
                 <button
                   key={cat}
                   className={`filter-tab ${selectedCategory === cat ? 'active' : ''}`}
                   onClick={() => setSelectedCategory(cat)}
                 >
                   <span className="tab-label">
-                    {cat === 'all'
-                      ? 'All'
-                      : cat === 'silk'
-                      ? 'Silk'
-                      : cat === 'wool'
-                      ? 'Wool'
-                      : cat === 'khaadi'
-                      ? 'Khaadi'
-                      : cat === 'other'
-                      ? 'Others'
-                      : cat === 'spoon'
-                      ? 'Spun / Spoon'
-                      : cat === 'satin'
-                      ? 'Satin'
-                      : cat === 'polyviscose'
-                      ? 'Poly-Viscose'
-                      : cat.charAt(0).toUpperCase() + cat.slice(1)}
+                    {label}
                   </span>
                   {selectedCategory === cat && <span className="active-dot" />}
                 </button>
@@ -4745,12 +4651,13 @@ export default function Fabric() {
               const activeVariantId = selectedVariants[fabric.id] || (fabric.variants ? fabric.variants[0].id : null);
               const activeVariant = fabric.variants?.find(v => v.id === activeVariantId);
               const fabricImage = activeVariant?.image || fabric.image;
+              const priceInfo = getFabricPrice(fabric);
               return (
                 <div key={fabric.id} className="fabric-card animate-fade-in">
                   <div 
                     className="fabric-sample-render" 
                     style={{ cursor: 'zoom-in', overflow: 'hidden', position: 'relative' }}
-                    onClick={() => setActiveLightboxFabric({ ...fabric, activeVariant })}
+                    onClick={() => setActiveLightboxFabric({ ...fabric, activeVariant, priceInfo })}
                     title="Click to view full fabric swatch"
                   >
                     {fabricImage ? (
@@ -4761,11 +4668,14 @@ export default function Fabric() {
                       />
                     ) : (
                       <div 
-                        className={fabric.patternClass}
+                        className={fabric.patternClass} 
                         style={{ width: '100%', height: '100%' }}
                       ></div>
                     )}
                     <span className="fabric-badge">{fabric.badge}</span>
+                    <div className="fabric-price-badge">
+                      ₹{priceInfo.price} <span className="unit">/ meter</span>
+                    </div>
                   </div>
                   <div className="fabric-info">
                     <div className="fabric-title-row">
@@ -4808,9 +4718,12 @@ export default function Fabric() {
                       </div>
                     )}
 
-
                   
                   <div className="fabric-meta-grid">
+                    <div className="fabric-meta-item">
+                      <span>Price</span>
+                      <span style={{ color: 'var(--beige-gold)', fontWeight: '700' }}>{priceInfo.formatted}</span>
+                    </div>
                     <div className="fabric-meta-item">
                       <span>Weight</span>
                       <span>{fabric.weight}</span>
@@ -4818,10 +4731,6 @@ export default function Fabric() {
                     <div className="fabric-meta-item">
                       <span>Thread Count</span>
                       <span>{fabric.threadCount}</span>
-                    </div>
-                    <div className="fabric-meta-item">
-                      <span>Breathability</span>
-                      <span>{fabric.breathability}</span>
                     </div>
                     <div className="fabric-meta-item">
                       <span>Category</span>
@@ -4832,7 +4741,7 @@ export default function Fabric() {
                   <button 
                     className="btn-primary" 
                     style={{ width: '100%', padding: '0.8rem' }}
-                    onClick={() => handleBookWithFabric(fabric.name)}
+                    onClick={() => handleBookWithFabric(fabric.name, priceInfo.price)}
                   >
                     Select & Book Fitting
                   </button>
@@ -4845,247 +4754,268 @@ export default function Fabric() {
       </section>
 
       {/* Lightbox Modal for Fabric Swatch Popup */}
-      {activeLightboxFabric && (
-        <div 
-          style={{
-            position: 'fixed',
-            top: 0,
-            left: 0,
-            right: 0,
-            bottom: 0,
-            backgroundColor: 'rgba(0, 0, 0, 0.85)',
-            backdropFilter: 'blur(8px)',
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center',
-            zIndex: 1000,
-            padding: '2rem',
-            animation: 'modalFadeIn 0.25s ease-out forwards'
-          }}
-          onClick={() => setActiveLightboxFabric(null)}
-        >
+      {activeLightboxFabric && (() => {
+        const lightboxPriceInfo = activeLightboxFabric.priceInfo || getFabricPrice(activeLightboxFabric);
+        return (
           <div 
-            className="lightbox-modal-content"
             style={{
-              backgroundColor: 'var(--emerald-deep)',
-              border: '1px solid rgba(197, 168, 128, 0.3)',
-              borderRadius: '16px',
-              maxWidth: '500px',
-              width: '100%',
-              maxHeight: '80vh',
+              position: 'fixed',
+              top: 0,
+              left: 0,
+              right: 0,
+              bottom: 0,
+              backgroundColor: 'rgba(0, 0, 0, 0.85)',
+              backdropFilter: 'blur(8px)',
               display: 'flex',
-              flexDirection: 'column',
-              overflow: 'hidden',
-              padding: 0,
-              paddingRight: '6px',
-              position: 'relative',
-              boxShadow: '0 20px 50px rgba(0, 0, 0, 0.5)',
-              animation: 'modalScaleUp 0.3s cubic-bezier(0.34, 1.56, 0.64, 1) forwards'
+              alignItems: 'center',
+              justifyContent: 'center',
+              zIndex: 1000,
+              padding: '2rem',
+              animation: 'modalFadeIn 0.25s ease-out forwards'
             }}
-            onClick={(e) => e.stopPropagation()}
+            onClick={() => setActiveLightboxFabric(null)}
           >
-            {/* Close button - Fixed position */}
-            <button 
-              style={{
-                position: 'absolute',
-                top: '1rem',
-                right: '1.5rem',
-                background: 'rgba(0, 0, 0, 0.25)',
-                border: 'none',
-                borderRadius: '50%',
-                width: '32px',
-                height: '32px',
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                color: '#000000',
-                fontSize: '1.5rem',
-                cursor: 'pointer',
-                lineHeight: 1,
-                padding: 0,
-                transition: 'transform 0.2s ease',
-                zIndex: 10
-              }}
-              onClick={() => setActiveLightboxFabric(null)}
-              onMouseEnter={(e) => e.target.style.transform = 'scale(1.1)'}
-              onMouseLeave={(e) => e.target.style.transform = 'scale(1)'}
-            >
-              &times;
-            </button>
-
-            {/* Scrollable contents wrapper */}
             <div 
-              className="lightbox-scroll-container"
-              style={{ 
-                overflowY: 'auto',
-                flexGrow: 1,
-                padding: '2.5rem 1.8rem 3rem 2.2rem'
+              className="lightbox-modal-content"
+              style={{
+                backgroundColor: 'var(--emerald-deep)',
+                border: '1px solid rgba(197, 168, 128, 0.3)',
+                borderRadius: '16px',
+                maxWidth: '500px',
+                width: '100%',
+                maxHeight: '80vh',
+                display: 'flex',
+                flexDirection: 'column',
+                overflow: 'hidden',
+                padding: 0,
+                paddingRight: '6px',
+                position: 'relative',
+                boxShadow: '0 20px 50px rgba(0, 0, 0, 0.5)',
+                animation: 'modalScaleUp 0.3s cubic-bezier(0.34, 1.56, 0.64, 1) forwards'
               }}
+              onClick={(e) => e.stopPropagation()}
             >
-              <h3 style={{ 
-                fontSize: '1.6rem', 
-                color: 'var(--beige-gold)', 
-                marginBottom: '1rem',
-                fontFamily: 'var(--font-serif)',
-                textAlign: 'center'
-              }}>
-                {activeLightboxFabric.name}
-              </h3>
+              {/* Close button - Fixed position */}
+              <button 
+                style={{
+                  position: 'absolute',
+                  top: '1rem',
+                  right: '1.5rem',
+                  background: 'rgba(0, 0, 0, 0.25)',
+                  border: 'none',
+                  borderRadius: '50%',
+                  width: '32px',
+                  height: '32px',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  color: '#000000',
+                  fontSize: '1.5rem',
+                  cursor: 'pointer',
+                  lineHeight: 1,
+                  padding: 0,
+                  transition: 'transform 0.2s ease',
+                  zIndex: 10
+                }}
+                onClick={() => setActiveLightboxFabric(null)}
+                onMouseEnter={(e) => e.target.style.transform = 'scale(1.1)'}
+                onMouseLeave={(e) => e.target.style.transform = 'scale(1)'}
+              >
+                &times;
+              </button>
 
-              {/* Large swatch render box */}
-              {(() => {
-                const modalImgSrc = activeLightboxFabric.activeVariant?.image || activeLightboxFabric.image;
-                return (
-                  <div 
-                    style={{
-                      width: '100%',
-                      height: '300px',
-                      borderRadius: '12px',
-                      overflow: 'hidden',
-                      border: '2px solid rgba(197, 168, 128, 0.4)',
-                      boxShadow: '0 10px 30px rgba(0,0,0,0.3)',
-                      marginBottom: '1.5rem',
-                      position: 'relative',
-                      cursor: 'zoom-in'
-                    }}
-                    onClick={() => openFullscreenForImage(modalImgSrc, activeLightboxFabric.id)}
-                    title="Click for full screen view"
-                  >
-                    {modalImgSrc ? (
-                      <img 
-                        src={modalImgSrc} 
-                        alt={activeLightboxFabric.name} 
-                        style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block', transition: 'transform 0.3s ease' }} 
-                      />
-                    ) : (
-                      <div 
-                        className={activeLightboxFabric.patternClass}
-                        style={{ width: '100%', height: '100%' }}
-                      ></div>
-                    )}
-                    <span className="fabric-badge" style={{ top: '1rem', right: '1rem' }}>
-                      {activeLightboxFabric.badge}
-                    </span>
+              {/* Scrollable contents wrapper */}
+              <div 
+                className="lightbox-scroll-container"
+                style={{ 
+                  overflowY: 'auto',
+                  flexGrow: 1,
+                  padding: '2.5rem 1.8rem 3rem 2.2rem'
+                }}
+              >
+                <h3 style={{ 
+                  fontSize: '1.6rem', 
+                  color: 'var(--beige-gold)', 
+                  marginBottom: '0.6rem',
+                  fontFamily: 'var(--font-serif)',
+                  textAlign: 'center'
+                }}>
+                  {activeLightboxFabric.name}
+                </h3>
+
+                {/* Price Display Pill */}
+                <div style={{ textAlign: 'center', marginBottom: '1.2rem' }}>
+                  <span style={{ 
+                    display: 'inline-flex',
+                    alignItems: 'baseline',
+                    gap: '0.35rem',
+                    background: 'rgba(10, 24, 20, 0.75)',
+                    border: '1px solid var(--beige-gold)',
+                    color: 'var(--beige-gold)',
+                    padding: '0.35rem 1.2rem',
+                    borderRadius: '20px',
+                    fontSize: '1.15rem',
+                    fontWeight: '700'
+                  }}>
+                    <span>Price:</span>
+                    <span style={{ fontSize: '1.3rem', color: '#FFF' }}>₹{lightboxPriceInfo.price}</span>
+                    <span style={{ fontSize: '0.82rem', opacity: 0.85, fontWeight: '400' }}>/ meter</span>
+                  </span>
+                </div>
+
+                {/* Large swatch render box */}
+                {(() => {
+                  const modalImgSrc = activeLightboxFabric.activeVariant?.image || activeLightboxFabric.image;
+                  return (
                     <div 
                       style={{
-                        position: 'absolute',
-                        bottom: '0.8rem',
-                        right: '0.8rem',
-                        background: 'rgba(0, 0, 0, 0.7)',
-                        backdropFilter: 'blur(4px)',
-                        color: 'var(--beige-gold)',
-                        padding: '0.35rem 0.75rem',
-                        borderRadius: '20px',
-                        fontSize: '0.75rem',
-                        fontWeight: '600',
-                        display: 'flex',
-                        alignItems: 'center',
-                        gap: '0.3rem',
-                        border: '1px solid rgba(197, 168, 128, 0.3)',
-                        pointerEvents: 'none'
+                        width: '100%',
+                        height: '300px',
+                        borderRadius: '12px',
+                        overflow: 'hidden',
+                        border: '2px solid rgba(197, 168, 128, 0.4)',
+                        boxShadow: '0 10px 30px rgba(0,0,0,0.3)',
+                        marginBottom: '1.5rem',
+                        position: 'relative',
+                        cursor: 'zoom-in'
                       }}
+                      onClick={() => openFullscreenForImage(modalImgSrc, activeLightboxFabric.id)}
+                      title="Click for full screen view"
                     >
-                      Tap for Full Screen
-                    </div>
-                  </div>
-                );
-              })()}
-
-              {activeLightboxFabric.variants && activeLightboxFabric.variants.length > 0 && (
-                <div style={{ display: 'flex', gap: '0.8rem', justifyContent: 'center', marginBottom: '1.5rem' }}>
-                  {activeLightboxFabric.variants.map((v) => {
-                    const isSelected = activeLightboxFabric.activeVariant?.id === v.id;
-                    return (
-                      <button
-                        key={v.id}
-                        onClick={() => {
-                          setActiveLightboxFabric(prev => ({ ...prev, activeVariant: v }));
-                          setSelectedVariants(prev => ({ ...prev, [activeLightboxFabric.id]: v.id }));
-                        }}
-                        style={{
-                          width: '56px',
-                          height: '56px',
-                          borderRadius: '8px',
-                          overflow: 'hidden',
-                          border: isSelected ? '2px solid var(--beige-gold)' : '1px solid rgba(255,255,255,0.2)',
-                          cursor: 'pointer',
-                          padding: 0,
-                          opacity: isSelected ? 1 : 0.6,
-                          transition: 'all 0.2s ease',
-                          outline: 'none',
-                          boxShadow: isSelected ? '0 0 12px rgba(255, 217, 190, 0.5)' : 'none',
-                          transform: isSelected ? 'scale(1.05)' : 'scale(1)'
-                        }}
-                        title={v.name}
-                      >
+                      {modalImgSrc ? (
                         <img 
-                          src={v.image} 
-                          alt={v.name} 
-                          style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }} 
+                          src={modalImgSrc} 
+                          alt={activeLightboxFabric.name} 
+                          style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block', transition: 'transform 0.3s ease' }} 
                         />
-                      </button>
-                    );
-                  })}
-                </div>
-              )}
+                      ) : (
+                        <div 
+                          className={activeLightboxFabric.patternClass}
+                          style={{ width: '100%', height: '100%' }}
+                        ></div>
+                      )}
+                      <span className="fabric-badge" style={{ top: '1rem', right: '1rem' }}>
+                        {activeLightboxFabric.badge}
+                      </span>
+                      <div 
+                        style={{
+                          position: 'absolute',
+                          bottom: '0.8rem',
+                          right: '0.8rem',
+                          background: 'rgba(0, 0, 0, 0.7)',
+                          backdropFilter: 'blur(4px)',
+                          color: 'var(--beige-gold)',
+                          padding: '0.35rem 0.75rem',
+                          borderRadius: '20px',
+                          fontSize: '0.75rem',
+                          fontWeight: '600',
+                          display: 'flex',
+                          alignItems: 'center',
+                          gap: '0.3rem',
+                          border: '1px solid rgba(197, 168, 128, 0.3)',
+                          pointerEvents: 'none'
+                        }}
+                      >
+                        Tap for Full Screen
+                      </div>
+                    </div>
+                  );
+                })()}
 
+                {activeLightboxFabric.variants && activeLightboxFabric.variants.length > 0 && (
+                  <div style={{ display: 'flex', gap: '0.8rem', justifyContent: 'center', marginBottom: '1.5rem' }}>
+                    {activeLightboxFabric.variants.map((v) => {
+                      const isSelected = activeLightboxFabric.activeVariant?.id === v.id;
+                      return (
+                        <button
+                          key={v.id}
+                          onClick={() => {
+                            setActiveLightboxFabric(prev => ({ ...prev, activeVariant: v }));
+                            setSelectedVariants(prev => ({ ...prev, [activeLightboxFabric.id]: v.id }));
+                          }}
+                          style={{
+                            width: '56px',
+                            height: '56px',
+                            borderRadius: '8px',
+                            overflow: 'hidden',
+                            border: isSelected ? '2px solid var(--beige-gold)' : '1px solid rgba(255,255,255,0.2)',
+                            cursor: 'pointer',
+                            padding: 0,
+                            opacity: isSelected ? 1 : 0.6,
+                            transition: 'all 0.2s ease',
+                            outline: 'none',
+                            boxShadow: isSelected ? '0 0 12px rgba(255, 217, 190, 0.5)' : 'none',
+                            transform: isSelected ? 'scale(1.05)' : 'scale(1)'
+                          }}
+                          title={v.name}
+                        >
+                          <img 
+                            src={v.image} 
+                            alt={v.name} 
+                            style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }} 
+                          />
+                        </button>
+                      );
+                    })}
+                  </div>
+                )}
 
-
-              <p style={{ 
-                color: 'var(--beige-light)', 
-                lineHeight: '1.6', 
-                textAlign: 'center',
-                fontSize: '1rem',
-                marginBottom: '1.5rem'
-              }}>
-                {activeLightboxFabric.desc}
-              </p>
-
-              <div 
-                className="lightbox-meta-grid"
-                style={{ 
-                  display: 'grid', 
-                  gridTemplateColumns: '1fr 1fr', 
-                  gap: '1rem',
-                  backgroundColor: 'rgba(0, 0, 0, 0.2)',
-                  padding: '1rem',
-                  borderRadius: '8px',
-                  border: '1px solid rgba(197, 168, 128, 0.1)',
+                <p style={{ 
+                  color: 'var(--beige-light)', 
+                  lineHeight: '1.6', 
+                  textAlign: 'center',
+                  fontSize: '1rem',
                   marginBottom: '1.5rem'
-                }}
-              >
-                <div style={{ display: 'flex', flexDirection: 'column' }}>
-                  <span style={{ fontSize: '0.8rem', color: 'var(--text-muted)' }}>Weight</span>
-                  <span style={{ color: 'var(--white)', fontWeight: 'bold' }}>{activeLightboxFabric.weight}</span>
-                </div>
-                <div style={{ display: 'flex', flexDirection: 'column' }}>
-                  <span style={{ fontSize: '0.8rem', color: 'var(--text-muted)' }}>Thread Count</span>
-                  <span style={{ color: 'var(--white)', fontWeight: 'bold' }}>{activeLightboxFabric.threadCount}</span>
-                </div>
-                <div style={{ display: 'flex', flexDirection: 'column' }}>
-                  <span style={{ fontSize: '0.8rem', color: 'var(--text-muted)' }}>Breathability</span>
-                  <span style={{ color: 'var(--white)', fontWeight: 'bold' }}>{activeLightboxFabric.breathability}</span>
-                </div>
-                <div style={{ display: 'flex', flexDirection: 'column' }}>
-                  <span style={{ fontSize: '0.8rem', color: 'var(--text-muted)' }}>Category</span>
-                  <span style={{ color: 'var(--white)', fontWeight: 'bold', textTransform: 'capitalize' }}>{activeLightboxFabric.category}</span>
-                </div>
-              </div>
+                }}>
+                  {activeLightboxFabric.desc}
+                </p>
 
-              <button 
-                className="btn-primary" 
-                style={{ width: '100%', padding: '1rem' }}
-                onClick={() => {
-                  handleBookWithFabric(activeLightboxFabric.name);
-                  setActiveLightboxFabric(null);
-                }}
-              >
-                Book Fitting With This Fabric
-              </button>
+                <div 
+                  className="lightbox-meta-grid"
+                  style={{ 
+                    display: 'grid', 
+                    gridTemplateColumns: '1fr 1fr', 
+                    gap: '1rem',
+                    backgroundColor: 'rgba(0, 0, 0, 0.2)',
+                    padding: '1rem',
+                    borderRadius: '8px',
+                    border: '1px solid rgba(197, 168, 128, 0.1)',
+                    marginBottom: '1.5rem'
+                  }}
+                >
+                  <div style={{ display: 'flex', flexDirection: 'column' }}>
+                    <span style={{ fontSize: '0.8rem', color: 'var(--text-muted)' }}>Price per Meter</span>
+                    <span style={{ color: 'var(--beige-gold)', fontWeight: 'bold' }}>{lightboxPriceInfo.formatted}</span>
+                  </div>
+                  <div style={{ display: 'flex', flexDirection: 'column' }}>
+                    <span style={{ fontSize: '0.8rem', color: 'var(--text-muted)' }}>Weight</span>
+                    <span style={{ color: 'var(--white)', fontWeight: 'bold' }}>{activeLightboxFabric.weight}</span>
+                  </div>
+                  <div style={{ display: 'flex', flexDirection: 'column' }}>
+                    <span style={{ fontSize: '0.8rem', color: 'var(--text-muted)' }}>Thread Count</span>
+                    <span style={{ color: 'var(--white)', fontWeight: 'bold' }}>{activeLightboxFabric.threadCount}</span>
+                  </div>
+                  <div style={{ display: 'flex', flexDirection: 'column' }}>
+                    <span style={{ fontSize: '0.8rem', color: 'var(--text-muted)' }}>Category</span>
+                    <span style={{ color: 'var(--white)', fontWeight: 'bold', textTransform: 'capitalize' }}>{activeLightboxFabric.category}</span>
+                  </div>
+                </div>
+
+                <button 
+                  className="btn-primary" 
+                  style={{ width: '100%', padding: '1rem' }}
+                  onClick={() => {
+                    handleBookWithFabric(activeLightboxFabric.name, lightboxPriceInfo.price);
+                    setActiveLightboxFabric(null);
+                  }}
+                >
+                  Book Fitting With This Fabric ({lightboxPriceInfo.formatted})
+                </button>
+              </div>
             </div>
           </div>
-        </div>
-      )}
+        );
+      })()}
 
       {/* ── Ultra Fullscreen Image Lightbox & Gallery Viewer ── */}
       {fullscreenIndex !== null && allGalleryImages.length > 0 && (() => {
@@ -5128,9 +5058,14 @@ export default function Fabric() {
                 <h3 style={{ margin: 0, color: 'var(--beige-gold)', fontSize: '1.2rem', fontFamily: 'var(--font-serif)' }}>
                   {currentItem.fabricName} {currentItem.variantName ? `— ${currentItem.variantName}` : ''}
                 </h3>
-                <span style={{ fontSize: '0.8rem', color: 'rgba(255, 255, 255, 0.7)' }}>
-                  Image {fullscreenIndex + 1} of {allGalleryImages.length}
-                </span>
+                <div style={{ display: 'flex', gap: '0.8rem', alignItems: 'center', marginTop: '0.2rem' }}>
+                  <span style={{ fontSize: '0.9rem', color: 'var(--beige-gold)', fontWeight: '700' }}>
+                    {currentItem.priceInfo?.formatted || '₹499 / meter'}
+                  </span>
+                  <span style={{ fontSize: '0.8rem', color: 'rgba(255, 255, 255, 0.7)' }}>
+                    • Image {fullscreenIndex + 1} of {allGalleryImages.length}
+                  </span>
+                </div>
               </div>
 
               <div style={{ display: 'flex', gap: '0.8rem', alignItems: 'center' }}>
@@ -5229,9 +5164,9 @@ export default function Fabric() {
               {/* Center Active Image */}
               <div style={{ flex: 1, height: '100%', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', position: 'relative' }}>
                 {currentItem.image ? (
-                  <img
-                    src={currentItem.image}
-                    alt={currentItem.fabricName}
+                  <img 
+                    src={currentItem.image} 
+                    alt={currentItem.fabricName} 
                     style={{
                       maxWidth: '100%',
                       maxHeight: 'calc(80vh - 120px)',
@@ -5243,8 +5178,8 @@ export default function Fabric() {
                     }}
                   />
                 ) : (
-                  <div
-                    className={currentItem.patternClass}
+                  <div 
+                    className={currentItem.patternClass} 
                     style={{ width: '400px', height: '400px', borderRadius: '12px' }}
                   ></div>
                 )}
@@ -5254,7 +5189,7 @@ export default function Fabric() {
               </div>
 
               {/* Next Button */}
-              <button
+              <button 
                 onClick={() => setFullscreenIndex((prev) => (prev === null ? null : (prev + 1) % allGalleryImages.length))}
                 style={{
                   background: 'rgba(0, 0, 0, 0.5)',
@@ -5321,10 +5256,10 @@ export default function Fabric() {
                     title={`${item.fabricName} ${item.variantName ? '(' + item.variantName + ')' : ''}`}
                   >
                     {item.image ? (
-                      <img
-                        src={item.image}
-                        alt={item.fabricName}
-                        style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }}
+                      <img 
+                        src={item.image} 
+                        alt={item.fabricName} 
+                        style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }} 
                       />
                     ) : (
                       <div className={item.patternClass} style={{ width: '100%', height: '100%' }}></div>

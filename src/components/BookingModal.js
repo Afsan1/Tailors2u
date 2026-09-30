@@ -518,6 +518,12 @@ export default function BookingModal({ isOpen, onClose, initialService = '' }) {
                   onChange={(e) => handleFieldChange('service', e.target.value)}
                 >
                   <option value="" disabled>Choose a service...</option>
+                  <option value="Suits Stitching: Two-Piece Suit">Suits Stitching - Two-Piece Suit</option>
+                  <option value="Suits Stitching: Three-Piece Suit">Suits Stitching - Three-Piece Suit</option>
+                  <option value="Suits Stitching: Tuxedo / Dinner Suit">Suits Stitching - Tuxedo / Dinner Suit</option>
+                  <option value="Suits Stitching: Bespoke Blazer">Suits Stitching - Bespoke Blazer</option>
+                  <option value="Custom Stitching: Shirt & Trousers">Custom Stitching - Shirt & Trousers</option>
+                  <option value="Custom Stitching: Ethnic / Bandhgala">Custom Stitching - Ethnic / Bandhgala</option>
                   <option value="Alteration: Shirt">Alteration - Shirt</option>
                   <option value="Alteration: T-Shirt">Alteration - T-Shirt / Polo</option>
                   <option value="Alteration: Pant">Alteration - Pant</option>
